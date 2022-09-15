@@ -1,42 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{1B6F5921-F647-4065-8004-B5EFE7036339}" SchemaVersion="103">
+<WwiseDocument Type="WorkUnit" ID="{1B6F5921-F647-4065-8004-B5EFE7036339}" SchemaVersion="110">
 	<Busses>
 		<WorkUnit Name="Default Work Unit" ID="{1B6F5921-F647-4065-8004-B5EFE7036339}" PersistMode="Standalone">
 			<ChildrenList>
 				<Bus Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
-					<PropertyList>
-						<Property Name="BusVolume" Type="Real64">
-							<RTPCList>
-								<RTPC Name="" ID="{349262F4-AB5C-4F07-8028-8B8E7F61BC1D}" ShortID="142794907">
-									<ReferenceList>
-										<Reference Name="ControlInput">
-											<ObjectRef Name="MasterVolume" ID="{5B45EAC9-2C25-4E26-BE21-B7E898D85C87}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
-										</Reference>
-									</ReferenceList>
-									<Curve Name="" ID="{94E60A29-81EB-491E-B303-854501935913}">
-										<PropertyList>
-											<Property Name="Flags" Type="int32" Value="3"/>
-										</PropertyList>
-										<PointList>
-											<Point>
-												<XPos>0</XPos>
-												<YPos>-200</YPos>
-												<Flags>5</Flags>
-												<SegmentShape>Exp2</SegmentShape>
-											</Point>
-											<Point>
-												<XPos>1</XPos>
-												<YPos>0</YPos>
-												<Flags>37</Flags>
-											</Point>
-										</PointList>
-									</Curve>
-								</RTPC>
-							</RTPCList>
-						</Property>
-					</PropertyList>
 					<ReferenceList>
-						<Reference Name="AudioDevice">
+						<Reference Name="AudioDevice" PluginName="System" CompanyID="0" PluginID="174" PluginType="7">
 							<ObjectRef Name="System" ID="{6B7432B9-C029-45FA-A9AB-3F872EC98FE0}" WorkUnitID="{5958FD67-625C-43DB-BE52-F7A0C375F380}"/>
 						</Reference>
 					</ReferenceList>
@@ -68,7 +37,6 @@
 									</CustomState>
 								</CustomStateList>
 							</StateInfo>
-							<ObjectLists/>
 						</Bus>
 						<Bus Name="MC" ID="{85FDBF6E-125A-4553-8D26-BE71B76B2425}">
 							<PropertyList>
@@ -97,21 +65,18 @@
 									</CustomState>
 								</CustomStateList>
 							</StateInfo>
-							<ObjectLists/>
 						</Bus>
 						<Bus Name="UI" ID="{810B9E20-27DC-44EE-82C9-184684B56A94}">
 							<PropertyList>
 								<Property Name="Color" Type="int16" Value="19"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
-							<ObjectLists/>
 						</Bus>
 						<Bus Name="NPC" ID="{B955C7C1-6C5F-4379-8FB3-DD13E36B5A38}">
 							<PropertyList>
 								<Property Name="Color" Type="int16" Value="25"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
-							<ObjectLists/>
 						</Bus>
 						<Bus Name="SFX" ID="{F425DD9C-4B7D-40B0-B495-D58654E0B77E}">
 							<PropertyList>
@@ -139,7 +104,6 @@
 									</CustomState>
 								</CustomStateList>
 							</StateInfo>
-							<ObjectLists/>
 						</Bus>
 						<AuxBus Name="RVB_Exterior" ID="{9AA47515-D1F5-4B5E-B74C-B787C0B8B927}">
 							<PropertyList>
@@ -153,7 +117,6 @@
 									<ObjectRef Name="Have_U_Ever_Been_Outside" ID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
 								</Reference>
 							</ReferenceList>
-							<ObjectLists/>
 						</AuxBus>
 						<AuxBus Name="RVB_Temple" ID="{153304D8-442C-4DEE-8DC4-95365AC34075}">
 							<PropertyList>
@@ -172,7 +135,6 @@
 									<ObjectRef Name="Hall_Large_Dark" ID="{0F6A7D6D-131C-4650-9561-FC05F5C7A37B}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
 								</Reference>
 							</ReferenceList>
-							<ObjectLists/>
 						</AuxBus>
 						<AuxBus Name="RVB_Cave" ID="{7188D707-1FC4-4ADC-866C-04526C3965DE}">
 							<PropertyList>
@@ -191,7 +153,6 @@
 									<ObjectRef Name="Room_Large" ID="{AD8EFAFC-7121-4D5F-BE4D-B13FBD6CEBAE}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
 								</Reference>
 							</ReferenceList>
-							<ObjectLists/>
 						</AuxBus>
 						<AuxBus Name="RVB_LittleCave" ID="{0328B0A3-01E7-4FBD-AE08-60B828BC3903}">
 							<PropertyList>
@@ -210,7 +171,6 @@
 									<ObjectRef Name="Room_Large" ID="{AD8EFAFC-7121-4D5F-BE4D-B13FBD6CEBAE}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
 								</Reference>
 							</ReferenceList>
-							<ObjectLists/>
 						</AuxBus>
 						<Bus Name="MUSIC" ID="{92D4BD93-56C0-4EE8-92B3-800C27F369E2}">
 							<PropertyList>
@@ -245,10 +205,48 @@
 									</CustomState>
 								</CustomStateList>
 							</StateInfo>
-							<ObjectLists/>
 						</Bus>
 					</ChildrenList>
-					<ObjectLists/>
+					<ObjectLists>
+						<ObjectList Name="RTPC">
+							<Reference>
+								<Local>
+									<RTPC Name="" ID="{349262F4-AB5C-4F07-8028-8B8E7F61BC1D}" ShortID="142794907">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="BusVolume"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput">
+												<ObjectRef Name="MasterVolume" ID="{5B45EAC9-2C25-4E26-BE21-B7E898D85C87}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{94E60A29-81EB-491E-B303-854501935913}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-200</YPos>
+																<Flags>5</Flags>
+																<SegmentShape>Exp2</SegmentShape>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>0</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+								</Local>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
 				</Bus>
 			</ChildrenList>
 		</WorkUnit>

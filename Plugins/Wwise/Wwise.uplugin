@@ -6,7 +6,7 @@
 	"VersionName" : "2022.1.0.7985.2398",
 	"CreatedBy" : "Audiokinetic, Inc.",
 	"CreatedByURL" : "http://audiokinetic.com",
-	"EngineVersion" : "4.27.0",
+	"EngineVersion" : "5.0.3",
 	"Description" : "Wwise integration for Unreal Engine",
 	"Category" : "Audio",
 	"EnabledByDefault" : true,

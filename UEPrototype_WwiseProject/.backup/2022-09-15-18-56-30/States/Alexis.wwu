@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{C74913D5-01F3-42A1-989E-6FA374259590}" SchemaVersion="103" RootDocumentID="{D2DE9D4C-61A1-46CC-AB2F-8D5FA822B62A}" ParentDocumentID="{D2DE9D4C-61A1-46CC-AB2F-8D5FA822B62A}">
+	<States>
+		<WorkUnit Name="Alexis" ID="{C74913D5-01F3-42A1-989E-6FA374259590}" OwnerID="{D2DE9D4C-61A1-46CC-AB2F-8D5FA822B62A}" PersistMode="Nested">
+			<ChildrenList>
+				<StateGroup Name="Level0_state" ID="{33379167-B165-42B5-8A74-9C6F3FBA609E}">
+					<ChildrenList>
+						<State Name="None" ID="{AAAE2F82-E515-401C-987A-7BD12860754A}"/>
+						<State Name="Level1_Island" ID="{0DA3500C-A187-48C8-B1DA-01128AB6F46C}"/>
+						<State Name="Level2_Temple" ID="{EADA8553-28C8-474C-9B89-43EA00336368}"/>
+						<State Name="Level3_Tube" ID="{F2919E44-FF34-486E-B6FF-609474A6E1CB}"/>
+						<State Name="Level1_Tuto" ID="{6C9B29B5-58DC-4C6A-8508-BA9473018BCD}"/>
+						<State Name="End" ID="{B3FF19C2-F492-4C90-BA33-3ABAE92F6B58}"/>
+					</ChildrenList>
+				</StateGroup>
+				<StateGroup Name="Player" ID="{A35C2FA7-3FB8-4308-B646-C70734A65B5B}">
+					<ChildrenList>
+						<State Name="None" ID="{FD3FA075-4F64-4432-A05F-2F23DBBB4B74}"/>
+						<State Name="Alive" ID="{E8CC3D28-0F71-43A1-8071-556C82C64DB2}"/>
+						<State Name="Dead" ID="{CB238342-84ED-4395-815B-912C29F7CDBB}"/>
+					</ChildrenList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
+	</States>
+</WwiseDocument>

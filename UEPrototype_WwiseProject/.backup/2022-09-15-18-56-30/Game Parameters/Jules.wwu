@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{B33E0AE4-683A-4118-98EA-BBEFCBF7E5A5}" SchemaVersion="103" RootDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}" ParentDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}">
+	<GameParameters>
+		<WorkUnit Name="Jules" ID="{B33E0AE4-683A-4118-98EA-BBEFCBF7E5A5}" OwnerID="{2E3B1270-9C0A-453D-8324-D76519F899C5}" PersistMode="Nested">
+			<ChildrenList>
+				<GameParameter Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}">
+					<PropertyList>
+						<Property Name="BindToBuiltInParam" Type="int16" Value="1"/>
+						<Property Name="InitialValue" Type="Real64" Value="10000"/>
+						<Property Name="Max" Type="Real64" Value="10000"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="RTPC_PlayerSpeed" ID="{E81B3401-03B0-4FBF-A942-900B5FB3AA30}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+						<Property Name="Max" Type="Real64" Value="3000"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="RTPC_WindSpeed" ID="{AEFD0C2B-4F71-404D-BB40-2112CF08A532}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+						<Property Name="Max" Type="Real64" Value="3000"/>
+						<Property Name="RTPCRamping" Type="int16" Value="1"/>
+						<Property Name="SlewRateDown" Type="Real64" Value="900"/>
+						<Property Name="SlewRateUp" Type="Real64" Value="3000"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="RTPC_WaterFallMedDistance" ID="{30BBCABF-1EE6-465D-8559-10DB16449DC6}">
+					<PropertyList>
+						<Property Name="BindToBuiltInParam" Type="int16" Value="1"/>
+						<Property Name="InitialValue" Type="Real64" Value="15000"/>
+						<Property Name="Max" Type="Real64" Value="15000"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="RTPC_WaterFallBigDistance" ID="{E44C6EE4-B46F-45ED-8B1E-1CE323B3070D}">
+					<PropertyList>
+						<Property Name="BindToBuiltInParam" Type="int16" Value="1"/>
+						<Property Name="InitialValue" Type="Real64" Value="20000"/>
+						<Property Name="Max" Type="Real64" Value="20000"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="RTPC_MagicDoorPosition" ID="{42B37403-7E20-45F1-BC55-D7706D029A1E}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+						<Property Name="Max" Type="Real64" Value="1"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="RTPC_Vegetation" ID="{AE9E92CD-9763-4B65-9735-3567D41C582E}">
+					<PropertyList>
+						<Property Name="FilterTimeDown" Type="Real64" Value="3"/>
+						<Property Name="FilterTimeUp" Type="Real64" Value="2"/>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+						<Property Name="Max" Type="Real64" Value="15"/>
+						<Property Name="RTPCRamping" Type="int16" Value="2"/>
+						<Property Name="SlewRateDown" Type="Real64" Value="1"/>
+						<Property Name="SlewRateUp" Type="Real64" Value="1"/>
+					</PropertyList>
+				</GameParameter>
+			</ChildrenList>
+		</WorkUnit>
+	</GameParameters>
+</WwiseDocument>
