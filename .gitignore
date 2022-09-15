@@ -69,6 +69,12 @@ Saved/*
 # Compiled source files for the engine to use
 Intermediate/*
 Plugins/*/Intermediate/*
+Plugins/Wwise/*
+UEPrototype_WwiseProject/*
+
+Content/Wwise/*
+Content/ModularLostRuinKit/*
+Content/DreamscapeSeries/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
