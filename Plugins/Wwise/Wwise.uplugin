@@ -1,0 +1,71 @@
+{
+	"FileVersion" : 1,
+	
+	"FriendlyName" : "Wwise Unreal Engine Integration",
+	"Version" : 202212398,
+	"VersionName" : "2022.1.0.7985.2398",
+	"CreatedBy" : "Audiokinetic, Inc.",
+	"CreatedByURL" : "http://audiokinetic.com",
+	"EngineVersion" : "4.27.0",
+	"Description" : "Wwise integration for Unreal Engine",
+	"Category" : "Audio",
+	"EnabledByDefault" : true,
+	
+	"Modules": [
+		{
+			"Name": "AkAudioMixer",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "AkAudio",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "AudiokineticTools",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "WwiseFileHandler",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "WwiseProjectDatabase",
+			"Type": "Editor",
+			"LoadingPhase": "PostEngineInit"
+		},
+		{
+			"Name": "WwiseResourceCooker",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "WwiseResourceLoader",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "WwiseSoundEngine",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "WwiseSimpleExternalSource",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	
+	"Plugins":
+	[
+		{
+			"Name": "GeometryMode",
+			"Enabled": true
+		}
+	],
+	
+	"CanContainContent" : true
+}

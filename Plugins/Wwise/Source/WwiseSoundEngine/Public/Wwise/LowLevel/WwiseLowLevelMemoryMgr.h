@@ -1,0 +1,218 @@
+/*******************************************************************************
+The content of the files in this repository include portions of the
+AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
+package.
+
+Commercial License Usage
+
+Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
+may use these files in accordance with the end user license agreement provided
+with the software or, alternatively, in accordance with the terms contained in a
+written agreement between you and Audiokinetic Inc.
+
+Copyright (c) 2022 Audiokinetic Inc.
+*******************************************************************************/
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "AkInclude.h"
+
+#include "Wwise/WwiseSoundEngineModule.h"
+
+class WWISESOUNDENGINE_API FWwiseLowLevelMemoryMgr
+{
+public:
+	static FWwiseLowLevelMemoryMgr* Get()
+	{
+		IWwiseSoundEngineModule::ForceLoadModule();
+		return IWwiseSoundEngineModule::MemoryMgr;
+	}
+
+	/// Initialize the default implementation of the Memory Manager.
+	/// \sa AK::MemoryMgr
+	AKRESULT Init(
+		AkMemSettings* in_pSettings        ///< Memory manager initialization settings.
+		);
+
+	/// Obtain the default initialization settings for the default implementation of the Memory Manager.
+	void GetDefaultSettings(
+		AkMemSettings& out_pMemSettings	///< Memory manager default initialization settings.
+		);
+
+	////////////////////////////////////////////////////////////////////////
+	/// @name Initialization
+	//@{
+
+	/// Query whether the Memory Manager has been sucessfully initialized.
+	/// \warning This function is not thread-safe. It should not be called at the same time as MemoryMgr::Init or MemoryMgr::Term.
+	/// \return True if the Memory Manager is initialized, False otherwise
+	/// \sa
+	/// - AK::MemoryMgr::Init()
+	/// - \ref memorymanager
+	bool IsInitialized();
+
+	/// Terminate the Memory Manager.
+	/// \warning This function is not thread-safe. It is not valid to allocate memory or otherwise interact with the memory manager during or after this call.
+	/// \sa
+	/// - \ref memorymanager
+	void Term();
+
+	/// Performs whatever steps are required to initialize a thread for use with the memory manager.
+	/// For example initializing thread local storage that the allocator requires to work.
+	/// The default implementation of the memory manager performs thread initialization automatically and therefore this call is optional.
+	/// For implementations where the cost of automatically initializing a thread for use with an allocator would be prohibitively expensive
+	/// this call allows you to perform the initialization once during, for example, thread creation.
+	/// \sa
+	/// - AkMemInitForThread
+	void InitForThread();
+
+	/// Allows you to manually terminate a thread for use with the memory manager.
+	/// The default implementation of the memory manager requires that all threads that interact with the memory manager call this function prior
+	/// to either their termination or the termination of the memory manager. Threads not created by the sound engine itself will not have this
+	/// function called for them automatically.
+	/// Take care to call this function for any thread, not owned by wwise, that may have interacted with the memory manager. For example job system workers.
+	/// \sa
+	/// - AkMemTermForThread
+	void TermForThread();
+
+	//@}
+
+	////////////////////////////////////////////////////////////////////////
+	/// @name Memory Allocation
+	//@{
+
+		/// Allocate memory: debug version.
+		/// \return A pointer to the start of the allocated memory (NULL if the allocation could not be completed)
+		/// \sa
+		/// - \ref memorymanager
+	void* dMalloc(
+		AkMemPoolId in_poolId,				///< ID of the memory category (AkMemID)
+		size_t		in_uSize,				///< Number of bytes to allocate
+		const char* in_pszFile,				///< Debug file name
+		AkUInt32	in_uLine				///< Debug line number
+		);
+
+	/// Allocate memory.
+	/// \return A pointer to the start of the allocated memory (NULL if the allocation could not be completed)
+	/// \sa
+	/// - \ref memorymanager
+	void* Malloc(
+		AkMemPoolId in_poolId,				///< ID of the memory category (AkMemID)
+		size_t		in_uSize 				///< Number of bytes to allocate
+		);
+
+	/// Reallocate memory: debug version.
+	/// \return A pointer to the start of the reallocated memory (NULL if the allocation could not be completed)
+	/// \sa
+	/// - \ref memorymanager
+	void* dRealloc(
+		AkMemPoolId	in_poolId,
+		void* in_pAlloc,
+		size_t		in_uSize,
+		const char* in_pszFile,
+		AkUInt32	in_uLine
+		);
+
+	/// Reallocate memory.
+	/// \return A pointer to the start of the reallocated memory (NULL if the allocation could not be completed)
+	/// \sa
+	/// - \ref memorymanager
+	void* Realloc(
+		AkMemPoolId in_poolId,				///< ID of the memory category (AkMemID)
+		void* in_pAlloc,				///< Pointer to the start of the allocated memory
+		size_t		in_uSize 				///< Number of bytes to allocate
+		);
+
+	/// Reallocate memory: debug version.
+	/// \return A pointer to the start of the reallocated memory (NULL if the allocation could not be completed)
+	/// \sa
+	/// - \ref memorymanager
+	void* dReallocAligned(
+		AkMemPoolId	in_poolId,				///< ID of the memory category (AkMemID)
+		void* in_pAlloc,				///< Pointer to the start of the allocated memory
+		size_t		in_uSize,				///< Number of bytes to allocate
+		AkUInt32	in_uAlignment,			///< Alignment (in bytes)
+		const char* in_pszFile,			///< Debug file name
+		AkUInt32	in_uLine				///< Debug line number
+		);
+
+	/// Reallocate memory.
+	/// \return A pointer to the start of the reallocated memory (NULL if the allocation could not be completed)
+	/// \sa
+	/// - \ref memorymanager
+	void* ReallocAligned(
+		AkMemPoolId in_poolId,				///< ID of the memory category (AkMemID)
+		void* in_pAlloc,				///< Pointer to the start of the allocated memory
+		size_t		in_uSize, 				///< Number of bytes to allocate
+		AkUInt32	in_uAlignment			///< Alignment (in bytes)
+		);
+
+	/// Free memory allocated with the memory manager.
+	/// \sa
+	/// - \ref memorymanager
+	void Free(
+		AkMemPoolId in_poolId,				///< ID of the memory category (AkMemID)
+		void* in_pMemAddress			///< Pointer to the start of memory
+		);
+
+	/// Allocate memory with a specific alignment. debug version.
+	/// \return A pointer to the start of the allocated memory (NULL if the allocation could not be completed)
+	/// \sa
+	/// - \ref memorymanager
+	void* dMalign(
+		AkMemPoolId in_poolId,				///< ID of the memory category (AkMemID)
+		size_t		in_uSize,				///< Number of bytes to allocate
+		AkUInt32	in_uAlignment, 			///< Alignment (in bytes)
+		const char* in_pszFile,			///< Debug file name
+		AkUInt32	in_uLine				///< Debug line number
+		);
+
+	/// Allocate memory with a specific alignment.
+	/// \return A pointer to the start of the allocated memory (NULL if the allocation could not be completed)
+	/// \sa
+	/// - \ref memorymanager
+	void* Malign(
+		AkMemPoolId in_poolId,				///< ID of the memory category (AkMemID)
+		size_t		in_uSize, 				///< Number of bytes to allocate
+		AkUInt32	in_uAlignment 			///< Alignment (in bytes)
+		);
+
+	//@}
+
+	////////////////////////////////////////////////////////////////////////
+	/// @name Memory Profiling
+	//@{
+
+	/// Get statistics for a given memory category.
+	/// \note Be aware of the potentially incoherent nature of reporting such information during concurrent modification by multiple threads.
+	void GetCategoryStats(
+		AkMemPoolId	in_poolId,				///< ID of the memory category (AkMemID)
+		AK::MemoryMgr::CategoryStats& out_poolStats		///< Returned statistics.
+		);
+
+	/// Get statistics for overall memory manager usage.
+	/// \note Be aware of the potentially incoherent nature of reporting such information during concurrent modification by multiple threads.
+	void GetGlobalStats(
+		AK::MemoryMgr::GlobalStats& out_stats				///< Returned statistics.
+		);
+
+	/// Called to start profiling memory usage for one thread (the calling thread).
+	/// \note Not implementing this will result in the Soundbank tab of the Wwise Profiler to show 0 bytes for memory usage.
+	void StartProfileThreadUsage(
+		);
+
+	/// Called to stop profiling memory usage for the current thread.
+	/// \return The amount of memory allocated by this thread since StartProfileThreadUsage was called.
+	/// \note Not implementing this will result in the Soundbank tab of the Wwise Profiler to show 0 bytes for memory usage.
+	AkUInt64 StopProfileThreadUsage(
+		);
+
+	/// Dumps the currently tracked allocations to a file
+	/// \note AkMemSettings::uMemoryDebugLevel must be enabled and the build must define AK_MEMDEBUG for this to work
+	void DumpToFile(
+		const AkOSChar* pszFilename			///< Filename.
+		);
+
+	//@}
+};
