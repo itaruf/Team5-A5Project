@@ -72,7 +72,8 @@ Plugins/*/Intermediate/*
 Plugins/Wwise/*
 UEPrototype_WwiseProject/*
 
-Content/ModularLostRuinKit/*
+Content/ModularLostRuinKit/Textures
+
 Content/DreamscapeSeries/*
 
 # Cache files for the editor to use
