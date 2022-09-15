@@ -14,6 +14,7 @@ Copyright (c) 2021 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
+#include "AkAudioDevice.h"
 #include "AkReverbDescriptor.h"
 #include "GameFramework/Volume.h"
 #include "AkGameObject.h"
@@ -24,10 +25,7 @@ class UAkLateReverbComponent;
 UCLASS(ClassGroup = Audiokinetic, BlueprintType, hidecategories = (Transform, Rendering, Mobility, LOD, Component, Activation, Tags), meta = (BlueprintSpawnableComponent))
 class AKAUDIO_API UAkRoomComponent : public UAkGameObject
 {
-	GENERATED_BODY()
-
-public:
-	UAkRoomComponent(const class FObjectInitializer& ObjectInitializer);
+	GENERATED_UCLASS_BODY()
 
 	/** 
 	* Enable room transmission feature. Additional properties are available in the Room category. 
@@ -77,7 +75,8 @@ public:
 	/** Posts this game object's AkAudioEvent to Wwise, using this as the game object source */
 	virtual int32 PostAssociatedAkEvent(
 		UPARAM(meta = (Bitmask, BitmaskEnum = EAkCallbackType)) int32 CallbackMask,
-		const FOnAkPostEventCallback& PostEventCallback
+		const FOnAkPostEventCallback& PostEventCallback,
+		const TArray<FAkExternalSourceInfo>& ExternalSources
 	);
 
 	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|AkRoomComponent")
@@ -120,9 +119,10 @@ public:
 	FName GetName() const;
 
 	virtual AkPlayingID PostAkEventByNameWithDelegate(
-		UAkAudioEvent* AkEvent,
 		const FString& in_EventName,
-		int32 CallbackMask, const FOnAkPostEventCallback& PostEventCallback);
+		int32 CallbackMask,
+		const FOnAkPostEventCallback& PostEventCallback,
+		const TArray<FAkExternalSourceInfo>& ExternalSources = TArray<FAkExternalSourceInfo>());
 
 	// Begin USceneComponent Interface
 	virtual void BeginPlay() override;
@@ -137,8 +137,6 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|AkRoomComponent")
 	void SetGeometryComponent(UAkAcousticTextureSetComponent* textureSetComponent);
-
-	FString GetRoomName();
 
 private:
 	class UPrimitiveComponent* Parent;

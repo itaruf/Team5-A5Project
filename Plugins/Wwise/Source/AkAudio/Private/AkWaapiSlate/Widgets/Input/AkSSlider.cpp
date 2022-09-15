@@ -15,6 +15,7 @@ Copyright (c) 2021 Audiokinetic Inc.
 
 #include "AkWaapiSlate/Widgets/Input/AkSSlider.h"
 #include "AkAudioDevice.h"
+#include "Rendering/DrawElements.h"
 #include "Widgets/SBoxPanel.h"
 #include "Widgets/Input/SSlider.h"
 #include "Widgets/Text/STextBlock.h"
@@ -30,6 +31,7 @@ Defines
 
 #define LOCTEXT_NAMESPACE "AkWaapiUMG"
 
+DEFINE_LOG_CATEGORY(LogAkAudioSliderUMG);
 /*------------------------------------------------------------------------------------
 Helpers
 ------------------------------------------------------------------------------------*/
@@ -119,7 +121,7 @@ void AkSSlider::HandleAkSliderValueChanged(float NewValue)
 {
 	if (AkSliderItemId.IsEmpty() || AkSliderItemProperty.IsEmpty())
 	{
-		UE_LOG(LogAkAudio, Log, TEXT("No item or property to control"));
+		UE_LOG(LogAkAudioSliderUMG, Log, TEXT("No item or property to control"));
 		return;
 	}
 	// Construct the arguments Json object"
@@ -140,14 +142,12 @@ void AkSSlider::HandleAkSliderValueChanged(float NewValue)
     {
         return;
     }
-#if AK_SUPPORT_WAAPI
 	TSharedPtr<FJsonObject> outJsonResult;
 	// Request data from Wwise using WAAPI
 	if (!waapiClient->Call(ak::wwise::core::object::setProperty, args, options, outJsonResult))
 	{
-		UE_LOG(LogAkAudio, Log, TEXT("Failed to set property %s on AKSSlider"), *AkSliderItemProperty);
+		UE_LOG(LogAkAudioSliderUMG, Log, TEXT("Failed to set property %s on AKSSlider"), *AkSliderItemProperty);
 	}
-#endif
 }
 
 FReply AkSSlider::OnDrop(const FGeometry& MyGeometry, const FDragDropEvent& DragDropEvent)
@@ -261,7 +261,6 @@ inline void AkSSlider::UpdateRange()
 	FAkWaapiClient* waapiClient = FAkWaapiClient::Get();
 	if (waapiClient)
 	{
-#if AK_SUPPORT_WAAPI
 		// Request data from Wwise using WAAPI
 		if (waapiClient->Call(ak::wwise::core::object::getPropertyInfo, args, options, outJsonResult))
 		{
@@ -273,7 +272,6 @@ inline void AkSSlider::UpdateRange()
                 UIMaxValue = uiLimit->GetNumberField(WwiseWaapiHelper::MAX);
 			}
 		}
-#endif
 	}
 }
 

@@ -56,8 +56,11 @@ void FAkXboxOneApuHeapInitializationSettings::FillInitializationStructure(FAkIni
 UAkXboxOneInitializationSettings::UAkXboxOneInitializationSettings(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
+	CommonSettings.SamplesPerFrame = 512;
+
 	CommunicationSettings.DiscoveryBroadcastPort = FAkCommunicationSettings::DefaultDiscoveryBroadcastPort;
 	CommunicationSettings.CommandPort = FAkCommunicationSettings::DefaultDiscoveryBroadcastPort + 1;
+	CommunicationSettings.NotificationPort = FAkCommunicationSettings::DefaultDiscoveryBroadcastPort + 2;
 }
 
 void UAkXboxOneInitializationSettings::FillInitializationStructure(FAkInitializationStructure& InitializationStructure) const

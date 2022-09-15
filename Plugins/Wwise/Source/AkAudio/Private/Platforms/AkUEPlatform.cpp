@@ -24,8 +24,6 @@ Copyright (c) 2021 Audiokinetic Inc.
 #include "Platforms/AkPlatformInfo.h"
 TMap<FString, UAkPlatformInfo*> UAkPlatformInfo::UnrealNameToPlatformInfo;
 
-TMap<FString, FWwiseSharedPlatformId> UAkPlatformInfo::UnrealTargetNameToSharedPlatformId;
-
 TSet<FString> AkUnrealPlatformHelper::GetAllSupportedUnrealPlatforms()
 {
 	TSet<FString> SupportedPlatforms;

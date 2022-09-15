@@ -31,7 +31,7 @@ public:
 #ifdef AK_HOLOLENS_VS_VERSION
 		Architecture = "UWP_ARM64_" AK_HOLOLENS_VS_VERSION;
 #else
-		Architecture = "UWP_ARM64_vc160";
+		Architecture = "UWP_ARM64_vc150";
 #endif
 
 		LibraryFileNameFormat = "{0}.dll";

@@ -100,7 +100,11 @@ void FAkSurfaceReflectorSetComponentVisualizer::DrawVisualization(const UActorCo
 					}
 
 					FLinearColor SurfaceColor = AkSpatialAudioColors::GetSurfaceReflectorColor(SurfaceReflectorSet, NodeIdx, SpatialAudioVolume->IsDragging);
+#if UE_4_22_OR_LATER
 					auto* renderProxy = GEngine->GeomMaterial->GetRenderProxy();
+#else
+					auto* renderProxy = GEngine->GeomMaterial->GetRenderProxy(false);
+#endif
 					// Limit the color's value (in HSV space) so that it doesn't obscure the text.
 					// In the new color, R = H, G = S, B = V, A = A (From Color.cpp line ~271)
 					FLinearColor hsv = SurfaceColor.LinearRGBToHSV();

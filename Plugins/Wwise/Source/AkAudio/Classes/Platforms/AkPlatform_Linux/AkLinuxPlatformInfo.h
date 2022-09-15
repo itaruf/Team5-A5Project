@@ -33,7 +33,6 @@ public:
 
 #if WITH_EDITORONLY_DATA
 		UAkPlatformInfo::UnrealNameToPlatformInfo.Add("Linux", this);
-		UAkPlatformInfo::UnrealNameToPlatformInfo.Add("LinuxNoEditor", this);
 #endif
 	}
 };

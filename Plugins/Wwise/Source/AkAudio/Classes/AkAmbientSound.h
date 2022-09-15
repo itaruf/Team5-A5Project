@@ -28,10 +28,8 @@ Copyright (c) 2021 Audiokinetic Inc.
 UCLASS(config=Engine, hidecategories=Audio, AutoExpandCategories=AkAmbientSound, BlueprintType)
 class AKAUDIO_API AAkAmbientSound : public AActor
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 
-public:
-	AAkAmbientSound(const class FObjectInitializer& ObjectInitializer);
 
 	/** AkAudioEvent to play. Deprecated as UE4.7 integration: Use AkComponent->AkAudioEvent instead */
 	UPROPERTY()

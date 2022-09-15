@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{B33E0AE4-683A-4118-98EA-BBEFCBF7E5A5}" SchemaVersion="110" RootDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}" ParentDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}">
+<WwiseDocument Type="WorkUnit" ID="{B33E0AE4-683A-4118-98EA-BBEFCBF7E5A5}" SchemaVersion="103" RootDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}" ParentDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}">
 	<GameParameters>
 		<WorkUnit Name="Jules" ID="{B33E0AE4-683A-4118-98EA-BBEFCBF7E5A5}" OwnerID="{2E3B1270-9C0A-453D-8324-D76519F899C5}" PersistMode="Nested">
 			<ChildrenList>

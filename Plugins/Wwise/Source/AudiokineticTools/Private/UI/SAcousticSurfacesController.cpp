@@ -670,7 +670,7 @@ void SAcousticSurfacesController::RegisterTextureDeletedCallback()
 				const FString itemIdString = itemObj->GetStringField(WwiseWaapiHelper::ID);
 				FGuid itemID = FGuid::NewGuid();
 				FGuid::ParseExact(itemIdString, EGuidFormats::DigitsWithHyphensInBraces, itemID);
-				if (CurrentTexture != nullptr && itemID == CurrentTexture->AcousticTextureInfo.AssetGuid)
+				if (CurrentTexture != nullptr && itemID == CurrentTexture->ID)
 				{
 					AsyncTask(ENamedThreads::GameThread, [this, itemID]
 					{

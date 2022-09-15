@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{665B19C1-0EBE-47BA-8B9F-16216EAA3DE3}" SchemaVersion="103" RootDocumentID="{D2DE9D4C-61A1-46CC-AB2F-8D5FA822B62A}" ParentDocumentID="{D2DE9D4C-61A1-46CC-AB2F-8D5FA822B62A}">
-	<States>
-		<WorkUnit Name="Jules" ID="{665B19C1-0EBE-47BA-8B9F-16216EAA3DE3}" OwnerID="{D2DE9D4C-61A1-46CC-AB2F-8D5FA822B62A}" PersistMode="Nested"/>
-	</States>
-</WwiseDocument>

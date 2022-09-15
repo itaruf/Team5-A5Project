@@ -81,10 +81,6 @@ void UAkLateReverbComponent::PostLoad()
 		AutoAssignAuxBus = false;
 		AuxBusManual = AuxBus;
 	}
-
-#if WITH_EDITOR
-	RegisterReverbInfoEnabledCallback();
-#endif
 }
 
 void UAkLateReverbComponent::Serialize(FArchive& Ar)
@@ -103,7 +99,14 @@ bool UAkLateReverbComponent::HasEffectOnLocation(const FVector& Location) const
 
 uint32 UAkLateReverbComponent::GetAuxBusId() const
 {
-	return FAkAudioDevice::GetShortID(AuxBus, AuxBusName);
+	if (AuxBus)
+	{
+		return AuxBus->ShortID;
+	}
+	else
+	{
+		return FAkAudioDevice::GetIDFromString(AuxBusName);
+	}
 }
 
 void UAkLateReverbComponent::InitializeParent()
@@ -333,11 +336,7 @@ void UAkLateReverbComponent::TickComponent(float DeltaTime, enum ELevelTick Tick
 		SecondsSincePredelayUpdate = 0.0f;
 	}
 #if WITH_EDITOR
-	UWorld* World = GetWorld();
-	if (World == nullptr)
-		return;
-
-	if (GCurrentLevelEditingViewportClient != nullptr && World->WorldType == EWorldType::Editor)
+	if (GCurrentLevelEditingViewportClient != nullptr)
 	{
 		// Keep the text renderers pointing to the camera.
 		if (IsValid(TextVisualizerLabels))
@@ -351,7 +350,7 @@ void UAkLateReverbComponent::TickComponent(float DeltaTime, enum ELevelTick Tick
 			TextVisualizerValues->SetWorldRotation(PointTo.Rotation());
 		}
 	}
-	if (World->WorldType == EWorldType::Editor || World->WorldType == EWorldType::PIE)
+	if (GetWorld() != nullptr && GetWorld()->WorldType == EWorldType::Editor || GetWorld()->WorldType == EWorldType::PIE)
 	{
 		// Only show the text renderer for selected actors.
 		if (GetOwner()->IsSelected() && !WasSelected)
@@ -364,12 +363,6 @@ void UAkLateReverbComponent::TickComponent(float DeltaTime, enum ELevelTick Tick
 			WasSelected = false;
 			UpdateValuesLabels();
 		}
-	}
-
-	if (bTextStatusNeedsUpdate)
-	{
-		UpdateTextVisualizerStatus();
-		bTextStatusNeedsUpdate = false;
 	}
 #endif
 }
@@ -393,38 +386,6 @@ void UAkLateReverbComponent::RecalculatePredelay()
 }
 
 #if WITH_EDITOR
-void UAkLateReverbComponent::RegisterReverbInfoEnabledCallback()
-{
-	UAkSettings* AkSettings = GetMutableDefault<UAkSettings>();
-	if (AkSettings == nullptr || ShowReverbInfoChangedHandle.IsValid())
-		return;
-	ShowReverbInfoChangedHandle = AkSettings->OnShowReverbInfoChanged.AddLambda([this, AkSettings]()
-	{
-		bTextStatusNeedsUpdate = true;
-	});
-}
-
-void UAkLateReverbComponent::OnComponentDestroyed(bool bDestroyingHierarchy)
-{
-	UAkSettings* AkSettings = GetMutableDefault<UAkSettings>();
-	if (!AkSettings)
-		return;
-	AkSettings->OnShowRoomsPortalsChanged.Remove(ShowReverbInfoChangedHandle);
-	ShowReverbInfoChangedHandle.Reset();
-}
-
-void UAkLateReverbComponent::InitializeComponent()
-{
-	Super::InitializeComponent();
-	RegisterReverbInfoEnabledCallback();
-}
-
-void UAkLateReverbComponent::OnComponentCreated()
-{
-	Super::OnComponentCreated();
-	RegisterReverbInfoEnabledCallback();
-}
-
 void UAkLateReverbComponent::HandleObjectsReplaced(const TMap<UObject*, UObject*>& ReplacementMap)
 {
 	if (ReplacementMap.Contains(Parent))
@@ -451,14 +412,13 @@ void UAkLateReverbComponent::HandleObjectsReplaced(const TMap<UObject*, UObject*
 
 void UAkLateReverbComponent::UpdateTextVisualizerStatus()
 {
-	bool bShowReverbInfo = GetDefault<UAkSettings>()->bShowReverbInfo;
 	// The reverb descriptor may or may not require updates depending on which global RTPCs are in use, and whether auto assign aux bus is selected.
 	// We only want to show the text renderers when the reverb parameter estimation is in use.
-	if ((!bShowReverbInfo || !ReverbDescriptor.RequiresUpdates()) && TextVisualizersInitialized())
+	if (!ReverbDescriptor.RequiresUpdates() && TextVisualizersInitialized())
 	{
 		DestroyTextVisualizers();
 	}
-	else if ((bShowReverbInfo && ReverbDescriptor.RequiresUpdates()) && !TextVisualizersInitialized())
+	else if (ReverbDescriptor.RequiresUpdates() && !TextVisualizersInitialized())
 	{
 		InitTextVisualizers();
 		DecayEstimationNeedsUpdate = ReverbDescriptor.ShouldEstimateDecay();
@@ -519,7 +479,13 @@ void UAkLateReverbComponent::InitTextVisualizers()
 	{
 		if (ReverbDescriptor.RequiresUpdates())
 		{
-			FString TextVizName = GetOwner()->GetName() + GetName();
+			FString OwnerName;
+#if WITH_EDITOR
+			OwnerName = GetOwner()->GetActorLabel();
+#else
+			OwnerName = GetOwner()->GetName();
+#endif
+			FString TextVizName = OwnerName + GetName();
 			UMaterialInterface* mat = Cast<UMaterialInterface>(FAkAudioStyle::GetAkForegroundTextMaterial());
 			if (!IsValid(TextVisualizerLabels))
 			{
@@ -536,11 +502,6 @@ void UAkLateReverbComponent::InitTextVisualizers()
 					if (IsValid(Parent))
 					{
 						TextVisualizerLabels->SetWorldLocation(GetTextVisualizersLocation());
-						UWorld* World = TextVisualizerLabels->GetWorld();
-						if (World != nullptr && World->WorldType == EWorldType::EditorPreview)
-						{
-							TextVisualizerLabels->SetWorldRotation(FVector(100, 0, 0).Rotation());
-						}
 					}
 					TextVisualizerLabels->bIsEditorOnly = true;
 					// Creates a right-aligned block of text showing the property labels.
@@ -563,11 +524,6 @@ void UAkLateReverbComponent::InitTextVisualizers()
 					if (IsValid(Parent))
 					{
 						TextVisualizerValues->SetWorldLocation(GetTextVisualizersLocation());
-						UWorld* World = TextVisualizerValues->GetWorld();
-						if (World != nullptr && World->WorldType == EWorldType::EditorPreview)
-						{
-							TextVisualizerValues->SetWorldRotation(FVector(100, 0, 0).Rotation());
-						}
 					}
 					TextVisualizerValues->bIsEditorOnly = true;
 					TextVisualizerValues->bSelectable = false;
@@ -594,8 +550,6 @@ void UAkLateReverbComponent::DestroyTextVisualizers()
 
 void UAkLateReverbComponent::UpdateValuesLabels()
 {
-	if (!GetDefault<UAkSettings>()->bShowReverbInfo)
-		return;
 	if (!TextVisualizersInitialized())
 		InitTextVisualizers();
 	if (IsValid(TextVisualizerValues))
@@ -768,8 +722,7 @@ void UAkLateReverbComponent::PostEditChangeProperty(FPropertyChangedEvent& Prope
 				RoomCmpt->UpdateSpatialAudioRoom();
 			}
 		}
-		else if (CreationMethod == EComponentCreationMethod::Instance && bEnable
-			&& GetDefault<UAkSettings>()->bShowReverbInfo)
+		else if (CreationMethod == EComponentCreationMethod::Instance && bEnable)
 		{
 			InitTextVisualizers();
 		}
@@ -793,7 +746,7 @@ void UAkLateReverbComponent::PostEditChangeProperty(FPropertyChangedEvent& Prope
 					AkAudioDevice->ReindexLateReverb(this);
 				}
 			}
-			else if (RoomCmpt&& RoomCmpt->RoomIsActive())
+			else if (RoomCmpt && RoomCmpt->RoomIsActive())
 			{
 				// Late reverb is inside an active room. Update the room such that the reverb send level is correctly updated.
 				RoomCmpt->UpdateSpatialAudioRoom();
@@ -864,7 +817,13 @@ bool UAkLateReverbComponent::EncompassesPoint(FVector Point, float SphereRadius/
 	}
 	FString actorString = FString("NONE");
 	if (GetOwner() != nullptr)
+	{
+#if WITH_EDITOR
+		actorString = GetOwner()->GetActorLabel();
+#else
 		actorString = GetOwner()->GetName();
+#endif
+	}
 	UE_LOG(LogAkAudio, Error, TEXT("UAkLateReverbComponent::EncompassesPoint : Error. In actor %s, AkLateReverbComponent %s has an invalid Parent."), *actorString, *GetName());
 	return false;
 }

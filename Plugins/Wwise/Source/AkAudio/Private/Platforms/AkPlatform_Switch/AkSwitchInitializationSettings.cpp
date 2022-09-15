@@ -18,10 +18,17 @@ Copyright (c) 2021 Audiokinetic Inc.
 #include "AkAudioDevice.h"
 #include "Misc/Paths.h"
 
+#if PLATFORM_SWITCH
+#include "Generated/AkSwitchPlugins.h"
+#if AK_SUPPORT_OPUS
+#include <AK/Plugin/AkOpusNXFactory.h>
+#endif
+#endif
+
 //////////////////////////////////////////////////////////////////////////
 // Memory hooks
 
-#if PLATFORM_SWITCH && UE_BUILD_SHIPPING
+#if PLATFORM_SWITCH && (UE_BUILD_SHIPPING || UE_BUILD_TEST)
 namespace AkLowLevelMemory
 {
 	void* Alloc(size_t Size)
@@ -45,12 +52,13 @@ UAkSwitchInitializationSettings::UAkSwitchInitializationSettings(const FObjectIn
 {
 	CommunicationSettings.DiscoveryBroadcastPort = FAkCommunicationSettings::DefaultDiscoveryBroadcastPort;
 	CommunicationSettings.CommandPort = FAkCommunicationSettings::DefaultDiscoveryBroadcastPort + 1;
+	CommunicationSettings.NotificationPort = FAkCommunicationSettings::DefaultDiscoveryBroadcastPort + 2;
 }
 
 void UAkSwitchInitializationSettings::FillInitializationStructure(FAkInitializationStructure& InitializationStructure) const
 {
 #if PLATFORM_SWITCH
-#if UE_BUILD_SHIPPING
+#if UE_BUILD_SHIPPING || UE_BUILD_TEST
 	InitializationStructure.SetupLLMAllocFunctions(AkLowLevelMemory::Alloc, AkLowLevelMemory::Free);
 #else
 	InitializationStructure.SetupLLMAllocFunctions();

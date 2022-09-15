@@ -17,6 +17,7 @@ Copyright (c) 2021 Audiokinetic Inc.
 
 #include "Containers/UnrealString.h"
 #include "Engine/EngineTypes.h"
+#include "WwiseItemType.generated.h"
 
 namespace EWwiseItemType
 {
@@ -30,7 +31,6 @@ namespace EWwiseItemType
 		Switch,
 		GameParameter,
 		Trigger,
-		EffectShareSet,
 		ActorMixer,
 		Bus,
 		Project,
@@ -46,14 +46,13 @@ namespace EWwiseItemType
 		StateGroup,
 		SwitchGroup,
 
-		LastWwisePickerType = EffectShareSet,
-		LastWaapiPickerType = ActorMixer,
+		LastWwiseDraggable = Trigger,
+		LastWaapiDraggable = ActorMixer,
 
 		None = -1,
 	};
 
-	//Name to show in the Picker
-	static const FString PickerDisplayNames[] = {
+	static const FString ItemNames[] = {
 		TEXT("Event"),
 		TEXT("AuxBus"),
 		TEXT("AcousticTexture"),
@@ -61,12 +60,9 @@ namespace EWwiseItemType
 		TEXT("Switch"),
 		TEXT("GameParameter"),
 		TEXT("Trigger"),
-		TEXT("Effect ShareSets"),
-		TEXT("Actor-Mixer Hierarchy"),
+		TEXT("ActorMixer"),
 	};
-
-	//Tag in the work unit XML for this WwiseObjectType
-	static const FString WorkUnitTagNames[] = {
+	static const FString DisplayNames[] = {
 		TEXT("Events"),
 		TEXT("Busses"),
 		TEXT("VirtualAcoustics"),
@@ -74,11 +70,8 @@ namespace EWwiseItemType
 		TEXT("Switches"),
 		TEXT("GameParameters"),
 		TEXT("Triggers"),
-		TEXT("Effects"),
 		TEXT("ActorMixer"),
 	};
-
-	//Name of the folder containing the work units of this WwiseObjectType
 	static const FString FolderNames[] = {
 		TEXT("Events"),
 		TEXT("Master-Mixer Hierarchy"),
@@ -87,8 +80,17 @@ namespace EWwiseItemType
 		TEXT("Switches"),
 		TEXT("Game Parameters"),
 		TEXT("Triggers"),
-		TEXT("Effects"),
 		TEXT("Actor-Mixer Hierarchy"),
+	};
+	static const FString PickerLabel[] = {
+		TEXT("Events"),
+		TEXT("Auxiliary Busses"),
+		TEXT("Textures"),
+		TEXT("States"),
+		TEXT("Switches"),
+		TEXT("GameParameters"),
+		TEXT("Triggers"),
+		TEXT("Actor Mixer"),
 	};
 
 	static const TArray<FString> PhysicalFoldersToIgnore = {
@@ -98,6 +100,7 @@ namespace EWwiseItemType
 		TEXT("Control Surface Sessions"),
 		TEXT("Conversion Settings"),
 		TEXT("Dynamic Dialogue"),
+		TEXT("Effects"),
 		TEXT("Interactive Music Hierarchy"),
 		TEXT("Metadata"),
 		TEXT("Mixing Sessions"),
@@ -137,8 +140,6 @@ namespace EWwiseItemType
 			{TEXT("SwitchGroup"), Type::SwitchGroup},
 			{TEXT("Trigger"), Type::Trigger},
 			{TEXT("WorkUnit"), Type::StandaloneWorkUnit},
-			{TEXT("Effect"), Type::EffectShareSet},
-
 		};
 
 		for (const auto& type : ValidTypes)
@@ -169,7 +170,6 @@ namespace EWwiseItemType
 			{TEXT("States"), Type::State},
 			{TEXT("Switches"), Type::Switch},
 			{TEXT("Triggers"), Type::Trigger},
-			{TEXT("Effects"), Type::EffectShareSet},
 		};
 
 		for (const auto& type : ValidTypes)

@@ -34,9 +34,5 @@ void AkPortalOcclusionObstructionService::Init(UAkPortalComponent* in_portal, fl
 }
 void AkPortalOcclusionObstructionService::SetOcclusionObstruction(AkGameObjectID ListenerId, float Value)
 {
-	FAkAudioDevice* AkAudioDevice = FAkAudioDevice::Get();
-	if (AkAudioDevice)
-	{
-		AkAudioDevice->SetPortalObstructionAndOcclusion(AssociatedPortal, Value, 0.0f);
-	}
+	AK::SpatialAudio::SetPortalObstructionAndOcclusion(AssociatedPortal->GetPortalID(), Value, 0.0f);
 }

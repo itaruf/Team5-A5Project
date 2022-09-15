@@ -42,45 +42,6 @@ void GetBasicBoxGeometryData(TArray<FVector>& Vertices, TArray<FAkTriangle>& Tri
 	Triangles[11] = { 4, 6, 7, AK_INVALID_SURFACE };
 }
 
-void GetBasicXYPlaneGeometryData(TArray<FVector>& Vertices, TArray<FAkTriangle>& Triangles)
-{
-	Vertices.Init(FVector(0, 0, 0), 4);
-	Vertices[0] = FVector(-1, -1, 1);
-	Vertices[1] = FVector(-1, 1, 1);
-	Vertices[2] = FVector(1, -1, 1);
-	Vertices[3] = FVector(1, 1, 1);
-
-	Triangles.Init(FAkTriangle(), 2);
-	Triangles[0] = { 0, 1, 2, AK_INVALID_SURFACE };
-	Triangles[1] = { 1, 3, 2, AK_INVALID_SURFACE };
-}
-
-void GetBasicXZPlaneGeometryData(TArray<FVector>& Vertices, TArray<FAkTriangle>& Triangles)
-{
-	Vertices.Init(FVector(0, 0, 0), 4);
-	Vertices[0] = FVector(-1, 1, -1);
-	Vertices[1] = FVector(-1, 1, 1);
-	Vertices[2] = FVector(1, 1, -1);
-	Vertices[3] = FVector(1, 1, 1);
-
-	Triangles.Init(FAkTriangle(), 2);
-	Triangles[0] = { 0, 1, 2, AK_INVALID_SURFACE };
-	Triangles[1] = { 1, 3, 2, AK_INVALID_SURFACE };
-}
-
-void GetBasicYZPlaneGeometryData(TArray<FVector>& Vertices, TArray<FAkTriangle>& Triangles)
-{
-	Vertices.Init(FVector(0, 0, 0), 4);
-	Vertices[0] = FVector(1, -1, -1);
-	Vertices[1] = FVector(1, -1, 1);
-	Vertices[2] = FVector(1, 1, -1);
-	Vertices[3] = FVector(1, 1, 1);
-
-	Triangles.Init(FAkTriangle(), 2);
-	Triangles[0] = { 0, 1, 2, AK_INVALID_SURFACE };
-	Triangles[1] = { 1, 3, 2, AK_INVALID_SURFACE };
-}
-
 /** Taken from GetOrientedHalfSphereMesh in PrimitiveDrawingUtils.cpp. See original for adding tangents and texture coords. */
 void GenerateHalfSphereVerts(AkSurfIdx surfIdx, const FVector& Center, const FRotator& Orientation, const float Radius, int32 NumSides, int32 NumRings, float StartAngle, float EndAngle, FAkGeometryData& GeometryData)
 {
@@ -229,15 +190,7 @@ void FAkGeometryData::AddBox(AkSurfIdx surfIdx, FVector center, FVector extent, 
 {
 	TArray<FVector> boxVertices;
 	TArray<FAkTriangle> boxTriangles;
-
-	if (extent.Z == 0.0f)
-		GetBasicXYPlaneGeometryData(boxVertices, boxTriangles);
-	else if (extent.Y == 0.0f)
-		GetBasicXZPlaneGeometryData(boxVertices, boxTriangles);
-	else if (extent.X == 0.0f)
-		GetBasicYZPlaneGeometryData(boxVertices, boxTriangles);
-	else
-		GetBasicBoxGeometryData(boxVertices, boxTriangles);
+	GetBasicBoxGeometryData(boxVertices, boxTriangles);
 
 	AkVertIdx initialVertIdx = Vertices.Num();
 

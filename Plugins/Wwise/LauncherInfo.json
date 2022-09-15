@@ -1,11 +1,11 @@
 {
-    "originalSdkFolder": "C:\\Program Files (x86)\\Audiokinetic\\Wwise 2022.1.0.7985\\SDK",
+    "originalSdkFolder": "E:\\Wwise 2021.1.10.7883\\SDK",
     "currentVersion": {
-        "build": 2398,
+        "build": 2350,
         "major": 1,
-        "minor": 0,
+        "minor": 10,
         "nickname": "",
-        "year": 2022
+        "year": 2021
     },
     "installedBundleGroups": [
         {
@@ -34,7 +34,7 @@
         },
         {
             "id": "DeploymentPlatforms",
-            "valueId": "UE427"
+            "valueId": "UE50"
         }
     ]
 }

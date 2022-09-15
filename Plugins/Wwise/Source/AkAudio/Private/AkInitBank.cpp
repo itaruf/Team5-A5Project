@@ -15,129 +15,46 @@ Copyright (c) 2021 Audiokinetic Inc.
 
 #include "AkInitBank.h"
 
-#include "Platforms/AkPlatformInfo.h"
-#include "Wwise/WwiseResourceLoader.h"
-
-#if WITH_EDITORONLY_DATA
-#include "Wwise/WwiseResourceCooker.h"
+#if WITH_EDITOR
+FOnInitBankChanged UAkInitBank::OnInitBankChanged;
 #endif
 
-#if WITH_EDITORONLY_DATA
-void UAkInitBank::CookAdditionalFilesOverride(const TCHAR* PackageFilename, const ITargetPlatform* TargetPlatform,
-                                              TFunctionRef<void(const TCHAR* Filename, void* Data, int64 Size)> WriteAdditionalFile)
+UAkInitBank::UAkInitBank()
 {
-	auto* ResourceCooker = UWwiseResourceCooker::GetForPlatform(TargetPlatform);
-	if (UNLIKELY(!ResourceCooker))
-	{
-		return;
-	}
-	ResourceCooker->SetSandboxRootPath(PackageFilename);
-	ResourceCooker->CookInitBank(FWwiseAssetInfo::DefaultInitBank, WriteAdditionalFile);
+	bDelayLoadAssetData = true;
 }
 
-void UAkInitBank::BeginCacheForCookedPlatformData(const ITargetPlatform* TargetPlatform)
+UAkAssetData* UAkInitBank::CreateAssetData(UObject* parent) const
 {
-	auto PlatformID = UAkPlatformInfo::GetSharedPlatformInfo(TargetPlatform->PlatformName());
-	UWwiseResourceCooker::CreateForPlatform(TargetPlatform, PlatformID, EWwiseExportDebugNameRule::Name);
-}
-#endif
-
-void UAkInitBank::BeginDestroy()
-{
-	Super::BeginDestroy();
-	UnloadInitBank();
+	return NewObject<UAkInitBankAssetData>(parent);
 }
 
-void UAkInitBank::Serialize(FArchive& Ar)
+void UAkInitBank::LoadBank()
 {
-	Super::Serialize(Ar);
-
-#if WITH_EDITORONLY_DATA
-	auto* ResourceCooker = UWwiseResourceCooker::GetForArchive(Ar);
-	if (UNLIKELY(!ResourceCooker))
+	Super::LoadBank();
+	bDelayLoadAssetData = false;
+#if WITH_EDITOR
+	FAkAudioDevice* AkAudioDevice = FAkAudioDevice::Get();
+	if (AkAudioDevice && AkAudioDevice->InitBank != this)
 	{
-		return;
+		AkAudioDevice->InitBank = this;
+		AddToRoot();
+		OnInitBankChanged.ExecuteIfBound(this);
 	}
-	FWwiseInitBankCookedData CookedDataToArchive;
-	if (ResourceCooker->PrepareCookedData(CookedDataToArchive, FWwiseAssetInfo::DefaultInitBank))
-	{
-		CookedDataToArchive.Serialize(Ar);
-	}
-#else
-	InitBankCookedData.Serialize(Ar);
 #endif
 }
 
-void UAkInitBank::UnloadInitBank()
+#if WITH_EDITOR
+void UAkInitBank::Reset(TArray<FAssetData>& InOutAssetsToDelete)
 {
-	if (LoadedInitBank )
+	if (AvailableAudioCultures.Num() > 0)
 	{
-		auto* ResourceLoader = UWwiseResourceLoader::Get();
-		if (UNLIKELY(!ResourceLoader))
-		{
-			return;
-		}
-
-		ResourceLoader->UnloadInitBank(LoadedInitBank);
-		LoadedInitBank=nullptr;
+		bChangedDuringReset = true;
 	}
-}
+	AvailableAudioCultures.Empty();
 
-#if WITH_EDITORONLY_DATA
-void UAkInitBank::PrepareCookedData()
-{
-	if (IWwiseProjectDatabaseModule::IsInACookingCommandlet())
-	{
-		return;
-	}
-	auto* ResourceCooker = UWwiseResourceCooker::GetDefault();
-	if (UNLIKELY(!ResourceCooker))
-	{
-		return;
-	}
-	if (UNLIKELY(!ResourceCooker->PrepareCookedData(InitBankCookedData, FWwiseAssetInfo::DefaultInitBank)))
-	{
-		return;
-	}
-}
-#endif
-
-TArray<FWwiseLanguageCookedData> UAkInitBank::GetLanguages()
-{
-#if WITH_EDITORONLY_DATA
-	PrepareCookedData();
-#endif
-
-	return InitBankCookedData.Language;
-}
-
-
-void UAkInitBank::LoadInitBank(bool bReload)
-{
-	auto* ResourceLoader = UWwiseResourceLoader::Get();
-	if (UNLIKELY(!ResourceLoader))
-	{
-		return;
-	}
-	if (bReload)
-	{
-		UnloadInitBank();
-	}
-#if WITH_EDITORONLY_DATA
-	PrepareCookedData();
-#endif
-	LoadedInitBank = ResourceLoader->LoadInitBank(InitBankCookedData);
-}
-
-
-#if WITH_EDITORONLY_DATA
-void UAkInitBank::MigrateIds()
-{
-	//Do nothing because the DefaultInitBank info is used
-}
-
-FWwiseBasicInfo* UAkInitBank::GetInfoMutable()
-{
-	return new FWwiseBasicInfo(FWwiseAssetInfo::DefaultInitBank.AssetGuid, FWwiseAssetInfo::DefaultInitBank.AssetShortId, FWwiseAssetInfo::DefaultInitBank.AssetName);
+	// ALWAYS call Super::Reset() last, since it will check if things have been modified
+	// before marking as dirty.
+	Super::Reset(InOutAssetsToDelete);
 }
 #endif

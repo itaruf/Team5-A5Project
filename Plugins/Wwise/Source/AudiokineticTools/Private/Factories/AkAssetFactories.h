@@ -26,16 +26,21 @@ class UAkAssetFactory : public UFactory
 
 public:
 	FGuid AssetID;
-	uint32 ShortID;
 };
 
 UCLASS(hidecategories = Object)
 class UAkAcousticTextureFactory : public UAkAssetFactory
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 
-public:
-	UAkAcousticTextureFactory(const class FObjectInitializer& ObjectInitializer);
+	virtual UObject* FactoryCreateNew(UClass* Class, UObject* InParent, FName Name, EObjectFlags Flags, UObject* Context, FFeedbackContext* Warn) override;
+	virtual bool CanCreateNew() const override;
+};
+
+UCLASS(hidecategories = Object)
+class UAkAudioBankFactory : public UAkAssetFactory
+{
+	GENERATED_UCLASS_BODY()
 
 	virtual UObject* FactoryCreateNew(UClass* Class, UObject* InParent, FName Name, EObjectFlags Flags, UObject* Context, FFeedbackContext* Warn) override;
 	virtual bool CanCreateNew() const override;
@@ -44,10 +49,7 @@ public:
 UCLASS(hidecategories = Object)
 class UAkAudioEventFactory : public UAkAssetFactory
 {
-	GENERATED_BODY()
-
-public:
-	UAkAudioEventFactory(const class FObjectInitializer& ObjectInitializer);
+	GENERATED_UCLASS_BODY()
 
 	virtual UObject* FactoryCreateNew(UClass* Class, UObject* InParent, FName Name, EObjectFlags Flags, UObject* Context, FFeedbackContext* Warn) override;
 	virtual bool CanCreateNew() const override;
@@ -56,10 +58,7 @@ public:
 UCLASS(hidecategories = Object)
 class UAkAuxBusFactory : public UAkAssetFactory
 {
-	GENERATED_BODY()
-
-public:
-	UAkAuxBusFactory(const class FObjectInitializer& ObjectInitializer);
+	GENERATED_UCLASS_BODY()
 
 	virtual UObject* FactoryCreateNew(UClass* Class, UObject* InParent, FName Name, EObjectFlags Flags, UObject* Context, FFeedbackContext* Warn) override;
 	virtual bool CanCreateNew() const override;
@@ -68,10 +67,7 @@ public:
 UCLASS(hidecategories = Object)
 class UAkRtpcFactory : public UAkAssetFactory
 {
-	GENERATED_BODY()
-
-public:
-	UAkRtpcFactory(const class FObjectInitializer& ObjectInitializer);
+	GENERATED_UCLASS_BODY()
 
 	virtual UObject* FactoryCreateNew(UClass* Class, UObject* InParent, FName Name, EObjectFlags Flags, UObject* Context, FFeedbackContext* Warn) override;
 	virtual bool CanCreateNew() const override;
@@ -80,23 +76,29 @@ public:
 UCLASS(hidecategories = Object)
 class UAkTriggerFactory : public UAkAssetFactory
 {
-	GENERATED_BODY()
-
-public:
-	UAkTriggerFactory(const class FObjectInitializer& ObjectInitializer);
+	GENERATED_UCLASS_BODY()
 
 	virtual UObject* FactoryCreateNew(UClass* Class, UObject* InParent, FName Name, EObjectFlags Flags, UObject* Context, FFeedbackContext* Warn) override;
 	virtual bool CanCreateNew() const override;
+};
+
+UCLASS(hidecategories = Object)
+class UAkExternalSourceFactory : public UAkAssetFactory
+{
+public:
+	GENERATED_UCLASS_BODY()
+
+	virtual UObject* FactoryCreateFile(UClass* Class, UObject* InParent, FName Name, EObjectFlags Flags, const FString& Filename, const TCHAR* Parms, FFeedbackContext* Warn, bool& bOutOperationCanceled) override;
+	virtual bool FactoryCanImport(const FString& Filename) override;
+	virtual bool CanCreateNew() const override { return false; }
+	virtual bool ShouldShowInNewMenu() const override { return false; }
 };
 
 // mlarouche - For now Switch and State factory are only used in drag & drop
 UCLASS(hidecategories = Object)
 class UAkStateValueFactory : public UAkAssetFactory
 {
-	GENERATED_BODY()
-
-public:
-	UAkStateValueFactory(const class FObjectInitializer& ObjectInitializer);
+	GENERATED_UCLASS_BODY()
 
 	virtual UObject* FactoryCreateNew(UClass* Class, UObject* InParent, FName Name, EObjectFlags Flags, UObject* Context, FFeedbackContext* Warn) override;
 };
@@ -104,21 +106,7 @@ public:
 UCLASS(hidecategories = Object)
 class UAkSwitchValueFactory : public UAkAssetFactory
 {
-	GENERATED_BODY()
-
-public:
-	UAkSwitchValueFactory(const class FObjectInitializer& ObjectInitializer);
-
-	virtual UObject* FactoryCreateNew(UClass* Class, UObject* InParent, FName Name, EObjectFlags Flags, UObject* Context, FFeedbackContext* Warn) override;
-};
-
-UCLASS(hidecategories = Object)
-class UAkEffectShareSetFactory : public UAkAssetFactory
-{
-	GENERATED_BODY()
-
-public:
-	UAkEffectShareSetFactory(const class FObjectInitializer& ObjectInitializer);
+	GENERATED_UCLASS_BODY()
 
 	virtual UObject* FactoryCreateNew(UClass* Class, UObject* InParent, FName Name, EObjectFlags Flags, UObject* Context, FFeedbackContext* Warn) override;
 };

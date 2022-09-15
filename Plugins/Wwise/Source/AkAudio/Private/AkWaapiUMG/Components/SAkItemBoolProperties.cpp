@@ -24,7 +24,7 @@ Copyright (c) 2021 Audiokinetic Inc.
 #include "AkWaapiUMG/Components/SAkItemBoolProperties.h"
 #include "AkAudioDevice.h"
 #include "Widgets/Input/SSearchBox.h"
-#include "Widgets/Views/SListView.h"
+#include "Widgets/Input/SButton.h"
 #include "Misc/ScopedSlowTask.h"
 #include "AkAudioStyle.h"
 #include "Framework/Application/SlateApplication.h"
@@ -33,6 +33,8 @@ Copyright (c) 2021 Audiokinetic Inc.
 Defines
 ------------------------------------------------------------------------------------*/
 #define LOCTEXT_NAMESPACE "AkAudio"
+
+DEFINE_LOG_CATEGORY(LogAkItemBoolProperties);
 
 /*------------------------------------------------------------------------------------
 Statics and Globals

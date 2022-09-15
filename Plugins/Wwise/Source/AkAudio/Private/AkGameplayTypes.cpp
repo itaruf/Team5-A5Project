@@ -20,16 +20,19 @@ Copyright (c) 2021 Audiokinetic Inc.
 
 #include "AkGameplayTypes.h"
 
+#include "AkAudioBank.h"
 #include "AkAudioDevice.h"
 #include "AkAudioEvent.h"
 #include "AkCallbackInfoPool.h"
 #include "AkComponent.h"
+#include "AkMediaAsset.h"
 #include "AkUnrealHelper.h"
 #include "AssetRegistry/Public/AssetRegistryModule.h"
 #include "Engine/GameEngine.h"
 #include "EngineUtils.h"
 #include "AkCallbackInfoPool.h"
 #include "HAL/PlatformString.h"
+#include "IntegrationBehavior/AkIntegrationBehavior.h"
 
 UAkCallbackInfo* AkCallbackTypeHelpers::GetBlueprintableCallbackInfo(EAkCallbackType CallbackType, AkCallbackInfo* CallbackInfo)
 {
@@ -349,6 +352,18 @@ bool UAkMIDIEventCallbackInfo::GetProgramChange(FAkMidiProgramChange& AsProgramC
 
 FAkSDKExternalSourceArray::FAkSDKExternalSourceArray(const TArray<FAkExternalSourceInfo>& BlueprintArray)
 {
+	AkIntegrationBehavior::Get()->FAkSDKExternalSourceArray_Ctor(this, BlueprintArray);
+}
+
+FAkSDKExternalSourceArray::~FAkSDKExternalSourceArray()
+{
+	for (auto& ExtSrcInfo : ExternalSourceArray)
+	{
+		if (ExtSrcInfo.szFile != nullptr)
+		{
+			FMemory::Free(ExtSrcInfo.szFile);
+		}
+	}
 }
 
 void FWaitEndOfEventAsyncAction::UpdateOperation(FLatentResponse& Response)
@@ -360,6 +375,26 @@ void FWaitEndOfEventAsyncAction::UpdateOperation(FLatentResponse& Response)
 		{
 			EventFinished = true;
 		}
+		else if (AkEvent)
+		{
+			for (auto ExtSrc : ExternalSources)
+			{
+				if (ExtSrc.ExternalSourceAsset)
+				{
+					ExtSrc.ExternalSourceAsset->AddPlayingID(AkEvent->ShortID, *PlayingID);
+					if (ExtSrc.ExternalSourceAsset)
+					{
+						ExtSrc.ExternalSourceAsset->AddPlayingID(AkEvent->ShortID, *PlayingID);
+						if (!bStopWhenAttachedToDestroyed)
+						{
+							ExtSrc.ExternalSourceAsset->PinInGarbageCollector(*PlayingID);
+						}
+					}
+				}
+			}
+
+			AkEvent->PinInGarbageCollector(*PlayingID);
+		}
 
 		if (EventFinished)
 		{
@@ -367,6 +402,7 @@ void FWaitEndOfEventAsyncAction::UpdateOperation(FLatentResponse& Response)
 		}
 	}
 }
+
 
 AkDeviceAndWorld::AkDeviceAndWorld(AActor* in_pActor) :
 	AkAudioDevice(FAkAudioDevice::Get()),

@@ -53,9 +53,8 @@ public:
     );
 
     /**
-     * Post an event to ak soundengine
+     * Post an event to ak soundengine by name
      *
-     * @param AkEvent   Event UObject, if null EventName is used to determine the ShortID
      * @param EventName Name of the event to post
      * @param Actor Actor on which to play the event
      * @param AudioSamplesCallback Callback that fills the audio samples buffer
@@ -64,17 +63,15 @@ public:
      * @return ID assigned by ak soundengine
      */
     static AkPlayingID PostAudioInputEvent(
-	    class UAkAudioEvent* AkEvent,
-	    const FString& EventName,
-	    AActor * Actor,
-	    FAkGlobalAudioInputDelegate AudioSamplesDelegate, 
+        const FString& EventName,
+        AActor * Actor,
+        FAkGlobalAudioInputDelegate AudioSamplesDelegate,
         FAkGlobalAudioFormatDelegate AudioFormatDelegate
     );
 
     /**
-     * Post an event to ak soundengine
+     * Post an event to ak soundengine by name
      *
-     * @param AkEvent   Event UObject, if null EventName is used to determine the ShortID
      * @param EventName Name of the event to post
      * @param Component AkComponent on which to play the event
      * @param AudioSamplesCallback Callback that fills the audio samples buffer
@@ -83,7 +80,6 @@ public:
      * @return ID assigned by ak soundengine
      */
     static AkPlayingID PostAudioInputEvent(
-		class UAkAudioEvent* AkEvent,
         const FString& EventName,
         UAkComponent* Component,
         FAkGlobalAudioInputDelegate AudioSamplesDelegate,

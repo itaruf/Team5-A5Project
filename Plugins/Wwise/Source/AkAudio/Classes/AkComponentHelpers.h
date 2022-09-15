@@ -18,7 +18,8 @@ Copyright (c) 2021 Audiokinetic Inc.
 =============================================================================*/
 #pragma once
 #include "PhysicsEngine/BodySetup.h"
-#include "AkInclude.h"
+#include <AK/SoundEngine/Common/AkTypes.h>
+#include <AkInclude.h>
 
 namespace AkComponentHelpers
 {
@@ -58,7 +59,7 @@ namespace AkComponentHelpers
 	AKAUDIO_API bool IsInGameWorld(const UActorComponent* InComponent);
 
 	/**/
-	AKAUDIO_API void GetPrimitiveTransformAndExtent(const UPrimitiveComponent& Primitive, AkWorldTransform& transform, AkExtent& extent);
+	AKAUDIO_API void GetPrimitiveTransformAndExtent(const UPrimitiveComponent& Primitive, AkTransform& transform, AkExtent& extent);
 	AKAUDIO_API void GetPrimitiveUpAndFront(const UPrimitiveComponent& Primitive, AkVector& Up, AkVector& Front);
 
 	/* Return true if the movement would reset the child to (0, 0, 0) locally, with respect to the parent position. Return false otherwise.*/

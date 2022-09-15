@@ -15,58 +15,24 @@ Copyright (c) 2021 Audiokinetic Inc.
 
 #pragma once
 
-#include "AkAudioType.h"
-
-#include "Wwise/CookedData/WwiseLocalizedAuxBusCookedData.h"
-#include "Wwise/Info/WwiseAssetInfo.h"
-#include "Wwise/Loaded/WwiseLoadedAuxBus.h"
-
-#include "AkAudioBank.h"
-
+#include "AkAssetBase.h"
 #include "AkAuxBus.generated.h"
 
 class UAkAudioBank;
 
 UCLASS(hidecategories=(Advanced, Attachment, Volume), BlueprintType)
-class AKAUDIO_API UAkAuxBus : public UAkAudioType
+class AKAUDIO_API UAkAuxBus : public UAkAssetBase
 {
 	GENERATED_BODY()
 
 public:
-
-#if WITH_EDITORONLY_DATA
 	UPROPERTY(EditAnywhere, Category = "AkAuxBus")
-	FWwiseAssetInfo AuxBusInfo;
-#endif
-
-	UPROPERTY(Transient, EditAnywhere, Category = "AkAuxBus")
-	FWwiseLocalizedAuxBusCookedData AuxBusCookedData;
-
-	UPROPERTY()
-	UAkAudioBank* RequiredBank_DEPRECATED = nullptr;
-
-public:
-	void Serialize(FArchive& Ar) override;
-	virtual void PostLoad() override;
-	void LoadAuxBus(bool bReload);
-	void UnloadAuxBus();
-	void BeginDestroy();
-
-	virtual void LoadData()   override {LoadAuxBus(false);}
-	virtual void ReloadData() override {LoadAuxBus(true); }
-	virtual void UnloadData() override {UnloadAuxBus();}
-	virtual AkUInt32 GetShortID() override {return AuxBusCookedData.AuxBusId;}
+		UAkAudioBank* RequiredBank = nullptr;
 
 #if WITH_EDITOR
-	virtual void PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent) override;
-	virtual FWwiseBasicInfo* GetInfoMutable() override {return &AuxBusInfo;}
+	UAkAssetData* FindOrAddAssetData(const FString& Platform, const FString& Language) override;
 #endif
 
-private:
-	FWwiseLoadedAuxBusListNode* LoadedAuxBusData;
-
-#if WITH_EDITORONLY_DATA
-	virtual void CookAdditionalFilesOverride(const TCHAR* PackageFilename, const ITargetPlatform* TargetPlatform,
-		TFunctionRef<void(const TCHAR* Filename, void* Data, int64 Size)> WriteAdditionalFile) override;
-#endif
+protected:
+	UAkAssetData* CreateAssetData(UObject* Parent) const override;
 };

@@ -54,10 +54,7 @@ enum class EAkFitToGeometryMode : uint32
 UCLASS(ClassGroup = Audiokinetic, BlueprintType, hidecategories = (Advanced, Attachment, Volume))
 class AKAUDIO_API AAkSpatialAudioVolume : public AVolume
 {
-	GENERATED_BODY()
-
-public:
-	AAkSpatialAudioVolume(const class FObjectInitializer& ObjectInitializer);
+	GENERATED_UCLASS_BODY()
 
 #if WITH_EDITOR
 	void FitRaycast();
@@ -86,6 +83,7 @@ public:
 	TArray<FAkSurfacePoly> PreviewPolys;
 #endif
 
+public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "SurfaceReflectorSet", meta = (ShowOnlyInnerProperties))
 	UAkSurfaceReflectorSetComponent* SurfaceReflectorSet;
 
@@ -96,6 +94,7 @@ public:
 	UAkRoomComponent* Room;
 
 #if WITH_EDITORONLY_DATA
+
 	/**
 	Automatically fit the Ak Spatial Audio Volume to the surrounding geometry. The fitting operation is performed after enabling this property, or after moving the actor to a new location.
 	The fitting operation is performed by casting rays emanating spherically outwards from the origin of the actor. 
@@ -105,18 +104,10 @@ public:
 	bool FitToGeometry = false;
 
 	/**
-	Sets the collision channel for the ray traces performed to fit the spatial audio volume to the surrounding geometry. When set to 'Use Integration Settings Default', the value will be taken from the DefaultFitToGeometryCollisionChannel in the Wwise Integration Settings.
+	Set the collision channel for the ray traces performed to fit the portal to the surrounding geometry. The default value for the collision channel is specified in the Wwise integration settings.
 	*/
 	UPROPERTY(EditAnywhere, Category = "Fit to Geometry")
-	TEnumAsByte<EAkCollisionChannel> CollisionChannel;
-
-#if WITH_EDITOR
-	/**
-	Converts between EAkCollisionChannel and ECollisionChannel. Returns Wwise Integration Settings default if CollisionChannel == UseIntegrationSettingsDefault. Otherwise, casts CollisionChannel to ECollisionChannel.
-	*/
-	UFUNCTION(BlueprintCallable, Category = "Fit to Geometry")
-	ECollisionChannel GetCollisionChannel();
-#endif
+	TEnumAsByte<ECollisionChannel> CollisionChannel;
 
 	/** 
 	Choose the shape with which to fit to the surrounding geometry. 

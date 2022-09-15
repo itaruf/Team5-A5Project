@@ -23,7 +23,11 @@ Copyright (c) 2021 Audiokinetic Inc.
 #include "Editor.h"
 
 #if WITH_EDITOR
+#if UE_4_25_OR_LATER
 #define GEOMETRY_EDIT_DISPLAY_NAME "Brush Editing Mode"
+#else
+#define GEOMETRY_EDIT_DISPLAY_NAME "Geometry Editing Mode"
+#endif
 #endif
 
 class UAkSurfaceReflectorSetComponent;

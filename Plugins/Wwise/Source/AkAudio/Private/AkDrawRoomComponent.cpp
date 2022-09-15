@@ -41,7 +41,7 @@ const UAkRoomComponent* UDrawRoomComponent::GetRoomParent() const
 void UDrawRoomComponent::DrawRoom(const FSceneView* View, FPrimitiveDrawInterface* PDI, FMeshElementCollector& Collector, int32 ViewIndex) const
 {
 	const UAkRoomComponent* RoomComponent = GetRoomParent();
-	if (IsValid(RoomComponent) && IsValid(RoomComponent->GetPrimitiveParent()) && RoomComponent->bEnable)
+	if (IsValid(RoomComponent) && IsValid(RoomComponent->GetPrimitiveParent()))
 	{
 		const UPrimitiveComponent* PrimitiveParent = Cast<UPrimitiveComponent>(RoomComponent->GetPrimitiveParent());
 		if (PrimitiveParent == nullptr)
@@ -67,13 +67,13 @@ void UDrawRoomComponent::DrawRoom(const FSceneView* View, FPrimitiveDrawInterfac
 		int Sides = AkDrawConstants::RoomIconSides;
 
 		FVector RoomCentre = T.TransformPosition(FVector::ZeroVector);
-		DrawCircle(PDI, RoomCentre, RoomAxisForward, RoomAxisRight, RoomColor, Radius, Sides, SDPG_MAX, IconThickness);
-		DrawCircle(PDI, RoomCentre, RoomAxisForward, RoomAxisUp, RoomColor, Radius, Sides, SDPG_MAX, IconThickness);
+		DrawCircle(PDI, RoomCentre, RoomAxisForward, RoomAxisRight, RoomColor, Radius, Sides, SDPG_Foreground, IconThickness);
+		DrawCircle(PDI, RoomCentre, RoomAxisForward, RoomAxisUp, RoomColor, Radius, Sides, SDPG_Foreground, IconThickness);
 
 		float AxisLength = AkDrawConstants::RoomAxisLength;
-		PDI->DrawLine(RoomCentre, RoomCentre + RoomAxisForward * AxisLength, RoomColor, SDPG_MAX, AkDrawConstants::RoomAxisThickness);
-		PDI->DrawLine(RoomCentre, RoomCentre + RoomAxisRight * AxisLength, RoomColor, SDPG_MAX, AkDrawConstants::RoomAxisThickness);
-		PDI->DrawLine(RoomCentre, RoomCentre + RoomAxisUp * AxisLength, RoomColor, SDPG_MAX, AkDrawConstants::RoomAxisThickness);
+		PDI->DrawLine(RoomCentre, RoomCentre + RoomAxisForward * AxisLength, RoomColor, SDPG_Foreground, AkDrawConstants::RoomAxisThickness);
+		PDI->DrawLine(RoomCentre, RoomCentre + RoomAxisRight * AxisLength, RoomColor, SDPG_Foreground, AkDrawConstants::RoomAxisThickness);
+		PDI->DrawLine(RoomCentre, RoomCentre + RoomAxisUp * AxisLength, RoomColor, SDPG_Foreground, AkDrawConstants::RoomAxisThickness);
 	}
 }
 

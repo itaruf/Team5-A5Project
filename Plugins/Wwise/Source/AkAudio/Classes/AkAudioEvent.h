@@ -15,82 +15,119 @@ Copyright (c) 2021 Audiokinetic Inc.
 
 #pragma once
 
-#include "AkAudioType.h"
-#include "Wwise/CookedData/WwiseLocalizedEventCookedData.h"
-#include "Wwise/Loaded/WwiseLoadedEvent.h"
-
-#if WITH_EDITORONLY_DATA
-#include "Wwise/WwiseProjectDatabase.h"
-#include "Wwise/Info/WwiseEventInfo.h"
-#endif
-
+#include "AkAssetBase.h"
+#include "Serialization/BulkData.h"
 #include "AkAudioEvent.generated.h"
 
 class UAkGroupValue;
-class UAkAuxBus;
+class UAkMediaAsset;
 class UAkAudioBank;
+class UAkAuxBus;
 class UAkTrigger;
 struct FStreamableHandle;
-
+class UAkAssetPlatformData;
 
 UCLASS(BlueprintType)
-class AKAUDIO_API UAkAudioEvent : public UAkAudioType
+class AKAUDIO_API UAkAudioEvent : public UAkAssetBase
 {
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(Transient, VisibleAnywhere, BlueprintReadOnly, Category = "AkAudioEvent")
-		float MaxAttenuationRadius;
+	/** Maximum attenuation radius for this event */
+	UFUNCTION(BlueprintGetter, Category = "AkAudioEvent")
+	float GetMaxAttenuationRadius() const;
 
 	/** Whether this event is infinite (looping) or finite (duration parameters are valid) */
-	UPROPERTY(Transient, VisibleAnywhere, BlueprintReadOnly, Category = "AkAudioEvent")
-		bool IsInfinite;
+	UFUNCTION(BlueprintGetter, Category = "AkAudioEvent")
+	bool GetIsInfinite() const;
 
 	/** Minimum duration */
-	UPROPERTY(Transient, VisibleAnywhere, BlueprintReadOnly, Category = "AkAudioEvent")
-		float MinimumDuration;
+	UFUNCTION(BlueprintGetter, Category = "AkAudioEvent")
+	float GetMinimumDuration() const;
+	void SetMinimumDuration(float value);
 
 	/** Maximum duration */
-	UPROPERTY(Transient, VisibleAnywhere, BlueprintReadOnly, Category = "AkAudioEvent")
-		float MaximumDuration;
+	UFUNCTION(BlueprintGetter, Category = "AkAudioEvent")
+	float GetMaximumDuration() const;
+	void SetMaximumDuration(float value);
 
-#if WITH_EDITORONLY_DATA
-	UPROPERTY(EditAnyWhere, Category = "AkAudioEvent")
-		FWwiseEventInfo EventInfo;
+	UPROPERTY(VisibleAnywhere, Category = "AkAudioEvent")
+	TMap<FString, UAkAssetPlatformData*> LocalizedPlatformAssetDataMap;
+
+	UPROPERTY(EditAnywhere, Category = "AkAudioEvent")
+	UAkAudioBank* RequiredBank = nullptr;
+
+	UAkAudioBank* LastRequiredBank = nullptr;
+
+#if WITH_EDITOR	
+	void UpdateRequiredBanks();
+	void ClearRequiredBank();
+
+	UAkAudioBank* UndoCompareBank = nullptr;
+	void PostEditUndo() override;
+	void PreEditUndo() override;
+#if UE_4_25_OR_LATER
+	void PreEditChange(FProperty* PropertyAboutToChange) override;
+#else
+	void PreEditChange(UProperty* PropertyAboutToChange) override;
 #endif
-
-	UPROPERTY(Transient, VisibleAnywhere, Category = "AkAudioEvent")
-		FWwiseLocalizedEventCookedData EventCookedData;
-
-	UPROPERTY(meta = (DeprecatedProperty, DeprecationMessage = "Used for migration"))
-		UAkAudioBank* RequiredBank_DEPRECATED = nullptr;
-
-public:
-	void Serialize(FArchive& Ar) override;
-	void PostLoad() override;
-	void LoadEventData(bool bReload);
-	void UnloadEventData();
-	void BeginDestroy() override;
-
-	virtual void LoadData()   override {LoadEventData(false);}
-	virtual void ReloadData() override {LoadEventData(true); }
-	virtual void UnloadData() override {UnloadEventData();}
-	virtual AkUInt32 GetShortID() override {return EventCookedData.EventId;}
-	bool IsDataFullyLoaded() const;
-
-
-#if WITH_EDITOR
-	void PostEditChangeProperty(struct FPropertyChangedEvent& PropertyChangedEvent) override;
+	void PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent) override;
 #endif
-
-#if WITH_EDITORONLY_DATA
-	void FillMetadata(UWwiseProjectDatabase* ProjectDatabase);
-	void CookAdditionalFilesOverride(const TCHAR* PackageFilename, const ITargetPlatform* TargetPlatform,
-		TFunctionRef<void(const TCHAR* Filename, void* Data, int64 Size)> WriteAdditionalFile) override;
-	virtual FWwiseBasicInfo* GetInfoMutable() override {return &EventInfo;};
-#endif
-	TArray<FWwiseExternalSourceCookedData> GetExternalSources() const;
 
 private:
-	FWwiseLoadedEventListNode* LoadedEventData;
+	UPROPERTY(Transient)
+	UAkAssetPlatformData* CurrentLocalizedPlatformData = nullptr;
+
+	/** Maximum attenuation radius for this event */
+	UPROPERTY(VisibleAnywhere, BlueprintGetter = GetMaxAttenuationRadius, Category = "AkAudioEvent")
+	float MaxAttenuationRadius;
+
+	/** Whether this event is infinite (looping) or finite (duration parameters are valid) */
+	UPROPERTY(VisibleAnywhere, BlueprintGetter = GetIsInfinite, Category = "AkAudioEvent")
+	bool IsInfinite;
+
+	/** Minimum duration */
+	UPROPERTY(VisibleAnywhere, BlueprintGetter = GetMinimumDuration, Category = "AkAudioEvent")
+	float MinimumDuration;
+
+	/** Maximum duration */
+	UPROPERTY(VisibleAnywhere, BlueprintGetter = GetMaximumDuration, Category = "AkAudioEvent")
+	float MaximumDuration;
+
+public:
+	void LoadBank() override;
+	void BeginDestroy() override;
+	virtual bool IsLocalized() const override ;
+
+	bool IsReadyForAsyncPostLoad() const override;
+
+	bool IsLocalizationReady() const;
+
+	bool SwitchLanguage(const FString& newAudioCulture);
+
+	void PinInGarbageCollector(uint32 PlayingID);
+	void UnpinFromGarbageCollector(uint32 PlayingID);
+
+#if WITH_EDITOR
+	UAkAssetData* FindOrAddAssetData(const FString& platform, const FString& language) override;
+	void Reset(TArray<FAssetData>& InOutAssetsToDelete) override;
+	bool NeedsRebuild(const TSet<FString>& PlatformsToBuild, const TSet<FString>& LanguagesToBuild, const ISoundBankInfoCache* SoundBankInfoCache) const override;
+	bool UndoFlag = false;
+#endif
+
+	friend class AkEventBasedIntegrationBehavior;
+
+protected:
+	UAkAssetData* CreateAssetData(UObject* parent) const override;
+	UAkAssetData* GetAssetData() const override;
+
+private:
+	bool LoadLocalizedBank(const FString& AudioCulture);
+	bool LoadLocalizedMedia();
+	bool LoadLocalizedData(const FString& AudioCulture, const bool& bCalledFromLoad = false);
+	void UnloadLocalizedData();
+	void AssetBaseLoadBank();
+
+private:
+	FThreadSafeCounter TimesPinnedToGC;
 };

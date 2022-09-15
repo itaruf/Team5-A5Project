@@ -102,16 +102,23 @@ void UMovieSceneAkAudioRTPCSection::PostLoad()
 		RTPCChannel.Set(Times, Values);
 		return;
 	}
+
+	FloatChannelSerializationHelper.ToFloatChannel(RTPCChannel);
 }
 
 void UMovieSceneAkAudioRTPCSection::Serialize(FArchive& Ar)
 {
+	FloatChannelSerializationHelper = RTPCChannel;
 	Ar.UsingCustomVersion(FAkCustomVersion::GUID);
 	Super::Serialize(Ar);
 }
 
 #if WITH_EDITOR
+#if UE_4_25_OR_LATER
 void UMovieSceneAkAudioRTPCSection::PreEditChange(FProperty* PropertyAboutToChange)
+#else
+void UMovieSceneAkAudioRTPCSection::PreEditChange(UProperty* PropertyAboutToChange)
+#endif
 {
 	PreviousName = Name;
 }

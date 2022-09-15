@@ -21,8 +21,11 @@ Copyright (c) 2021 Audiokinetic Inc.
 #include "AkInclude.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "AkWaapiUri.h"
+#include "AkWaapiUtils.h"
 #include "AkWaapiJsonManager.h"
 #include "AkWaapiCalls.generated.h"
+
+DECLARE_LOG_CATEGORY_EXTERN(LogAkWaapiCalls, Log, All);
 
 /**
 * Structure for Field Names
@@ -30,7 +33,7 @@ Copyright (c) 2021 Audiokinetic Inc.
 USTRUCT(BlueprintType)
 struct AKAUDIO_API FAkWaapiSubscriptionId
 {
-	GENERATED_BODY()
+	GENERATED_USTRUCT_BODY()
 	
 	FAkWaapiSubscriptionId() {}
 	FAkWaapiSubscriptionId(const uint64_t& SubscribId) : SubscriptionId(SubscribId){}
@@ -45,11 +48,8 @@ DECLARE_DYNAMIC_DELEGATE(FOnWaapiConnectionLost);
 UCLASS(Within = World, config = Engine, defaultconfig)
 class AKAUDIO_API UAkWaapiCalls : public UBlueprintFunctionLibrary
 {
-	GENERATED_BODY()
-
-public:
-	UAkWaapiCalls(const class FObjectInitializer& ObjectInitializer);
-
+	GENERATED_UCLASS_BODY()
+	
     UFUNCTION(BlueprintCallable, Category = "Audiokinetic|WaapiCalls")
     static void SetSubscriptionID(const FAkWaapiSubscriptionId& Subscription, int id);
 

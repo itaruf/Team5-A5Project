@@ -32,7 +32,7 @@ void UPostEventAtLocationAsync::Activate()
 {
 	if (AkEvent == nullptr)
 	{
-		UE_LOG(LogAkAudio, Warning, TEXT("PostEventAtLocationAsync: No Event specified!"));
+		UE_LOG(LogScript, Warning, TEXT("PostEventAtLocationAsync: No Event specified!"));
 		Completed.Broadcast(AK_INVALID_PLAYING_ID);
 		return;
 	}
@@ -40,7 +40,7 @@ void UPostEventAtLocationAsync::Activate()
 	AkDeviceAndWorld DeviceAndWorld(WorldContextObject);
 	if (DeviceAndWorld.IsValid())
 	{
-		playingIDFuture = DeviceAndWorld.AkAudioDevice->PostAkAudioEventAtLocationAsync(AkEvent, Location, Orientation, DeviceAndWorld.CurrentWorld);
+		playingIDFuture = DeviceAndWorld.AkAudioDevice->PostEventAtLocationAsync(AkEvent, Location, Orientation, DeviceAndWorld.CurrentWorld);
 
 		WorldContextObject->GetWorld()->GetTimerManager().SetTimer(Timer, this, &UPostEventAtLocationAsync::PollPostEventFuture, 1.f / 60.f, true);
 	}

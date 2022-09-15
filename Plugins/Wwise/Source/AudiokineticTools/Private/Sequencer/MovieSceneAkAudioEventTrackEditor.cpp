@@ -29,7 +29,6 @@ Copyright (c) 2021 Audiokinetic Inc.
 #include "Framework/Application/SlateApplication.h"
 #include "Framework/MultiBox/MultiBoxBuilder.h"
 #include "IAssetRegistry.h"
-#include "IAudiokineticTools.h"
 #include "IContentBrowserSingleton.h"
 #include "ISequencerSection.h"
 #include "MovieScene.h"
@@ -192,7 +191,7 @@ uint8* LookupPixel(TArray<uint8>& Data, int32 X, int32 YPos, int32 Width, int32 
     int32 Index = (Y * Width + X) * GPixelFormats[PF_B8G8R8A8].BlockBytes;
     if (Index + 3 < Data.Num())
         return &Data[Index];
-    UE_LOG(LogAudiokineticTools, Warning, TEXT("Array overrun in MovieSceneAkAudioEventTrackEditor!"));
+    UE_LOG(LogTemp, Warning, TEXT("Array overrun in MovieSceneAkAudioEventTrackEditor!"));
     return 0;
 }
 
@@ -510,6 +509,20 @@ public:
     {
         MenuBuilder.BeginSection("Audiokinetic", LOCTEXT("AKMenu", "Audiokinetic"));
         {
+            MenuBuilder.AddMenuEntry(
+                LOCTEXT("WaveformRefresh", "Save Wwise project and refresh."),
+                LOCTEXT("WaveformRefreshTooltip", "Saves the Wwise project, generates the required soundbank, and refreshes the waveform to match changes in Wwise."),
+                FSlateIcon(),
+                FUIAction(
+                    FExecuteAction::CreateLambda([=] { return CreateGenerateRequiredSoundbankWindow(); }),
+                    FCanExecuteAction::CreateLambda([=] 
+                    { 
+                        return !(Section == nullptr || !IsValid(Section) || Section->GetEvent() == nullptr);
+                    })
+                ), 
+                NAME_None,
+                EUserInterfaceActionType::Button
+            );
 
             MenuBuilder.AddMenuEntry(
                 LOCTEXT("SnapLength", "Match section length to Wwise event length"),
@@ -580,6 +593,22 @@ private:
         {
             Section->MatchSectionLengthToEventLength();
         }
+    }
+
+    /** Creates a soundbank generation window with the required soundbank selected. */
+    void CreateGenerateRequiredSoundbankWindow()
+    {
+		if (Section != nullptr)
+		{
+			const auto SectionEvent = Section->GetEvent();
+			if (SectionEvent != nullptr)
+			{
+				TWeakObjectPtr<UAkAudioBank> pRequiredBank(SectionEvent->RequiredBank);
+				TArray<TWeakObjectPtr<UAkAudioBank>> aSoundBanks;
+				aSoundBanks.Add(pRequiredBank);
+				AkAudioBankGenerationHelper::CreateGenerateSoundDataWindow(&aSoundBanks, true);
+			}
+		}
     }
 
     /** Creates the waveform viewport according to the waveform descriptor and the TimeToPixelConverter. */
@@ -813,33 +842,33 @@ void FMovieSceneAkAudioEventTrackEditor::BuildTrackContextMenu(FMenuBuilder& Men
     MenuBuilder.BeginSection("Audiokinetic", LOCTEXT("AKMenu", "Audiokinetic"));
     {
         MenuBuilder.AddMenuEntry(
-           LOCTEXT("RefreshAllWaveforms", "Save Wwise project and refresh all sections"),
-           LOCTEXT("RefreshAllWaveformsTooltip", "Saves the Wwise project, generates required soundbanks for all sections and refreshes all waveforms."),
-           FSlateIcon(),
-           FUIAction(
-               FExecuteAction::CreateLambda([=] { CreateGenerateSoundbanksWindowForAllSections(Track); }),
-               FCanExecuteAction::CreateLambda([=] 
-               { 
-                   auto aSections = Track->GetAllSections();
-                   if (aSections.Num() <= 0)
-                       return false;
-                   for (auto pSection : aSections)
-                   {
-                       UMovieSceneAkAudioEventSection* pAkEventSection = dynamic_cast<UMovieSceneAkAudioEventSection*>(pSection);
-                       if (pAkEventSection != nullptr)
-                       {
-                           return true;
-                       }
-                   }
-                   return false;
-               })
-           )
+            LOCTEXT("RefreshAllWaveforms", "Save Wwise project and refresh all sections"),
+            LOCTEXT("RefreshAllWaveformsTooltip", "Saves the Wwise project, generates required soundbanks for all sections and refreshes all waveforms."),
+            FSlateIcon(),
+            FUIAction(
+                FExecuteAction::CreateLambda([=] { CreateGenerateSoundbanksWindowForAllSections(Track); }),
+                FCanExecuteAction::CreateLambda([=] 
+                { 
+                    auto aSections = Track->GetAllSections();
+                    if (aSections.Num() <= 0)
+                        return false;
+                    for (auto pSection : aSections)
+                    {
+                        UMovieSceneAkAudioEventSection* pAkEventSection = dynamic_cast<UMovieSceneAkAudioEventSection*>(pSection);
+                        if (pAkEventSection != nullptr)
+                        {
+                            return true;
+                        }
+                    }
+                    return false;
+                })
+            )
         );
     }
     MenuBuilder.EndSection();//Audiokinetic
 }
 
-/** Creates a soundbank generation window.
+/** Creates a soundbank generation window. 
  *  Iterates through all of the sections in the track and adds their required banks to the selected banks in the window.
  */
 void FMovieSceneAkAudioEventTrackEditor::CreateGenerateSoundbanksWindowForAllSections(UMovieSceneTrack* in_pTrack)
@@ -847,11 +876,23 @@ void FMovieSceneAkAudioEventTrackEditor::CreateGenerateSoundbanksWindowForAllSec
     UMovieSceneAkAudioEventTrack* pAkEventTrack = dynamic_cast<UMovieSceneAkAudioEventTrack*>(in_pTrack);
     if (pAkEventTrack != nullptr)
     {
-        AkAudioBankGenerationHelper::CreateGenerateSoundDataWindow(true);
-
+        TArray<TWeakObjectPtr<UAkAudioBank>> aSoundBanks;
+        auto akEventSections = pAkEventTrack->GetAllSections();
+        for (auto pSection : akEventSections)
+        {
+            UMovieSceneAkAudioEventSection* pAkEventSection = dynamic_cast<UMovieSceneAkAudioEventSection*>(pSection);
+            if (pAkEventSection != nullptr)
+            {
+            }
+        }
+		if (aSoundBanks.Num() > 0)
+		{
+			AkAudioBankGenerationHelper::CreateGenerateSoundDataWindow(&aSoundBanks, true);
+		}
     }
-
+    
 }
+
 TSharedRef<ISequencerSection> FMovieSceneAkAudioEventTrackEditor::MakeSectionInterface(UMovieSceneSection& SectionObject, UMovieSceneTrack& Track, FGuid ObjectBinding)
 {
 	return MakeShareable(new FMovieSceneAkAudioEventSection(SectionObject, GetSequencer()));
@@ -863,16 +904,12 @@ bool FMovieSceneAkAudioEventTrackEditor::HandleAssetAdded(UObject* Asset, const 
 	{
 		if (!SupportsSequence(GetMovieSceneSequence()))
 		{
-			UE_LOG(LogAudiokineticTools, Warning, TEXT("AkAudioEventTrack only supports Level Sequences"));
+			UE_LOG(LogMovieScene, Warning, TEXT("AkAudioEventTrack only supports Level Sequences"));
 			return false;
 		}
 
 		auto Event = Cast<UAkAudioEvent>(Asset);
-        if (!Event->IsDataFullyLoaded())
-        {
-            Event->LoadEventData(false);
-        }
-        
+
 		if (TargetObjectGuid.IsValid())
 		{
 			TArray<TWeakObjectPtr<UObject>> ObjectsToAttachTo;
@@ -982,7 +1019,11 @@ TSharedPtr<SWidget> FMovieSceneAkAudioEventTrackEditor::BuildOutlinerEditWidget(
 		.AutoWidth()
 		.VAlign(VAlign_Center)
 		[
+#if UE_4_22_OR_LATER
 			FSequencerUtilities::MakeAddButton(LOCTEXT("AudioText", "AkAudioEvent"), FOnGetContent::CreateSP(this, &FMovieSceneAkAudioEventTrackEditor::BuildAudioSubMenu, Track), Params.NodeIsHovered, GetSequencer())
+#else
+			FSequencerUtilities::MakeAddButton(LOCTEXT("AudioText", "AkAudioEvent"), FOnGetContent::CreateSP(this, &FMovieSceneAkAudioEventTrackEditor::BuildAudioSubMenu, Track), Params.NodeIsHovered)
+#endif
 		];
 }
 
@@ -1038,9 +1079,14 @@ void FMovieSceneAkAudioEventTrackEditor::OnAudioAssetSelected(const FAssetData& 
 	GetSequencer()->NotifyMovieSceneDataChanged(EMovieSceneDataChangeType::MovieSceneStructureItemAdded);
 }
 
+#if UE_4_23_OR_LATER
 void FMovieSceneAkAudioEventTrackEditor::BuildObjectBindingTrackMenu(FMenuBuilder& MenuBuilder, const TArray<FGuid>& ObjectBindings, const UClass* ObjectClass)
 {
 	auto ObjectBinding = ObjectBindings[0];
+#else
+void FMovieSceneAkAudioEventTrackEditor::BuildObjectBindingTrackMenu(FMenuBuilder& MenuBuilder, const FGuid& ObjectBinding, const UClass* ObjectClass)
+{
+#endif
 	if (ObjectClass->IsChildOf(AActor::StaticClass()) || ObjectClass->IsChildOf(USceneComponent::StaticClass()))
 	{
 		MenuBuilder.AddMenuEntry(

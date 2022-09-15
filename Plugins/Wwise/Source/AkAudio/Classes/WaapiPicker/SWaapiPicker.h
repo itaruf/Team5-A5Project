@@ -30,8 +30,7 @@ Copyright (c) 2021 Audiokinetic Inc.
 #include "Widgets/Input/SSearchBox.h"
 #include "Widgets/Views/STreeView.h"
 #include "Framework/Commands/UICommandList.h"
-
-DECLARE_DELEGATE_OneParam(FOnImportWwiseAssetsClicked, const FString&);
+DECLARE_LOG_CATEGORY_EXTERN(LogAkAudioPicker, Log, All);
 
 typedef TTextFilter< const FString& > StringFilter;
 
@@ -48,7 +47,6 @@ public:
 	typedef TSlateDelegates< TSharedPtr< FWwiseTreeItem > >::FOnSelectionChanged FOnSelectionChanged;
 
 	DECLARE_DELEGATE(FOnGenerateSoundBankClicked);
-	DECLARE_DELEGATE(FOnRefreshClicked);
 
 public:
 	SLATE_BEGIN_ARGS( SWaapiPicker )
@@ -97,12 +95,6 @@ public:
 
 		/** Handles the Generate SoundBanks click operation */
 		SLATE_EVENT(FOnGenerateSoundBankClicked, OnGenerateSoundBanksClicked)
-
-		/** Handles the Refresh click operation */
-		SLATE_EVENT(FOnRefreshClicked, OnRefreshClicked)
-
-		/** Handles the Import asset operation */
-		SLATE_EVENT(FOnImportWwiseAssetsClicked, OnImportWwiseAssetsClicked)
 
 	SLATE_END_ARGS( )
 
@@ -212,11 +204,6 @@ private:
 
 	FOnGenerateSoundBankClicked OnGenerateSoundBanksClicked;
 
-	FOnRefreshClicked OnRefreshClicked;
-
-	/** Delegate to invoke when assets are imported. */
-	FOnImportWwiseAssetsClicked OnImportWwiseAssetsClicked;
-
 	/** Whether to disable the context menu and keyboard controls of the explore section*/
 	bool bRestrictContextMenu;
 
@@ -240,8 +227,8 @@ private:
 	/** One-off active timer to focus the widget post-construct */
 	EActiveTimerReturnType SetFocusPostConstruct(double InCurrentTime, float InDeltaTime);
 
-	/** Ran when the Refresh button is clicked. Populates the window. */
-	FReply OnRefreshButtonClicked();
+	/** Ran when the Populate button is clicked. Populates the window. */
+	FReply OnPopulateClicked();
 
 	FReply OnGenerateSoundBanksButtonClicked();
 
@@ -335,9 +322,6 @@ private:
 
 	/** Callback to execute the redo command */
 	void HandleRedoWaapiPickerCommandExecute() const;
-
-	/** Callback to import a Wwise item into the project's Contents*/
-	void HandleImportWwiseItemCommandExecute() const;
 
 	void SubscribeWaapiCallbacks();
 	void UnsubscribeWaapiCallbacks();

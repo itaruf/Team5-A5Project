@@ -39,9 +39,8 @@ int32 UAkAudioInputComponent::PostAssociatedAudioInputEvent()
 		return GetChannelConfig(AudioFormat);
 	});
 
-
 	AkPlayingID PlayingID = FAkAudioInputManager::PostAudioInputEvent(
-		 AkAudioEvent, EventName, this, AudioInputDelegate, AudioFormatDelegate);
+		GET_AK_EVENT_NAME(AkAudioEvent, EventName), this, AudioInputDelegate, AudioFormatDelegate);
 
 	if (PlayingID != AK_INVALID_PLAYING_ID)
 	{

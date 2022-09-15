@@ -16,6 +16,7 @@ Copyright (c) 2021 Audiokinetic Inc.
 
 #include "Platforms/AkPlatform_Hololens/AkHololensInitializationSettings.h"
 #include "AkAudioDevice.h"
+#include "Runtime/HeadMountedDisplay/Public/IHeadMountedDisplayModule.h"
 
 //////////////////////////////////////////////////////////////////////////
 // FAkHololensAdvancedInitializationSettings
@@ -49,7 +50,7 @@ void UAkHololensInitializationSettings::FillInitializationStructure(FAkInitializ
 #ifdef AK_HOLOLENS_VS_VERSION
 	constexpr auto PlatformArchitecture = "UWP_ARM64_" AK_HOLOLENS_VS_VERSION;
 #else
-	constexpr auto PlatformArchitecture = "UWP_ARM64_vc160";
+	constexpr auto PlatformArchitecture = "UWP_ARM64_vc150";
 #endif
 
 	InitializationStructure.SetPluginDllPath(PlatformArchitecture);

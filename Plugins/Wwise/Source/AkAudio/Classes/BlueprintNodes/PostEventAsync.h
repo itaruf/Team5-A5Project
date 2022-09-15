@@ -16,7 +16,6 @@ Copyright (c) 2021 Audiokinetic Inc.
 #pragma once
 
 #include "AkAudioDevice.h"
-#include "AkGameplayTypes.h"
 #include "Kismet/BlueprintAsyncActionBase.h"
 #include "PostEventAsync.generated.h"
 
@@ -37,6 +36,7 @@ public:
 			class AActor* Actor,
 			UPARAM(meta = (Bitmask, BitmaskEnum = EAkCallbackType)) int32 CallbackMask,
 			const FOnAkPostEventCallback& PostEventCallback,
+			const TArray<FAkExternalSourceInfo>& ExternalSources,
 			bool bStopWhenAttachedToDestroyed = false
 		);
 
@@ -53,6 +53,7 @@ private:
 	AActor* Actor = nullptr;
 	int32 CallbackMask = 0;
 	FOnAkPostEventCallback PostEventCallback;
+	TArray<FAkExternalSourceInfo> ExternalSources;
 	bool bStopWhenAttachedToDestroyed = false;
 	TFuture<AkPlayingID> PlayingIDFuture;
 	FTimerHandle Timer;

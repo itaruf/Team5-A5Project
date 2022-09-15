@@ -24,7 +24,7 @@ Copyright (c) 2021 Audiokinetic Inc.
 #include "HAL/PlatformFilemanager.h"
 #endif
 #include "Misc/Paths.h"
-#include "AssetManagement/WwiseProjectInfo.h"
+#include "WwiseProjectInfo.h"
 
 namespace WwiseSoundBankInfoCacheHelpers
 {
@@ -165,7 +165,7 @@ bool WwiseSoundBankInfoCache::IsSoundBankUpToUpdate(const FGuid& Id, const FStri
 
 	uint32 languageId = WwiseSoundBankInfoCacheHelpers::SFXLanguageID;
 
-	if (Language.Len() > 0)
+	if (Language != TEXT("SFX") && Language.Len()>0)
 	{
 		AK::FNVHash32 hash;
 		FTCHARToUTF8 utf8(*Language.ToLower());

@@ -25,13 +25,13 @@ Copyright (c) 2021 Audiokinetic Inc.
 USTRUCT()
 struct FAkPS4AdvancedInitializationSettings : public FAkAdvancedInitializationSettingsWithMultiCoreRendering
 {
-	GENERATED_BODY()
+	GENERATED_USTRUCT_BODY()
 
 	UPROPERTY(EditAnywhere, Category = "Ak Initialization Settings", meta = (ToolTip = "ACP batch buffer size used for ATRAC9 decoding."))
 	uint32 ACPBatchBufferSize = (90 * 1024);
 
 	UPROPERTY(EditAnywhere, Category = "Ak Initialization Settings", meta = (ToolTip = "Use low latency mode for ATRAC9 (default is false). If true, decoding jobs are submitted at the beginning of the Wwise update and it will be necessary to wait for the result."))
-	bool UseHardwareCodecLowLatencyMode;
+	bool UseHardwareCodecLowLatencyMode = false;
 
 	void FillInitializationStructure(FAkInitializationStructure& InitializationStructure) const;
 };
@@ -40,10 +40,9 @@ struct FAkPS4AdvancedInitializationSettings : public FAkAdvancedInitializationSe
 UCLASS(config = Game, defaultconfig)
 class AKAUDIO_API UAkPS4InitializationSettings : public UObject, public IAkPlatformInitialisationSettingsBase
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 
 public:
-	UAkPS4InitializationSettings(const FObjectInitializer& ObjectInitializer);
 	void FillInitializationStructure(FAkInitializationStructure& InitializationStructure) const;
 
 	UPROPERTY(Config, EditAnywhere, Category = "Initialization")

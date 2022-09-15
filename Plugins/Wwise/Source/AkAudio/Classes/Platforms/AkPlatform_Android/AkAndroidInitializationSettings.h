@@ -32,7 +32,7 @@ enum class EAkAndroidAudioAPI : uint32
 USTRUCT()
 struct FAkAndroidAdvancedInitializationSettings : public FAkAdvancedInitializationSettingsWithMultiCoreRendering
 {
-	GENERATED_BODY()
+	GENERATED_USTRUCT_BODY()
 
 	UPROPERTY(EditAnywhere, Category = "Ak Initialization Settings", meta = (Bitmask, BitmaskEnum = EAkAndroidAudioAPI, ToolTip = "Main audio API to use. Leave set to \"Default\" for the default audio sink."))
 	uint32 AudioAPI = (1 << (uint32)EAkAndroidAudioAPI::AAudio) | (1 << (uint32)EAkAndroidAudioAPI::OpenSL_ES);
@@ -47,11 +47,9 @@ struct FAkAndroidAdvancedInitializationSettings : public FAkAdvancedInitializati
 UCLASS(config = Game, defaultconfig)
 class AKAUDIO_API UAkAndroidInitializationSettings : public UObject, public IAkPlatformInitialisationSettingsBase
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 
 public:
-	UAkAndroidInitializationSettings(const class FObjectInitializer& ObjectInitializer);
-
 	void FillInitializationStructure(FAkInitializationStructure& InitializationStructure) const override;
 
 	UPROPERTY(Config, EditAnywhere, Category = "Initialization")

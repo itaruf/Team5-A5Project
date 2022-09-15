@@ -16,6 +16,7 @@ Copyright (c) 2021 Audiokinetic Inc.
 #pragma once
 
 #include "Platforms/AkPlatformInfo.h"
+#include "AkAudioDevice.h"
 #include "AkWindowsPlatformInfo.generated.h"
 
 UCLASS()
@@ -31,7 +32,7 @@ public:
 #ifdef AK_WINDOWS_VS_VERSION
 		Architecture = "Win32_" AK_WINDOWS_VS_VERSION;
 #else
-		Architecture = "Win32_vc160";
+		Architecture = "Win32_vc150";
 #endif
 
 		LibraryFileNameFormat = "{0}.dll";
@@ -55,7 +56,7 @@ public:
 #ifdef AK_WINDOWS_VS_VERSION
 		Architecture = "x64_" AK_WINDOWS_VS_VERSION;
 #else
-		Architecture = "x64_vc160";
+		Architecture = "x64_vc150";
 #endif
 
 		LibraryFileNameFormat = "{0}.dll";
@@ -75,7 +76,6 @@ class UAkWindowsPlatformInfo : public UAkWin64PlatformInfo
 	{
 #if WITH_EDITORONLY_DATA
 		UAkPlatformInfo::UnrealNameToPlatformInfo.Add("Windows", this);
-		UAkPlatformInfo::UnrealNameToPlatformInfo.Add("WindowsNoEditor", this);
 #endif
 	}
 };

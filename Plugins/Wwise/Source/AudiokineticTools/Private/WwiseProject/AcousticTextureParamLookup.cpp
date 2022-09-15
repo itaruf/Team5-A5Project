@@ -14,83 +14,84 @@ Copyright (c) 2021 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AcousticTextureParamLookup.h"
+#include "XmlNode.h"
 #include "AkSettings.h"
 #include "AkAcousticTexture.h"
-#include "AkUnrealHelper.h"
 #include "AssetManagement/AkAssetDatabase.h"
-#include "IAudiokineticTools.h"
-#include "Wwise/WwiseProjectDatabase.h"
 
-void AkAcousticTextureParamLookup::LoadAllTextures()
+void AcousticTextureVisitor::EnterAcousticTexture(const FGuid& Id, const FXmlNode* CurrentNode, const FString& Name, const FString& RelativePath)
 {
-	UWwiseProjectDatabase* ProjectDatabase = UWwiseProjectDatabase::Get();
-	if (UNLIKELY(!ProjectDatabase))
-	{
-		UE_LOG(LogAudiokineticTools, Error, TEXT("LoadAllTextures: ProjectDatabase not loaded"));
-		return;
-	}
-
-	const FWwiseDataStructureScopeLock DataStructure(*ProjectDatabase);
-	const auto& AcousticTextures = DataStructure.GetAcousticTextures();
-
-	if (AcousticTextures.Num() == 0)
-	{
-		return;
-	}
-
+	const FXmlNode* PropNode = nullptr;
+	const FXmlNode* FXmlPropListNode = CurrentNode->FindChildNode("PropertyList");
+	if (FXmlPropListNode != nullptr)
+		PropNode = FXmlPropListNode->FindChildNode("Property");
+	float absorptionLow = 0.0f;
+	float absorptionMidLow = 0.0f;
+	float absorptionMidHigh = 0.0f;
+	float absorptionHigh = 0.0f;
+	int colorIndex = -1;
+	bool overrideColor = false;
 	UAkSettings* AkSettings = GetMutableDefault<UAkSettings>();
-	auto& AkAssetDatabase = AkAssetDatabase::Get();
-
-	if (UNLIKELY(!AkSettings))
+	while (PropNode != nullptr && PropNode->GetTag() == TEXT("Property"))
 	{
-		UE_LOG(LogAudiokineticTools, Error, TEXT("No AkSettings while loading Acoustic Textures"));
-		return;
+		FString CurrentName = PropNode->GetAttribute(TEXT("Name"));
+		if (CurrentName == TEXT("AbsorptionLow"))
+		{
+			absorptionLow = FCString::Atof(*PropNode->GetAttribute(TEXT("Value")));
+		}
+		else if (CurrentName == TEXT("AbsorptionMidLow"))
+		{
+			absorptionMidLow = FCString::Atof(*PropNode->GetAttribute(TEXT("Value")));
+		}
+		else if (CurrentName == TEXT("AbsorptionMidHigh"))
+		{
+			absorptionMidHigh = FCString::Atof(*PropNode->GetAttribute(TEXT("Value")));
+		}
+		else if (CurrentName == TEXT("AbsorptionHigh"))
+		{
+			absorptionHigh = FCString::Atof(*PropNode->GetAttribute(TEXT("Value")));
+		}
+		else if (CurrentName == TEXT("Color"))
+		{
+			colorIndex = FCString::Atoi(*PropNode->GetAttribute(TEXT("Value")));
+		}
+		else if (CurrentName == TEXT("OverrideColor"))
+		{
+			overrideColor = PropNode->GetAttribute(TEXT("Value")).Equals(TEXT("True"));
+		}
+		PropNode = PropNode->GetNextNode();
 	}
-
-	for (auto& AcousticTexture : AcousticTextures)
+	
+	// If OverrideColor is disabled, revert to the default color.
+	if (!overrideColor)
+		colorIndex = -1;
+	
+	if (AkSettings != nullptr)
 	{
-		const FString& TextureName = AcousticTexture.Value.AcousticTextureName();
-		float AbsorptionLow = AcousticTexture.Value.GetAcousticTexture()->AbsorptionLow;
-		float AbsorptionMidLow = AcousticTexture.Value.GetAcousticTexture()->AbsorptionMidLow;
-		float AbsorptionMidHigh = AcousticTexture.Value.GetAcousticTexture()->AbsorptionMidHigh;
-		float AbsorptionHigh = AcousticTexture.Value.GetAcousticTexture()->AbsorptionHigh;
+		AkSettings->SetTextureColor(Id, colorIndex);
 
-		uint32 TextureShortID = 0;
-		FAssetData Texture;
-		FGuid Id = AcousticTexture.Value.AcousticTextureGuid();
-		if (LIKELY(AkAssetDatabase.FindFirstAsset(Id, Texture)))
+		auto& akAssetDatabase = AkAssetDatabase::Get();
+		uint32 textureShortID = 0;
+		if (auto texture = akAssetDatabase.AcousticTextureMap.FindLiveAsset(Id))
 		{
-			const auto AcousticTextureAsset = Cast<UAkAcousticTexture>(Texture.GetAsset());
-			if (LIKELY(AcousticTextureAsset))
-			{
-				TextureShortID = AcousticTextureAsset->AcousticTextureCookedData.ShortId;
-
-				UE_LOG(LogAudiokineticTools, VeryVerbose, TEXT("Properties for texture %s (%" PRIu32 "): Absorption High: %.0f%%, MidHigh: %.0f%%, MidLow: %.0f%%, Low: %.0f%%"),
-					*TextureName, TextureShortID, AbsorptionHigh, AbsorptionMidHigh, AbsorptionMidLow, AbsorptionLow);
-			}
-			else
-			{
-				UE_LOG(LogAudiokineticTools, Error, TEXT("Invalid AkAcousticTexture for GUID %s (%s)"), *Id.ToString(), *TextureName);
-			}
+			textureShortID = texture->ShortID;
 		}
-		else
-		{
-			UE_LOG(LogAudiokineticTools, Log, TEXT("Properties for texture %s (No AkAcousticTexture): Absorption High: %.0f%%, MidHigh: %.0f%%, MidLow: %.0f%%, Low: %.0f%%"),
-				*TextureName, AbsorptionHigh, AbsorptionMidHigh, AbsorptionMidLow, AbsorptionLow);
-		}
-		
-		const FVector4 AbsorptionValues = FVector4(AbsorptionLow, AbsorptionMidLow, AbsorptionMidHigh, AbsorptionHigh) / 100.0f;
 
-		AkSettings->SetAcousticTextureParams(Id,{AbsorptionValues, TextureShortID});
+		AkSettings->SetAcousticTextureParams(Id, { FVector4(FVector(absorptionLow, absorptionMidLow, absorptionMidHigh), absorptionHigh) / 100.0f, textureShortID });
 	}
 }
 
-void AkAcousticTextureParamLookup::UpdateParamsMap() const
+AkAcousticTextureParamLookup::AkAcousticTextureParamLookup()
+{
+	Parser.SetVisitor(&Visitor);
+}
+
+void AkAcousticTextureParamLookup::UpdateParamsMap()
 {
 	UAkSettings* AkSettings = GetMutableDefault<UAkSettings>();
 	if (AkSettings != nullptr)
 	{
 		AkSettings->ClearTextureParamsMap();
-		LoadAllTextures();
+		Parser.Parse();
 	}
 }

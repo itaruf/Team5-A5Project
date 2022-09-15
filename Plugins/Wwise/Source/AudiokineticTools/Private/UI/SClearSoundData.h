@@ -19,6 +19,7 @@ Copyright (c) 2021 Audiokinetic Inc.
 #pragma once
 
 #include "Framework/Application/SlateApplication.h"
+#include "Widgets/Input/SCheckBox.h"
 #include "Widgets/SCompoundWidget.h"
 
 class SCheckBox;
@@ -40,13 +41,22 @@ public:
 	{
 		return true;
 	}
+		
+
+	bool GetDeleteLocalizedEnabled() const
+	{
+		return (ClearAssetData && ClearAssetData->IsChecked());
+	}
 
 private:
 	FReply OnClearButtonClicked();
 
 private:
 	TSharedPtr<SCheckBox> ClearAssetData;
+	TSharedPtr<SCheckBox> DeleteLocalizedPlatformData;
 	TSharedPtr<SCheckBox> ClearSoundBankInfoCache;
 	TSharedPtr<SCheckBox> ClearMediaCache;
 	TSharedPtr<SCheckBox> ClearExternalSource;
+	TSharedPtr<SCheckBox> ClearOrphanMedia;
+	TSharedPtr<SCheckBox> ClearOrphanLocalizedAssetData;
 };

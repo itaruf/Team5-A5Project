@@ -22,7 +22,4 @@ UCLASS(BlueprintType)
 class AKAUDIO_API UAkStateValue : public UAkGroupValue
 {
 	GENERATED_BODY()
-
-	virtual void LoadGroupValue(bool bReload) override;
-	virtual void Serialize(FArchive& Ar) override;
 };

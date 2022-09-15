@@ -25,13 +25,13 @@ Copyright (c) 2021 Audiokinetic Inc.
 USTRUCT()
 struct FAkXboxOneAdvancedInitializationSettings : public FAkAdvancedInitializationSettingsWithMultiCoreRendering
 {
-	GENERATED_BODY()
+	GENERATED_USTRUCT_BODY()
 
 	UPROPERTY(EditAnywhere, Category = "Ak Initialization Settings", meta = (ToolTip = "Maximum number of hardware-accelerated XMA voices used at run-time. Default is 128 voices."))
 	uint16 MaximumNumberOfXMAVoices = 128;
 
 	UPROPERTY(EditAnywhere, Category = "Ak Initialization Settings", meta = (ToolTip = "Use low latency mode for hardware XMA decoding (default is false). If true, decoding jobs are submitted at the beginning of the Wwise update and it will be necessary to wait for the result."))
-	bool UseHardwareCodecLowLatencyMode;
+	bool UseHardwareCodecLowLatencyMode = false;
 
 	void FillInitializationStructure(FAkInitializationStructure& InitializationStructure) const;
 };
@@ -40,7 +40,7 @@ struct FAkXboxOneAdvancedInitializationSettings : public FAkAdvancedInitializati
 USTRUCT()
 struct FAkXboxOneApuHeapInitializationSettings
 {
-	GENERATED_BODY()
+	GENERATED_USTRUCT_BODY()
 
 	UPROPERTY(EditAnywhere, Category = "Ak Initialization Settings", meta = (ToolTip = "APU heap cached size sent to the \"ApuCreateHeap()\" function."))
 	uint32 CachedSize = 64 * 1024 * 1024;
@@ -55,10 +55,9 @@ struct FAkXboxOneApuHeapInitializationSettings
 UCLASS(config = Game, defaultconfig)
 class AKAUDIO_API UAkXboxOneInitializationSettings : public UObject, public IAkPlatformInitialisationSettingsBase
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 
 public:
-	UAkXboxOneInitializationSettings(const FObjectInitializer& ObjectInitializer);
 	void FillInitializationStructure(FAkInitializationStructure& InitializationStructure) const override;
 
 	UPROPERTY(Config, EditAnywhere, Category = "Initialization")

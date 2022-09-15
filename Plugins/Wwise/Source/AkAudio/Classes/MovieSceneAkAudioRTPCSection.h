@@ -58,7 +58,11 @@ public:
 	void SetRTPC(UAkRtpc* InRTPC) { RTPC = InRTPC; }
 
 #if WITH_EDITOR
+#if UE_4_25_OR_LATER
 	virtual void PreEditChange(FProperty* PropertyAboutToChange) override;
+#else
+	virtual void PreEditChange(UProperty* PropertyAboutToChange) override;
+#endif
 	virtual void PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent) override;
 #endif
 
@@ -73,6 +77,12 @@ protected:
 	/** Curve data */
 	UPROPERTY()
 	FRichCurve FloatCurve;
+
+	// Enabled serialization of RTPCChannel when 4.24 support was added. We will be able to get rid of 
+	// FloatChannelSerializationHelper when we remove 4.21 support. Tagging UE_4_21_OR_LATER so we catch
+	// this when removing 4.21 support
+	UPROPERTY()
+	FMovieSceneFloatChannelSerializationHelper FloatChannelSerializationHelper;
 
 	UPROPERTY()
 	FMovieSceneFloatChannel RTPCChannel;

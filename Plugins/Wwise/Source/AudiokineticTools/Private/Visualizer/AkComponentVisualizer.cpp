@@ -52,7 +52,6 @@ namespace FAkComponentVisualizer_Helper
 					MakeShared<FJsonValueString>(WwiseWaapiHelper::MAX_RADIUS_ATTENUATION)
 				});
 
-#if AK_SUPPORT_WAAPI
 				TSharedPtr<FJsonObject> result;
 				if (waapiClient->Call(ak::wwise::core::object::get, args, options, result, 500, true))
 				{
@@ -66,7 +65,6 @@ namespace FAkComponentVisualizer_Helper
 						}
 					}
 				}
-#endif
 			}
 		}
 

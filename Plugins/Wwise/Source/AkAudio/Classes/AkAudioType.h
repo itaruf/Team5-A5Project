@@ -15,12 +15,8 @@ Copyright (c) 2021 Audiokinetic Inc.
 
 #pragma once
 
-
-#include "AkInclude.h"
 #include "UObject/Object.h"
-#include "Wwise/Info/WwiseBasicInfo.h"
-#include "Wwise/WwiseExternalSourceManager.h"
-
+#include "AkInclude.h"
 #include "AkAudioType.generated.h"
 
 UCLASS()
@@ -29,36 +25,33 @@ class AKAUDIO_API UAkAudioType : public UObject
 	GENERATED_BODY()
 
 public:
-
-UPROPERTY(VisibleAnywhere, Category = "AkAudioType|Behaviour")
-bool bAutoLoad = true;
-
-// Deprecated ID properties used in migration
 #if WITH_EDITORONLY_DATA
-	UPROPERTY(Transient, AssetRegistrySearchable)
-	FGuid WwiseGuid;
-
-	UPROPERTY(meta=(Deprecated))
-	FGuid ID_DEPRECATED;
-
-	UPROPERTY(meta=(Deprecated))
-	uint32 ShortID_DEPRECATED;
+	UPROPERTY(VisibleAnywhere, AssetRegistrySearchable, Category = "AkAudioType")
+	FGuid ID;
 #endif
-	
+
+#if WITH_EDITOR
+	bool bChangedDuringReset = false;
+	virtual void Reset(TArray<FAssetData>& InOutAssetsToDelete);
+#endif
+
+	UPROPERTY(VisibleAnywhere, AssetRegistrySearchable, Category="AkAudioType")
+	uint32 ShortID;
+
 	UPROPERTY(EditAnywhere, Category = "AkAudioType")
 	TArray<UObject*> UserData;
 
+	void PostLoad() override;
+
+	virtual void LoadBank();
+
+	void ValidateShortId(bool bMarkAsDirty);
+	bool ShortIdMatchesName(AkUInt32& OutIdFromName);
+	void SetShortId(const AkUInt32& IdFromName, bool bMarkAsDirty);
+	
+	void MarkDirtyInGameThread();
+
 public:
-	void Serialize(FArchive& Ar) override;
-	virtual void LoadData()   {}
-	virtual void ReloadData() {}
-	virtual void UnloadData() {}
-	void LogSerializationState(const FArchive& Ar);
-	virtual AkUInt32 GetShortID() {return 0;}
-
-	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|AkAudioType")
-	int32 GetWwiseShortID() {return GetShortID();}
-
 	template<typename T>
 	T* GetUserData()
 	{
@@ -72,23 +65,4 @@ public:
 
 		return nullptr;
 	}
-	
-#if WITH_EDITORONLY_DATA
-	virtual FWwiseBasicInfo* GetInfoMutable();
-	virtual void BeginCacheForCookedPlatformData(const ITargetPlatform* TargetPlatform) override;
-
-	template <class InfoType>
-	InfoType GetValidatedInfo(const InfoType& InInfo)
-	{
-		InfoType TempInfo(InInfo);
-		ValidateShortID(TempInfo);
-		return TempInfo;
-	}
-#endif
-
-protected:
-#if WITH_EDITORONLY_DATA
-	virtual void MigrateIds();
-	void ValidateShortID(FWwiseBasicInfo& WwiseInfo) const;
-#endif
 };

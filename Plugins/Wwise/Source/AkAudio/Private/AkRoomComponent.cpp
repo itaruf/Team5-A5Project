@@ -31,7 +31,6 @@ Copyright (c) 2021 Audiokinetic Inc.
 #include "EngineUtils.h"
 #include "AkAudioEvent.h"
 #include "AkSettings.h"
-#include "Wwise/LowLevel/WwiseLowLevelSpatialAudio.h"
 #if WITH_EDITOR
 #include "AkDrawRoomComponent.h"
 #include "AkSpatialAudioHelper.h"
@@ -84,7 +83,7 @@ bool UAkRoomComponent::HasEffectOnLocation(const FVector& Location) const
 
 bool UAkRoomComponent::RoomIsActive() const
 { 
-	return IsValid(Parent) && bEnable && !IsRunningCommandlet();
+	return IsValid(Parent) && bEnable && FAkAudioDevice::IsAudioAllowed();
 }
 
 void UAkRoomComponent::OnRegister()
@@ -316,23 +315,32 @@ void UAkRoomComponent::InitializeParent()
 	}
 }
 
-FString UAkRoomComponent::GetRoomName()
-{
-	FString nameStr = UObject::GetName();
-	AActor* roomOwner = GetOwner();
-	if (roomOwner == nullptr || Parent == nullptr)
-		return FString();
-	nameStr = roomOwner->GetName();
-	TInlineComponentArray<UAkRoomComponent*> RoomComponents;
-	roomOwner->GetComponents(RoomComponents);
-	if (RoomComponents.Num() > 1)
-		nameStr.Append(FString("_").Append(Parent->GetName()));
-	return nameStr;
-}
-
 void UAkRoomComponent::GetRoomParams(AkRoomParams& outParams)
 {
-	TArray<AAkAcousticPortal*> IntersectingPortals;
+	FString nameStr = UObject::GetName();
+
+	AActor* roomOwner = GetOwner();
+	if (roomOwner != nullptr)
+	{
+#if WITH_EDITOR
+		nameStr = roomOwner->GetActorLabel();
+#else
+		nameStr = roomOwner->GetName();
+#endif
+		if (Parent != nullptr)
+		{
+			// ensures unique and meaningful names when we have multiple rooms in the same actor.
+#if UE_4_24_OR_LATER
+			TInlineComponentArray<UAkRoomComponent*> RoomComponents;
+			roomOwner->GetComponents(RoomComponents);
+			if (RoomComponents.Num() > 1)
+				nameStr.Append(FString("_").Append(Parent->GetName()));
+#else
+			if (roomOwner->GetComponentsByClass(UAkRoomComponent::StaticClass()).Num() > 1)
+				nameStr.Append(FString("_").Append(Parent->GetName()));
+#endif
+		}
+	}
 
 	FAkAudioDevice* AkAudioDevice = FAkAudioDevice::Get();
 	if (!AkAudioDevice)
@@ -343,6 +351,12 @@ void UAkRoomComponent::GetRoomParams(AkRoomParams& outParams)
 		AkComponentHelpers::GetPrimitiveUpAndFront(*Parent, outParams.Up, outParams.Front);
 	}
 
+	// This ensures that src stays alive until the end of the function compared to TCHAR_TO_ANSI which erased it just after the Get()
+	auto src = StringCast<ANSICHAR>(static_cast<const TCHAR*>(*nameStr));
+	outParams.strName = src.Get();
+	// moving the ownership to spatial audio because src is erased at the end of the function, but params.strName needs to stay alive
+	outParams.strName.AllocCopy();
+
 	outParams.TransmissionLoss = WallOcclusion;
 
 	UAkLateReverbComponent* ReverbComp = nullptr;
@@ -350,20 +364,12 @@ void UAkRoomComponent::GetRoomParams(AkRoomParams& outParams)
 		ReverbComp = AkComponentHelpers::GetChildComponentOfType<UAkLateReverbComponent>(*Parent);
 	if (ReverbComp && ReverbComp->bEnable)
 	{
-		if (UNLIKELY(!ReverbComp->AuxBus && ReverbComp->AuxBusName.IsEmpty()))
-		{
-			UE_CLOG(!ReverbComp->AutoAssignAuxBus, LogAkAudio, Warning, TEXT("Enabled Late Reverb component for room %s without an assigned Late Reverb Aux Bus"), *GetRoomName());
-			outParams.ReverbAuxBus = AK_INVALID_AUX_ID;
-		}
-		else
-		{
-			outParams.ReverbAuxBus = ReverbComp->GetAuxBusId();
-		}
+		outParams.ReverbAuxBus = ReverbComp->GetAuxBusId();
 		outParams.ReverbLevel = ReverbComp->SendLevel;
 	}
 
 	if (GeometryComponent != nullptr)
-		outParams.GeometryInstanceID = GeometryComponent->GetGeometrySetID();
+		outParams.GeometryID = GeometryComponent->GetGeometrySetID();
 	
 	outParams.RoomGameObj_AuxSendLevelToSelf = AuxSendLevel;
 	outParams.RoomGameObj_KeepRegistered = AkAudioEvent == NULL && EventName.IsEmpty() ? false : true;
@@ -384,12 +390,11 @@ void UAkRoomComponent::AddSpatialAudioRoom()
 		SendGeometry();
 
 		FAkAudioDevice* AkAudioDevice = FAkAudioDevice::Get();
-		FWwiseLowLevelSpatialAudio* SpatialAudio = FWwiseLowLevelSpatialAudio::Get();
-		if (AkAudioDevice && SpatialAudio)
+		if (AkAudioDevice)
 		{
-			AkRoomParams Params;
-			GetRoomParams(Params);
-			AkAudioDevice->AddRoom(this, Params);
+			AkRoomParams params;
+			GetRoomParams(params);
+			AkAudioDevice->AddRoom(this, params);
 			IsRegisteredWithWwise = true;
 			if (GetOwner() != nullptr && Parent != nullptr && IsRegisteredWithWwise && (GetWorld()->WorldType == EWorldType::Game || GetWorld()->WorldType == EWorldType::PIE))
 			{
@@ -404,12 +409,11 @@ void UAkRoomComponent::AddSpatialAudioRoom()
 void UAkRoomComponent::UpdateSpatialAudioRoom()
 {
 	FAkAudioDevice* AkAudioDevice = FAkAudioDevice::Get();
-	FWwiseLowLevelSpatialAudio* SpatialAudio = FWwiseLowLevelSpatialAudio::Get();
-	if (RoomIsActive() && AkAudioDevice && SpatialAudio && IsRegisteredWithWwise)
+	if (RoomIsActive() && AkAudioDevice && IsRegisteredWithWwise)
 	{
-		AkRoomParams Params;
-		GetRoomParams(Params);
-		AkAudioDevice->UpdateRoom(this, Params);
+		AkRoomParams params;
+		GetRoomParams(params);
+		AkAudioDevice->UpdateRoom(this, params);
 		if (GetOwner() != nullptr && Parent != nullptr && (GetWorld()->WorldType == EWorldType::Game || GetWorld()->WorldType == EWorldType::PIE))
 		{
 			UAkLateReverbComponent* pRvbComp = AkComponentHelpers::GetChildComponentOfType<UAkLateReverbComponent>(*Parent);
@@ -421,7 +425,7 @@ void UAkRoomComponent::UpdateSpatialAudioRoom()
 
 void UAkRoomComponent::RemoveSpatialAudioRoom()
 {
-	if (Parent && !IsRunningCommandlet())
+	if (Parent && FAkAudioDevice::IsAudioAllowed())
 	{
 		RemoveGeometry();
 
@@ -439,33 +443,33 @@ void UAkRoomComponent::RemoveSpatialAudioRoom()
 	}
 }
 
-int32 UAkRoomComponent::PostAssociatedAkEvent(int32 CallbackMask, const FOnAkPostEventCallback& PostEventCallback)
+int32 UAkRoomComponent::PostAssociatedAkEvent(int32 CallbackMask, const FOnAkPostEventCallback& PostEventCallback, const TArray<FAkExternalSourceInfo>& ExternalSources)
 {
 	AkPlayingID playingID = AK_INVALID_PLAYING_ID;
 
 	if (!HasActiveEvents())
-		playingID = PostAkEvent(AkAudioEvent, CallbackMask, PostEventCallback, EventName);
+		playingID = PostAkEvent(AkAudioEvent, CallbackMask, PostEventCallback, ExternalSources, EventName);
 
 	return playingID;
 }
 
 AkPlayingID UAkRoomComponent::PostAkEventByNameWithDelegate(
-	UAkAudioEvent* AkEvent,
 	const FString& in_EventName,
-	int32 CallbackMask, const FOnAkPostEventCallback& PostEventCallback)
+	int32 CallbackMask,
+	const FOnAkPostEventCallback& PostEventCallback,
+	const TArray<FAkExternalSourceInfo>& ExternalSources)
 {
-	AkPlayingID PlayingID = AK_INVALID_PLAYING_ID;
+	AkPlayingID playingID = AK_INVALID_PLAYING_ID;
 
 	auto AudioDevice = FAkAudioDevice::Get();
 	if (AudioDevice)
 	{
-		const AkUInt32 ShortID = AudioDevice->GetShortID(AkEvent, in_EventName);
-		PlayingID = AudioDevice->PostEventOnAkGameObject(ShortID, this, PostEventCallback, CallbackMask);
-		if (PlayingID != AK_INVALID_PLAYING_ID)
+		playingID = AudioDevice->PostEvent(in_EventName, this, PostEventCallback, CallbackMask);
+		if (playingID != AK_INVALID_PLAYING_ID)
 			bStarted = true;
 	}
 
-	return PlayingID;
+	return playingID;
 }
 
 void UAkRoomComponent::BeginPlay()
@@ -520,7 +524,7 @@ void UAkRoomComponent::BeginPlayInternal()
 	if (AutoPost)
 	{
 		if (!HasActiveEvents())
-			PostAssociatedAkEvent(0, FOnAkPostEventCallback());
+			PostAssociatedAkEvent(0, FOnAkPostEventCallback(), TArray<FAkExternalSourceInfo>());
 	}
 }
 
@@ -577,18 +581,12 @@ void UAkRoomComponent::SendGeometry()
 		UAkGeometryComponent* GeometryComp = Cast<UAkGeometryComponent>(GeometryComponent);
 		if (GeometryComp && GeometryComp->bWasAddedByRoom)
 		{
-			if (!GeometryComp->GetGeometryHasBeenSent())
-				GeometryComp->SendGeometry();
-			if (!GeometryComp->GetGeometryInstanceHasBeenSent())
-				GeometryComp->UpdateGeometry();
+			GeometryComp->SendGeometry();
 		}
 		UAkSurfaceReflectorSetComponent* SurfaceReflector = Cast<UAkSurfaceReflectorSetComponent>(GeometryComponent);
 		if (SurfaceReflector && !SurfaceReflector->bEnableSurfaceReflectors)
 		{
-			if (!SurfaceReflector->GetGeometryHasBeenSent())
-				SurfaceReflector->SendSurfaceReflectorSet();
-			if (!SurfaceReflector->GetGeometryInstanceHasBeenSent())
-				SurfaceReflector->UpdateSurfaceReflectorSet();
+			SurfaceReflector->SendSurfaceReflectorSet();
 		}
 	}
 }

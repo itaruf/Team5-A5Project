@@ -20,7 +20,6 @@ Copyright (c) 2021 Audiokinetic Inc.
 #pragma once
 
 #include "AkAudioDevice.h"
-#include "AkGameplayTypes.h"
 #include "Components/SceneComponent.h"
 #include "AkGameObject.generated.h"
 
@@ -28,11 +27,9 @@ Copyright (c) 2021 Audiokinetic Inc.
 UCLASS(ClassGroup=Audiokinetic, BlueprintType, Blueprintable, hidecategories=(Transform,Rendering,Mobility,LOD,Component,Activation), AutoExpandCategories=AkComponent, meta=(BlueprintSpawnableComponent))
 class AKAUDIO_API UAkGameObject: public USceneComponent
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 
 public:
-	UAkGameObject(const class FObjectInitializer& ObjectInitializer);
-
 	/** Wwise Event to be posted on this game object */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AkEvent")
 	UAkAudioEvent* AkAudioEvent;
@@ -47,22 +44,30 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category="Audiokinetic|AkGameObject", meta = (AdvancedDisplay = "2", AutoCreateRefTerm = "PostEventCallback,ExternalSources"))
 	virtual int32 PostAssociatedAkEvent(
 		UPARAM(meta = (Bitmask, BitmaskEnum = EAkCallbackType)) int32 CallbackMask,
-		const FOnAkPostEventCallback& PostEventCallback);
+		const FOnAkPostEventCallback& PostEventCallback,
+		const TArray<FAkExternalSourceInfo>& ExternalSources
+	);
 
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic|AkGameObject", meta = (AutoCreateRefTerm = "PostEventCallback,ExternalSources", Latent, LatentInfo = "LatentInfo", WorldContext = "WorldContextObject"))
 	virtual void PostAssociatedAkEventAsync(const UObject* WorldContextObject,
 		UPARAM(meta = (Bitmask, BitmaskEnum = EAkCallbackType)) int32 CallbackMask,
 		const FOnAkPostEventCallback& PostEventCallback,
+		const TArray<FAkExternalSourceInfo>& ExternalSources,
 		FLatentActionInfo LatentInfo,
 		int32& PlayingID);
+
+	AK_DEPRECATED(2019.1.2, "This function is deprecated and will be removed in future releases.")
+	virtual int32 PostAssociatedAkEvent(
+		UPARAM(meta = (Bitmask, BitmaskEnum = EAkCallbackType)) int32 CallbackMask,
+		const FOnAkPostEventCallback& PostEventCallback
+	);
 
 	/**
 	 * Posts an event to Wwise, using this as the game object source
 	 *
-	 * @param AkEvent			The event to post
-	 * @param CallbackMask		Mask of desired callbacks
+	 * @param AkEvent		The event to post
+	 * @param CallbackMask	Mask of desired callbacks
 	 * @param PostEventCallback	Blueprint Event to execute on callback
-	 * @param InEventName		If AkEvent is not set, this is used 
 	 *
 	 */
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic|AkGameObject", meta = (AdvancedDisplay = "1", AutoCreateRefTerm = "PostEventCallback,ExternalSources"))
@@ -70,7 +75,8 @@ public:
 		class UAkAudioEvent * AkEvent,
 		UPARAM(meta = (Bitmask, BitmaskEnum = EAkCallbackType)) int32 CallbackMask,
 		const FOnAkPostEventCallback& PostEventCallback,
-		const FString& InEventName
+		const TArray<FAkExternalSourceInfo>& ExternalSources,
+		const FString& in_EventName
 	);
 
 	/**
@@ -87,7 +93,16 @@ public:
 			int32& PlayingID,
 			UPARAM(meta = (Bitmask, BitmaskEnum = EAkCallbackType)) int32 CallbackMask,
 			const FOnAkPostEventCallback& PostEventCallback,
+			const TArray<FAkExternalSourceInfo>& ExternalSources,
 			FLatentActionInfo LatentInfo
+	);
+
+	AK_DEPRECATED(2019.1.2, "This function is deprecated and will be removed in future releases.")
+	virtual int32 PostAkEvent(
+		class UAkAudioEvent * AkEvent,
+		UPARAM(meta = (Bitmask, BitmaskEnum = EAkCallbackType)) int32 CallbackMask,
+		const FOnAkPostEventCallback& PostEventCallback,
+		const FString& in_EventName
 	);
 
 	/**
@@ -97,15 +112,16 @@ public:
 	virtual void Stop();
 
 	virtual AkPlayingID PostAkEventByNameWithDelegate(
-		UAkAudioEvent* AkEvent,
-		const FString& InEventName,
-		int32 CallbackMask, 
-		const FOnAkPostEventCallback& PostEventCallback);
+		const FString& in_EventName,
+		int32 CallbackMask,
+		const FOnAkPostEventCallback& PostEventCallback,
+		const TArray<FAkExternalSourceInfo>& ExternalSources = TArray<FAkExternalSourceInfo>());
 
 	virtual void PostAkEventAsyncByEvent(const UObject* WorldContextObject,
 		class UAkAudioEvent* AkEvent,
 		int32 CallbackMask,
 		const FOnAkPostEventCallback& PostEventCallback,
+		const TArray<FAkExternalSourceInfo>& ExternalSources,
 		FLatentActionInfo LatentInfo,
 		int32& PlayingID
 	);
@@ -135,7 +151,7 @@ public:
 	void GetRTPCValue(FString RTPC, int32 PlayingID, ERTPCValueType InputValueType, float& Value, ERTPCValueType& OutputValueType) const;
 
 #if CPP
-	bool VerifyEventName(const FString& InEventName) const;
+	bool VerifyEventName(const FString& in_EventName) const;
 	bool AllowAudioPlayback() const;
 	AkGameObjectID GetAkGameObjectID() const;
 	virtual void UpdateOcclusionObstruction() {};
@@ -143,7 +159,7 @@ public:
 #endif
 
 	bool HasBeenRegisteredWithWwise() const { return IsRegisteredWithWwise; }
-	void SetStarted(bool bInStarted) {bStarted = bInStarted;}
+
 protected:
 	/** Whether an event was posted on the game object. Never reset to false. */
 	bool bStarted;

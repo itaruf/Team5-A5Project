@@ -27,16 +27,13 @@ public:
 
 	uint32 KeyHash;
 
-	bool HasExternalSources = false;
-
 	IAkUserEventCallbackPackage()
 		: uUserFlags(0)
 	{}
 
-	IAkUserEventCallbackPackage(uint32 in_Flags, uint32 in_Hash, bool in_HasExternalSources)
+	IAkUserEventCallbackPackage(uint32 in_Flags, uint32 in_Hash)
 		: uUserFlags(in_Flags)
 		, KeyHash(in_Hash)
-		, HasExternalSources(in_HasExternalSources)
 	{}
 
 	virtual ~IAkUserEventCallbackPackage() {}
@@ -48,8 +45,8 @@ public:
 class FAkFunctionPtrEventCallbackPackage : public IAkUserEventCallbackPackage
 {
 public:
-	FAkFunctionPtrEventCallbackPackage(AkCallbackFunc CbFunc, void* Cookie, uint32 Flags, uint32 in_Hash, bool in_HasExternalSources)
-		: IAkUserEventCallbackPackage(Flags, in_Hash, in_HasExternalSources)
+	FAkFunctionPtrEventCallbackPackage(AkCallbackFunc CbFunc, void* Cookie, uint32 Flags, uint32 in_Hash)
+		: IAkUserEventCallbackPackage(Flags, in_Hash)
 		, pfnUserCallback(CbFunc)
 		, pUserCookie(Cookie)
 	{}
@@ -69,8 +66,8 @@ private:
 class FAkBlueprintDelegateEventCallbackPackage : public IAkUserEventCallbackPackage
 {
 public:
-	FAkBlueprintDelegateEventCallbackPackage(FOnAkPostEventCallback PostEventCallback, uint32 Flags, uint32 in_Hash, bool in_HasExternalSources)
-		: IAkUserEventCallbackPackage(Flags, in_Hash, in_HasExternalSources)
+	FAkBlueprintDelegateEventCallbackPackage(FOnAkPostEventCallback PostEventCallback, uint32 Flags, uint32 in_Hash)
+		: IAkUserEventCallbackPackage(Flags, in_Hash)
 		, BlueprintCallback(PostEventCallback)
 	{}
 
@@ -84,8 +81,8 @@ private:
 class FAkLatentActionEventCallbackPackage : public IAkUserEventCallbackPackage
 {
 public:
-	FAkLatentActionEventCallbackPackage(FWaitEndOfEventAction* LatentAction, uint32 in_Hash, bool in_HasExternalSources)
-		: IAkUserEventCallbackPackage(AK_EndOfEvent, in_Hash, in_HasExternalSources)
+	FAkLatentActionEventCallbackPackage(FWaitEndOfEventAction* LatentAction, uint32 in_Hash)
+		: IAkUserEventCallbackPackage(AK_EndOfEvent, in_Hash)
 		, EndOfEventLatentAction(LatentAction)
 	{
 		LatentActionValidityToken = MakeShared<FPendingLatentActionValidityToken, ESPMode::ThreadSafe>();
@@ -112,9 +109,9 @@ public:
 	FAkComponentCallbackManager();
 	~FAkComponentCallbackManager();
 
-	IAkUserEventCallbackPackage* CreateCallbackPackage(AkCallbackFunc in_cbFunc, void* in_Cookie, uint32 in_Flags, AkGameObjectID in_gameObjID, bool HasExternalSources);
-	IAkUserEventCallbackPackage* CreateCallbackPackage(FOnAkPostEventCallback BlueprintCallback, uint32 in_Flags, AkGameObjectID in_gameObjID, bool HasExternalSources);
-	IAkUserEventCallbackPackage* CreateCallbackPackage(FWaitEndOfEventAction* LatentAction, AkGameObjectID in_gameObjID, bool HasExternalSources);
+	IAkUserEventCallbackPackage* CreateCallbackPackage(AkCallbackFunc in_cbFunc, void* in_Cookie, uint32 in_Flags, AkGameObjectID in_gameObjID);
+	IAkUserEventCallbackPackage* CreateCallbackPackage(FOnAkPostEventCallback BlueprintCallback, uint32 in_Flags, AkGameObjectID in_gameObjID);
+	IAkUserEventCallbackPackage* CreateCallbackPackage(FWaitEndOfEventAction* LatentAction, AkGameObjectID in_gameObjID);
 	void RemoveCallbackPackage(IAkUserEventCallbackPackage* in_Package, AkGameObjectID in_gameObjID);
 
 	void CancelEventCallback(void* in_Cookie);

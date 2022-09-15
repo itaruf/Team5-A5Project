@@ -17,6 +17,8 @@ Copyright (c) 2021 Audiokinetic Inc.
 
 #include "CoreMinimal.h"
 #include "UObject/ObjectMacros.h"
+#include "Layout/Margin.h"
+#include "Styling/SlateColor.h"
 #include "Styling/SlateTypes.h"
 #include "Widgets/SWidget.h"
 #include "Components/ContentWidget.h"
@@ -28,6 +30,8 @@ Copyright (c) 2021 Audiokinetic Inc.
 class SCheckBox;
 class USlateBrushAsset;
 class USlateWidgetStyleAsset;
+
+DECLARE_LOG_CATEGORY_EXTERN(LogAkCheckBoxUMG, Log, All);
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam( FAkOnCheckBoxComponentStateChanged, bool, bIsChecked );
 
@@ -48,11 +52,9 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnBoolPropertyDropDetected, FString
 UCLASS(config = Editor, defaultconfig)
 class AKAUDIO_API UAkCheckBox : public UContentWidget, public SCompoundWidget
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 
 public:
-	UAkCheckBox(const FObjectInitializer& ObjectInitializer);
-
 	/** Whether the check box is currently in a checked state */
 	UPROPERTY(EditAnywhere, Category=Appearance)
 	ECheckBoxState CheckedState;

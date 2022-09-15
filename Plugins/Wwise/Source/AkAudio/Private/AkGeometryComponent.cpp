@@ -37,6 +37,8 @@ Copyright (c) 2021 Audiokinetic Inc.
 #include "ChaosLog.h"
 #endif
 
+#include <AK/SpatialAudio/Common/AkSpatialAudio.h>
+
 #if WITH_EDITOR
 #include "Editor.h"
 #endif
@@ -50,9 +52,6 @@ static const float kVertexNear = 0.0001;
 UAkGeometryComponent::UAkGeometryComponent(const class FObjectInitializer& ObjectInitializer) :
 	Super(ObjectInitializer)
 {
-	// Property initialization
-	bWantsOnUpdateTransform = true;
-
 	MeshType = AkMeshType::StaticMesh;
 	LOD = 0;
 	CollisionMeshSurfaceOverride.AcousticTexture = nullptr;
@@ -132,7 +131,13 @@ void UAkGeometryComponent::BeginPlayInternal()
 	for (int PosIndex = 0; PosIndex < GeometryData.Surfaces.Num(); ++PosIndex)
 	{
 		// set geometry surface names and update textures
-		GeometryData.Surfaces[PosIndex].Name = GetOwner()->GetName() + GetName() + FString::FromInt(PosIndex);
+		FString OwnerName;
+#if WITH_EDITOR
+		OwnerName = GetOwner()->GetActorLabel();
+#else
+		OwnerName = GetOwner()->GetName();
+#endif
+		GeometryData.Surfaces[PosIndex].Name = OwnerName + GetName() + FString::FromInt(PosIndex);
 
 		UPhysicalMaterial* physMat = GeometryData.ToOverrideAcousticTexture[PosIndex];
 		if (physMat)
@@ -141,7 +146,7 @@ void UAkGeometryComponent::BeginPlayInternal()
 			if (GetDefault<UAkSettings>()->GetAssociatedAcousticTexture(physMat, acousticTexture))
 			{
 				if (acousticTexture)
-					GeometryData.Surfaces[PosIndex].Texture =  acousticTexture->GetShortID();
+					GeometryData.Surfaces[PosIndex].Texture = FAkAudioDevice::GetIDFromString(acousticTexture->GetName());
 			}
 		}
 
@@ -156,7 +161,6 @@ void UAkGeometryComponent::BeginPlayInternal()
 		}
 	}
 
-	SendGeometry();
 	UpdateGeometry();
 	RecalculateHFDamping();
 }
@@ -478,7 +482,7 @@ void UAkGeometryComponent::ConvertStaticMesh(UStaticMeshComponent* StaticMeshCom
 		}
 
 		if (surfaceOverride.AcousticTexture)
-			Surface.Texture = surfaceOverride.AcousticTexture->GetShortID();
+			Surface.Texture = FAkAudioDevice::GetIDFromString(surfaceOverride.AcousticTexture->GetName());
 
 		if (surfaceOverride.bEnableOcclusionOverride)
 			Surface.Occlusion = surfaceOverride.OcclusionValue;
@@ -824,7 +828,7 @@ void UAkGeometryComponent::ConvertCollisionMesh(UPrimitiveComponent* PrimitiveCo
 	FAkGeometrySurfaceOverride surfaceOverride = CollisionMeshSurfaceOverride;
 
 	if (surfaceOverride.AcousticTexture)
-		Surface.Texture = surfaceOverride.AcousticTexture->GetShortID();
+		Surface.Texture = FAkAudioDevice::GetIDFromString(surfaceOverride.AcousticTexture->GetName());
 	else
 		physMatTexture = physicalMaterial;
 
@@ -849,14 +853,6 @@ void UAkGeometryComponent::ConvertCollisionMesh(UPrimitiveComponent* PrimitiveCo
 		extent.X = box.X / 2;
 		extent.Y = box.Y / 2;
 		extent.Z = box.Z / 2;
-
-		if ((extent.Z == 0.0f && (extent.X == 0.0f || extent.Y == 0.0f))
-			|| (extent.Y == 0.0f && (extent.X == 0.0f || extent.Z == 0.0f))
-			|| (extent.X == 0.0f && (extent.Y == 0.0f || extent.Z == 0.0f)))
-		{
-			UE_LOG(LogAkAudio, Warning, TEXT("%s: UAkGeometryComponent::ConvertCollisionMesh: Unable to add box geometry for box index %i as the box contains no triangles. The box will be skipped."), *GetOwner()->GetName(), i);
-			continue;
-		}
 
 		GeometryData.AddBox(surfIdx, box.Center, extent, box.Rotation);
 	}
@@ -922,31 +918,36 @@ void UAkGeometryComponent::SendGeometry()
 	{
 		if (GeometryData.Triangles.Num() > 0 && GeometryData.Vertices.Num() > 0)
 		{
+			// TCHAR_TO_ANSI causes issues with AddressSanitizer on PS5, so we use TCHAR_TO_WCHAR below
+			// when converting the surface names from FString.
+			// AK::SpatialAudio::String takes care of wchar* - char* conversion, which is why we temporarily
+			// add the wchar* strings to this array in order to convert them to char* before assigning them.
+			TArray<AK::SpatialAudio::String> convertedSurfaceNames;
+
 			AkGeometryParams params;
 			params.NumSurfaces = GeometryData.Surfaces.Num();
 			params.NumTriangles = GeometryData.Triangles.Num();
 			params.NumVertices = GeometryData.Vertices.Num();
 			
-			TArray<AkAcousticSurface> Surfaces;
-			TArray< TSharedPtr< decltype(StringCast<ANSICHAR>(TEXT(""))) > > SurfaceNames;
-			Surfaces.SetNum(params.NumSurfaces);
-			SurfaceNames.SetNum(params.NumSurfaces);
-
+			TUniquePtr<AkAcousticSurface[]> Surfaces; // temp surface buffer
 			if (params.NumSurfaces) 
 			{
+				Surfaces = MakeUnique<AkAcousticSurface[]>(params.NumSurfaces);
 				for (int i = 0; i < params.NumSurfaces; ++i)
 				{
 					Surfaces[i].transmissionLoss = GeometryData.Surfaces[i].Occlusion;
 					Surfaces[i].strName = nullptr;
 					if (!GeometryData.Surfaces[i].Name.IsEmpty())
 					{
-						SurfaceNames[i] = MakeShareable(new decltype(StringCast<ANSICHAR>(TEXT("")))(*GeometryData.Surfaces[i].Name));
-						Surfaces[i].strName = SurfaceNames[i].Get()->Get();
+						AK::SpatialAudio::String AkStrName(TCHAR_TO_WCHAR(*GeometryData.Surfaces[i].Name));
+						int Idx = convertedSurfaceNames.Add(AkStrName);
+						convertedSurfaceNames[Idx].AllocCopy();
+						Surfaces[i].strName = convertedSurfaceNames[Idx].Get();
 					}
 					Surfaces[i].textureID = GeometryData.Surfaces[i].Texture;
 				}
 			}
-			params.Surfaces = Surfaces.GetData();
+			params.Surfaces = Surfaces.Get();
 
 			TUniquePtr<AkTriangle[]> Triangles = MakeUnique<AkTriangle[]>(params.NumTriangles);// temp triangle buffer
 			for (int i = 0; i < params.NumTriangles; ++i)
@@ -971,10 +972,19 @@ void UAkGeometryComponent::SendGeometry()
 			params.EnableDiffractionOnBoundaryEdges = bEnableDiffractionOnBoundaryEdges;
 			params.EnableTriangles = !bWasAddedByRoom;
 
+			if (AssociatedRoom)
+			{
+				UAkRoomComponent* room = Cast<UAkRoomComponent>(AssociatedRoom->GetComponentByClass(UAkRoomComponent::StaticClass()));
+
+				if (room != nullptr)
+					params.RoomID = room->GetRoomID();
+			}
+
 			SendGeometryToWwise(params);
 		}
 	}
 }
+
 
 void UAkGeometryComponent::RemoveGeometry()
 {
@@ -983,20 +993,8 @@ void UAkGeometryComponent::RemoveGeometry()
 
 void UAkGeometryComponent::UpdateGeometry()
 {
-	if (Parent)
-	{
-		AkRoomID roomID = AkRoomID();
-
-		if (AssociatedRoom)
-		{
-			UAkRoomComponent* room = Cast<UAkRoomComponent>(AssociatedRoom->GetComponentByClass(UAkRoomComponent::StaticClass()));
-
-			if (room != nullptr)
-				roomID = room->GetRoomID();
-		}
-
-		SendGeometryInstanceToWwise(Parent->GetComponentRotation(), Parent->GetComponentLocation(), Parent->GetComponentTransform().GetScale3D(), roomID);
-	}
+	UpdateGeometryTransform();
+	SendGeometry();
 }
 
 void UAkGeometryComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -1064,13 +1062,11 @@ void UAkGeometryComponent::PostEditChangeProperty(FPropertyChangedEvent& Propert
 		PropertyChangedEvent.ChangeType == EPropertyChangeType::ValueSet)
 	{
 		ConvertMesh();
-		SendGeometry();
 		UpdateGeometry();
 	}
 	else if (memberPropertyName == GET_MEMBER_NAME_CHECKED(UAkGeometryComponent, bEnableDiffraction) ||
 			memberPropertyName == GET_MEMBER_NAME_CHECKED(UAkGeometryComponent, bEnableDiffractionOnBoundaryEdges))
 	{
-		SendGeometry();
 		UpdateGeometry();
 	}
 }
@@ -1187,7 +1183,7 @@ void UAkGeometryComponent::GetTexturesAndSurfaceAreas(TArray<FAkAcousticTextureP
 		{
 			if (CollisionMeshSurfaceOverride.AcousticTexture != nullptr)
 			{
-				const FAkAcousticTextureParams* params = AkSettings->GetTextureParams(CollisionMeshSurfaceOverride.AcousticTexture->AcousticTextureCookedData.ShortId);
+				const FAkAcousticTextureParams* params = AkSettings->GetTextureParams(CollisionMeshSurfaceOverride.AcousticTexture->ShortID);
 				if (params != nullptr)
 				{
 					textures.Add(*params);
@@ -1208,7 +1204,7 @@ void UAkGeometryComponent::GetTexturesAndSurfaceAreas(TArray<FAkAcousticTextureP
 					surfaceAreas.Add(surfaceArea);
 					if (surface.AcousticTexture != nullptr)
 					{
-						const FAkAcousticTextureParams* params = AkSettings->GetTextureParams(surface.AcousticTexture->AcousticTextureCookedData.ShortId);
+						const FAkAcousticTextureParams* params = AkSettings->GetTextureParams(surface.AcousticTexture->ShortID);
 						if (params != nullptr)
 						{
 							textures.Add(*params);
@@ -1222,6 +1218,17 @@ void UAkGeometryComponent::GetTexturesAndSurfaceAreas(TArray<FAkAcousticTextureP
 				}
 			}
 		}
+	}
+}
+void UAkGeometryComponent::UpdateGeometryTransform()
+{
+	FTransform ParentToWorld = FTransform::Identity;
+	if (Parent != nullptr)
+		ParentToWorld = Parent->GetComponentTransform();
+
+	for (auto& vertex : GeometryData.Vertices)
+	{
+		vertex = ParentToWorld.TransformPosition(vertex);
 	}
 }
 
@@ -1251,7 +1258,7 @@ bool UAkGeometryComponent::ContainsTexture(const FGuid& textureID)
 	if (MeshType == AkMeshType::CollisionMesh)
 	{
 		if (CollisionMeshSurfaceOverride.AcousticTexture != nullptr)
-			return CollisionMeshSurfaceOverride.AcousticTexture->AcousticTextureInfo.AssetGuid == textureID;
+			return CollisionMeshSurfaceOverride.AcousticTexture->ID == textureID;
 	}
 	else
 	{
@@ -1259,7 +1266,7 @@ bool UAkGeometryComponent::ContainsTexture(const FGuid& textureID)
 		{
 			if (it.Value().AcousticTexture != nullptr)
 			{
-				if (it.Value().AcousticTexture->AcousticTextureInfo.AssetGuid == textureID)
+				if (it.Value().AcousticTexture->ID == textureID)
 					return true;
 			}
 		}
@@ -1272,7 +1279,7 @@ void UAkGeometryComponent::RegisterAllTextureParamCallbacks()
 	if (MeshType == AkMeshType::CollisionMesh)
 	{
 		if (CollisionMeshSurfaceOverride.AcousticTexture != nullptr)
-			RegisterTextureParamChangeCallback(CollisionMeshSurfaceOverride.AcousticTexture->AcousticTextureInfo.AssetGuid);
+			RegisterTextureParamChangeCallback(CollisionMeshSurfaceOverride.AcousticTexture->ID);
 	}
 	else
 	{
@@ -1280,7 +1287,7 @@ void UAkGeometryComponent::RegisterAllTextureParamCallbacks()
 		{
 			if (it.Value().AcousticTexture != nullptr)
 			{
-				RegisterTextureParamChangeCallback(it.Value().AcousticTexture->AcousticTextureInfo.AssetGuid);
+				RegisterTextureParamChangeCallback(it.Value().AcousticTexture->ID);
 			}
 		}
 	}

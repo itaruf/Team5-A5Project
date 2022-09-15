@@ -21,7 +21,8 @@ under the Apache License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 OR CONDITIONS OF ANY KIND, either express or implied. See the Apache License for
 the specific language governing permissions and limitations under the License.
 
-  Copyright (c) 2022 Audiokinetic Inc.
+  Version: v2021.1.10  Build: 7883
+  Copyright (c) 2006-2022 Audiokinetic Inc.
 *******************************************************************************/
 
 // AkMacSoundEngine.h
@@ -35,6 +36,7 @@ the specific language governing permissions and limitations under the License.
 #include <AK/SoundEngine/Common/AkTypes.h>
 #include <AK/Tools/Common/AkPlatformFuncs.h>
 
+/// \cond !(Web)
 /// Platform specific initialization settings
 /// \sa AK::SoundEngine::Init
 /// \sa AK::SoundEngine::GetDefaultPlatformInitSettings
@@ -50,5 +52,6 @@ struct AkPlatformInitSettings
 	// Voices.
 	AkUInt16            uNumRefillsInVoice;		///< Number of refill buffers in voice buffer. 2 == double-buffered, defaults to 4.
 };
+/// \endcond
 
 #endif //_AK_MAC_SOUND_ENGINE_H_

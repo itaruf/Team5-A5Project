@@ -23,9 +23,11 @@ Copyright (c) 2021 Audiokinetic Inc.
 ------------------------------------------------------------------------------------*/
 
 #include "Misc/TextFilter.h"
-#include "Widgets/Views/SListView.h"
 #include "Widgets/Views/STableRow.h"
+#include "Widgets/Views/STreeView.h"
 #include "Widgets/Input/SSearchBox.h"
+
+DECLARE_LOG_CATEGORY_EXTERN(LogAkItemProperties, Log, All);
 
 typedef TTextFilter< const FString& > StringFilter;
 

@@ -18,7 +18,6 @@ Copyright (c) 2021 Audiokinetic Inc.
 #include "Components/Widget.h"
 #include "SAkItemProperties.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
-#include "Widgets/Text/STextBlock.h"
 #include "AkItemProperties.generated.h"
 
 class IMenu;
@@ -39,7 +38,7 @@ FAkPropertyToControl
 USTRUCT(BlueprintType)
 struct AKAUDIO_API FAkPropertyToControl
 {
-	GENERATED_BODY()
+	GENERATED_USTRUCT_BODY()
 
 		/**
 		* The name of the item to control
@@ -55,10 +54,7 @@ UAkItemPropertiesConv
 UCLASS()
 class AKAUDIO_API UAkItemPropertiesConv : public UBlueprintFunctionLibrary
 {
-	GENERATED_BODY()
-
-public:
-	UAkItemPropertiesConv(const class FObjectInitializer& ObjectInitializer);
+	GENERATED_UCLASS_BODY()
 
 	/** Converts an AkPropertyToControl value to a string */
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "ToString (FAkPropertyToControl)", CompactNodeTitle = "->", BlueprintAutocast), Category = "Utilities|String")
@@ -79,11 +75,11 @@ UAkItemProperties
 UCLASS(config = Editor, defaultconfig)
 class AKAUDIO_API UAkItemProperties : public UWidget
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 public:
-	UAkItemProperties(const FObjectInitializer& ObjectInitializer);
-
 	typedef TSlateDelegates< TSharedPtr< FString > >::FOnSelectionChanged FOnSelectionChanged;
+
+public:	
 
 	/** Called when the property selection changes. */
 	UPROPERTY(BlueprintAssignable, Category = "Widget Event")

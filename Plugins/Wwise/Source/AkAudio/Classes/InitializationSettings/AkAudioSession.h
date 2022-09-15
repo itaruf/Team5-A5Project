@@ -53,7 +53,7 @@ struct FAkInitializationStructure;
 USTRUCT()
 struct FAkAudioSession
 {
-    GENERATED_BODY()
+    GENERATED_USTRUCT_BODY()
 
     UPROPERTY(Config, Category = "Ak Initialization Settings|Audio Session", EditAnywhere, meta = (ToolTip = "The IDs of the iOS audio session categories, useful for defining app-level audio behaviours such as inter-app audio mixing policies and audio routing behaviours.These IDs are functionally equivalent to the corresponding constants defined by the iOS audio session service back-end (AVAudioSession). Refer to Xcode documentation for details on the audio session categories."))
     EAkAudioSessionCategory AudioSessionCategory = EAkAudioSessionCategory::Ambient;

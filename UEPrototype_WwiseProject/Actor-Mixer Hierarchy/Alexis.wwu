@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{E090A960-3367-4E05-9383-0105951ED460}" SchemaVersion="110" RootDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" ParentDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}">
+<WwiseDocument Type="WorkUnit" ID="{E090A960-3367-4E05-9383-0105951ED460}" SchemaVersion="103" RootDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" ParentDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}">
 	<AudioObjects>
 		<WorkUnit Name="Alexis" ID="{E090A960-3367-4E05-9383-0105951ED460}" OwnerID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" PersistMode="Nested">
 			<ChildrenList>
@@ -71,6 +71,7 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
+									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="AMB_Bed_lvl1_LP" ID="{D21C41C6-808C-4A92-B86E-F3256E6801AA}" Platform="Linked"/>
 									</ActiveSourceList>
@@ -114,6 +115,7 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
+									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="AMB_Bed_lvl2_Temple_LP" ID="{9798D66D-664D-4921-A3B6-EA167D4AE8D5}" Platform="Linked"/>
 									</ActiveSourceList>
@@ -155,11 +157,13 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
+									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="AMB_Bed_lvl1_Interior_LP" ID="{46F3E304-BF89-4097-A85A-3A4C79D840C2}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
+							<ObjectLists/>
 						</ActorMixer>
 						<ActorMixer Name="MC" ID="{97DDC955-517D-4E6B-A016-90253F172554}" ShortID="13910117">
 							<PropertyList>
@@ -189,6 +193,7 @@
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
 												</Reference>
 											</ReferenceList>
+											<ObjectLists/>
 										</RandomSequenceContainer>
 										<Sound Name="MC_FT_WallRun_Scrape_LP" ID="{227DEF3F-3002-4F3E-83FC-A212F703F653}" ShortID="768039935">
 											<PropertyList>
@@ -218,6 +223,7 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
+											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="MC_FT_WallRun_Scrape_LP" ID="{E197DB41-DFB4-4F78-B182-B90AAC220508}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -274,6 +280,7 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FOL_Run_01" ID="{17A7B416-A514-40CA-84D9-FB74D4B699B7}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -296,6 +303,7 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FOL_Run_02" ID="{23DDC71E-E2BE-4CEC-BCCC-07CD68DE9092}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -318,6 +326,7 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FOL_Run_03" ID="{48D3605B-CA0A-4384-AD97-F03D02A9B6E0}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -340,6 +349,7 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FOL_Run_04" ID="{009C773E-EA1C-4C63-AAC7-6A478B19395D}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -362,6 +372,7 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FOL_Run_05" ID="{28BE14B6-5BF7-46AA-A825-D06ADFA7F219}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -384,6 +395,7 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FOL_Run_06" ID="{C04DF52D-2499-4FD7-B222-CFBF737E66D3}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -406,6 +418,7 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FOL_Run_07" ID="{985CA6A6-619D-43BA-86F1-DA15886694FE}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -428,6 +441,7 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FOL_Run_08" ID="{FB9B0C1A-F5CE-40D3-A87F-67F050C8D852}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -450,6 +464,7 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FOL_Run_09" ID="{7AAA04AE-8EBE-4BE4-B01B-6EC4625D3E73}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -472,6 +487,7 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FOL_Run_10" ID="{9962B131-1D55-40C1-A5C5-A27676A89D93}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -494,11 +510,13 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FOL_Run_11" ID="{09E9A228-C04D-44D9-B747-282E4EEB6E67}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
+											<ObjectLists/>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="MC_FOL_Jump" ID="{4F953C74-2A3F-4A73-A5CB-EC5E5B6ADD2A}" ShortID="452901153">
 											<PropertyList>
@@ -548,6 +566,7 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FOL_Jump_01" ID="{82141521-EB62-42F2-8580-BEA99D6F32AA}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -570,6 +589,7 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FOL_Jump_02" ID="{FB203130-9353-4415-AC14-7D26923C6C84}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -592,6 +612,7 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FOL_Jump_03" ID="{7C8CCCD9-93EA-406A-9FA4-06B4DE0A9FB1}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -614,6 +635,7 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FOL_Jump_04" ID="{7F9105C5-6827-4BA1-AA97-4F12AB915BFB}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -636,19 +658,75 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FOL_Jump_05" ID="{D15783B5-A1AE-467E-A575-B91DF2FB0BFB}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
+											<ObjectLists/>
 										</RandomSequenceContainer>
 										<Sound Name="MC_FOL_FreeFall_LP" ID="{83440EC0-3E5F-4A4F-BE99-D13BDAECBF93}" ShortID="1027839903">
 											<PropertyList>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<RTPCList>
+														<RTPC Name="" ID="{217BB86A-A6A7-4429-B706-CA8EC4527B92}" ShortID="584163158">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{D4255471-2034-43FD-84E5-9F40683C3DB3}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="65537"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-373</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>3000</XPos>
+																		<YPos>327</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>-20</Value>
 													</ValueList>
+													<RTPCList>
+														<RTPC Name="" ID="{3B62DD07-6385-45CF-A095-855D64B67E89}" ShortID="194851047">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{8796222A-8923-46EA-A46A-745384B4090A}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-200</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>3000</XPos>
+																		<YPos>0</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
 												</Property>
 											</PropertyList>
 											<ReferenceList>
@@ -668,80 +746,7 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists>
-												<ObjectList Name="RTPC">
-													<Reference>
-														<Local>
-															<RTPC Name="" ID="{217BB86A-A6A7-4429-B706-CA8EC4527B92}" ShortID="584163158">
-																<PropertyList>
-																	<Property Name="PropertyName" Type="string" Value="Pitch"/>
-																</PropertyList>
-																<ReferenceList>
-																	<Reference Name="ControlInput">
-																		<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
-																	</Reference>
-																	<Reference Name="Curve">
-																		<Custom>
-																			<Curve Name="" ID="{D4255471-2034-43FD-84E5-9F40683C3DB3}">
-																				<PropertyList>
-																					<Property Name="Flags" Type="int32" Value="65537"/>
-																				</PropertyList>
-																				<PointList>
-																					<Point>
-																						<XPos>0</XPos>
-																						<YPos>-373</YPos>
-																						<Flags>5</Flags>
-																					</Point>
-																					<Point>
-																						<XPos>3000</XPos>
-																						<YPos>327</YPos>
-																						<Flags>37</Flags>
-																					</Point>
-																				</PointList>
-																			</Curve>
-																		</Custom>
-																	</Reference>
-																</ReferenceList>
-															</RTPC>
-														</Local>
-													</Reference>
-													<Reference>
-														<Local>
-															<RTPC Name="" ID="{3B62DD07-6385-45CF-A095-855D64B67E89}" ShortID="194851047">
-																<PropertyList>
-																	<Property Name="PropertyName" Type="string" Value="Volume"/>
-																</PropertyList>
-																<ReferenceList>
-																	<Reference Name="ControlInput">
-																		<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
-																	</Reference>
-																	<Reference Name="Curve">
-																		<Custom>
-																			<Curve Name="" ID="{8796222A-8923-46EA-A46A-745384B4090A}">
-																				<PropertyList>
-																					<Property Name="Flags" Type="int32" Value="3"/>
-																				</PropertyList>
-																				<PointList>
-																					<Point>
-																						<XPos>0</XPos>
-																						<YPos>-200</YPos>
-																						<Flags>5</Flags>
-																					</Point>
-																					<Point>
-																						<XPos>3000</XPos>
-																						<YPos>0</YPos>
-																						<Flags>37</Flags>
-																					</Point>
-																				</PointList>
-																			</Curve>
-																		</Custom>
-																	</Reference>
-																</ReferenceList>
-															</RTPC>
-														</Local>
-													</Reference>
-												</ObjectList>
-											</ObjectLists>
+											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="MC_Foley_Cape_Turn_Long_Medium_LP" ID="{00EAAA02-A274-4EE2-A813-A02BDAC88AE1}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -811,6 +816,7 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Jump_01" ID="{56A52ED8-3B93-4AAC-B180-9C89EAA3C7EC}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -833,6 +839,7 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Jump_02" ID="{57E18E12-1B1F-4E2C-8855-FEF45E53AF30}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -855,6 +862,7 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Jump_03" ID="{2FCCE807-897A-4AA1-B8DF-F86A66A1753C}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -877,6 +885,7 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Jump_04" ID="{60714D13-F7A2-4F4F-9F9D-37463EDC0278}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -899,11 +908,13 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Jump_05" ID="{8965313E-1C4C-4BA1-AD2C-1A8ECF2F620F}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
+													<ObjectLists/>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="VO_MC_Land" ID="{A10F4189-125E-4354-8C10-830E833F0EB7}" ShortID="240200337">
 													<PropertyList>
@@ -943,6 +954,7 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Land_01" ID="{D78B50B1-CB89-4E8E-AF2E-73BDA25DD297}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -965,6 +977,7 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Land_02" ID="{F29212D0-782A-40F4-B23A-15F6F0BDAA31}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -987,6 +1000,7 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Land_03" ID="{41E321FE-8EA4-42B3-934B-68E33617C64F}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -1009,6 +1023,7 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Land_04" ID="{4122B767-57CE-49B4-8858-7A3B5A7CCF80}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -1031,11 +1046,13 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Land_05" ID="{C975626A-01C7-4BED-94DF-8C685F95E2B4}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
+													<ObjectLists/>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="VO_MC_Glide_Stop_NoEnergy" ID="{81C767E3-3B94-4BA6-9551-0EB0966D646D}" ShortID="170029184">
 													<PropertyList>
@@ -1075,6 +1092,7 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Glide_Stop_NoEnergy_01" ID="{23D260AB-65A4-4C98-AFC1-DD5FCAD86769}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -1097,6 +1115,7 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Glide_Stop_NoEnergy_02" ID="{97C48072-E7DF-42CE-9B5D-470B9E2F09D7}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -1119,6 +1138,7 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Glide_Stop_NoEnergy_03" ID="{6BBCC0B2-F4AA-49F8-A032-79DECCA1CE36}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -1141,6 +1161,7 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Glide_Stop_NoEnergy_04" ID="{410C955C-0277-4360-AA7B-F2897AF8F5E3}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -1163,11 +1184,13 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Glide_Stop_NoEnergy_05" ID="{59DB2471-CA98-40EF-B28E-FFDFC24DFEE5}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
+													<ObjectLists/>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="VO_MC_Glide_Start" ID="{E96402B5-29E4-4AD3-AA68-BED040824D4D}" ShortID="941747996">
 													<PropertyList>
@@ -1207,6 +1230,7 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Glide_Start_01" ID="{E0B59C62-7463-402F-8147-A5619377118E}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -1229,6 +1253,7 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Glide_Start_02" ID="{9E12D1DE-4E20-473C-8F18-E1CB1E6838BD}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -1251,6 +1276,7 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Glide_Start_03" ID="{1DC4A6F5-AB5D-416F-9E43-9ACE2A68662B}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -1273,11 +1299,13 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Glide_Start_04" ID="{49396B90-B992-4DA3-9ED0-0A26A527E01A}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
+													<ObjectLists/>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="VO_MC_Glide_Stop" ID="{8CE145E2-2FF0-42C9-915D-B7B00F4E19F5}" ShortID="566872500">
 													<PropertyList>
@@ -1317,6 +1345,7 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Glide_Stop_01" ID="{B0D7F91B-D111-467C-9DCC-CD5864025F5B}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -1339,6 +1368,7 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Glide_Stop_02" ID="{68145B1A-D491-48E7-8954-518F8C385A14}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -1361,11 +1391,13 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Glide_Stop_03" ID="{07DC72A5-672F-41B7-8860-FAC9C6FDA364}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
+													<ObjectLists/>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="VO_MC_Glide_Crash" ID="{D4EADAA9-DD2B-4EAE-B6EA-EA318075AFDB}" ShortID="826700410">
 													<PropertyList>
@@ -1405,6 +1437,7 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Glide_Crash_01" ID="{D30A58B4-3931-4E29-ABD1-ED64EE8DBA02}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -1427,6 +1460,7 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Glide_Crash_02" ID="{F94D626A-3676-4959-BC89-ADAE362325F3}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -1449,6 +1483,7 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Glide_Crash_03" ID="{249249A5-DAA9-424A-904E-D73042B91728}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -1471,11 +1506,13 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Glide_Crash_04" ID="{6984302A-5929-4BE5-B0D8-D7BAE992ABBD}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
+													<ObjectLists/>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="VO_MC_FallingVoid" ID="{199EF73C-301B-466F-B26C-662C87535C3D}" ShortID="15187155">
 													<PropertyList>
@@ -1515,6 +1552,7 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Glide_FallingVoid_01" ID="{3A1216D5-C340-4E1B-817B-A9B44DED6F04}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -1537,6 +1575,7 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Glide_FallingVoid_02" ID="{15649D77-4544-42CF-A330-7716EC1F75AE}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -1559,6 +1598,7 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Glide_FallingVoid_03" ID="{EB980245-F4FD-4753-9EFE-E2283D3B8A67}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -1581,17 +1621,21 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
+															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="VO_MC_Glide_FallingVoid_04" ID="{3BC589AC-ED79-45CE-95A0-00B39ED2F888}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
+													<ObjectLists/>
 												</RandomSequenceContainer>
 											</ChildrenList>
+											<ObjectLists/>
 										</ActorMixer>
 									</ChildrenList>
 								</Folder>
 							</ChildrenList>
+							<ObjectLists/>
 						</ActorMixer>
 						<ActorMixer Name="NPC" ID="{5AF615D4-BF2D-406F-B059-5EC84D2F31A7}" ShortID="756597445">
 							<PropertyList>
@@ -1607,6 +1651,7 @@
 									<ObjectRef Name="NPC" ID="{B955C7C1-6C5F-4379-8FB3-DD13E36B5A38}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
 								</Reference>
 							</ReferenceList>
+							<ObjectLists/>
 						</ActorMixer>
 						<ActorMixer Name="SFX" ID="{35FAFE6F-D3DB-4F7E-B558-E792D5166838}" ShortID="344180215">
 							<PropertyList>
@@ -1675,6 +1720,7 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="SFX_Freefall_Start_01" ID="{DA151E78-CC0C-49D0-8C58-4D0D8664DBBC}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -1697,6 +1743,7 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="SFX_Freefall_Start_02" ID="{406ADE95-4D05-4983-82E6-8021CA8A9363}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -1719,11 +1766,13 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="SFX_Freefall_Start_03" ID="{A0AABFFF-38D5-4733-87DC-028DB29462A2}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
+											<ObjectLists/>
 										</RandomSequenceContainer>
 										<Sound Name="SFX_Glide_Magic_LP" ID="{BD902CBD-D098-40E8-B9FF-37FEA5A4B0E3}" ShortID="935910031">
 											<PropertyList>
@@ -1731,6 +1780,39 @@
 													<ValueList>
 														<Value>42</Value>
 													</ValueList>
+													<RTPCList>
+														<RTPC Name="" ID="{75F73105-7C0D-4BF8-BCC6-0AAA9FFEFF98}" ShortID="83923562">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{9E9DAE8D-6DD0-45B1-8846-8CCA8D590E3D}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="65537"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>2</YPos>
+																		<Flags>5</Flags>
+																		<SegmentShape>Exp3</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>1718.62348</XPos>
+																		<YPos>-10</YPos>
+																		<Flags>0</Flags>
+																		<SegmentShape>Log3</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>3000</XPos>
+																		<YPos>-23</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
 												</Property>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 												<Property Name="OverrideGameAuxSends" Type="bool" Value="True"/>
@@ -1738,12 +1820,64 @@
 													<ValueList>
 														<Value>450</Value>
 													</ValueList>
+													<RTPCList>
+														<RTPC Name="" ID="{0C45FB71-C17D-4B3C-93D9-96E8B3CBE75B}" ShortID="964911345">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{21A87589-AFF3-4102-9F86-3C99506D6605}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="65537"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-222</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>3000</XPos>
+																		<YPos>39</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
 												</Property>
 												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>-26</Value>
 													</ValueList>
+													<RTPCList>
+														<RTPC Name="" ID="{B2596FC3-3193-4741-8316-94D11CF0C9FF}" ShortID="270825209">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{DF486D4F-1AEF-43DC-A19C-A1833D63572F}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-200</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>3000</XPos>
+																		<YPos>0</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
 												</Property>
 											</PropertyList>
 											<ReferenceList>
@@ -1770,122 +1904,7 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists>
-												<ObjectList Name="RTPC">
-													<Reference>
-														<Local>
-															<RTPC Name="" ID="{75F73105-7C0D-4BF8-BCC6-0AAA9FFEFF98}" ShortID="83923562">
-																<PropertyList>
-																	<Property Name="PropertyName" Type="string" Value="Highpass"/>
-																</PropertyList>
-																<ReferenceList>
-																	<Reference Name="ControlInput">
-																		<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
-																	</Reference>
-																	<Reference Name="Curve">
-																		<Custom>
-																			<Curve Name="" ID="{9E9DAE8D-6DD0-45B1-8846-8CCA8D590E3D}">
-																				<PropertyList>
-																					<Property Name="Flags" Type="int32" Value="65537"/>
-																				</PropertyList>
-																				<PointList>
-																					<Point>
-																						<XPos>0</XPos>
-																						<YPos>2</YPos>
-																						<Flags>5</Flags>
-																						<SegmentShape>Exp3</SegmentShape>
-																					</Point>
-																					<Point>
-																						<XPos>1718.62348</XPos>
-																						<YPos>-10</YPos>
-																						<Flags>0</Flags>
-																						<SegmentShape>Log3</SegmentShape>
-																					</Point>
-																					<Point>
-																						<XPos>3000</XPos>
-																						<YPos>-23</YPos>
-																						<Flags>37</Flags>
-																					</Point>
-																				</PointList>
-																			</Curve>
-																		</Custom>
-																	</Reference>
-																</ReferenceList>
-															</RTPC>
-														</Local>
-													</Reference>
-													<Reference>
-														<Local>
-															<RTPC Name="" ID="{0C45FB71-C17D-4B3C-93D9-96E8B3CBE75B}" ShortID="964911345">
-																<PropertyList>
-																	<Property Name="PropertyName" Type="string" Value="Pitch"/>
-																</PropertyList>
-																<ReferenceList>
-																	<Reference Name="ControlInput">
-																		<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
-																	</Reference>
-																	<Reference Name="Curve">
-																		<Custom>
-																			<Curve Name="" ID="{21A87589-AFF3-4102-9F86-3C99506D6605}">
-																				<PropertyList>
-																					<Property Name="Flags" Type="int32" Value="65537"/>
-																				</PropertyList>
-																				<PointList>
-																					<Point>
-																						<XPos>0</XPos>
-																						<YPos>-222</YPos>
-																						<Flags>5</Flags>
-																					</Point>
-																					<Point>
-																						<XPos>3000</XPos>
-																						<YPos>39</YPos>
-																						<Flags>37</Flags>
-																					</Point>
-																				</PointList>
-																			</Curve>
-																		</Custom>
-																	</Reference>
-																</ReferenceList>
-															</RTPC>
-														</Local>
-													</Reference>
-													<Reference>
-														<Local>
-															<RTPC Name="" ID="{B2596FC3-3193-4741-8316-94D11CF0C9FF}" ShortID="270825209">
-																<PropertyList>
-																	<Property Name="PropertyName" Type="string" Value="Volume"/>
-																</PropertyList>
-																<ReferenceList>
-																	<Reference Name="ControlInput">
-																		<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
-																	</Reference>
-																	<Reference Name="Curve">
-																		<Custom>
-																			<Curve Name="" ID="{DF486D4F-1AEF-43DC-A19C-A1833D63572F}">
-																				<PropertyList>
-																					<Property Name="Flags" Type="int32" Value="3"/>
-																				</PropertyList>
-																				<PointList>
-																					<Point>
-																						<XPos>0</XPos>
-																						<YPos>-200</YPos>
-																						<Flags>5</Flags>
-																					</Point>
-																					<Point>
-																						<XPos>3000</XPos>
-																						<YPos>0</YPos>
-																						<Flags>37</Flags>
-																					</Point>
-																				</PointList>
-																			</Curve>
-																		</Custom>
-																	</Reference>
-																</ReferenceList>
-															</RTPC>
-														</Local>
-													</Reference>
-												</ObjectList>
-											</ObjectLists>
+											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="SFX_Glide_Magic_LP_V2" ID="{E397168F-572E-4A30-9A16-3217EBC8DBB8}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -1943,6 +1962,7 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="SFX_SandSurf_End_01" ID="{FDB565D8-F388-48A0-A5BC-A2AFB7483B14}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -1965,6 +1985,7 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="SFX_SandSurf_End_02" ID="{D9CEA079-1039-4C0E-B939-4C72FCD84F45}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -1987,6 +2008,7 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="SFX_SandSurf_End_03" ID="{47DDBFB6-7B04-4D17-9E61-63D70A25219E}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -2009,6 +2031,7 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="SFX_SandSurf_End_04" ID="{5A9A8DA7-83BA-4903-82BD-C922247F4ED9}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -2031,11 +2054,13 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="SFX_SandSurf_End_05" ID="{039CA544-A27B-48CA-A4AF-B185698F1E8E}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
+											<ObjectLists/>
 										</RandomSequenceContainer>
 										<Sound Name="SFX_Glide_Wind_LP" ID="{C051383B-7E5A-4990-A18C-0FAD97380A88}" ShortID="862211883">
 											<PropertyList>
@@ -2043,6 +2068,39 @@
 													<ValueList>
 														<Value>42</Value>
 													</ValueList>
+													<RTPCList>
+														<RTPC Name="" ID="{51D29341-2471-4113-A630-7709AFF0ED9D}" ShortID="687647345">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{F92AB2BB-7BA9-43D8-9DAC-A1EAF78C7CA2}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="65537"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>2</YPos>
+																		<Flags>5</Flags>
+																		<SegmentShape>Exp3</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>1718.62348</XPos>
+																		<YPos>-10</YPos>
+																		<Flags>0</Flags>
+																		<SegmentShape>Log3</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>3000</XPos>
+																		<YPos>-23</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
 												</Property>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 												<Property Name="OverrideGameAuxSends" Type="bool" Value="True"/>
@@ -2050,12 +2108,64 @@
 													<ValueList>
 														<Value>450</Value>
 													</ValueList>
+													<RTPCList>
+														<RTPC Name="" ID="{F28B8C5A-5B2C-4AFD-8C2A-66D820C4ED9E}" ShortID="884566833">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{1E565B44-EC3D-4B90-9EDD-2A3CB0FB2D52}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="65537"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-222</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>3000</XPos>
+																		<YPos>232</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
 												</Property>
 												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>-16</Value>
 													</ValueList>
+													<RTPCList>
+														<RTPC Name="" ID="{D11F2E50-2378-4F8E-A9C1-758619EBDAAD}" ShortID="644806455">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{C646E542-7AEB-486A-8D10-1C44CCC3DBED}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-200</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>3000</XPos>
+																		<YPos>0</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
 												</Property>
 											</PropertyList>
 											<ReferenceList>
@@ -2089,122 +2199,7 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists>
-												<ObjectList Name="RTPC">
-													<Reference>
-														<Local>
-															<RTPC Name="" ID="{51D29341-2471-4113-A630-7709AFF0ED9D}" ShortID="687647345">
-																<PropertyList>
-																	<Property Name="PropertyName" Type="string" Value="Highpass"/>
-																</PropertyList>
-																<ReferenceList>
-																	<Reference Name="ControlInput">
-																		<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
-																	</Reference>
-																	<Reference Name="Curve">
-																		<Custom>
-																			<Curve Name="" ID="{F92AB2BB-7BA9-43D8-9DAC-A1EAF78C7CA2}">
-																				<PropertyList>
-																					<Property Name="Flags" Type="int32" Value="65537"/>
-																				</PropertyList>
-																				<PointList>
-																					<Point>
-																						<XPos>0</XPos>
-																						<YPos>2</YPos>
-																						<Flags>5</Flags>
-																						<SegmentShape>Exp3</SegmentShape>
-																					</Point>
-																					<Point>
-																						<XPos>1718.62348</XPos>
-																						<YPos>-10</YPos>
-																						<Flags>0</Flags>
-																						<SegmentShape>Log3</SegmentShape>
-																					</Point>
-																					<Point>
-																						<XPos>3000</XPos>
-																						<YPos>-23</YPos>
-																						<Flags>37</Flags>
-																					</Point>
-																				</PointList>
-																			</Curve>
-																		</Custom>
-																	</Reference>
-																</ReferenceList>
-															</RTPC>
-														</Local>
-													</Reference>
-													<Reference>
-														<Local>
-															<RTPC Name="" ID="{F28B8C5A-5B2C-4AFD-8C2A-66D820C4ED9E}" ShortID="884566833">
-																<PropertyList>
-																	<Property Name="PropertyName" Type="string" Value="Pitch"/>
-																</PropertyList>
-																<ReferenceList>
-																	<Reference Name="ControlInput">
-																		<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
-																	</Reference>
-																	<Reference Name="Curve">
-																		<Custom>
-																			<Curve Name="" ID="{1E565B44-EC3D-4B90-9EDD-2A3CB0FB2D52}">
-																				<PropertyList>
-																					<Property Name="Flags" Type="int32" Value="65537"/>
-																				</PropertyList>
-																				<PointList>
-																					<Point>
-																						<XPos>0</XPos>
-																						<YPos>-222</YPos>
-																						<Flags>5</Flags>
-																					</Point>
-																					<Point>
-																						<XPos>3000</XPos>
-																						<YPos>232</YPos>
-																						<Flags>37</Flags>
-																					</Point>
-																				</PointList>
-																			</Curve>
-																		</Custom>
-																	</Reference>
-																</ReferenceList>
-															</RTPC>
-														</Local>
-													</Reference>
-													<Reference>
-														<Local>
-															<RTPC Name="" ID="{D11F2E50-2378-4F8E-A9C1-758619EBDAAD}" ShortID="644806455">
-																<PropertyList>
-																	<Property Name="PropertyName" Type="string" Value="Volume"/>
-																</PropertyList>
-																<ReferenceList>
-																	<Reference Name="ControlInput">
-																		<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
-																	</Reference>
-																	<Reference Name="Curve">
-																		<Custom>
-																			<Curve Name="" ID="{C646E542-7AEB-486A-8D10-1C44CCC3DBED}">
-																				<PropertyList>
-																					<Property Name="Flags" Type="int32" Value="3"/>
-																				</PropertyList>
-																				<PointList>
-																					<Point>
-																						<XPos>0</XPos>
-																						<YPos>-200</YPos>
-																						<Flags>5</Flags>
-																					</Point>
-																					<Point>
-																						<XPos>3000</XPos>
-																						<YPos>0</YPos>
-																						<Flags>37</Flags>
-																					</Point>
-																				</PointList>
-																			</Curve>
-																		</Custom>
-																	</Reference>
-																</ReferenceList>
-															</RTPC>
-														</Local>
-													</Reference>
-												</ObjectList>
-											</ObjectLists>
+											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="SFX_Glide_Wind_LP_V2" ID="{A7454C68-3DFB-4A9A-BDAD-A846B761A0D0}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -2236,6 +2231,7 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
+									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="SFX_Checkpoint" ID="{D226DEE5-A8D1-4B40-9A46-5DEE67C59228}" Platform="Linked"/>
 									</ActiveSourceList>
@@ -2277,6 +2273,7 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="SFX_BigDoor_End" ID="{39473C91-0176-4EC3-8880-76A6E7CF94D2}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -2307,6 +2304,7 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="SFX_BigDoor_Sustain_LP" ID="{CB40382E-82E4-4654-88EB-AFDA5E646EFC}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -2329,15 +2327,18 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
+													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="SFX_BigDoor_Start" ID="{45F5DCEC-F9A9-41EA-8EB1-6A67358B68FD}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
+											<ObjectLists/>
 										</ActorMixer>
 									</ChildrenList>
 								</Folder>
 							</ChildrenList>
+							<ObjectLists/>
 						</ActorMixer>
 						<ActorMixer Name="UI" ID="{9783890A-D5FE-46FA-B8D8-0D3F5575AD74}" ShortID="504151075">
 							<PropertyList>
@@ -2379,6 +2380,7 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
+									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="UI_Menu_Cancel" ID="{04354529-C7C3-4A69-8871-8CE111EAE9FC}" Platform="Linked"/>
 									</ActiveSourceList>
@@ -2413,6 +2415,7 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
+									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="UI_Menu_Confirm" ID="{62204306-3D60-4CA1-AB52-2CAA73F8BFDE}" Platform="Linked"/>
 									</ActiveSourceList>
@@ -2442,6 +2445,7 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
+									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="UI_Menu_Hover" ID="{2EE29DDD-7780-4DBC-8A89-9822A8B71CD5}" Platform="Linked"/>
 									</ActiveSourceList>
@@ -2464,6 +2468,7 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
+									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="UI_Menu_Select" ID="{81BD525C-F16C-4C57-BE85-820A791FCA75}" Platform="Linked"/>
 									</ActiveSourceList>
@@ -2493,6 +2498,7 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
+									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="UI_Menu_Slider" ID="{E173173B-5EF1-42BC-A3A7-C096F2AC0193}" Platform="Linked"/>
 									</ActiveSourceList>
@@ -2522,6 +2528,7 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
+									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="UI_PauseMenu_Cancel" ID="{470AC9FF-4EB5-4A36-96B9-640552B8FF39}" Platform="Linked"/>
 									</ActiveSourceList>
@@ -2551,13 +2558,16 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
+									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="UI_PauseMenu_Select" ID="{1152D208-A7B8-4E49-80CC-FB40DC254994}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
+							<ObjectLists/>
 						</ActorMixer>
 					</ChildrenList>
+					<ObjectLists/>
 				</ActorMixer>
 			</ChildrenList>
 		</WorkUnit>

@@ -15,106 +15,101 @@ Copyright (c) 2021 Audiokinetic Inc.
 
 #include "AkAudioType.h"
 
-#include "AkCustomVersion.h"
+#include "Async/Async.h"
+#include "AkAudioModule.h"
 #include "AkAudioDevice.h"
-#include "Platforms/AkPlatformInfo.h"
+#include "AkGroupValue.h"
+#include "AkFolder.h"
+#include "Core/Public/Modules/ModuleManager.h"
 
-#if WITH_EDITORONLY_DATA
-#include "Wwise/WwiseResourceCooker.h"
-#endif
-
-void UAkAudioType::Serialize(FArchive& Ar)
+void UAkAudioType::PostLoad()
 {
-	Super::Serialize(Ar);
-
+	Super::PostLoad();
 	if (HasAnyFlags(RF_ClassDefaultObject))
 	{
 		return;
 	}
-
-	Ar.UsingCustomVersion(FAkCustomVersion::GUID);
-
-#if WITH_EDITORONLY_DATA
-	if (ID_DEPRECATED.IsValid() || ShortID_DEPRECATED != 0)
+	
+	if (FModuleManager::Get().IsModuleLoaded(TEXT("AkAudio")))
 	{
-		MigrateIds();
+		LoadBank();
 	}
-
-	if (FWwiseBasicInfo* WwiseInfo = GetInfoMutable())
+	else
 	{
-		WwiseGuid = WwiseInfo->AssetGuid;
-	}
-
-#endif
-	LogSerializationState(Ar);
-}
-
-void UAkAudioType::LogSerializationState(const FArchive& Ar)
-{
-	FString SerializationState = TEXT("");
-	if (Ar.IsLoading())
-	{
-		SerializationState += TEXT("Loading");
-	}
-
-	if (Ar.IsSaving())
-	{
-		SerializationState += TEXT("Saving");
-	}
-
-	if (Ar.IsCooking())
-	{
-		SerializationState += TEXT("Cooking");
-	}
-
-	UE_LOG(LogAkAudio, VeryVerbose, TEXT("%s - Serialization - %s"), *GetName(), *SerializationState);
-
-}
-
-#if WITH_EDITORONLY_DATA
-void UAkAudioType::MigrateIds()
-{
-	if (FWwiseBasicInfo* Info = GetInfoMutable())
-	{
-		Info->AssetGuid = ID_DEPRECATED;
-		Info->AssetShortId = ShortID_DEPRECATED;
-		Info->AssetName = GetName();
-		MarkPackageDirty();
+		FAkAudioDevice::DelayAssetLoad(this);
 	}
 }
 
-FWwiseBasicInfo* UAkAudioType::GetInfoMutable()
+void UAkAudioType::MarkDirtyInGameThread()
 {
-	UE_LOG(LogAkAudio, Error, TEXT("GetInfoMutable not implemented"));
-	check(false);
-	return nullptr;
-}
-
-void UAkAudioType::ValidateShortID(FWwiseBasicInfo& WwiseInfo) const
-{
-	if (WwiseInfo.AssetShortId == AK_INVALID_UNIQUE_ID)
-	{
-		if (!WwiseInfo.AssetName.IsEmpty())
+#if WITH_EDITOR
+	AsyncTask(ENamedThreads::GameThread, [this] 
 		{
-			WwiseInfo.AssetShortId = FAkAudioDevice::GetShortIDFromString(WwiseInfo.AssetName);
+			MarkPackageDirty();
+		});
+#endif
+}
+
+bool UAkAudioType::ShortIdMatchesName(AkUInt32& OutIdFromName)
+{
+	if (auto AudioDevice = FAkAudioDevice::Get())
+	{
+		if (IsA<UAkGroupValue>())
+		{
+			FString ValueName;
+			GetName().Split(TEXT("-"), nullptr, &ValueName);
+			OutIdFromName = FAkAudioDevice::GetIDFromString(ValueName);
 		}
 		else
 		{
-			WwiseInfo.AssetShortId = FAkAudioDevice::GetShortIDFromString(GetName());
-			UE_LOG(LogAkAudio, Warning, TEXT("UAkAudioType::ValidateShortID : Using ShortID based on asset name for %s."), *GetName());
+			OutIdFromName = FAkAudioDevice::GetIDFromString(GetName());
+		}
+
+		if (ShortID != OutIdFromName)
+		{
+			//Folder asset name does not correspond to actual wwise object name and we don't use the short ID anyway
+			if (IsA<UAkFolder>())
+			{
+				return true;
+			}
+			UE_LOG(LogAkAudio, Warning, TEXT("%s - Current Short ID '%u' is different from expected ID '%u'"), *GetName(), ShortID, OutIdFromName);
+			return false;
+		}
+	}
+	return true;
+}
+
+void UAkAudioType::LoadBank()
+{
+	ValidateShortId(false);
+}
+
+void UAkAudioType::ValidateShortId(bool bMarkAsDirty)
+{
+	AkUInt32 IdFromName;
+	if (!ShortIdMatchesName(IdFromName))
+	{
+		if (bMarkAsDirty)
+		{
+			ShortID = IdFromName;
+			MarkDirtyInGameThread();
 		}
 	}
 }
 
-void UAkAudioType::BeginCacheForCookedPlatformData(const ITargetPlatform* TargetPlatform)
+#if WITH_EDITOR
+void UAkAudioType::Reset(TArray<FAssetData>& InOutAssetsToDelete)
 {
-	UObject::BeginCacheForCookedPlatformData(TargetPlatform);
-	if (HasAnyFlags(RF_ClassDefaultObject))
+	if (ShortID != 0)
 	{
-		return;
+		ShortID = 0;
+		bChangedDuringReset = true;
 	}
-	auto PlatformID = UAkPlatformInfo::GetSharedPlatformInfo(TargetPlatform->PlatformName());
-	UWwiseResourceCooker::CreateForPlatform(TargetPlatform, PlatformID, EWwiseExportDebugNameRule::Name);
-}
 
+	if (bChangedDuringReset)
+	{
+		bChangedDuringReset = false;
+		MarkDirtyInGameThread();
+	}
+}
 #endif

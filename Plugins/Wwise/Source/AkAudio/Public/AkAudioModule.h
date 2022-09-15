@@ -16,7 +16,6 @@ Copyright (c) 2021 Audiokinetic Inc.
 #pragma once
 
 #include "AkAudioDevice.h"
-#include "SReloadPopup.h"
 #include "Modules/ModuleManager.h"
 #include "Containers/Ticker.h"
 
@@ -50,7 +49,7 @@ public:
 	}
 };
 
-class AKAUDIO_API FAkAudioModule : public IAkAudioModule
+class FAkAudioModule : public IAkAudioModule
 {
 public:
 	/** IModuleInterface implementation */
@@ -58,37 +57,15 @@ public:
 	virtual void ShutdownModule() override;
 
 	FAkAudioDevice * GetAkAudioDevice();
-#if WITH_EDITOR
-	void AssetReloadPrompt();
-	void OpenAssetReloadPopup();
-	void ReloadWwiseAssetDataAsync();
-	void ReloadWwiseAssetData();
-#endif
-
-	void UpdateWwiseResourceLoaderSettings() const;
-#if WITH_EDITORONLY_DATA
-	void ParseGeneratedSoundBankData() const;
-#endif
 
 	static FAkAudioModule* AkAudioModuleInstance;
 
 private:
-	void OnPostEngineInit();
-
-#if WITH_EDITOR
-	void OnSoundBanksFolderChanged();
-#endif
-
-	FAkAudioDevice* AkAudioDevice;
+	FAkAudioDevice * AkAudioDevice;
 
 	/** Call to update AkAudioDevice. */
 	FTickerDelegate OnTick;
 
 	/** Handle for OnTick. */
 	FTickerDelegateHandle TickDelegateHandle;
-	FDelegateHandle OnDatabaseUpdateCompleteHandle;
-
-#if WITH_EDITOR
-	SReloadPopup ReloadPopup = SReloadPopup();
-#endif
 };

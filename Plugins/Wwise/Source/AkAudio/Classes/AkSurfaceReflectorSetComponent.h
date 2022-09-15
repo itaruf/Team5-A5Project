@@ -30,26 +30,17 @@ DECLARE_DELEGATE(FOnRefreshDetails);
 UCLASS(ClassGroup = Audiokinetic, BlueprintType, hidecategories = (Transform, Rendering, Mobility, LOD, Component, Activation, Tags), meta = (BlueprintSpawnableComponent))
 class AKAUDIO_API UAkSurfaceReflectorSetComponent : public UAkAcousticTextureSetComponent
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 
 public:
-	UAkSurfaceReflectorSetComponent(const class FObjectInitializer& ObjectInitializer);
-
-	/** Convert the brush to a geometry set consisting of vertices, triangles, surfaces, acoustic textures and transmission loss values.
-	* Send it to Wwise with the rest of the AkGeometryParams to add or update a geometry in Spatial Audio.
-	* It is necessary to create at least one geometry instance for each geometry set that is to be used for diffraction and reflection simulation. See UpdateSurfaceReflectorSet(). */
 	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|AkSurfaceReflectorSet")
 	void SendSurfaceReflectorSet();
 
-	/** Add or update an instance of the geometry by sending the transform of this component to Wwise.
-	* A geometry instance is a unique instance of a geometry set with a specified transform (position, rotation and scale).
-	* It is necessary to create at least one geometry instance for each geometry set that is to be used for diffraction and reflection simulation. */
-	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|AkSurfaceReflectorSet")
-	void UpdateSurfaceReflectorSet();
-
-	/** Remove the geometry and the corresponding instance from Wwise. */
 	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|AkSurfaceReflectorSet")
 	void RemoveSurfaceReflectorSet();
+
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|AkSurfaceReflectorSet")
+	void UpdateSurfaceReflectorSet();
 
 	/** Enable reflection with geometry */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Toggle")
@@ -169,7 +160,7 @@ private:
 	/** Identify the edges in the brush geometry and store in EdgeMap */
 	void UpdateEdgeMap(bool bUpdateTextures);
 	/* Compare AcousticPolys to PreviousPolys, carrying over the acoustic properties from PreviousPolys for those faces whose edges and normals have not changed. */
-	void EdgeMapChanged();
+	void EdgeMapChanged(const FTransform& AttachTransform);
 	void AlignTextWithEdge(int FaceIndex) const;
 	/* Choose the edge upon which to align the text. The 'optimal' edge is that which aligns the 
 	   up vector of the text closest to the up vector of the view camera. */
@@ -179,7 +170,7 @@ private:
 	   The amount of shift is proportional to the dot product between AlignmentEdge and the edge that connects to V0. */
 	FVector GetTextAnchorPosition(int FaceIndex, const FAkSurfaceEdgeInfo& AlignmentEdge, int AlignmentEdgeIndex) const;
 	/* Progressively scale down the text visualizer at FaceIndex until it is completely contained within the face.  */
-	void SetTextScale(UTextRenderComponent* TextComp, int FaceIndex, int AlignmentEdgeIndex, const FVector& TextAnchorPosition, const struct FFacePlane& FacePlane, const FTransform& AttachTransform) const;
+	void SetTextScale(int FaceIndex, int AlignmentEdgeIndex, const FVector& TextAnchorPosition, const struct FFacePlane& FacePlane) const;
 #endif
 
 #if WITH_EDITORONLY_DATA

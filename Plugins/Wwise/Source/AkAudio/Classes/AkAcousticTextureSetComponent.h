@@ -25,11 +25,9 @@ struct FAkReverbDescriptor;
 UCLASS(ClassGroup = Audiokinetic, abstract)
 class AKAUDIO_API UAkAcousticTextureSetComponent : public USceneComponent
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 
 public:
-	UAkAcousticTextureSetComponent(const class FObjectInitializer& ObjectInitializer);
-
 	virtual void GetTexturesAndSurfaceAreas(TArray<FAkAcousticTextureParams>& textures, TArray<float>& surfaceAreas) const { check(0 && "This function must be overidden"); }
 
 	void SetReverbDescriptor(FAkReverbDescriptor* reverbDescriptor);
@@ -40,9 +38,6 @@ public:
 	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	virtual AkGeometrySetID GetGeometrySetID() const { return AkGeometrySetID(this); }
-
-	virtual bool GetGeometryHasBeenSent() const { return GeometryHasBeenSent; }
-	virtual bool GetGeometryInstanceHasBeenSent() const { return GeometryInstanceHasBeenSent; }
 
 protected:
 	void RecalculateHFDamping();
@@ -62,16 +57,8 @@ protected:
 	bool DampingEstimationNeedsUpdate = false;
 
 	virtual bool ShouldSendGeometry() const;
-	/* Add or update a geometry in Spatial Audio. It is necessary to create at least one geometry instance
-	* for each geometry that is to be used for diffraction and reflection simulation. See SendGeometryInstanceToWwise(). */
 	void SendGeometryToWwise(const AkGeometryParams& params);
-	/* Add or update an instance of the geometry. A geometry instance is a unique instance of a geometry set with a specified transform (position, rotation and scale) and room association. 
-	* It is necessary to create at least one geometry instance for each geometry set that is to be used for diffraction and reflection simulation. */
-	void SendGeometryInstanceToWwise(const FRotator& rotation, const FVector& location, const FVector& scale, const AkRoomID roomID);
-	/* Remove a geometry and the corresponding instance from Wwise. */
 	void RemoveGeometryFromWwise();
-	/* Remove a geometry instance from Wwise. */
-	void RemoveGeometryInstanceFromWwise();
 
 private:
 #if WITH_EDITOR
@@ -85,5 +72,4 @@ private:
 	float SecondsSinceDampingUpdate = 0.0f;
 
 	bool GeometryHasBeenSent = false;
-	bool GeometryInstanceHasBeenSent = false;
 };

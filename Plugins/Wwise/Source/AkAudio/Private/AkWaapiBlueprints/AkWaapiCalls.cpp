@@ -22,10 +22,17 @@ Copyright (c) 2021 Audiokinetic Inc.
 
 #include "AkWaapiBlueprints/AkWaapiCalls.h"
 #include "AkAudioDevice.h"
+#include "AkWaapiBlueprints/AkWaapiCalls.h"
 #include "AkWaapiBlueprints/AkWaapiUriCustomization.h"
 #include "AkWaapiBlueprints/AkWaapiFieldNamesCustomization.h"
+#include "EngineUtils.h"
+#include "Model.h"
+#include "UObject/UObjectIterator.h"
+#include "Engine/GameEngine.h"
 #include "Async/Async.h"
 #include "Core/Public/Modules/ModuleManager.h"
+
+DEFINE_LOG_CATEGORY(LogAkWaapiCalls);
 
 /*-----------------------------------------------------------------------------
 	AkWaapiCalls.
@@ -86,12 +93,12 @@ FAKWaapiJsonObject UAkWaapiCalls::CallWaapi(const FAkWaapiUri& WaapiUri, const F
 		// Request data from Wwise using WAAPI
 		if (!waapiClient->Call(TCHAR_TO_ANSI(*WaapiUri.Uri), WaapiArgs.WaapiJsonObj.ToSharedRef(), WaapiOptions.WaapiJsonObj.ToSharedRef(), outJsonResult.WaapiJsonObj))
 		{
-			UE_LOG(LogAkAudio, Log, TEXT("Call Failed"));
+			UE_LOG(LogAkWaapiCalls, Log, TEXT("Call Failed"));
 		}
 	}
 	else
 	{
-		UE_LOG(LogAkAudio, Log, TEXT("Unable to connect to localhost"));
+		UE_LOG(LogAkWaapiCalls, Log, TEXT("Unable to connect to localhost"));
 	}
 	return outJsonResult;
 }

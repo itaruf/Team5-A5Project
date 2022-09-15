@@ -20,6 +20,9 @@ Copyright (c) 2021 Audiokinetic Inc.
 #include "MovieSceneTrack.h"
 #include "AkUEFeatures.h"
 
+#if !UE_4_25_OR_LATER
+#include "IMovieSceneTrackInstance.h"
+#endif
 #include "MovieSceneAkTrack.generated.h"
 
 

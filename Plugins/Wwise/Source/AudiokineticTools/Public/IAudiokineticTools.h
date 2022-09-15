@@ -20,15 +20,10 @@ Copyright (c) 2021 Audiokinetic Inc.
 #pragma once
 
 #include "Modules/ModuleInterface.h"
-#include "Stats/Stats.h"
-
-AUDIOKINETICTOOLS_API DECLARE_LOG_CATEGORY_EXTERN(LogAudiokineticTools, Log, All);
 
 /**
  * The public interface of the AudiokineticTools module
  */
 class IAudiokineticTools : public IModuleInterface
 {
-public:
-	virtual void RefreshWwiseProject() {}
 };

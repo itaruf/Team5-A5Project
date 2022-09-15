@@ -28,10 +28,7 @@ Copyright (c) 2021 Audiokinetic Inc.
 UCLASS(hidecategories=(Advanced, Attachment, Volume), BlueprintType)
 class AKAUDIO_API AAkReverbVolume : public AVolume
 {
-	GENERATED_BODY()
-
-public:
-	AAkReverbVolume(const class FObjectInitializer& ObjectInitializer);
+	GENERATED_UCLASS_BODY()
 
 #if WITH_EDITOR
 	virtual FName GetCustomIconName() const override

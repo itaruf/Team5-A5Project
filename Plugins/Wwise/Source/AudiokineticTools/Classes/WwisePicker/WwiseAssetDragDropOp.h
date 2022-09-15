@@ -22,21 +22,25 @@ Copyright (c) 2021 Audiokinetic Inc.
 #include "Containers/Map.h"
 #include "DragAndDrop/AssetDragDropOp.h"
 #include "ContentBrowserDelegates.h"
-#include "AssetTools/Public/AssetToolsModule.h"
 
 class FWwiseAssetDragDropOp : public FAssetDragDropOp
 {
 public:
 	DRAG_DROP_OPERATOR_TYPE(FWwiseEventDragDropOp, FAssetDragDropOp)
 
-	static TSharedRef<FAssetDragDropOp> New(TMap<FAssetData, bool> InAssetData, UActorFactory* ActorFactory = nullptr);
+	static TSharedRef<FAssetDragDropOp> New(const FAssetData& InAssetData, UActorFactory* ActorFactory = nullptr);
 
-	static TSharedRef<FAssetDragDropOp> New(TMap<FAssetData, bool> InAssetData, TArray<FString> InAssetPaths, UActorFactory* ActorFactory);
+	static TSharedRef<FAssetDragDropOp> New(TArray<FAssetData> InAssetData, UActorFactory* ActorFactory = nullptr);
+
+	static TSharedRef<FAssetDragDropOp> New(FString InAssetPath);
+
+	static TSharedRef<FAssetDragDropOp> New(TArray<FString> InAssetPaths);
+
+	static TSharedRef<FAssetDragDropOp> New(TArray<FAssetData> InAssetData, TArray<FString> InAssetPaths, UActorFactory* ActorFactory = nullptr);
 
 	bool OnAssetViewDrop(const FAssetViewDragAndDropExtender::FPayload& Payload);
 	bool OnAssetViewDragOver(const FAssetViewDragAndDropExtender::FPayload& Payload);
-
-	virtual void OnDrop(bool bDropWasHandled, const FPointerEvent& MouseEvent) override;
+	bool OnAssetViewDragLeave(const FAssetViewDragAndDropExtender::FPayload& Payload);
 
 	void SetCanDrop(const bool InCanDrop);
 
@@ -47,12 +51,6 @@ public:
 
 public:
 	FText CurrentHoverText;
-	bool CanDrop = true;
+	bool CanDrop = false;
 	FAssetViewDragAndDropExtender* Extender = nullptr;
-
-private:
-	// Assets contained within the drag operation. Value is true if the asset existed prior to initiating the drop.
-	TMap<FAssetData, bool> Assets;
-	FAssetToolsModule* AssetToolsModule = nullptr;
-
 };

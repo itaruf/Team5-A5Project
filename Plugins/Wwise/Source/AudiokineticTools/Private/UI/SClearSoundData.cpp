@@ -114,12 +114,69 @@ void SClearSoundData::Construct(const FArguments& InArgs)
 					.Padding(0, 4)
 					.HAlign(HAlign_Left)
 					[
-						SAssignNew(ClearAssetData, SCheckBox)
+						SNew(SVerticalBox)
+						+ SVerticalBox::Slot()
+						.AutoHeight()
+						.Padding(0, 0)
+						.HAlign(HAlign_Left)
+						[
+							SAssignNew(ClearAssetData, SCheckBox)
+							.Content()
+							[
+								SNew(STextBlock)
+								.Text(LOCTEXT("AkClearAsset", "Clear data in assets"))
+								.ToolTipText(LOCTEXT("AkClearAssetTooltip", "Inside the Wwise Unreal assets, we store bank data, media data and more. This allows to clean all those for a fresh restart. You should also clear all wwise project data before regenerating the sound data."))
+							]
+						]
+						+ SVerticalBox::Slot()						
+						.AutoHeight()
+
+						.Padding(0, 0)
+						.HAlign(HAlign_Left)
+						[
+						SNew(SHorizontalBox)
+						+ SHorizontalBox::Slot()
+							.AutoWidth()
+							.Padding(30, 4)
+							.HAlign(HAlign_Left)
+							[
+								SAssignNew(DeleteLocalizedPlatformData, SCheckBox)
+								.IsEnabled(this, &SClearSoundData::GetDeleteLocalizedEnabled)
+								.Content()
+								
+								[
+									SNew(STextBlock)
+									.Text(LOCTEXT("AkDeleteLocalized", "Delete Localized Platform Data Assets"))
+									.ToolTipText(LOCTEXT("AkDeleteLocalizedTooltip", "Localized Wwise assets have their platform data in a separate asset, so that languages may be packaged separately. For a complete clear of sound data, you may want to also delete these assets."))
+								]
+							]
+						]
+					]
+					
+					+ SVerticalBox::Slot()
+					.AutoHeight()
+					.Padding(0, 4)
+					.HAlign(HAlign_Left)
+					[
+						SAssignNew(ClearOrphanMedia, SCheckBox)
 						.Content()
 						[
 							SNew(STextBlock)
-							.Text(LOCTEXT("AkClearAsset", "Clear data in assets"))
-							.ToolTipText(LOCTEXT("AkClearAssetTooltip", "Inside the Wwise Unreal assets, we store bank data, media data and more. This allows to clean all those for a fresh restart. You should also clear all wwise project data before regenerating the sound data."))
+							.Text(LOCTEXT("AkDeleteOrphanMedia", "Clear orphaned Unreal Wwise Media assets"))
+							.ToolTipText(LOCTEXT("AkDeleteOrphanMediaTooltip", "Delete all Unreal Wwise Media assets that aren't referenced anymore"))
+						]
+					]
+					+ SVerticalBox::Slot()
+					.AutoHeight()
+					.Padding(0, 4)
+					.HAlign(HAlign_Left)
+					[
+						SAssignNew(ClearOrphanLocalizedAssetData, SCheckBox)
+						.Content()
+						[
+							SNew(STextBlock)
+							.Text(LOCTEXT("AkDeleteOrphanLocalizedData", "Clear orphaned Localized Unreal Wwise Platform Data assets"))
+							.ToolTipText(LOCTEXT("AkDeleteOrphanMediaTooltip", "Delete all Localized Unreal Wwise Platform Data assets that aren't referenced anymore"))
 						]
 					]
 				]
@@ -169,9 +226,21 @@ FReply SClearSoundData::OnClearButtonClicked()
 	{
 		clearFlags |= AkAudioBankGenerationHelper::AkSoundDataClearFlags::MediaCache;
 	}
+	if (ClearOrphanMedia && ClearOrphanMedia->IsChecked())
+	{
+		clearFlags |= AkAudioBankGenerationHelper::AkSoundDataClearFlags::OrphanMedia;
+	}
 	if (ClearExternalSource && ClearExternalSource->IsChecked())
 	{
 		clearFlags |= AkAudioBankGenerationHelper::AkSoundDataClearFlags::ExternalSource;
+	}
+	if (ClearOrphanLocalizedAssetData && ClearOrphanLocalizedAssetData->IsChecked())
+	{
+		clearFlags |= AkAudioBankGenerationHelper::AkSoundDataClearFlags::OrphanAssetData;
+	}
+	if (DeleteLocalizedPlatformData && DeleteLocalizedPlatformData->IsChecked())
+	{
+		clearFlags |= AkAudioBankGenerationHelper::AkSoundDataClearFlags::DeleteLocalizedPlatformData;
 	}
 
 	if (clearFlags != AkAudioBankGenerationHelper::AkSoundDataClearFlags::None)

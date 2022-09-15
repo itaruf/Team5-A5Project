@@ -58,12 +58,12 @@ bool SWaapiPickerRow::CallWaapiExecuteUri(const char* inUri, const TArray<KeyVal
 		}
 		else
 		{
-			UE_LOG(LogAkAudio, Log, TEXT("Call Failed"));
+			UE_LOG(LogAkAudioPicker, Log, TEXT("Call Failed"));
 		}
 	}
 	else
 	{
-		UE_LOG(LogAkAudio, Log, TEXT("Unable to connect to localhost"));
+		UE_LOG(LogAkAudioPicker, Log, TEXT("Unable to connect to localhost"));
 	}
 	return false;
 }
@@ -77,11 +77,10 @@ void SWaapiPickerRow::Construct(const FArguments& InArgs)
 	WaapiPickerItem = InArgs._WaapiPickerItem;
 
 	bool bIsRoot = !WaapiPickerItem.Pin()->Parent.IsValid() && 
-					((WaapiPickerItem.Pin()->FolderPath == WwiseWaapiHelper::BACK_SLASH + EWwiseItemType::FolderNames[EWwiseItemType::Event])	       || 
-					(WaapiPickerItem.Pin()->FolderPath == WwiseWaapiHelper::BACK_SLASH + EWwiseItemType::FolderNames[EWwiseItemType::AuxBus])	       || 
-					(WaapiPickerItem.Pin()->FolderPath == WwiseWaapiHelper::BACK_SLASH + EWwiseItemType::FolderNames[EWwiseItemType::ActorMixer])      ||
-					(WaapiPickerItem.Pin()->FolderPath == WwiseWaapiHelper::BACK_SLASH + EWwiseItemType::FolderNames[EWwiseItemType::AcousticTexture]) ||
-					(WaapiPickerItem.Pin()->FolderPath == WwiseWaapiHelper::BACK_SLASH + EWwiseItemType::FolderNames[EWwiseItemType::EffectShareSet]));
+					((WaapiPickerItem.Pin()->FolderPath == WwiseWaapiHelper::BACK_SLASH + EWwiseItemType::FolderNames[EWwiseItemType::Event])	  || 
+					(WaapiPickerItem.Pin()->FolderPath == WwiseWaapiHelper::BACK_SLASH + EWwiseItemType::FolderNames[EWwiseItemType::AuxBus])	  || 
+					(WaapiPickerItem.Pin()->FolderPath == WwiseWaapiHelper::BACK_SLASH + EWwiseItemType::FolderNames[EWwiseItemType::ActorMixer]) ||
+					(WaapiPickerItem.Pin()->FolderPath == WwiseWaapiHelper::BACK_SLASH + EWwiseItemType::FolderNames[EWwiseItemType::AcousticTexture]));
 
 	ChildSlot
 	[
@@ -102,6 +101,7 @@ void SWaapiPickerRow::Construct(const FArguments& InArgs)
 			SAssignNew(InlineRenameWidget, SInlineEditableTextBlock)
 			.Text(this, &SWaapiPickerRow::GetNameText)
 			.ToolTipText(this, &SWaapiPickerRow::GetToolTipText)
+			.Font(FAkAudioStyle::GetFontStyle(bIsRoot ? "AudiokineticTools.SourceTreeRootItemFont" : "AudiokineticTools.SourceTreeItemFont"))
 			.HighlightText(InArgs._HighlightText)
 			.OnTextCommitted(this, &SWaapiPickerRow::HandleNameCommitted)
 			.OnVerifyTextChanged(this, &SWaapiPickerRow::HandleVerifyNameChanged)
@@ -140,7 +140,7 @@ void SWaapiPickerRow::HandleNameCommitted(const FText& NewText, ETextCommit::Typ
 		if (!OnItemRenameCommitted(WaapiPickerItemPtr, NewText.ToString(), WarningMessage) && ParentWidget.IsValid() && bIsCommitted)
 		{
 			// Failed to rename/create a WaapiPickerItem, display a warning.
-			UE_LOG(LogAkAudio, Log, TEXT("Rename Failed : %s"), *WarningMessage.ToString());
+			UE_LOG(LogAkAudioPicker, Log, TEXT("Rename Failed : %s"), *WarningMessage.ToString());
 		}
 	}
 }
@@ -149,7 +149,6 @@ bool SWaapiPickerRow::OnItemRenameCommitted(const TSharedPtr< FWwiseTreeItem >& 
 {
 	if (WwiseItem.IsValid() && !InNewItemName.Equals(WwiseItem->DisplayName, ESearchCase::CaseSensitive))
 	{
-#if AK_SUPPORT_WAAPI
 		const FGuid& in_ItemId = WwiseItem->ItemId;
 		const FString itemIdStringField = in_ItemId.ToString(EGuidFormats::DigitsWithHyphensInBraces);
 		TSharedPtr<FJsonObject> getResult;
@@ -157,7 +156,6 @@ bool SWaapiPickerRow::OnItemRenameCommitted(const TSharedPtr< FWwiseTreeItem >& 
 		{
 			return true;
 		}
-#endif
 	}
 	return false;
 }

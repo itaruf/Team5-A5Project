@@ -24,7 +24,7 @@ Copyright (c) 2021 Audiokinetic Inc.
 USTRUCT()
 struct FAkWindowsAdvancedInitializationSettings : public FAkAdvancedInitializationSettingsWithMultiCoreRendering
 {
-	GENERATED_BODY()
+	GENERATED_USTRUCT_BODY()
 
 	UPROPERTY(EditAnywhere, Category = "Ak Initialization Settings")
 	bool UseHeadMountedDisplayAudioDevice = false;
@@ -39,10 +39,9 @@ struct FAkWindowsAdvancedInitializationSettings : public FAkAdvancedInitializati
 UCLASS(config = Game, defaultconfig)
 class AKAUDIO_API UAkWindowsInitializationSettings : public UObject, public IAkPlatformInitialisationSettingsBase
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 
 public:
-	UAkWindowsInitializationSettings(const FObjectInitializer& ObjectInitializer);
 	void FillInitializationStructure(FAkInitializationStructure& InitializationStructure) const override;
 
 	UPROPERTY(Config, EditAnywhere, Category = "Initialization")

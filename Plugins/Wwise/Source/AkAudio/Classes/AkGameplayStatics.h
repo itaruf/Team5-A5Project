@@ -28,13 +28,11 @@ Copyright (c) 2021 Audiokinetic Inc.
 // Make sure AkPlayingID is always 32 bits, or else we're gonna have a bad time.
 static_assert(sizeof(AkPlayingID) == sizeof(int32), "AkPlayingID is not 32 bits anymore. Change return value of PostEvent functions and callback info structures members!");
 
+
 UCLASS()
 class AKAUDIO_API UAkGameplayStatics : public UBlueprintFunctionLibrary
 {
-	GENERATED_BODY()
-
-public:
-	UAkGameplayStatics(const class FObjectInitializer& ObjectInitializer);
+	GENERATED_UCLASS_BODY()
 
 	/** Get an AkComponent attached to and following the specified component. 
 	 * @param AttachPointName - Optional named point within the AttachComponent to play the sound at.
@@ -76,6 +74,14 @@ public:
 							bool bStopWhenAttachedToDestroyed = false,
 							FString EventName = FString(""));
 
+	AK_DEPRECATED(2019.1.2, "This function is deprecated and will be removed in future releases.")
+	static int32 PostEvent( class UAkAudioEvent* AkEvent,
+							class AActor* Actor,
+							UPARAM(meta = (Bitmask, BitmaskEnum = EAkCallbackType)) int32 CallbackMask,
+							const FOnAkPostEventCallback& PostEventCallback,
+							bool bStopWhenAttachedToDestroyed = false,
+							FString EventName = FString(""));
+
 
 
 	/** Posts a Wwise Event attached to and following the root component of the specified actor, and waits for the end of the event to continue execution.
@@ -84,10 +90,11 @@ public:
 	 * @param Actor - actor on which to play the event.
 	 * @param bStopWhenAttachedToDestroyed - Specifies whether the sound should stop playing when the owner of the attach to component is destroyed.
 	 */
-	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|Actor", meta = (Latent, LatentInfo = "LatentInfo", AdvancedDisplay = "2", bStopWhenAttachedToDestroyed="false", EventName = ""))
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|Actor", meta = (Latent, LatentInfo = "LatentInfo", AdvancedDisplay = "2", bStopWhenAttachedToDestroyed="false", EventName = "", AutoCreateRefTerm="ExternalSources"))
 	static int32 PostAndWaitForEndOfEvent(class UAkAudioEvent* AkEvent,
 		class AActor* Actor,
 		bool bStopWhenAttachedToDestroyed,
+		const TArray<FAkExternalSourceInfo>& ExternalSources,
 		FString EventName,
 		FLatentActionInfo LatentInfo);
 
@@ -102,6 +109,7 @@ public:
 			class AActor* Actor,
 			int32& PlayingID,
 			bool bStopWhenAttachedToDestroyed,
+			const TArray<FAkExternalSourceInfo>& ExternalSources,
 			FLatentActionInfo LatentInfo
 			);
 
@@ -438,11 +446,56 @@ public:
 	static void ClearBanks();
 
 	/*
+	 * Loads a bank.
+	 * @param Bank - The bank to load.
+	 *
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|SoundBanks", meta = (WorldContext = "WorldContextObject", Latent, LatentInfo = "LatentInfo", AdvancedDisplay = "1"))
+	static void LoadBank(class UAkAudioBank* Bank, const FString& BankName, FLatentActionInfo LatentInfo, UObject* WorldContextObject);
+
+	/*
+	* Loads a bank asynchronously from Blueprint.
+	* @param Bank - The bank to load.
+	* @param BankLoadedCallback - Blueprint Delegate to call upon completion.
+	*/
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|SoundBanks")
+	static void LoadBankAsync(class UAkAudioBank* Bank, const FOnAkBankCallback& BankLoadedCallback);
+
+	/*
 	 * Loads a bank by its name.
 	 * @param Bank - The bank to load.
 	 */
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic|SoundBanks", meta = (DeprecatedFunction, DeprecationMessage = "Please use the \"Bank Name\" field of Load Bank"))
 	static void LoadBankByName(const FString& BankName);
+
+	/*
+	 * Loads an array of bank.
+	 * @param Banks - An array of banks to load
+	 * @param CleanUpBanks - If true, will unload any loaded banks that are not in Banks
+	 */
+	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic|SoundBanks")
+	static void LoadBanks(const TArray<UAkAudioBank*>& SoundBanks, bool SynchronizeSoundBanks);
+
+	/*
+	 * Loads the init bank.
+	 */
+	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic|SoundBanks")
+	static void LoadInitBank();
+
+	/**
+	 * Unloads a bank.
+	 * @param Bank - The bank to unload.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|SoundBanks", meta = (WorldContext = "WorldContextObject", Latent, LatentInfo = "LatentInfo", AdvancedDisplay = "1"))
+	static void UnloadBank(class UAkAudioBank* Bank, const FString& BankName, FLatentActionInfo LatentInfo, UObject* WorldContextObject);
+
+	/*
+	* Unloads a bank asynchronously from Blueprint.
+	* @param Bank - The bank to load.
+	* @param BankUnloadedCallback - Blueprint Delegate to call upon completion.
+	*/
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|SoundBanks")
+	static void UnloadBankAsync(class UAkAudioBank* Bank, const FOnAkBankCallback& BankUnloadedCallback);
 
 	/**
 	 * Unloads a bank by its name.
@@ -511,68 +564,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Audiokinetic")
 	static UObject* GetAkAudioTypeUserData(const UAkAudioType* Instance, const UClass* Type);
 
-	/** Sets an effect Shareset on an output device
-	*
-	*  @param InDeviceID Output ID, as returned from AddOutput or GetOutputID. You can pass 0 for the main (default) output
-	*  @param InEffectIndex Effect slot index (0-3)
-	*  @param InEffectShareSet  Effect ShareSet asset
-	*  @return Always returns True
-	*/
 	UFUNCTION(BlueprintCallable, Category = "Audiokinetic")
-	static bool SetOutputDeviceEffect(const FAkOutputDeviceID InDeviceID, const int32 InEffectIndex, const UAkEffectShareSet* InEffectShareSet);
-
-	/** Sets an Effect ShareSet at the specified Bus and Effect slot index.	
-	*
-	*  @param InBusName Bus name
-	*  @param InEffectIndex Effect slot index (0-3)
-	*  @param InEffectShareSet  Effect ShareSet asset
-	*  @return True when successfully posted,  False otherwise.
-	*/
-	UFUNCTION(BlueprintCallable, Category = "Audiokinetic")
-	static bool SetBusEffectByName(const FString InBusName, const int32 InEffectIndex, const UAkEffectShareSet* InEffectShareSet);
-
-	/** Sets an Effect ShareSet at the specified Bus and Effect slot index.
-	* 
-	*  @param InBusID Bus Short ID.
-	*  @param InEffectIndex Effect slot index (0-3)
-	*  @param InEffectShareSet  Effect ShareSet asset
-	*  @return True when successfully posted, False otherwise.
-	*/
-	UFUNCTION(BlueprintCallable, Category = "Audiokinetic")
-	static bool SetBusEffectByID(const FAkUniqueID InBusID, const int32 InEffectIndex, const UAkEffectShareSet* InEffectShareSet);
-
-	/** Sets an Effect ShareSet at the specified Bus and Effect slot index.
-	* 
-	*  @param InAuxBus Aux Bus Asset.
-	*  @param InEffectIndex Effect slot index (0-3)
-	*  @param InEffectShareSet  Effect ShareSet asset
-	*  @return True when successfully posted, False otherwise.
-	*/
-	UFUNCTION(BlueprintCallable, Category = "Audiokinetic")
-	static bool SetAuxBusEffect(const UAkAuxBus* InAuxBus, const int32 InEffectIndex, const UAkEffectShareSet* InEffectShareSet);
-
-	/** Sets an Effect ShareSet at the specified audio node and Effect slot index.
-	*
-	* @param InAudioNodeID Can be a member of the Actor-Mixer or Interactive Music Hierarchy (not a bus).
-	* @param InEffectIndex Effect slot index (0-3)
-	* @param InEffectShareSet Effect ShareSet asset
-	* @return Always returns True.
-	*/
-	UFUNCTION(BlueprintCallable, Category = "Audiokinetic")
-	static bool SetActorMixerEffect(const FAkUniqueID InAudioNodeID, const int32 InEffectIndex, const UAkEffectShareSet* InEffectShareSet);
-
-	/**
-	 * Use the position of a separate Actor for distance calculations for a specified listener.
-	 * When called, Wwise calculates distance attenuation and filtering
-	 * based on the distance between the AkComponent on the distance probe Actor and the sound source.
-	 * Useful for third-person perspective applications, the distance probe may be set to the player character's position,
-	 * and the listener position to that of the camera. In this scenario, attenuation is based on
-	 * the distance between the character and the sound, whereas panning, spatialization, and spread and focus calculations are base on the camera.
-	 * @param Listener - The listener that is being affected. By default, the listener is attached to the Player Camera Manager.
-	 * @param DistanceProbe - An actor to assign as the distance probe. 
-	 */
-	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|Actor")
-	static void SetDistanceProbe(AActor* Listener, AActor* DistanceProbe);
+	static UObject* GetAkMediaAssetUserData(const class UAkMediaAsset* Instance, const UClass* Type);
 
 	static bool m_bSoundEngineRecording;
 

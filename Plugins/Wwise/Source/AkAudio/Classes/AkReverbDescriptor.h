@@ -32,7 +32,7 @@ class UAkRoomComponent;
 USTRUCT()
 struct AKAUDIO_API FAkReverbDescriptor
 {
-	GENERATED_BODY()
+	GENERATED_USTRUCT_BODY()
 public:
 	static double TriangleArea(const FVector& v1, const FVector& v2, const FVector& v3);
 
@@ -57,9 +57,8 @@ public:
 	void UpdateAllRTPCs(const UAkRoomComponent* room) const;
 
 private:
-	UPROPERTY(Transient)
-	UPrimitiveComponent* Primitive = nullptr;
-	UAkLateReverbComponent* ReverbComponent = nullptr;
+	UPrimitiveComponent* Primitive;
+	UAkLateReverbComponent* ReverbComponent;
 	/* Looks for a room component attached to Primitive, whose room ID has been registered with wwise, and whose world is Game or PIE.
 		room will be null if no such room is found, or if there is no valid AkAudioDevice.
 		return true if a room is found (and there is a valid AkAudioDevice). */

@@ -83,6 +83,7 @@ void FAkPS4AdvancedInitializationSettings::FillInitializationStructure(FAkInitia
 UAkPS4InitializationSettings::UAkPS4InitializationSettings(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
+	CommonSettings.SamplesPerFrame = 512;
 }
 
 void UAkPS4InitializationSettings::FillInitializationStructure(FAkInitializationStructure& InitializationStructure) const

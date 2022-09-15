@@ -40,11 +40,11 @@ void AkComponentOcclusionObstructionService::SetOcclusionObstruction(AkGameObjec
 
 		if (bUsingRooms)
 		{
-			AkAudioDevice->SetOcclusionAndObstruction(gameObjId, ListenerId, Value, 0.0f);
+			AK::SoundEngine::SetObjectObstructionAndOcclusion(gameObjId, ListenerId, Value, 0.0f);
 		}
 		else // if (!bUsingRooms)
 		{
-			AkAudioDevice->SetOcclusionAndObstruction(gameObjId, ListenerId, 0.0f, Value);
+			AK::SoundEngine::SetObjectObstructionAndOcclusion(gameObjId, ListenerId, 0.0f, Value);
 		}
 	}
 }

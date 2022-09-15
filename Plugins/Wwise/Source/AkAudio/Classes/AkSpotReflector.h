@@ -26,14 +26,11 @@ Copyright (c) 2021 Audiokinetic Inc.
 UCLASS(config = Engine)
 class AKAUDIO_API AAkSpotReflector : public AActor
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 
 public:
-	AAkSpotReflector(const FObjectInitializer& ObjectInitializer);
-
 	/**
 	*	Send to an Auxiliary Bus containing the Wwise Reflect plugin for early reflections rendering.
-	*	Leave unassigned to use the Early Reflections Auxiliary Bus that is assigned in the Wwise Authoring Tool.
 	*	Setting a value here will apply only to sounds playing on AK Components with EnableSpotReflectors to true.
 	*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = AkSpotReflector)
@@ -41,7 +38,6 @@ public:
 
 	/**
 	*	Send to an Auxiliary Bus containing the Wwise Reflect plugin for early reflections rendering.
-	*	Leave unassigned to use the Early Reflections Auxiliary Bus that is assigned in the Wwise Authoring Tool.
 	*	Setting a value here will apply only to sounds playing on AK Components with EnableSpotReflectors to true.
 	*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, AdvancedDisplay, Category = AkSpotReflector)
@@ -73,6 +69,8 @@ public:
 
 	// Call to set all spot reflectors in the world for a single this ak component.
 	static void SetSpotReflectors(UAkComponent* AkComponent);
+
+	const FString GetSpotReflectorName() const;
 
 private:
 	void SetImageSource(UAkComponent* AkComponent);

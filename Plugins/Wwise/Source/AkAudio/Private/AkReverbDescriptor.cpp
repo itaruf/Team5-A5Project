@@ -14,13 +14,13 @@ Copyright (c) 2021 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkReverbDescriptor.h"
+#include <AK/SpatialAudio/Common/AkReverbEstimation.h>
 #include "AkAudioDevice.h"
 #include "AkAcousticTextureSetComponent.h"
 #include "AkLateReverbComponent.h"
 #include "AkRoomComponent.h"
 #include "AkComponentHelpers.h"
 #include "AkSettings.h"
-#include "Wwise/LowLevel/WwiseLowLevelSpatialAudio.h"
 
 #include "Components/PrimitiveComponent.h"
 #include "Rendering/PositionVertexBuffer.h"
@@ -249,15 +249,14 @@ void FAkReverbDescriptor::CalculateT60()
 			PrimitiveVolume = FMath::Abs(PrimitiveVolume) / AkComponentHelpers::UnrealUnitsPerCubicMeter(Primitive);
 			PrimitiveSurfaceArea /= AkComponentHelpers::UnrealUnitsPerSquaredMeter(Primitive);
 
-			auto* SpatialAudio = FWwiseLowLevelSpatialAudio::Get();
-			if (SpatialAudio && PrimitiveVolume > 0.0f && PrimitiveSurfaceArea > 0.0f)
+			if (PrimitiveVolume > 0.0f && PrimitiveSurfaceArea > 0.0f)
 			{
 				float absorption = 0.5f;
 				UAkSettings* AkSettings = GetMutableDefault<UAkSettings>();
 				if (AkSettings != nullptr)
 					absorption = AkSettings->GlobalDecayAbsorption;
 				//calcuate t60 using the Sabine equation
-				SpatialAudio->ReverbEstimation.EstimateT60Decay(PrimitiveVolume, PrimitiveSurfaceArea, absorption, T60Decay);
+				AK::SpatialAudio::ReverbEstimation::EstimateT60Decay(PrimitiveVolume, PrimitiveSurfaceArea, absorption, T60Decay);
 			}
 		}
 	}
@@ -270,15 +269,14 @@ void FAkReverbDescriptor::CalculateT60()
 
 void FAkReverbDescriptor::CalculateTimeToFirstReflection()
 {
-	auto* SpatialAudio = FWwiseLowLevelSpatialAudio::Get();
-	if (SpatialAudio && IsValid(Primitive))
+	if (IsValid(Primitive))
 	{
 		FTransform transform = Primitive->GetComponentTransform();
 		transform.SetRotation(FQuat::Identity);
 		transform.SetLocation(FVector::ZeroVector);
 		FBoxSphereBounds bounds = Primitive->CalcBounds(transform);
-		AkVector extentMeters = FAkAudioDevice::FVectorToAKVector(bounds.BoxExtent / AkComponentHelpers::UnrealUnitsPerMeter(Primitive));
-		SpatialAudio->ReverbEstimation.EstimateTimeToFirstReflection(extentMeters, TimeToFirstReflection);
+		AkVector extentMeters = FAkAudioDevice::FVectorToAKVector(bounds.BoxExtent / AkComponentHelpers::UnrealUnitsPerMeter(Primitive)); // Potential loss of precision here. Also, shouldn't it use FVectorToAKExtent?
+		AK::SpatialAudio::ReverbEstimation::EstimateTimeToFirstReflection(extentMeters, TimeToFirstReflection);
 	}
 #if WITH_EDITOR
 	if (IsValid(ReverbComponent))
@@ -290,12 +288,10 @@ void FAkReverbDescriptor::CalculateTimeToFirstReflection()
 void FAkReverbDescriptor::CalculateHFDamping(const UAkAcousticTextureSetComponent* acousticTextureSetComponent)
 {
 	HFDamping = 0.0f;
-
 	if (IsValid(Primitive))
 	{
-		auto* SpatialAudio = FWwiseLowLevelSpatialAudio::Get();
 		const UAkSettings* AkSettings = GetDefault<UAkSettings>();
-		if (SpatialAudio && AkSettings)
+		if (AkSettings != nullptr)
 		{
 			TArray<FAkAcousticTextureParams> texturesParams;
 			TArray<float> surfaceAreas;
@@ -314,7 +310,7 @@ void FAkReverbDescriptor::CalculateHFDamping(const UAkAcousticTextureSetComponen
 			if (numTextures == 0)
 				HFDamping = 0.0f;
 			else
-				SpatialAudio->ReverbEstimation.EstimateHFDamping(&textures[0], &surfaceAreas[0], textures.Num(), HFDamping);
+				AK::SpatialAudio::ReverbEstimation::EstimateHFDamping(&textures[0], &surfaceAreas[0], textures.Num(), HFDamping);
 		}
 	}
 #if WITH_EDITOR

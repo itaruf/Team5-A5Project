@@ -48,7 +48,7 @@ void UAkPortalComponentVisualizer::DrawVisualization(const UActorComponent* Comp
 			FUnrealFloatVector(BoxExtent.X, -BoxExtent.Y, -BoxExtent.Z),	// FLD
 			FUnrealFloatVector(0.0f, -BoxExtent.Y, -BoxExtent.Z),			// LD
 			FUnrealFloatVector(0.0f, -BoxExtent.Y, BoxExtent.Z)				// LU
-		});
+			});
 
 		MeshBuilderBack.AddVertices({
 			FUnrealFloatVector(-BoxExtent.X, -BoxExtent.Y, BoxExtent.Z),	// BLU
@@ -59,7 +59,7 @@ void UAkPortalComponentVisualizer::DrawVisualization(const UActorComponent* Comp
 			FUnrealFloatVector(-BoxExtent.X, BoxExtent.Y, -BoxExtent.Z),	// BRD
 			FUnrealFloatVector(0.0f, BoxExtent.Y, -BoxExtent.Z),			// RD
 			FUnrealFloatVector(0.0f, BoxExtent.Y, BoxExtent.Z)				// RU
-		});
+			});
 
 		// add vertices using front - back, right - left, up - down winding.
 		MeshBuilderFront.AddTriangles
@@ -79,7 +79,11 @@ void UAkPortalComponentVisualizer::DrawVisualization(const UActorComponent* Comp
 			});
 
 		// Allocate the material proxy and register it so it can be deleted properly once the rendering is done with it.
+#if UE_4_22_OR_LATER
 		auto* renderProxy = GEngine->GeomMaterial->GetRenderProxy();
+#else
+		auto* renderProxy = GEngine->GeomMaterial->GetRenderProxy(false);
+#endif
 		FLinearColor FrontDrawColor;
 		FLinearColor BackDrawColor;
 		AkSpatialAudioColors::GetPortalColors(PortalComponent, FrontDrawColor, BackDrawColor);
@@ -111,11 +115,9 @@ void UAkPortalComponentVisualizer::DrawVisualization(const UActorComponent* Comp
 		// draw a diagonal on left and right faces if the portal is closed
 		if (PortalComponent->InitialState == AkAcousticPortalState::Closed)
 		{
-			PDI->DrawLine(DrawBounds.FRU(), DrawBounds.BRD(), FrontDrawColor, SDPG_Foreground, Thickness);
-			PDI->DrawLine(DrawBounds.FLD(), DrawBounds.BLU(), BackDrawColor, SDPG_Foreground, Thickness);
+			PDI->DrawLine(FVector(DrawBounds.FRU()), FVector(DrawBounds.BRD()), FrontDrawColor, SDPG_Foreground, Thickness);
+			PDI->DrawLine(FVector(DrawBounds.FLD()), FVector(DrawBounds.BLU()), BackDrawColor, SDPG_Foreground, Thickness);
 		}
-
-		PortalComponent->UpdateTextRotations();
 	}
 
 	if (GEditor->GetSelectedActorCount() == 1 && IsValid(PortalComponent))

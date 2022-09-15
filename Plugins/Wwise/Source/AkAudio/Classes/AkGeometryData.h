@@ -17,7 +17,7 @@ Copyright (c) 2021 Audiokinetic Inc.
 	AkGeometryData.h:
 =============================================================================*/
 #pragma once
-#include "AkInclude.h"
+#include <AkInclude.h>
 
 #include "AkAcousticTexture.h"
 
@@ -26,7 +26,7 @@ Copyright (c) 2021 Audiokinetic Inc.
 USTRUCT()
 struct FAkAcousticSurface
 {
-	GENERATED_BODY()
+	GENERATED_USTRUCT_BODY()
 
 	UPROPERTY()
 	uint32 Texture = AK_INVALID_UNIQUE_ID;
@@ -41,7 +41,7 @@ struct FAkAcousticSurface
 USTRUCT()
 struct FAkTriangle
 {
-	GENERATED_BODY()
+	GENERATED_USTRUCT_BODY()
 
 	UPROPERTY()
 	uint16 Point0;
@@ -59,7 +59,7 @@ struct FAkTriangle
 USTRUCT()
 struct FAkGeometryData
 {
-	GENERATED_BODY()
+	GENERATED_USTRUCT_BODY()
 
 	void Clear()
 	{

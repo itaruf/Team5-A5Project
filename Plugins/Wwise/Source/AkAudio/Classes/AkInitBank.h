@@ -15,55 +15,66 @@ Copyright (c) 2021 Audiokinetic Inc.
 
 #pragma once
 
-#include "AkAudioType.h"
-#include "Wwise/CookedData/WwiseInitBankCookedData.h"
-#include "Wwise/Loaded/WwiseLoadedInitBank.h"
-
-#if WITH_EDITORONLY_DATA
-#include "Wwise/Info/WwiseAssetInfo.h"
-#endif
-
+#include "AkAssetBase.h"
 #include "AkInitBank.generated.h"
 
 
-UCLASS()
-class AKAUDIO_API UAkInitBank : public UAkAudioType
+DECLARE_DELEGATE_OneParam(FOnInitBankChanged, UAkInitBank*)
+
+USTRUCT()
+struct AKAUDIO_API FAkPluginInfo
 {
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(Transient)
-	FWwiseInitBankCookedData InitBankCookedData;
+	FAkPluginInfo() = default;
 
-#if WITH_EDITORONLY_DATA
-	void PrepareCookedData();
-#endif
+	FAkPluginInfo(const FString& InName, uint32 InPluginID, const FString& InDLL)
+	: Name(InName)
+	, PluginID(InPluginID)
+	, DLL(InDLL)
+	{
+	}
 
-	TArray<FWwiseLanguageCookedData> GetLanguages();
+	UPROPERTY(VisibleAnywhere, Category = "AkInitBank")
+	FString Name;
 
-protected :
-	FWwiseLoadedInitBankListNode* LoadedInitBank;
+	UPROPERTY(VisibleAnywhere, Category = "AkInitBank")
+	uint32 PluginID = 0;
 
+	UPROPERTY(VisibleAnywhere, Category = "AkInitBank")
+	FString DLL;
+};
+
+UCLASS()
+class AKAUDIO_API UAkInitBankAssetData : public UAkAssetDataWithMedia
+{
+	GENERATED_BODY()
 
 public:
-	UAkInitBank():LoadedInitBank(nullptr){}
+	UPROPERTY(VisibleAnywhere, Category = "AkInitBank")
+	TArray<FAkPluginInfo> PluginInfos;
+};
 
-#if WITH_EDITORONLY_DATA
-	void CookAdditionalFilesOverride(const TCHAR* PackageFilename, const ITargetPlatform* TargetPlatform,
-		TFunctionRef<void(const TCHAR* Filename, void* Data, int64 Size)> WriteAdditionalFile) override;
-	virtual void BeginCacheForCookedPlatformData(const ITargetPlatform* TargetPlatform) override;
-	virtual FWwiseBasicInfo* GetInfoMutable() override;
+UCLASS()
+class AKAUDIO_API UAkInitBank : public UAkAssetBase
+{
+	GENERATED_BODY()
+	UAkInitBank();
+public:
+	UPROPERTY(VisibleAnywhere, Category = "AkInitBank")
+	TArray<FString> AvailableAudioCultures;
 
+	UPROPERTY(VisibleAnywhere, Category = "AkInitBank")
+	FString DefaultLanguage;
+
+	virtual void LoadBank() override;
+
+#if WITH_EDITOR
+	void Reset(TArray<FAssetData>& InOutAssetsToDelete) override;
+	static FOnInitBankChanged OnInitBankChanged;
 #endif
-
-	void LoadInitBank(bool bReload);
-	void UnloadInitBank();
 
 protected:
-	void BeginDestroy() override;
-	void Serialize(FArchive& Ar) override;
-	
-#if WITH_EDITORONLY_DATA
-	virtual void MigrateIds() override;
-#endif
+	UAkAssetData* CreateAssetData(UObject* parent) const override;
 };

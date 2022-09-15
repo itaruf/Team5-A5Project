@@ -20,29 +20,33 @@ Copyright (c) 2021 Audiokinetic Inc.
 #include "AkAuxBus.h"
 #include "AkAudioDevice.h"
 #include "AkAudioEvent.h"
-#include "AkAudioModule.h"
 #include "AkSettingsPerUser.h"
 #include "AkUnrealHelper.h"
 #include "AssetRegistryModule.h"
-#include "Framework/Docking/TabManager.h"
 #include "StringMatchAlgos/Array2D.h"
 #include "StringMatchAlgos/StringMatching.h"
 #include "UObject/UnrealType.h"
 
 #if WITH_EDITOR
 #include "AkAudioStyle.h"
+#include "AkMediaAsset.h"
 #include "AssetTools/Public/AssetToolsModule.h"
 #if UE_5_0_OR_LATER
 #include "HAL/PlatformFileManager.h"
 #else
 #include "HAL/PlatformFilemanager.h"
 #endif
+#include "InitializationSettings/AkInitializationSettings.h"
 #include "Misc/FileHelper.h"
 #include "Misc/MessageDialog.h"
 #include "Platforms/AkUEPlatform.h"
 #include "Settings/ProjectPackagingSettings.h"
 #include "SettingsEditor/Public/ISettingsEditorModule.h"
-#include "AkUnrealEditorHelper.h"
+#include "UnrealEd/Public/ObjectTools.h"
+#include "Widgets/Input/SButton.h"
+#include "Widgets/Input/SEditableTextbox.h"
+#include "Widgets/Layout/SSpacer.h"
+#include "Widgets/Views/SExpanderArrow.h"
 
 #if AK_SUPPORT_WAAPI
 #include "AkWaapiClient.h"
@@ -189,7 +193,7 @@ namespace AkSettings_Helper
 
 		Settings->ProcessEvent(MigrationFunction, &EnableMultiCoreRendering);
 
-		AkUnrealEditorHelper::SaveConfigFile(Settings);
+		AkUnrealHelper::SaveConfigFile(Settings);
 	}
 #endif
 
@@ -289,7 +293,6 @@ UAkSettings::UAkSettings(const FObjectInitializer& ObjectInitializer)
 	AssetRegistry.OnAssetAdded().AddUObject(this, &UAkSettings::OnAssetAdded);
 	AssetRegistry.OnAssetRemoved().AddUObject(this, &UAkSettings::OnAssetRemoved);
 	VisualizeRoomsAndPortals = false;
-	bShowReverbInfo = true;
 #endif // WITH_EDITOR
 }
 
@@ -314,32 +317,6 @@ UAkSettings::~UAkSettings()
 	}
 #endif
 #endif
-}
-
-ECollisionChannel UAkSettings::ConvertFitToGeomCollisionChannel(EAkCollisionChannel CollisionChannel)
-{
-	if (CollisionChannel != EAkCollisionChannel::EAKCC_UseIntegrationSettingsDefault)
-		return (ECollisionChannel)CollisionChannel;
-
-	const UAkSettings* AkSettings = GetDefault<UAkSettings>();
-
-	if (AkSettings)
-		return AkSettings->DefaultFitToGeometryCollisionChannel;
-
-	return ECollisionChannel::ECC_WorldStatic;
-}
-
-ECollisionChannel UAkSettings::ConvertOcclusionCollisionChannel(EAkCollisionChannel CollisionChannel)
-{
-	if (CollisionChannel != EAkCollisionChannel::EAKCC_UseIntegrationSettingsDefault)
-		return (ECollisionChannel)CollisionChannel;
-
-	const UAkSettings* AkSettings = GetDefault<UAkSettings>();
-
-	if (AkSettings)
-		return AkSettings->DefaultOcclusionCollisionChannel;
-
-	return ECollisionChannel::ECC_WorldStatic;
 }
 
 void UAkSettings::PostInitProperties()
@@ -374,9 +351,16 @@ void UAkSettings::PostInitProperties()
 			didChanges = true;
 		}
 
+		if (EnableAutomaticAssetSynchronization_DEPRECATED)
+		{
+			AkSettingsPerUser->EnableAutomaticAssetSynchronization = true;
+			EnableAutomaticAssetSynchronization_DEPRECATED = false;
+			didChanges = true;
+		}
+
 		if (didChanges)
 		{
-			AkUnrealEditorHelper::SaveConfigFile(this);
+			AkUnrealHelper::SaveConfigFile(this);
 			AkSettingsPerUser->SaveConfig();
 		}
 	}
@@ -396,10 +380,14 @@ void UAkSettings::PostInitProperties()
 }
 
 #if WITH_EDITOR
+#if UE_4_25_OR_LATER
 void UAkSettings::PreEditChange(FProperty* PropertyAboutToChange)
+#else
+void UAkSettings::PreEditChange(UProperty* PropertyAboutToChange)
+#endif
 {
 	PreviousWwiseProjectPath = WwiseProjectPath.FilePath;
-	PreviousWwiseGeneratedSoundBankFolder = GeneratedSoundBanksFolder.Path;
+	PreviousWwiseSoundBankFolder = WwiseSoundDataFolder.Path;
 }
 
 #define LOCTEXT_NAMESPACE "AkAudio"
@@ -420,7 +408,146 @@ void UAkSettings::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedE
 	}
 	else if (MemberPropertyName == GET_MEMBER_NAME_CHECKED(UAkSettings, WwiseProjectPath))
 	{
-		SanitizeProjectPath(WwiseProjectPath.FilePath, PreviousWwiseProjectPath, FText::FromString("Please enter a valid Wwise project"));
+		AkUnrealHelper::SanitizeProjectPath(WwiseProjectPath.FilePath, PreviousWwiseProjectPath, FText::FromString("Please enter a valid Wwise project"), bRequestRefresh);
+	}
+	else if (MemberPropertyName == GET_MEMBER_NAME_CHECKED(UAkSettings, WwiseSoundDataFolder))
+	{
+		if (UseEventBasedPackaging)
+		{
+			FString oldSoundDataPackagePath = FString::Printf(TEXT("/Game/%s"), *PreviousWwiseSoundBankFolder);
+			FString newSoundDataPackagePath = FString::Printf(TEXT("/Game/%s"), *WwiseSoundDataFolder.Path);
+
+			OnSoundDataFolderChanged.Broadcast(oldSoundDataPackagePath, newSoundDataPackagePath);
+
+			UProjectPackagingSettings* PackagingSettings = GetMutableDefault<UProjectPackagingSettings>();
+
+			FDirectoryPath newPath;
+			newPath.Path = newSoundDataPackagePath;
+			PackagingSettings->DirectoriesToAlwaysCook.Add(newPath);
+
+			RemoveSoundDataFromAlwaysCook(oldSoundDataPackagePath);
+			AkUnrealHelper::SaveConfigFile(PackagingSettings);
+		}
+
+		SettingsEditorModule.OnApplicationRestartRequired();
+	}
+	else if (MemberPropertyName == GET_MEMBER_NAME_CHECKED(UAkSettings, UseEventBasedPackaging))
+	{
+		bool RestartRequired = true;
+		if (UseEventBasedPackaging)
+		{
+			auto YesDelegate = FOnButtonClickedMigration::CreateLambda([this]() -> FReply {
+				EnsureSoundDataPathIsInAlwaysCook();
+				RemoveSoundDataFromAlwaysStageAsUFS(WwiseSoundDataFolder.Path);
+				AkUnrealHelper::DeleteOldSoundBanks();
+				OnActivatedNewAssetManagement.Broadcast();
+				return FReply::Handled();
+			});
+
+			auto NoDelegate = FOnButtonClickedMigration::CreateLambda([this, &RestartRequired]() -> FReply {
+				UseEventBasedPackaging = false;
+				RestartRequired = false;
+				return FReply::Handled();
+			});
+
+			AkUnrealHelper::ShowEventBasedPackagingMigrationDialog(YesDelegate, NoDelegate);
+		}
+		else
+		{
+			TArray<FAssetData> AssetsFound;
+			FString AssetPath = FString(TEXT("/Game")) / WwiseSoundDataFolder.Path;
+			AssetRegistryModule->Get().GetAssetsByPath(FName(*AssetPath), AssetsFound, true);
+			if (AssetsFound.Num() > 0)
+			{
+				FText NewSoundDataFolder;
+
+				TSharedPtr<SWindow> Dialog = SNew(SWindow)
+					.Title(LOCTEXT("DisableEBPTitle", "Disable Event-Based Packaging"))
+					.SupportsMaximize(false)
+					.SupportsMinimize(false)
+					.FocusWhenFirstShown(true)
+					.SizingRule(ESizingRule::Autosized);
+
+				TSharedRef<SWidget> DialogContent = 
+					SNew(SBorder)
+					.BorderImage(FEditorStyle::GetBrush("ToolPanel.GroupBorder"))
+					.Padding(4.0f)
+					[
+						SNew(SVerticalBox)
+						+ SVerticalBox::Slot()
+						.FillHeight(0.45f)
+						[
+							SNew(SSpacer)
+						]
+						+ SVerticalBox::Slot()
+						.HAlign(EHorizontalAlignment::HAlign_Left)
+						.AutoHeight()
+						[
+							SNew(STextBlock)
+							.Text(LOCTEXT("AssetsInSoundData", "Assets found in the Sound Data folder. Please choose a new destination folder for your SoundBanks."))
+						]
+						+ SVerticalBox::Slot()
+						.FillHeight(0.1f)
+						[
+							SNew(SSpacer)
+						]
+						+SVerticalBox::Slot()
+						.AutoHeight()
+						[
+							SNew(SHorizontalBox)
+							+ SHorizontalBox::Slot()
+							.AutoWidth()
+							.Padding(2, 2, 6, 2)
+							[
+								SNew(STextBlock)
+								.Text(LOCTEXT("SoundDataFolder", "Sound Data Folder:"))
+							]
+							+ SHorizontalBox::Slot()
+							.AutoWidth()
+							.Padding(2, 0, 2, 0)
+							[
+								SNew(SEditableTextBox)
+								.HintText(LOCTEXT("SoundDataFolderHint", "Name of the Sound Data Folder"))
+								.OnTextCommitted_Lambda([&NewSoundDataFolder, &Dialog](const FText& InText, ETextCommit::Type InCommitType) {
+									if (!InText.IsEmpty())
+									{
+										NewSoundDataFolder = InText;
+										Dialog->RequestDestroyWindow();
+									}
+								})
+								.MinDesiredWidth(200)
+								.RevertTextOnEscape(true)
+							]
+							+ SHorizontalBox::Slot()
+							.AutoWidth()
+							.Padding(2, 0, 2, 0)
+							[
+								SNew(SButton)
+								.OnClicked_Lambda([Dialog]() -> FReply { Dialog->RequestDestroyWindow(); return FReply::Handled(); })
+								.Text(LOCTEXT("OkButtonLabel", "OK"))
+							]
+						]
+						+ SVerticalBox::Slot()
+						.FillHeight(0.45f)
+						[
+							SNew(SSpacer)
+						]
+					];
+
+				Dialog->SetContent(DialogContent);
+				FSlateApplication::Get().AddModalWindow(Dialog.ToSharedRef(), nullptr);
+				WwiseSoundDataFolder.Path = NewSoundDataFolder.ToString();
+				AkUnrealHelper::SaveConfigFile(this);
+			}
+
+			AddSoundDataToAlwaysStageAsUFS();
+			RemoveSoundDataFromAlwaysCook(FString::Printf(TEXT("/Game/%s"), *PreviousWwiseSoundBankFolder));
+		}
+
+		if (RestartRequired)
+		{
+			SettingsEditorModule.OnApplicationRestartRequired();
+		}
 	}
 	else if (MemberPropertyName == GET_MEMBER_NAME_CHECKED(UAkSettings, AkGeometryMap))
 	{
@@ -442,10 +569,6 @@ void UAkSettings::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedE
 	else if (MemberPropertyName == GET_MEMBER_NAME_CHECKED(UAkSettings, VisualizeRoomsAndPortals))
 	{
 		OnShowRoomsPortalsChanged.Broadcast();
-	}
-	else if (MemberPropertyName == GET_MEMBER_NAME_CHECKED(UAkSettings, bShowReverbInfo))
-	{
-		OnShowReverbInfoChanged.Broadcast();
 	}
 	else if (MemberPropertyName == GET_MEMBER_NAME_CHECKED(UAkSettings, EnvironmentDecayAuxBusMap))
 	{
@@ -472,37 +595,14 @@ void UAkSettings::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedE
 	{
 		OnReverbRTPCChanged.Broadcast();
 	}
-	else if (MemberPropertyName == GET_MEMBER_NAME_CHECKED(UAkSettings, WwiseStagingDirectory))
+	else if (MemberPropertyName == GET_MEMBER_NAME_CHECKED(UAkSettings, SplitMediaPerFolder))
 	{
-		FAkAudioModule::AkAudioModuleInstance->UpdateWwiseResourceLoaderSettings();
+		SplitOrMergeMedia();
 	}
 
-	else if (MemberPropertyName == GET_MEMBER_NAME_CHECKED(UAkSettings, GeneratedSoundBanksFolder))
-	{
-		bool bPathChanged = AkUnrealEditorHelper::SanitizeFolderPathAndMakeRelativeToContentDir(
-			GeneratedSoundBanksFolder.Path, PreviousWwiseGeneratedSoundBankFolder, 
-			FText::FromString("Please enter a valid directory path"));
-			
-		if (bPathChanged)
-		{
-			OnGeneratedSoundBanksPathChanged.Broadcast();
-		}
-	}
 	Super::PostEditChangeProperty(PropertyChangedEvent);
 }
 #undef LOCTEXT_NAMESPACE
-
-void UAkSettings::ToggleVisualizeRoomsAndPortals()
-{
-	VisualizeRoomsAndPortals = !VisualizeRoomsAndPortals;
-	OnShowRoomsPortalsChanged.Broadcast();
-}
-
-void UAkSettings::ToggleShowReverbInfo()
-{
-	bShowReverbInfo = !bShowReverbInfo;
-	OnShowReverbInfoChanged.Broadcast();
-}
 
 void UAkSettings::FillAkGeometryMap(
 	const TArray<FAssetData>& PhysicalMaterialAssets,
@@ -567,7 +667,11 @@ void UAkSettings::UpdateAkGeometryMap()
 		UPhysicalMaterial* rhs = Rhs.Get();
 		if (lhs && rhs)
 		{
+#if UE_4_23_OR_LATER
 			return Lhs.Get()->GetFName().LexicalLess(Rhs.Get()->GetFName());
+#else
+			return Lhs.Get()->GetFName() < Rhs.Get()->GetFName();
+#endif
 		}
 		else
 		{
@@ -850,7 +954,7 @@ void UAkSettings::SetTextureColor(FGuid textureID, int colorIndex)
 	{
 		if (UAkAcousticTexture* texture = Cast<UAkAcousticTexture>(textureAsset.GetAsset()))
 		{
-			if (texture->AcousticTextureInfo.AssetGuid == textureID && texture->EditColor != color)
+			if (texture->ID == textureID && texture->EditColor != color)
 			{
 				texture->Modify();
 				texture->EditColor = color;
@@ -974,20 +1078,17 @@ void UAkSettings::OnAssetAdded(const FAssetData& NewAssetData)
 			AcousticTextures.Add(NewAssetData);
 
 			FillAkGeometryMap(PhysicalMaterials, AcousticTextures);
-			FAkAcousticTextureParams params;
-			bool paramsExist = AcousticTextureParamsMap.Contains(acousticTexture->AcousticTextureInfo.AssetGuid);
-			if (paramsExist)
-			{
-				params = *AcousticTextureParamsMap.Find(acousticTexture->AcousticTextureInfo.AssetGuid);
-				params.shortID = acousticTexture->AcousticTextureInfo.AssetShortId;
-			}
 #if AK_SUPPORT_WAAPI
-			bool paramsSet = WAAPIGetTextureParams(acousticTexture->AcousticTextureInfo.AssetGuid, params);
+			FAkAcousticTextureParams params;
+			bool paramsExist = AcousticTextureParamsMap.Contains(acousticTexture->ID);
+			if (paramsExist)
+				params = *AcousticTextureParamsMap.Find(acousticTexture->ID);
+			bool paramsSet = WAAPIGetTextureParams(acousticTexture->ID, params);
 			if (paramsSet && !paramsExist)
-				AcousticTextureParamsMap.Add(acousticTexture->AcousticTextureInfo.AssetGuid, params);
-			RegisterWaapiTextureCallback(acousticTexture->AcousticTextureInfo.AssetGuid);
+				AcousticTextureParamsMap.Add(acousticTexture->ID, params);
+			RegisterWaapiTextureCallback(acousticTexture->ID);
 			int colorIndex = -1;
-			if (WAAPIGetObjectColorIndex(acousticTexture->AcousticTextureInfo.AssetGuid, colorIndex))
+			if (WAAPIGetObjectColorIndex(acousticTexture->ID, colorIndex))
 			{
 				acousticTexture->EditColor = FAkAudioStyle::GetWwiseObjectColor(colorIndex);
 			}
@@ -1011,9 +1112,9 @@ void UAkSettings::OnAssetRemoved(const struct FAssetData& AssetData)
 	{
 		if(auto acousticTexture = Cast<UAkAcousticTexture>(AssetData.GetAsset()))
 		{
-			AcousticTextureParamsMap.Remove(acousticTexture->AcousticTextureInfo.AssetGuid);
+			AcousticTextureParamsMap.Remove(acousticTexture->ID);
 #if AK_SUPPORT_WAAPI
-			UnregisterWaapiTextureCallback(acousticTexture->AcousticTextureInfo.AssetGuid);
+			UnregisterWaapiTextureCallback(acousticTexture->ID);
 #endif
 		}
 	}
@@ -1039,6 +1140,58 @@ void UAkSettings::InitWaapiSync()
 }
 #endif
 
+void UAkSettings::EnsureSoundDataPathIsInAlwaysCook() const
+{
+	if (!UseEventBasedPackaging)
+	{
+		return;
+	}
+
+	UProjectPackagingSettings* PackagingSettings = GetMutableDefault<UProjectPackagingSettings>();
+
+	bool packageSettingsNeedUpdate = false;
+	FString soundDataGamePath = FString::Printf(TEXT("/Game/%s"), *WwiseSoundDataFolder.Path);
+
+	if (!PackagingSettings->DirectoriesToAlwaysCook.ContainsByPredicate([soundDataGamePath](FDirectoryPath PathInArray) { return PathInArray.Path == soundDataGamePath; }))
+	{
+		FDirectoryPath newPath;
+		newPath.Path = soundDataGamePath;
+
+		PackagingSettings->DirectoriesToAlwaysCook.Add(newPath);
+		packageSettingsNeedUpdate = true;
+	}
+
+	for (int32 i = PackagingSettings->DirectoriesToAlwaysCook.Num() - 1; i >= 0; --i)
+	{
+		FString ContentPath = PackagingSettings->DirectoriesToAlwaysCook[i].Path;
+		if (ContentPath.IsEmpty()) 
+		{
+			continue;
+		}
+
+		if (ContentPath.StartsWith(TEXT("/"), ESearchCase::CaseSensitive))
+		{
+			// If this starts with /, this includes a root like /engine
+			ContentPath = FPackageName::LongPackageNameToFilename(ContentPath / TEXT(""));
+		}
+		else
+		{
+			ContentPath = FPackageName::LongPackageNameToFilename(ContentPath);
+		}
+		
+		if (!FPaths::DirectoryExists(ContentPath))
+		{
+			PackagingSettings->DirectoriesToAlwaysCook.RemoveAt(i);
+			packageSettingsNeedUpdate = true;
+		}
+	}
+
+	if (packageSettingsNeedUpdate)
+	{
+		AkUnrealHelper::SaveConfigFile(PackagingSettings);
+	}
+}
+
 void UAkSettings::EnsurePluginContentIsInAlwaysCook() const
 {
 	UProjectPackagingSettings* PackagingSettings = GetMutableDefault<UProjectPackagingSettings>();
@@ -1061,9 +1214,10 @@ void UAkSettings::EnsurePluginContentIsInAlwaysCook() const
 
 	if (packageSettingsNeedUpdate)
 	{
-		AkUnrealEditorHelper::SaveConfigFile(PackagingSettings);
+		AkUnrealHelper::SaveConfigFile(PackagingSettings);
 	}
 }
+
 
 void UAkSettings::RemoveSoundDataFromAlwaysCook(const FString& SoundDataPath)
 {
@@ -1083,56 +1237,47 @@ void UAkSettings::RemoveSoundDataFromAlwaysCook(const FString& SoundDataPath)
 
 	if (changed)
 	{
-		AkUnrealEditorHelper::SaveConfigFile(PackagingSettings);
+		AkUnrealHelper::SaveConfigFile(PackagingSettings);
 	}
 }
 
-void UAkSettings::SanitizeProjectPath(FString& Path, const FString& PreviousPath, const FText& DialogMessage)
+void UAkSettings::AddSoundDataToAlwaysStageAsUFS()
 {
-	AkUnrealHelper::TrimPath(Path);
+	UProjectPackagingSettings* PackagingSettings = GetMutableDefault<UProjectPackagingSettings>();
 
-	FString TempPath = IFileManager::Get().ConvertToAbsolutePathForExternalAppForWrite(*Path);
+	bool foundPackageDirectory = false;
+	bool packageSettingsNeedUpdate = false;
 
-	FText FailReason;
-	if (!FPaths::ValidatePath(TempPath, &FailReason))
+	for (int32 i = 0; i < PackagingSettings->DirectoriesToAlwaysStageAsUFS.Num(); i++)
 	{
-		if (EAppReturnType::Ok == FMessageDialog::Open(EAppMsgType::Ok, FailReason))
+		if (PackagingSettings->DirectoriesToAlwaysStageAsUFS[i].Path == WwiseSoundDataFolder.Path)
 		{
-			Path = PreviousPath;
-			return;
+			foundPackageDirectory = true;
+			break;
 		}
 	}
 
-	auto ProjectDirectory = AkUnrealHelper::GetProjectDirectory();
-	if (!FPaths::FileExists(TempPath))
+	if (!foundPackageDirectory)
 	{
-		// Path might be a valid one (relative to game) entered manually. Check that.
-		TempPath = FPaths::ConvertRelativePathToFull(ProjectDirectory, Path);
+		PackagingSettings->DirectoriesToAlwaysStageAsUFS.Add(WwiseSoundDataFolder);
+		packageSettingsNeedUpdate = true;
+	}
 
-		if (!FPaths::FileExists(TempPath))
+	if (!PreviousWwiseSoundBankFolder.IsEmpty())
+	{
+		for (int i = 0; i < PackagingSettings->DirectoriesToAlwaysStageAsUFS.Num(); i++)
 		{
-			if (EAppReturnType::Ok == FMessageDialog::Open(EAppMsgType::Ok, DialogMessage))
+			if (PackagingSettings->DirectoriesToAlwaysStageAsUFS[i].Path == PreviousWwiseSoundBankFolder)
 			{
-				Path = PreviousPath;
-				return;
+				PackagingSettings->DirectoriesToAlwaysStageAsUFS.RemoveAt(i);
+				packageSettingsNeedUpdate = true;
 			}
 		}
 	}
 
-	// Make the path relative to the game dir
-	FPaths::MakePathRelativeTo(TempPath, *ProjectDirectory);
-	Path = TempPath;
-
-	if (Path != PreviousPath)
+	if (packageSettingsNeedUpdate)
 	{
-#if UE_4_26_OR_LATER
-		auto WaapiPickerTab = FGlobalTabmanager::Get()->TryInvokeTab(FName("WaapiPicker"));
-		auto WwisePickerTab = FGlobalTabmanager::Get()->TryInvokeTab(FName("WwisePicker"));
-#else
-		TSharedRef<SDockTab> WaapiPickerTab = FGlobalTabmanager::Get()->InvokeTab(FName("WaapiPicker"));
-		TSharedRef<SDockTab> WwisePickerTab = FGlobalTabmanager::Get()->InvokeTab(FName("WwisePicker"));
-#endif
-		bRequestRefresh = true;
+		AkUnrealHelper::SaveConfigFile(PackagingSettings);
 	}
 }
 
@@ -1154,8 +1299,40 @@ void UAkSettings::RemoveSoundDataFromAlwaysStageAsUFS(const FString& SoundDataPa
 
 	if (changed)
 	{
-		AkUnrealEditorHelper::SaveConfigFile(PackagingSettings);
+		AkUnrealHelper::SaveConfigFile(PackagingSettings);
 	}
+}
+
+void UAkSettings::SplitOrMergeMedia()
+{
+	TArray<FAssetData> MediaList;
+	AssetRegistryModule->Get().GetAssetsByClass(UAkMediaAsset::StaticClass()->GetFName(), MediaList, false);
+
+	auto& AssetToolModule = FModuleManager::LoadModuleChecked<FAssetToolsModule>("AssetTools");
+
+	TArray<FAssetRenameData> assetsToRename;
+
+	for (auto& entry : MediaList)
+	{
+		if (auto mediaAsset = Cast<UAkMediaAsset>(entry.GetAsset()))
+		{
+			auto id = mediaAsset->Id;
+			FString stringId = FString::Printf(TEXT("%u"), id);
+
+			FString subFolder;
+
+			if (SplitMediaPerFolder)
+			{
+				subFolder = FString::Printf(TEXT("%02x/%02x"), (id >> 24) & 0xFF, (id >> 16) & 0xFF);
+			}
+
+			FString mediaNewPath = ObjectTools::SanitizeObjectPath(FPaths::Combine(AkUnrealHelper::GetBaseAssetPackagePath(), AkUnrealHelper::MediaFolderName, subFolder, stringId + TEXT(".") + stringId));
+
+			assetsToRename.Emplace(FSoftObjectPath(entry.ObjectPath.ToString()), FSoftObjectPath(mediaNewPath));
+		}
+	}
+
+	AssetToolModule.Get().RenameAssets(assetsToRename);
 }
 
 #endif // WITH_EDITOR

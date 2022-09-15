@@ -34,10 +34,8 @@ class AKAUDIO_API UAkSubmixInputComponent
 	: public UAkAudioInputComponent 
 	, public ISubmixBufferListener
 {
-    GENERATED_BODY()
+    GENERATED_UCLASS_BODY()
 public:
-	UAkSubmixInputComponent(const class FObjectInitializer& ObjectInitializer);
-
 	virtual void OnNewSubmixBuffer(const USoundSubmix* OwningSubmix, float* AudioData, int32 NumSamples, int32 NumChannels, const int32 SampleRate, double AudioClock) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SubmixInput")

@@ -52,9 +52,12 @@ public:
 		UI_COMMAND(RequestStopAllWwiseItem, "Stop All", "Stop all playing events", EUserInterfaceActionType::Button, FInputChord());
 		UI_COMMAND(RequestDeleteWwiseItem, "Delete", "Deletes the selected item(s).", EUserInterfaceActionType::Button, FInputChord(EKeys::Delete));
 		UI_COMMAND(RequestExploreWwiseItem, "Show in Folder", "Finds this item on disk.", EUserInterfaceActionType::Button, FInputChord());
+#if UE_4_21_OR_LATER
 		UI_COMMAND(RequestFindInProjectExplorerWwisetem, "Find in the Project Explorer", "Finds the specified object in the Project Explorer (Sync Group 1).", EUserInterfaceActionType::Button, FInputChord(EModifierKey::Control | EModifierKey::Shift, EKeys::One));
+#else
+		UI_COMMAND(RequestFindInProjectExplorerWwisetem, "Find in the Project Explorer", "Finds the specified object in the Project Explorer (Sync Group 1).", EUserInterfaceActionType::Button, FInputGesture(EModifierKey::Control | EModifierKey::Shift, EKeys::One));
+#endif
 		UI_COMMAND(RequestRefreshWaapiPicker, "Refresh All", "Populates the Waapi Picker.", EUserInterfaceActionType::Button, FInputChord(EKeys::F5));
-		UI_COMMAND(RequestImportWwiseItem, "Import Selected Assets", "Imports the selected assets from the Waapi Picker.", EUserInterfaceActionType::Button, FInputChord());
 	}
 
 public:
@@ -79,9 +82,6 @@ public:
 	
 	/** Requests a refresh on the Waapi Picker */
 	TSharedPtr< FUICommandInfo > RequestRefreshWaapiPicker;
-
-	/** Imports the selected asset into the project's Contents */
-	TSharedPtr< FUICommandInfo > RequestImportWwiseItem;
 };
 
 #undef LOCTEXT_NAMESPACE

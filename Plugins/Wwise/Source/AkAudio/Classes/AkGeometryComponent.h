@@ -39,7 +39,7 @@ enum class AkMeshType : uint8
 USTRUCT(BlueprintType)
 struct FAkGeometrySurfaceOverride
 {
-	GENERATED_BODY()
+	GENERATED_USTRUCT_BODY()
 
 	/** The Acoustic Texture represents the sound absorption on the surface of the geometry when a sound bounces off of it.
 	* If left to None, the mesh's physical material will be used to fetch an acoustic texture.
@@ -76,30 +76,20 @@ private:
 UCLASS(ClassGroup = Audiokinetic, BlueprintType, hidecategories = (Transform, Rendering, Mobility, LOD, Component, Activation, Tags), meta = (BlueprintSpawnableComponent))
 class AKAUDIO_API UAkGeometryComponent : public UAkAcousticTextureSetComponent
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 
 public:
-	UAkGeometryComponent(const class FObjectInitializer& ObjectInitializer);
-
-	/** Convert the mesh into a local representation suited for Wwise:
-	* a set of vertices, triangles, surfaces, acoustic textures and transmission loss values. */
 	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|AkGeometry")
 	void ConvertMesh();
 
-	/** Add or update a geometry in Spatial Audio by sending the converted mesh, as well as the rest of the AkGeometryParams to Wwise.
-	* It is necessary to create at least one geometry instance for each geometry set that is to be used for diffraction and reflection simulation. See UpdateGeometry(). */
 	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|AkGeometry")
-	void SendGeometry();
+	void RemoveGeometry();
 
-	/** Add or update an instance of the geometry by sending the transform of this component to Wwise.
-	* A geometry instance is a unique instance of a geometry set with a specified transform (position, rotation and scale).
-	* It is necessary to create at least one geometry instance for each geometry set that is to be used for diffraction and reflection simulation. */
 	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|AkGeometry")
 	void UpdateGeometry();
 
-	/** Remove the geometry and the corresponding instance from Wwise. */
 	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|AkGeometry")
-	void RemoveGeometry();
+	void SendGeometry();
 
 	virtual void OnComponentDestroyed(bool bDestroyingHierarchy) override;
 
@@ -190,6 +180,7 @@ private:
 	void ConvertCollisionMesh(UPrimitiveComponent* PrimitiveComponent, const UAkSettings* AkSettings);
 	void UpdateMeshAndArchetype(UStaticMeshComponent* StaticMeshComponent);
 	void _UpdateStaticMeshOverride(UStaticMeshComponent* StaticMeshComponent);
+	void UpdateGeometryTransform();
 
 	UPROPERTY()
 	FAkGeometryData GeometryData;

@@ -21,7 +21,8 @@ under the Apache License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 OR CONDITIONS OF ANY KIND, either express or implied. See the Apache License for
 the specific language governing permissions and limitations under the License.
 
-  Copyright (c) 2022 Audiokinetic Inc.
+  Version: v2021.1.10  Build: 7883
+  Copyright (c) 2006-2022 Audiokinetic Inc.
 *******************************************************************************/
 
 // AkWinSoundEngine.h
@@ -37,6 +38,7 @@ the specific language governing permissions and limitations under the License.
 
 struct IXAudio2;
 
+/// \cond !(Web)
 /// Platform specific initialization settings
 /// \sa AK::SoundEngine::Init
 /// \sa AK::SoundEngine::GetDefaultPlatformInitSettings
@@ -66,6 +68,7 @@ struct AkPlatformInitSettings
 
 	AkUInt32			uMaxSystemAudioObjects; ///< Dictates how many Microsoft Spatial Sound dynamic objects will be reserved by the System sink. On Windows, other running processes will be prevented from reserving these objects. Set to 0 to disable the use of System Audio Objects. Default is 128.
 };
+/// \endcond
 
 struct IDirectSound8;
 struct IXAudio2;

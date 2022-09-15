@@ -16,40 +16,10 @@ Copyright (c) 2021 Audiokinetic Inc.
 #pragma once
 
 #include "AkAudioType.h"
-#include "Wwise/CookedData/WwiseTriggerCookedData.h"
-#if WITH_EDITORONLY_DATA
-#include "Wwise/Info/WwiseAssetInfo.h"
-#endif
-
 #include "AkTrigger.generated.h"
 
 UCLASS(BlueprintType)
 class AKAUDIO_API UAkTrigger : public UAkAudioType
 {
 	GENERATED_BODY()
-
-	public :
-	UPROPERTY(Transient, VisibleAnywhere, Category = "AkTexture")
-	FWwiseTriggerCookedData TriggerCookedData;
-
-#if WITH_EDITORONLY_DATA
-	UPROPERTY(EditAnywhere, Category = "AkTexture")
-	FWwiseAssetInfo TriggerInfo;
-#endif
-
-public:
-	void Serialize(FArchive& Ar) override;
-
-	virtual AkUInt32 GetShortID() override {return TriggerCookedData.TriggerId;}
-
-#if WITH_EDITOR
-	virtual void PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent) override;
-#endif
-
-#if WITH_EDITORONLY_DATA
-	void PostLoad() override;
-	void GetTriggerCookedData();
-	virtual FWwiseBasicInfo* GetInfoMutable() override {return &TriggerInfo;}
-#endif
-
 };

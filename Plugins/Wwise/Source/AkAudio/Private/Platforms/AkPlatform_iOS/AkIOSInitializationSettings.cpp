@@ -18,6 +18,12 @@ Copyright (c) 2021 Audiokinetic Inc.
 #include "AkAudioDevice.h"
 #include "InitializationSettings/AkAudioSession.h"
 
+#if PLATFORM_IOS && !PLATFORM_TVOS
+#include "Generated/AkiOSPlugins.h"
+#include <AK/Plugin/AkAACFactory.h>
+#endif
+
+
 //////////////////////////////////////////////////////////////////////////
 // UAkIOSInitializationSettings
 

@@ -25,9 +25,16 @@ Copyright (c) 2021 Audiokinetic Inc.
 ------------------------------------------------------------------------------------*/
 
 #include "AkInclude.h"
+#include "Engine/EngineBaseTypes.h"
+#include "Engine/EngineTypes.h"
 #include "HAL/Runnable.h"
+#include "Serialization/JsonWriter.h"
+#include "Serialization/JsonSerializer.h"
 #include "Dom/JsonObject.h"
 #include "HAL/ThreadSafeBool.h"
+#include "AK/WwiseAuthoringAPI/waapi.h"
+
+DECLARE_LOG_CATEGORY_EXTERN(LogAkWaapiClient, Log, All);
 
 /*------------------------------------------------------------------------------------
 Dependencies, helpers & forward declarations.

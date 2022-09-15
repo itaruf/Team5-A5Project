@@ -41,13 +41,11 @@ bool UMovieSceneAkAudioEventTrack::AddNewEvent(FFrameNumber Time, UAkAudioEvent*
     UMovieSceneAkAudioEventSection* NewSection = NewObject<UMovieSceneAkAudioEventSection>(this);
 	ensure(NewSection);
 
-	bool eventSet = NewSection->SetEvent(Event, EventName);
-	if (eventSet)
-	{
-		const auto Duration = NewSection->GetMaxEventDuration();
-		NewSection->InitialPlacement(GetAllSections(), Time, Duration, SupportsMultipleRows());
-		AddSection(*NewSection);
-	}
+	NewSection->SetEvent(Event, EventName);
+	const auto Duration = NewSection->GetMaxEventDuration();
+	NewSection->InitialPlacement(GetAllSections(), Time, Duration, SupportsMultipleRows());
+	AddSection(*NewSection);
+
 	return true;
 }
 

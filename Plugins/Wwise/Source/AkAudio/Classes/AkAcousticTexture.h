@@ -16,10 +16,6 @@ Copyright (c) 2021 Audiokinetic Inc.
 #pragma once
 
 #include "AkAudioType.h"
-#include "Wwise/CookedData/WwiseAcousticTextureCookedData.h"
-#if WITH_EDITORONLY_DATA
-#include "Wwise/Info/WwiseAssetInfo.h"
-#endif
 #include "AkAcousticTexture.generated.h"
 
 UCLASS(BlueprintType)
@@ -27,29 +23,10 @@ class AKAUDIO_API UAkAcousticTexture : public UAkAudioType
 {
 	GENERATED_BODY()
 
-public :
-	UPROPERTY(Transient, VisibleAnywhere, Category = "AkTexture")
-	FWwiseAcousticTextureCookedData AcousticTextureCookedData;
-
+public:
 #if WITH_EDITORONLY_DATA
+
 	UPROPERTY(EditAnywhere, Category="AkTexture")
 	FLinearColor	EditColor;
-
-	UPROPERTY(EditAnywhere, Category = "AkTexture")
-	FWwiseAssetInfo AcousticTextureInfo;
-#endif
-
-public:
-	void Serialize(FArchive& Ar) override;
-	virtual AkUInt32 GetShortID() override {return AcousticTextureCookedData.ShortId;}
-
-#if WITH_EDITOR
-	virtual void PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent) override;
-#endif
-
-#if WITH_EDITORONLY_DATA
-	void PostLoad() override;
-	void GetAcousticTextureCookedData();
-	virtual FWwiseBasicInfo* GetInfoMutable() override {return &AcousticTextureInfo;}
 #endif
 };

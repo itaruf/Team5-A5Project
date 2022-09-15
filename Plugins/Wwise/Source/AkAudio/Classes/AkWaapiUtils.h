@@ -22,6 +22,8 @@ Copyright (c) 2021 Audiokinetic Inc.
 #include "Dom/JsonObject.h"
 #include "AkWaapiClient.h"
 
+DECLARE_LOG_CATEGORY_EXTERN(LogAkWaapiUtils, Log, All);
+
 class AKAUDIO_API WwiseWaapiHelper
 {
 public:
@@ -45,7 +47,6 @@ public:
 	static const FString EVENT;
 	static const FString EVENTS;
 	static const FString FILEPATH;
-	static const FString FILTER;
 	static const FString FIND_IN_PROJECT_EXPLORER;
 	static const FString FOLDER;
 	static const FString FROM;
@@ -68,8 +69,6 @@ public:
 	static const FString OBJECTS;
 	static const FString OF_TYPE;
 	static const FString OLD_NAME;
-	static const FString ON_NAME_CONFLICT;
-	static const FString OPERATION;
 	static const FString PARENT;
 	static const FString PATH;
 	static const FString PHYSICAL_FOLDER;
@@ -87,15 +86,13 @@ public:
 	static const FString REBUILD;
 	static const FString REBUILD_INIT_BANK;
 	static const FString REDO;
-	static const FString RENAME;
 	static const FString RESTRICTION;
 	static const FString RETURN;
 	static const FString SEARCH;
 	static const FString SELECT;
 	static const FString SIZE;
 	static const FString SKIP_LANGUAGES;
-	static const FString SOUNDBANK_TYPE;
-	static const FString SOUNDBANK_FIELD;
+	static const FString SOUNDBANK;
 	static const FString SOUNDBANKS;
 	static const FString STATE;
 	static const FString STOP;
@@ -110,7 +107,6 @@ public:
 	static const FString VOLUME;
 	static const FString WHERE;
 	static const FString WORKUNIT_TYPE;
-	static const FString WRITE_TO_DISK;
 };
 
 bool CallWappiGetPropertySate(const FString& ItemID, const FString& ItemProperty, TSharedPtr<FJsonObject>& ItemInfoResult); 

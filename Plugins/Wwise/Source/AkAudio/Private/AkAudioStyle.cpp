@@ -162,7 +162,6 @@ void SetAkResourceBrushes(FSlateStyleSet& Style)
 	SetAkBrush(Style, "AudiokineticTools.SwitchIcon", "switch_nor");
 	SetAkBrush(Style, "AudiokineticTools.SwitchGroupIcon", "switchgroup_nor");
 	SetAkBrush(Style, "AudiokineticTools.TriggerIcon", "trigger_nor");
-	SetAkBrush(Style, "AudiokineticTools.EffectShareSetIcon", "effect_shareset_nor");
 
 	SetClassThumbnail(Style, "ClassThumbnail.AkAcousticTexture", "AkAcousticTexture");
 	SetClassThumbnail(Style, "ClassThumbnail.AkAudioEvent", "AkAudioEvent");
@@ -176,7 +175,6 @@ void SetAkResourceBrushes(FSlateStyleSet& Style)
 	SetClassThumbnail(Style, "ClassThumbnail.AkStateValue", "AkStateValue");
 	SetClassThumbnail(Style, "ClassThumbnail.AkSwitchValue", "AkSwitchValue");
 	SetClassThumbnail(Style, "ClassThumbnail.AkTrigger", "AkTrigger");
-	SetClassThumbnail(Style, "ClassThumbnail.AkEffectShareSet", "AkEffectShareSet");
 
 	SetClassThumbnail(Style, "ClassThumbnail.AkAcousticPortal", "AK_Acoustic_Portal");
 	SetClassIcon(Style, "ClassIcon.AkAcousticPortal", "AK_Acoustic_Portal_Explorer");
@@ -299,8 +297,6 @@ const FSlateBrush* FAkAudioStyle::GetBrush(EWwiseItemType::Type ItemType)
 	case EWwiseItemType::Switch: return Style.GetBrush("AudiokineticTools.SwitchIcon");
 	case EWwiseItemType::SwitchGroup: return Style.GetBrush("AudiokineticTools.SwitchGroupIcon");
 	case EWwiseItemType::Trigger: return Style.GetBrush("AudiokineticTools.TriggerIcon");
-	case EWwiseItemType::EffectShareSet: return Style.GetBrush("AudiokineticTools.EffectShareSetIcon");
-
 	default:
 		return nullptr;
 	}

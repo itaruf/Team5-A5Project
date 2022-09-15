@@ -18,7 +18,9 @@ Copyright (c) 2021 Audiokinetic Inc.
 #if WITH_EDITOR
 #include "AssetRegistry/Public/AssetRegistryModule.h"
 #include "AssetTools/Public/AssetToolsModule.h"
+#include "AkMediaAsset.h"
 #include "AkAudioType.h"
+#include "AkAssetBase.h"
 #include "AkUnrealHelper.h"
 #include "UnrealEd/Public/ObjectTools.h"
 
@@ -46,6 +48,8 @@ int32 USanitizeWwiseObjectPathCommandlet::Main(const FString& Params)
 	TArray<FAssetRenameData> assetsToRename;
 
 	TArray<FAssetData> allAssets;
+	AssetRegistryModule.Get().GetAssetsByClass(UAkMediaAsset::StaticClass()->GetFName(), allAssets, true);
+	AssetRegistryModule.Get().GetAssetsByClass(UAkAssetPlatformData::StaticClass()->GetFName(), allAssets, true);
 	AssetRegistryModule.Get().GetAssetsByClass(UAkAudioType::StaticClass()->GetFName(), allAssets, true);
 
 	for (auto& assetData : allAssets)

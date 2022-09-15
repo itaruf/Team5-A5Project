@@ -21,7 +21,8 @@ under the Apache License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 OR CONDITIONS OF ANY KIND, either express or implied. See the Apache License for
 the specific language governing permissions and limitations under the License.
 
-  Copyright (c) 2022 Audiokinetic Inc.
+  Version: v2021.1.10  Build: 7883
+  Copyright (c) 2006-2022 Audiokinetic Inc.
 *******************************************************************************/
 
 /// \file AK/Comm/AkCommunication.h
@@ -54,6 +55,8 @@ struct AkCommSettings
 
 	/// Ports used for communication between the Wwise authoring application and your game.
 	/// All of these ports are opened in the game when Wwise communication is enabled.
+	/// When using HIO type communication, the ports are in fact channels and they must be 3
+	/// consecutives channels in the order they are defined in the Port structure.
 	///
 	/// \sa
 	/// - \ref initialization_comm_ports
@@ -66,8 +69,10 @@ struct AkCommSettings
 			: uDiscoveryBroadcast( AK_COMM_DEFAULT_DISCOVERY_PORT )
 #if defined( AK_COMM_NO_DYNAMIC_PORTS )
 			, uCommand( AK_COMM_DEFAULT_DISCOVERY_PORT + 1 )
+			, uNotification( AK_COMM_DEFAULT_DISCOVERY_PORT + 2 )
 #else
 			, uCommand( 0 )
+			, uNotification( 0 )
 #endif
 		{
 		}
@@ -75,7 +80,7 @@ struct AkCommSettings
 		/// This is where the authoring application broadcasts "Game Discovery" requests
 		/// to discover games running on the network. Default value: 24024.
 		///
-		/// \warning Unlike the other port in this structure, this port cannot be dynamic
+		/// \warning Unlike the other ports in this structure, this port cannot be dynamic
 		///          (cannot be set to 0). Refer to \ref initialization_comm_ports_discovery_broadcast
 		///          for more details.
 		AkUInt16 uDiscoveryBroadcast;
@@ -83,6 +88,10 @@ struct AkCommSettings
 		/// Used by the "command" channel.
 		/// \remark Set to 0 to request a dynamic/ephemeral port.
 		AkUInt16 uCommand;
+
+		/// Used by the "notification" channel.
+		/// \remark Set to 0 to request a dynamic/ephemeral port.
+		AkUInt16 uNotification;
 	};
 
 	/// Ports used for communication between the Wwise authoring application and your game.

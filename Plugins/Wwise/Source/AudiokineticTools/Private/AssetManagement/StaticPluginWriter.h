@@ -15,37 +15,10 @@ Copyright (c) 2021 Audiokinetic Inc.
 
 #pragma once
 
-
-#include "StaticPluginWriter.generated.h"
-
+class UAkInitBank;
 class FString;
-USTRUCT()
-struct FAkPluginInfo
-{
-	GENERATED_BODY()
-
-public:
-	FAkPluginInfo() = default;
-
-	FAkPluginInfo(const FString& InName, uint32 InPluginID, const FString& InDLL)
-	: Name(InName)
-	, PluginID(InPluginID)
-	, DLL(InDLL)
-	{
-	}
-
-	UPROPERTY(VisibleAnywhere, Category = "FAkPluginInfo")
-	FString Name;
-
-	UPROPERTY(VisibleAnywhere, Category = "FAkPluginInfo")
-	uint32 PluginID;
-
-	UPROPERTY(VisibleAnywhere, Category = "FAkPluginInfo")
-	FString DLL;
-};
-
 
 namespace StaticPluginWriter
 {
-	void OutputPluginInformation(const FString& Platform);
+	void OutputPluginInformation(UAkInitBank* InitBank, const FString& Platform);
 }

@@ -56,7 +56,7 @@ void UAkWindowsInitializationSettings::FillInitializationStructure(FAkInitializa
 #ifdef AK_WINDOWS_VS_VERSION
 	constexpr auto PlatformArchitecture = AK_WINDOWS_ARCHITECTURE AK_WINDOWS_VS_VERSION;
 #else
-	constexpr auto PlatformArchitecture = AK_WINDOWS_ARCHITECTURE "vc160";
+	constexpr auto PlatformArchitecture = AK_WINDOWS_ARCHITECTURE "vc150";
 #endif
 
 #undef AK_WINDOWS_ARCHITECTURE

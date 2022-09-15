@@ -23,7 +23,8 @@ Copyright (c) 2021 Audiokinetic Inc.
 #include "AkAudioBankGenerationHelpers.h"
 #include "AkAudioDevice.h"
 #include "AkSettingsPerUser.h"
-#include "AssetManagement/AkGenerateSoundBanksTask.h"
+#include "AssetManagement/AkSoundDataBuilder.h"
+#include "AssetManagement/CookAkSoundDataTask.h"
 #include "AssetRegistryModule.h"
 #include "Dialogs/Dialogs.h"
 #include "Dom/JsonObject.h"
@@ -45,7 +46,7 @@ Copyright (c) 2021 Audiokinetic Inc.
 #include "Serialization/JsonSerializer.h"
 #include "Widgets/Input/SButton.h"
 #include "Widgets/Input/SCheckBox.h"
-#include "AssetManagement/WwiseProjectInfo.h"
+#include "WwiseProject/WwiseProjectInfo.h"
 
 #define LOCTEXT_NAMESPACE "AkAudio"
 
@@ -194,7 +195,7 @@ void SGenerateSoundBanks::PopulateList(void)
 
 		FString WwisePlatformName = PlatformInfo->GetWwiseBankPlatformName(AvailablePlatformsInWwiseProject);
 
-		if (!WwisePlatformName.IsEmpty() &&
+		if (!WwisePlatformName.IsEmpty() && 
 			!PlatformNames.ContainsByPredicate([WwisePlatformName](TSharedPtr<FString> Platform) { return WwisePlatformName == *Platform; }))
 		{
 			PlatformNames.Add(MakeShared<FString>(WwisePlatformName));
@@ -233,11 +234,11 @@ FReply SGenerateSoundBanks::OnGenerateButtonClicked()
 		return FReply::Handled();
 	}
 
-	AkSoundBankGenerationManager::FInitParameters InitParameters;
+	AkSoundDataBuilder::InitParameters initParameters;
 
 	for (auto& platform : PlatformsToGenerate)
 	{
-		InitParameters.Platforms.Add(*platform.Get());
+		initParameters.Platforms.Add(*platform.Get());
 	}
 
 	TArray<TSharedPtr<FString>> languagesToGenerate = LanguageList->GetSelectedItems();
@@ -248,26 +249,21 @@ FReply SGenerateSoundBanks::OnGenerateButtonClicked()
 		{
 			if (*selectedLanguage == entry.Name)
 			{
-				InitParameters.Languages.Add(entry.Name);
+				initParameters.Languages.Add(entry);
 				break;
 			}
 		}
 	}
 
-	InitParameters.SkipLanguages = SkipLanguagesCheckBox->IsChecked();
+	initParameters.SkipLanguages = SkipLanguagesCheckBox->IsChecked();
 
 	if (auto* akSettingsPerUser = GetMutableDefault<UAkSettingsPerUser>())
 	{
-		akSettingsPerUser->SoundDataGenerationSkipLanguage = InitParameters.SkipLanguages;
+		akSettingsPerUser->SoundDataGenerationSkipLanguage = initParameters.SkipLanguages;
 		akSettingsPerUser->SaveConfig();
 	}
 
-	if (FAkWaapiClient::IsProjectLoaded())
-	{
-		InitParameters.GenerationMode = AkSoundBankGenerationManager::ESoundBankGenerationMode::WAAPI;
-	}
-	
-	AkGenerateSoundBanksTask::CreateAndExecuteTask(InitParameters);
+	CookAkSoundDataTask::ExecuteTask(initParameters);
 
 	TSharedPtr<SWindow> ParentWindow = FSlateApplication::Get().FindWidgetWindow(AsShared());
 	ParentWindow->RequestDestroyWindow();

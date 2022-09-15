@@ -23,6 +23,8 @@ Copyright (c) 2021 Audiokinetic Inc.
 #include "Dom/JsonObject.h"
 #include "MovieSceneAkAudioEventSection.generated.h"
 
+DECLARE_LOG_CATEGORY_EXTERN(LogAkAudioEventSection, Log, All);
+
 class FAkAudioDevice;
 struct FWwiseEventTracker;
 
@@ -56,11 +58,11 @@ public:
 	bool GetStopAtSectionEnd() const { return StopAtSectionEnd; }
 
     /** Associate a new AK audio event with this section. Also updates section time and audio source info. */
-	bool SetEvent(UAkAudioEvent* AudioEvent, const FString& Name);
+	void SetEvent(UAkAudioEvent* AudioEvent, const FString& Name);
     /** Use WAAPI to update the MaxDurationSourceID and MaxSourceDuration. */
     AKAUDIO_API void UpdateAudioSourceInfo();
     /** Update the AK event info using the UAkAudioEvent Event member. This should be called when the event is changed. */
-    AKAUDIO_API bool UpdateAkEventInfo();
+    AKAUDIO_API void UpdateAkEventInfo();
     /** Matches the duration of the Unreal Section to that of the Wwise Event. */
     AKAUDIO_API void MatchSectionLengthToEventLength();
     /** Update the audio source info and register the waapi connection callbacks. */
