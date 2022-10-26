@@ -1,0 +1,55 @@
+Switch Group	ID	Name			Wwise Object Path	Notes
+	1493153371	PlayerSpeed			\Default Work Unit\Jules\PlayerSpeed	
+
+Switch	ID	Name	Switch Group			Notes
+	712161704	Run	PlayerSpeed			
+	2108779966	Walk	PlayerSpeed			
+
+State Group	ID	Name			Wwise Object Path	Notes
+	1069431850	Player			\Default Work Unit\Alexis\Player	
+	3823289177	Level0_state			\Default Work Unit\Alexis\Level0_state	
+
+State	ID	Name	State Group			Notes
+	655265632	Alive	Player			
+	748895195	None	Player			
+	2044049779	Dead	Player			
+	198183322	Level1_Island	Level0_state			
+	529726532	End	Level0_state			
+	748895195	None	Level0_state			
+	793378327	Level1_Tuto	Level0_state			
+	1268370483	Level2_Temple	Level0_state			
+	3269752065	Level3_Tube	Level0_state			
+
+Custom State	ID	Name	State Group	Owner		Notes
+	403346557	Dead	Player	\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFX		
+	704198304	Dead	Player	\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\MUSIC		
+	834661551	Dead	Player	\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\MC		
+	946076613	Dead	Player	\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\AMB		
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	2918011349	MasterVolume			\Default Work Unit\Alexis\MasterVolume	
+
+Audio Bus	ID	Name			Wwise Object Path	Notes
+	393239870	SFX			\Default Work Unit\Master Audio Bus\SFX	
+	662417162	NPC			\Default Work Unit\Master Audio Bus\NPC	
+	1117531639	AMB			\Default Work Unit\Master Audio Bus\AMB	
+	1551306167	UI			\Default Work Unit\Master Audio Bus\UI	
+	1685527061	MC			\Default Work Unit\Master Audio Bus\MC	
+	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
+	3991942870	MUSIC			\Default Work Unit\Master Audio Bus\MUSIC	
+
+Auxiliary Bus	ID	Name			Wwise Object Path	Notes
+	2371211927	RVB_LittleCave			\Default Work Unit\Master Audio Bus\RVB_LittleCave	
+	3798299039	RVB_Temple			\Default Work Unit\Master Audio Bus\RVB_Temple	
+	3801984506	RVB_Exterior			\Default Work Unit\Master Audio Bus\RVB_Exterior	
+	4001587643	RVB_Cave			\Default Work Unit\Master Audio Bus\RVB_Cave	
+
+Effect plug-ins	ID	Name	Type				Notes
+	48620415	Have_U_Ever_Been_Outside	Wwise RoomVerb			
+	602546716	Room_Large	Wwise RoomVerb			
+	3442768367	Hall_Large_Dark	Wwise RoomVerb			
+
+Audio Devices	ID	Name	Type				Notes
+	2317455096	No_Output	No Output			
+	3859886410	System	System			
+
