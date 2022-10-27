@@ -1,0 +1,116 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "12",
+  "SoundbankVersion": "140",
+  "RootPaths": {
+   "ProjectRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\",
+   "SourceFilesRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\.cache\\Windows\\",
+   "SoundBanksRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows\\",
+   "ExternalSourcesInputFile": "",
+   "ExternalSourcesOutputRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows"
+  },
+  "SoundBanks": [
+   {
+    "Id": "3727200558",
+    "GUID": "{DE28912E-912E-112E-2E2E-2E2E2E2E2E2E}",
+    "Language": "SFX",
+    "Hash": "2232271469",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SB_4422A52E1B39482E90998E91601CFD0F",
+    "ShortName": "SB_4422A52E1B39482E90998E91601CFD0F",
+    "Path": "SB_4422A52E1B39482E90998E91601CFD0F.bnk",
+    "IncludedEvents": [
+     {
+      "Id": "3665420474",
+      "Name": "RFX_DirtFall",
+      "ObjectPath": "\\Events\\Default Work Unit\\Jules\\AMB\\RFX_DirtFall",
+      "GUID": "{4422A52E-1B39-482E-9099-8E91601CFD0F}",
+      "MaxAttenuation": "5000.",
+      "DurationType": "Infinite",
+      "ExcludedMemoryFiles": [
+       {
+        "Id": "13437684",
+        "Language": "SFX",
+        "ShortName": "AMB_RFX_DustFall_13.wav",
+        "Path": "SFX\\AMB_RFX_DustFall_13_10C4C929.wem"
+       },
+       {
+        "Id": "152265288",
+        "Language": "SFX",
+        "ShortName": "AMB_RFX_DustFall_07.wav",
+        "Path": "SFX\\AMB_RFX_DustFall_07_10C4C929.wem"
+       },
+       {
+        "Id": "283194711",
+        "Language": "SFX",
+        "ShortName": "AMB_RFX_DustFall_04.wav",
+        "Path": "SFX\\AMB_RFX_DustFall_04_10C4C929.wem"
+       },
+       {
+        "Id": "290716691",
+        "Language": "SFX",
+        "ShortName": "AMB_RFX_DustFall_09.wav",
+        "Path": "SFX\\AMB_RFX_DustFall_09_10C4C929.wem"
+       },
+       {
+        "Id": "351811936",
+        "Language": "SFX",
+        "ShortName": "AMB_RFX_DustFall_06.wav",
+        "Path": "SFX\\AMB_RFX_DustFall_06_10C4C929.wem"
+       },
+       {
+        "Id": "354917680",
+        "Language": "SFX",
+        "ShortName": "AMB_RFX_DustFall_03.wav",
+        "Path": "SFX\\AMB_RFX_DustFall_03_10C4C929.wem"
+       },
+       {
+        "Id": "403081189",
+        "Language": "SFX",
+        "ShortName": "AMB_RFX_DustFall_05.wav",
+        "Path": "SFX\\AMB_RFX_DustFall_05_10C4C929.wem"
+       },
+       {
+        "Id": "409967007",
+        "Language": "SFX",
+        "ShortName": "AMB_RFX_DustFall_11.wav",
+        "Path": "SFX\\AMB_RFX_DustFall_11_10C4C929.wem"
+       },
+       {
+        "Id": "761501090",
+        "Language": "SFX",
+        "ShortName": "AMB_RFX_DustFall_12.wav",
+        "Path": "SFX\\AMB_RFX_DustFall_12_10C4C929.wem"
+       },
+       {
+        "Id": "816418443",
+        "Language": "SFX",
+        "ShortName": "AMB_RFX_DustFall_08.wav",
+        "Path": "SFX\\AMB_RFX_DustFall_08_10C4C929.wem"
+       },
+       {
+        "Id": "859958553",
+        "Language": "SFX",
+        "ShortName": "AMB_RFX_DustFall_01.wav",
+        "Path": "SFX\\AMB_RFX_DustFall_01_10C4C929.wem"
+       },
+       {
+        "Id": "932755460",
+        "Language": "SFX",
+        "ShortName": "AMB_RFX_DustFall_10.wav",
+        "Path": "SFX\\AMB_RFX_DustFall_10_10C4C929.wem"
+       },
+       {
+        "Id": "1060471439",
+        "Language": "SFX",
+        "ShortName": "AMB_RFX_DustFall_02.wav",
+        "Path": "SFX\\AMB_RFX_DustFall_02_10C4C929.wem"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

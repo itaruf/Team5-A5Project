@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	41288598	UI_Menu_Confirm			\Default Work Unit\Alexis\UI\UI_Menu_Confirm	
+

@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	581442382	MC_Death_Crash			\Default Work Unit\Alexis\MC\MC_Death_Crash	
+

@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1063826023	SFX_Freefall_Stop			\Default Work Unit\Alexis\SFX\SFX_Freefall_Stop	
+

@@ -1,0 +1,93 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "12",
+  "SoundbankVersion": "140",
+  "RootPaths": {
+   "ProjectRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\",
+   "SourceFilesRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\.cache\\Windows\\",
+   "SoundBanksRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows\\",
+   "ExternalSourcesInputFile": "",
+   "ExternalSourcesOutputRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows"
+  },
+  "SoundBanks": [
+   {
+    "Id": "3924647971",
+    "GUID": "{E9ED6023-6023-1023-2323-232323232323}",
+    "Language": "SFX",
+    "Hash": "3628319534",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SB_A7B12DBC766B422294598A33A879EB5D",
+    "ShortName": "SB_A7B12DBC766B422294598A33A879EB5D",
+    "Path": "SB_A7B12DBC766B422294598A33A879EB5D.bnk",
+    "IncludedEvents": [
+     {
+      "Id": "3762855980",
+      "Name": "MC_Death_FallingVoid",
+      "ObjectPath": "\\Events\\Default Work Unit\\Alexis\\MC\\MC_Death_FallingVoid",
+      "GUID": "{A7B12DBC-766B-4222-9459-8A33A879EB5D}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.9",
+      "DurationMax": "4.050729",
+      "ExcludedMemoryFiles": [
+       {
+        "Id": "455119203",
+        "Language": "SFX",
+        "ShortName": "VO_MC_Glide_FallingVoid_02.wav",
+        "Path": "SFX\\VO_MC_Glide_FallingVoid_02_10C4C929.wem"
+       },
+       {
+        "Id": "604730655",
+        "Language": "SFX",
+        "ShortName": "VO_MC_Glide_FallingVoid_03.wav",
+        "Path": "SFX\\VO_MC_Glide_FallingVoid_03_10C4C929.wem"
+       },
+       {
+        "Id": "771874064",
+        "Language": "SFX",
+        "ShortName": "VO_MC_Glide_FallingVoid_01.wav",
+        "Path": "SFX\\VO_MC_Glide_FallingVoid_01_10C4C929.wem"
+       },
+       {
+        "Id": "830761355",
+        "Language": "SFX",
+        "ShortName": "VO_MC_Glide_FallingVoid_04.wav",
+        "Path": "SFX\\VO_MC_Glide_FallingVoid_04_10C4C929.wem"
+       }
+      ],
+      "ActionSetState": [
+       {
+        "Id": "655265632",
+        "Name": "Alive",
+        "ObjectPath": "\\States\\Default Work Unit\\Alexis\\Player\\Alive",
+        "GUID": "{E8CC3D28-0F71-43A1-8071-556C82C64DB2}"
+       },
+       {
+        "Id": "2044049779",
+        "Name": "Dead",
+        "ObjectPath": "\\States\\Default Work Unit\\Alexis\\Player\\Dead",
+        "GUID": "{CB238342-84ED-4395-815B-912C29F7CDBB}"
+       }
+      ]
+     }
+    ],
+    "StateGroups": [
+     {
+      "Id": "655265632",
+      "Name": "Alive",
+      "ObjectPath": "\\States\\Default Work Unit\\Alexis\\Player\\Alive",
+      "GUID": "{E8CC3D28-0F71-43A1-8071-556C82C64DB2}",
+      "States": []
+     },
+     {
+      "Id": "2044049779",
+      "Name": "Dead",
+      "ObjectPath": "\\States\\Default Work Unit\\Alexis\\Player\\Dead",
+      "GUID": "{CB238342-84ED-4395-815B-912C29F7CDBB}",
+      "States": []
+     }
+    ]
+   }
+  ]
+ }
+}

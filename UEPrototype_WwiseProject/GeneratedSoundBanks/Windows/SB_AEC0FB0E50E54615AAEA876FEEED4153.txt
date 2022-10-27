@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3470231902	SP_WaterFlowBig			\Default Work Unit\Jules\AMB\SP_WaterFlowBig	
+
+Streamed Audio	ID	Name	Audio source file	Generated audio file	Wwise Object Path	Notes
+	784759116	AMB_SP_WaterFlowBig_ST_LP	C:\Users\admin\Documents\Team5-A5Project\UEPrototype_WwiseProject\.cache\Windows\SFX\AMB_SP_WaterFlowBig_ST_LP_D79FB2B7.wem	784759116.wem	\Actor-Mixer Hierarchy\Default Work Unit\Jules\Master\AMB\SP\AMB_SP_WaterFlowBig_ST_LP	
+

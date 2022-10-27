@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2430952639	SFX_Freefall_Stop_NoEnergy			\Default Work Unit\Alexis\MC\SFX_Freefall_Stop_NoEnergy	
+

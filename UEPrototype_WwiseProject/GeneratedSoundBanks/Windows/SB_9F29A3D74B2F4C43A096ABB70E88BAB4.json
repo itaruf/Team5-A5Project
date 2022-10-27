@@ -1,0 +1,129 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "12",
+  "SoundbankVersion": "140",
+  "RootPaths": {
+   "ProjectRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\",
+   "SourceFilesRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\.cache\\Windows\\",
+   "SoundBanksRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows\\",
+   "ExternalSourcesInputFile": "",
+   "ExternalSourcesOutputRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows"
+  },
+  "SoundBanks": [
+   {
+    "Id": "3043908648",
+    "GUID": "{B56E5C28-5C28-1C28-2828-282828282828}",
+    "Language": "SFX",
+    "Hash": "1230101694",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SB_9F29A3D74B2F4C43A096ABB70E88BAB4",
+    "ShortName": "SB_9F29A3D74B2F4C43A096ABB70E88BAB4",
+    "Path": "SB_9F29A3D74B2F4C43A096ABB70E88BAB4.bnk",
+    "IncludedEvents": [
+     {
+      "Id": "1398508531",
+      "Name": "SFX_Wind",
+      "ObjectPath": "\\Events\\Default Work Unit\\Jules\\SFX\\SFX_Wind",
+      "GUID": "{9F29A3D7-4B2F-4C43-A096-ABB70E88BAB4}",
+      "DurationType": "Infinite",
+      "ExcludedMemoryFiles": [
+       {
+        "Id": "46034468",
+        "Language": "SFX",
+        "ShortName": "SFX_Wind_Medium_RFX_05.wav",
+        "Path": "SFX\\SFX_Wind_Medium_RFX_05_10C4C929.wem"
+       },
+       {
+        "Id": "235036861",
+        "Language": "SFX",
+        "ShortName": "SFX_Wind_Soft_RFX_02.wav",
+        "Path": "SFX\\SFX_Wind_Soft_RFX_02_10C4C929.wem"
+       },
+       {
+        "Id": "249120019",
+        "Language": "SFX",
+        "ShortName": "SFX_Wind_Soft_LP.wav",
+        "Path": "SFX\\SFX_Wind_Soft_LP_D79FB2B7.wem"
+       },
+       {
+        "Id": "344385240",
+        "Language": "SFX",
+        "ShortName": "SFX_Wind_Strong_LP.wav",
+        "Path": "SFX\\SFX_Wind_Strong_LP_D79FB2B7.wem"
+       },
+       {
+        "Id": "435306876",
+        "Language": "SFX",
+        "ShortName": "SFX_Wind_Soft_RFX_03.wav",
+        "Path": "SFX\\SFX_Wind_Soft_RFX_03_10C4C929.wem"
+       },
+       {
+        "Id": "437659652",
+        "Language": "SFX",
+        "ShortName": "SFX_Wind_Medium_RFX_04.wav",
+        "Path": "SFX\\SFX_Wind_Medium_RFX_04_10C4C929.wem"
+       },
+       {
+        "Id": "529209859",
+        "Language": "SFX",
+        "ShortName": "SFX_Wind_Soft_RFX_01.wav",
+        "Path": "SFX\\SFX_Wind_Soft_RFX_01_10C4C929.wem"
+       },
+       {
+        "Id": "676541080",
+        "Language": "SFX",
+        "ShortName": "SFX_Wind_Soft_RFX_05.wav",
+        "Path": "SFX\\SFX_Wind_Soft_RFX_05_10C4C929.wem"
+       },
+       {
+        "Id": "690911407",
+        "Language": "SFX",
+        "ShortName": "SFX_Wind_Medium_RFX_03.wav",
+        "Path": "SFX\\SFX_Wind_Medium_RFX_03_10C4C929.wem"
+       },
+       {
+        "Id": "757726340",
+        "Language": "SFX",
+        "ShortName": "SFX_Wind_Medium_RFX_02.wav",
+        "Path": "SFX\\SFX_Wind_Medium_RFX_02_10C4C929.wem"
+       },
+       {
+        "Id": "884564194",
+        "Language": "SFX",
+        "ShortName": "SFX_Wind_Soft_RFX_04.wav",
+        "Path": "SFX\\SFX_Wind_Soft_RFX_04_10C4C929.wem"
+       },
+       {
+        "Id": "886848421",
+        "Language": "SFX",
+        "ShortName": "SFX_Wind_Soft_RFX_06.wav",
+        "Path": "SFX\\SFX_Wind_Soft_RFX_06_10C4C929.wem"
+       },
+       {
+        "Id": "912397412",
+        "Language": "SFX",
+        "ShortName": "SFX_Wind_Medium_RFX_01.wav",
+        "Path": "SFX\\SFX_Wind_Medium_RFX_01_10C4C929.wem"
+       },
+       {
+        "Id": "1013501366",
+        "Language": "SFX",
+        "ShortName": "SFX_Wind_Medium_RFX_06.wav",
+        "Path": "SFX\\SFX_Wind_Medium_RFX_06_10C4C929.wem"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "1367533990",
+      "Name": "RTPC_WindSpeed",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Jules\\RTPC_WindSpeed",
+      "GUID": "{AEFD0C2B-4F71-404D-BB40-2112CF08A532}"
+     }
+    ]
+   }
+  ]
+ }
+}

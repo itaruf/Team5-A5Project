@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	24284063	SFX_Checkpoint			\Default Work Unit\Alexis\SFX\SFX_Checkpoint	
+

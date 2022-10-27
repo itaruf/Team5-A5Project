@@ -5,18 +5,18 @@
   "SchemaVersion": "12",
   "SoundbankVersion": "140",
   "RootPaths": {
-   "ProjectRoot": "D:\\Cours\\NeoDawn\\Team5-A5Project\\UEPrototype_WwiseProject\\",
-   "SourceFilesRoot": "D:\\Cours\\NeoDawn\\Team5-A5Project\\UEPrototype_WwiseProject\\.cache\\Windows\\",
-   "SoundBanksRoot": "D:\\Cours\\NeoDawn\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows\\",
+   "ProjectRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\",
+   "SourceFilesRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\.cache\\Windows\\",
+   "SoundBanksRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows\\",
    "ExternalSourcesInputFile": "",
-   "ExternalSourcesOutputRoot": "D:\\Cours\\NeoDawn\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows"
+   "ExternalSourcesOutputRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows"
   },
   "SoundBanks": [
    {
     "Id": "113430982",
     "GUID": "{0F11AE9C-15CE-431B-8EEA-D25B7331DD0C}",
     "Language": "SFX",
-    "Hash": "3631205240",
+    "Hash": "1689776107",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Downfall",
     "ShortName": "Downfall",
     "Path": "Downfall.bnk",

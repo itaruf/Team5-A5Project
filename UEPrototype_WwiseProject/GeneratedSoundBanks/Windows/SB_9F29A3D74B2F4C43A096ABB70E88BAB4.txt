@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1398508531	SFX_Wind			\Default Work Unit\Jules\SFX\SFX_Wind	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	1367533990	RTPC_WindSpeed			\Default Work Unit\Jules\RTPC_WindSpeed	
+

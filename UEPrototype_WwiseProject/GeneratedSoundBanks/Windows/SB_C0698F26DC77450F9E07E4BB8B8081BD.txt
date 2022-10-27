@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1346952195	SP_LavaPurpleBig			\Default Work Unit\Jules\AMB\SP_LavaPurpleBig	
+
+Streamed Audio	ID	Name	Audio source file	Generated audio file	Wwise Object Path	Notes
+	1119328	AMB_SP_LavaPurpleBig_ST_LP	C:\Users\admin\Documents\Team5-A5Project\UEPrototype_WwiseProject\.cache\Windows\SFX\AMB_SP_PurpleLavaBig_ST_LP_D79FB2B7.wem	1119328.wem	\Actor-Mixer Hierarchy\Default Work Unit\Jules\Master\AMB\SP\AMB_SP_LavaPurpleBig_ST_LP	
+
