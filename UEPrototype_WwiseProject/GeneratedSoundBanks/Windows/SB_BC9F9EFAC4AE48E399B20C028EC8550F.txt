@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3516038854	SFX_WallJumpMagic			\Default Work Unit\Jules\SFX\SFX_WallJumpMagic	
+

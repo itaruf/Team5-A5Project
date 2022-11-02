@@ -1,0 +1,42 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "12",
+  "SoundbankVersion": "140",
+  "RootPaths": {
+   "ProjectRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\",
+   "SourceFilesRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\.cache\\Windows\\",
+   "SoundBanksRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows\\",
+   "ExternalSourcesInputFile": "",
+   "ExternalSourcesOutputRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows"
+  },
+  "SoundBanks": [
+   {
+    "Id": "1088643161",
+    "GUID": "{40E36059-6059-1059-5959-595959595959}",
+    "Language": "SFX",
+    "Hash": "553968461",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SB_0328B0A301E74FBDAE0860B828BC3903",
+    "ShortName": "SB_0328B0A301E74FBDAE0860B828BC3903",
+    "Path": "SB_0328B0A301E74FBDAE0860B828BC3903.bnk",
+    "IncludedAuxBusses": [
+     {
+      "Id": "2371211927",
+      "Name": "RVB_LittleCave",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\RVB_LittleCave",
+      "GUID": "{0328B0A3-01E7-4FBD-AE08-60B828BC3903}"
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "2918011349",
+      "Name": "MasterVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Alexis\\MasterVolume",
+      "GUID": "{5B45EAC9-2C25-4E26-BE21-B7E898D85C87}"
+     }
+    ]
+   }
+  ]
+ }
+}

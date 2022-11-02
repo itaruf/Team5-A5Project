@@ -5,11 +5,11 @@
   "SchemaVersion": "12",
   "SoundbankVersion": "140",
   "RootPaths": {
-   "ProjectRoot": "D:\\Cours\\NeoDawn\\Team5-A5Project\\UEPrototype_WwiseProject\\",
-   "SourceFilesRoot": "D:\\Cours\\NeoDawn\\Team5-A5Project\\UEPrototype_WwiseProject\\.cache\\Windows\\",
-   "SoundBanksRoot": "D:\\Cours\\NeoDawn\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows\\",
+   "ProjectRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\",
+   "SourceFilesRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\.cache\\Windows\\",
+   "SoundBanksRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows\\",
    "ExternalSourcesInputFile": "",
-   "ExternalSourcesOutputRoot": "D:\\Cours\\NeoDawn\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows"
+   "ExternalSourcesOutputRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows"
   },
   "SoundBanks": [
    {

@@ -1,0 +1,14 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2588628894	MUS_Level0_Start			\Default Work Unit\Alexis\MUS_Level0_Start	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	3823289177	Level0_state			\Default Work Unit\Alexis\Level0_state	
+
+State	ID	Name	State Group			Notes
+	198183322	Level1_Island	Level0_state			
+	529726532	End	Level0_state			
+	748895195	None	Level0_state			
+	793378327	Level1_Tuto	Level0_state			
+	1268370483	Level2_Temple	Level0_state			
+	3269752065	Level3_Tube	Level0_state			
+

@@ -1,0 +1,45 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "12",
+  "SoundbankVersion": "140",
+  "RootPaths": {
+   "ProjectRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\",
+   "SourceFilesRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\.cache\\Windows\\",
+   "SoundBanksRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows\\",
+   "ExternalSourcesInputFile": "",
+   "ExternalSourcesOutputRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows"
+  },
+  "SoundBanks": [
+   {
+    "Id": "1867250093",
+    "GUID": "{6F4BF9AD-F9AD-19AD-ADAD-ADADADADADAD}",
+    "Language": "SFX",
+    "Hash": "499594472",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SB_8843FDA70D684C93963F92849B596110",
+    "ShortName": "SB_8843FDA70D684C93963F92849B596110",
+    "Path": "SB_8843FDA70D684C93963F92849B596110.bnk",
+    "IncludedEvents": [
+     {
+      "Id": "41288598",
+      "Name": "UI_Menu_Confirm",
+      "ObjectPath": "\\Events\\Default Work Unit\\Alexis\\UI\\UI_Menu_Confirm",
+      "GUID": "{8843FDA7-0D68-4C93-963F-92849B596110}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.733333",
+      "DurationMax": "0.733333",
+      "ExcludedMemoryFiles": [
+       {
+        "Id": "533472958",
+        "Language": "SFX",
+        "ShortName": "UI_Menu_Confirm.wav",
+        "Path": "SFX\\UI_Menu_Confirm_5CD89561.wem"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

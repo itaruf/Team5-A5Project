@@ -1,0 +1,44 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "12",
+  "SoundbankVersion": "140",
+  "RootPaths": {
+   "ProjectRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\",
+   "SourceFilesRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\.cache\\Windows\\",
+   "SoundBanksRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows\\",
+   "ExternalSourcesInputFile": "",
+   "ExternalSourcesOutputRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows"
+  },
+  "SoundBanks": [
+   {
+    "Id": "2841997799",
+    "GUID": "{A96571E7-71E7-11E7-E7E7-E7E7E7E7E7E7}",
+    "Language": "SFX",
+    "Hash": "1872200342",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SB_AB7C09A670304D26AC12774EA7D11706",
+    "ShortName": "SB_AB7C09A670304D26AC12774EA7D11706",
+    "Path": "SB_AB7C09A670304D26AC12774EA7D11706.bnk",
+    "IncludedEvents": [
+     {
+      "Id": "251990468",
+      "Name": "SP_LavaPurpleSmall",
+      "ObjectPath": "\\Events\\Default Work Unit\\Jules\\AMB\\SP_LavaPurpleSmall",
+      "GUID": "{AB7C09A6-7030-4D26-AC12-774EA7D11706}",
+      "MaxAttenuation": "10000.",
+      "DurationType": "Infinite",
+      "ReferencedStreamedFiles": [
+       {
+        "Id": "1000175725",
+        "Language": "SFX",
+        "ShortName": "AMB_SP_PurpleLavaSmall_LP.wav",
+        "Path": "SFX\\AMB_SP_PurpleLavaSmall_LP_D79FB2B7.wem"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

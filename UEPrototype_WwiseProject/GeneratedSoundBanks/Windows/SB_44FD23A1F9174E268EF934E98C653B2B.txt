@@ -1,0 +1,11 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2323477747	SP_WaterFallMed			\Default Work Unit\Jules\AMB\SP_WaterFallMed	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	3826379182	RTPC_WaterFallMedDistance			\Default Work Unit\Jules\RTPC_WaterFallMedDistance	
+
+Streamed Audio	ID	Name	Audio source file	Generated audio file	Wwise Object Path	Notes
+	357217649	AMB_SP_WaterFallMedMid_LP	C:\Users\admin\Documents\Team5-A5Project\UEPrototype_WwiseProject\.cache\Windows\SFX\AMB_SP_WaterFallMedMid_LP_D79FB2B7.wem	357217649.wem	\Actor-Mixer Hierarchy\Default Work Unit\Jules\Master\AMB\SP\AMB_SP_WaterFallMed_Blend\AMB_SP_WaterFallMedMid_LP	
+	776232042	AMB_SP_WaterFallMedDistant_LP	C:\Users\admin\Documents\Team5-A5Project\UEPrototype_WwiseProject\.cache\Windows\SFX\AMB_SP_WaterFallMedDistant_LP_D79FB2B7.wem	776232042.wem	\Actor-Mixer Hierarchy\Default Work Unit\Jules\Master\AMB\SP\AMB_SP_WaterFallMed_Blend\AMB_SP_WaterFallMedDistant_LP	
+	985174232	AMB_SP_WaterFallMedClose_LP	C:\Users\admin\Documents\Team5-A5Project\UEPrototype_WwiseProject\.cache\Windows\SFX\AMB_SP_WaterFallMedClose_LP_D79FB2B7.wem	985174232.wem	\Actor-Mixer Hierarchy\Default Work Unit\Jules\Master\AMB\SP\AMB_SP_WaterFallMed_Blend\AMB_SP_WaterFallMedClose_LP	
+

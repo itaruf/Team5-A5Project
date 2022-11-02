@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2163476404	UI_Menu_Hover			\Default Work Unit\Alexis\UI\UI_Menu_Hover	
+

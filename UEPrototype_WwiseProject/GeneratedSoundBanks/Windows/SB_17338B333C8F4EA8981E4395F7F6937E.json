@@ -1,0 +1,43 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "12",
+  "SoundbankVersion": "140",
+  "RootPaths": {
+   "ProjectRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\",
+   "SourceFilesRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\.cache\\Windows\\",
+   "SoundBanksRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows\\",
+   "ExternalSourcesInputFile": "",
+   "ExternalSourcesOutputRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows"
+  },
+  "SoundBanks": [
+   {
+    "Id": "281555336",
+    "GUID": "{10C83188-3188-1188-8888-888888888888}",
+    "Language": "SFX",
+    "Hash": "764004191",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SB_17338B333C8F4EA8981E4395F7F6937E",
+    "ShortName": "SB_17338B333C8F4EA8981E4395F7F6937E",
+    "Path": "SB_17338B333C8F4EA8981E4395F7F6937E.bnk",
+    "IncludedEvents": [
+     {
+      "Id": "800160961",
+      "Name": "MUS_MenuStart_Play",
+      "ObjectPath": "\\Events\\Default Work Unit\\Alexis\\MUS_MenuStart_Play",
+      "GUID": "{17338B33-3C8F-4EA8-981E-4395F7F6937E}",
+      "DurationType": "Infinite",
+      "ExcludedMemoryFiles": [
+       {
+        "Id": "674814560",
+        "Language": "SFX",
+        "ShortName": "musiqueDebutDeJeu2Loops-glued.wav",
+        "Path": "SFX\\musiqueDebutDeJeu2Loops-glued_D79FB2B7.wem"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

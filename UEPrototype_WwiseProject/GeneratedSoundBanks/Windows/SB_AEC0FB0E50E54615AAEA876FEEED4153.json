@@ -1,0 +1,44 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "12",
+  "SoundbankVersion": "140",
+  "RootPaths": {
+   "ProjectRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\",
+   "SourceFilesRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\.cache\\Windows\\",
+   "SoundBanksRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows\\",
+   "ExternalSourcesInputFile": "",
+   "ExternalSourcesOutputRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows"
+  },
+  "SoundBanks": [
+   {
+    "Id": "2015276449",
+    "GUID": "{781EADA1-ADA1-1DA1-A1A1-A1A1A1A1A1A1}",
+    "Language": "SFX",
+    "Hash": "4263257306",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SB_AEC0FB0E50E54615AAEA876FEEED4153",
+    "ShortName": "SB_AEC0FB0E50E54615AAEA876FEEED4153",
+    "Path": "SB_AEC0FB0E50E54615AAEA876FEEED4153.bnk",
+    "IncludedEvents": [
+     {
+      "Id": "3470231902",
+      "Name": "SP_WaterFlowBig",
+      "ObjectPath": "\\Events\\Default Work Unit\\Jules\\AMB\\SP_WaterFlowBig",
+      "GUID": "{AEC0FB0E-50E5-4615-AAEA-876FEEED4153}",
+      "MaxAttenuation": "10000.",
+      "DurationType": "Infinite",
+      "ReferencedStreamedFiles": [
+       {
+        "Id": "784759116",
+        "Language": "SFX",
+        "ShortName": "AMB_SP_WaterFlowBig_ST_LP.wav",
+        "Path": "SFX\\AMB_SP_WaterFlowBig_ST_LP_D79FB2B7.wem"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

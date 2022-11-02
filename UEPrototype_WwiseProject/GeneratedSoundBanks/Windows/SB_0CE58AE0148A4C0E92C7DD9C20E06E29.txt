@@ -1,0 +1,11 @@
+Event	ID	Name			Wwise Object Path	Notes
+	678638583	ST_Vegetation			\Default Work Unit\Jules\AMB\ST_Vegetation	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	298772159	RTPC_Vegetation			\Default Work Unit\Jules\RTPC_Vegetation	
+
+Streamed Audio	ID	Name	Audio source file	Generated audio file	Wwise Object Path	Notes
+	55723591	AMB_VegetationHigh_ST_LP	C:\Users\admin\Documents\Team5-A5Project\UEPrototype_WwiseProject\.cache\Windows\SFX\AMB_VegetationHigh_ST_LP_D79FB2B7.wem	55723591.wem	\Actor-Mixer Hierarchy\Default Work Unit\Jules\Master\AMB\ST\AMB_Vegetation_Blend\AMB_VegetationHigh_ST_LP	
+	341514032	AMB_VegetationMed_ST_LP	C:\Users\admin\Documents\Team5-A5Project\UEPrototype_WwiseProject\.cache\Windows\SFX\AMB_VegetationMed_ST_LP_D79FB2B7.wem	341514032.wem	\Actor-Mixer Hierarchy\Default Work Unit\Jules\Master\AMB\ST\AMB_Vegetation_Blend\AMB_VegetationMed_ST_LP	
+	485390150	AMB_VegetationLow_ST_LP	C:\Users\admin\Documents\Team5-A5Project\UEPrototype_WwiseProject\.cache\Windows\SFX\AMB_VegetationLow_ST_LP_D79FB2B7.wem	485390150.wem	\Actor-Mixer Hierarchy\Default Work Unit\Jules\Master\AMB\ST\AMB_Vegetation_Blend\AMB_VegetationLow_ST_LP	
+
