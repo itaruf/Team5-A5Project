@@ -1,0 +1,51 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "12",
+  "SoundbankVersion": "140",
+  "RootPaths": {
+   "ProjectRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\",
+   "SourceFilesRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\.cache\\Windows\\",
+   "SoundBanksRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows\\",
+   "ExternalSourcesInputFile": "",
+   "ExternalSourcesOutputRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows"
+  },
+  "SoundBanks": [
+   {
+    "Id": "3690756950",
+    "GUID": "{DBFC7B56-7B56-1B56-5656-565656565656}",
+    "Language": "SFX",
+    "Hash": "844625058",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SB_CAC85376D0E8467399D5487BD51B540E",
+    "ShortName": "SB_CAC85376D0E8467399D5487BD51B540E",
+    "Path": "SB_CAC85376D0E8467399D5487BD51B540E.bnk",
+    "IncludedEvents": [
+     {
+      "Id": "2082442955",
+      "Name": "SFX_WaterFallImpact",
+      "ObjectPath": "\\Events\\Default Work Unit\\Jules\\SFX\\SFX_WaterFallImpact",
+      "GUID": "{CAC85376-D0E8-4673-99D5-487BD51B540E}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.817014",
+      "DurationMax": "3.486749",
+      "ExcludedMemoryFiles": [
+       {
+        "Id": "865187062",
+        "Language": "SFX",
+        "ShortName": "SFX_Waterfall_Impact_01.wav",
+        "Path": "SFX\\SFX_Waterfall_Impact_01_10C4C929.wem"
+       },
+       {
+        "Id": "941410716",
+        "Language": "SFX",
+        "ShortName": "SFX_Waterfall_Impact_02.wav",
+        "Path": "SFX\\SFX_Waterfall_Impact_02_10C4C929.wem"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

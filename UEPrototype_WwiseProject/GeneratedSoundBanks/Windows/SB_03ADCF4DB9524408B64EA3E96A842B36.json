@@ -1,0 +1,69 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "12",
+  "SoundbankVersion": "140",
+  "RootPaths": {
+   "ProjectRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\",
+   "SourceFilesRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\.cache\\Windows\\",
+   "SoundBanksRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows\\",
+   "ExternalSourcesInputFile": "",
+   "ExternalSourcesOutputRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows"
+  },
+  "SoundBanks": [
+   {
+    "Id": "3976072347",
+    "GUID": "{ECFE0C9B-0C9B-1C9B-9B9B-9B9B9B9B9B9B}",
+    "Language": "SFX",
+    "Hash": "81939169",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SB_03ADCF4DB9524408B64EA3E96A842B36",
+    "ShortName": "SB_03ADCF4DB9524408B64EA3E96A842B36",
+    "Path": "SB_03ADCF4DB9524408B64EA3E96A842B36.bnk",
+    "IncludedEvents": [
+     {
+      "Id": "2187071870",
+      "Name": "MC_FT_WallZap",
+      "ObjectPath": "\\Events\\Default Work Unit\\Jules\\MC\\MC_FT_WallZap",
+      "GUID": "{03ADCF4D-B952-4408-B64E-A3E96A842B36}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.985663",
+      "DurationMax": "1.082182",
+      "ExcludedMemoryFiles": [
+       {
+        "Id": "453171199",
+        "Language": "SFX",
+        "ShortName": "MC_FT_WallZap_MagicLayer_05.wav",
+        "Path": "SFX\\MC_FT_WallZap_MagicLayer_05_10C4C929.wem"
+       },
+       {
+        "Id": "480979403",
+        "Language": "SFX",
+        "ShortName": "MC_FT_WallZap_MagicLayer_02.wav",
+        "Path": "SFX\\MC_FT_WallZap_MagicLayer_02_10C4C929.wem"
+       },
+       {
+        "Id": "644317171",
+        "Language": "SFX",
+        "ShortName": "MC_FT_WallZap_MagicLayer_04.wav",
+        "Path": "SFX\\MC_FT_WallZap_MagicLayer_04_10C4C929.wem"
+       },
+       {
+        "Id": "721989425",
+        "Language": "SFX",
+        "ShortName": "MC_FT_WallZap_MagicLayer_03.wav",
+        "Path": "SFX\\MC_FT_WallZap_MagicLayer_03_10C4C929.wem"
+       },
+       {
+        "Id": "925276120",
+        "Language": "SFX",
+        "ShortName": "MC_FT_WallZap_MagicLayer_01.wav",
+        "Path": "SFX\\MC_FT_WallZap_MagicLayer_01_10C4C929.wem"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

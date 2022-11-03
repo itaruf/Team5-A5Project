@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1956210531	SP_FireTorch			\Default Work Unit\Jules\AMB\SP_FireTorch	
+
+Streamed Audio	ID	Name	Audio source file	Generated audio file	Wwise Object Path	Notes
+	91485875	AMB_SP_FireTorch_LP	C:\Users\admin\Documents\Team5-A5Project\UEPrototype_WwiseProject\.cache\Windows\SFX\AMB_SP_FireTorch_LP_D79FB2B7.wem	91485875.wem	\Actor-Mixer Hierarchy\Default Work Unit\Jules\Master\AMB\SP\AMB_SP_FireTorch_LP	
+

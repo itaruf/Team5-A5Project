@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1336299576	UI_PauseMenu_Select			\Default Work Unit\Alexis\UI\UI_PauseMenu_Select	
+

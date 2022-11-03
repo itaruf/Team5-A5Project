@@ -1,0 +1,64 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "12",
+  "SoundbankVersion": "140",
+  "RootPaths": {
+   "ProjectRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\",
+   "SourceFilesRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\.cache\\Windows\\",
+   "SoundBanksRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows\\",
+   "ExternalSourcesInputFile": "",
+   "ExternalSourcesOutputRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows"
+  },
+  "SoundBanks": [
+   {
+    "Id": "2066847519",
+    "GUID": "{7B31971F-971F-171F-1F1F-1F1F1F1F1F1F}",
+    "Language": "SFX",
+    "Hash": "1189573727",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SB_BC8ED75C5C8C49F1A87728266565A909",
+    "ShortName": "SB_BC8ED75C5C8C49F1A87728266565A909",
+    "Path": "SB_BC8ED75C5C8C49F1A87728266565A909.bnk",
+    "IncludedEvents": [
+     {
+      "Id": "2473867810",
+      "Name": "SFX_MagicDoor",
+      "ObjectPath": "\\Events\\Default Work Unit\\Jules\\SFX\\SFX_MagicDoor",
+      "GUID": "{BC8ED75C-5C8C-49F1-A877-28266565A909}",
+      "MaxAttenuation": "20000.",
+      "DurationType": "Infinite",
+      "ExcludedMemoryFiles": [
+       {
+        "Id": "42847026",
+        "Language": "SFX",
+        "ShortName": "SFX_MagicDoorEnd.wav",
+        "Path": "SFX\\SFX_MagicDoorEnd_10C4C929.wem"
+       },
+       {
+        "Id": "196305151",
+        "Language": "SFX",
+        "ShortName": "SFX_MagicDoor_LP.wav",
+        "Path": "SFX\\SFX_MagicDoor_LP_D79FB2B7.wem"
+       },
+       {
+        "Id": "1022866745",
+        "Language": "SFX",
+        "ShortName": "SFX_MagicDoorBegin.wav",
+        "Path": "SFX\\SFX_MagicDoorBegin_10C4C929.wem"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "2901939645",
+      "Name": "RTPC_MagicDoorPosition",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Jules\\RTPC_MagicDoorPosition",
+      "GUID": "{42B37403-7E20-45F1-BC55-D7706D029A1E}"
+     }
+    ]
+   }
+  ]
+ }
+}

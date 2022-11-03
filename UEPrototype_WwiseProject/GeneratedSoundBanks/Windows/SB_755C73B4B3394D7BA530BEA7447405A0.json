@@ -1,0 +1,50 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "12",
+  "SoundbankVersion": "140",
+  "RootPaths": {
+   "ProjectRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\",
+   "SourceFilesRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\.cache\\Windows\\",
+   "SoundBanksRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows\\",
+   "ExternalSourcesInputFile": "",
+   "ExternalSourcesOutputRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows"
+  },
+  "SoundBanks": [
+   {
+    "Id": "3560213008",
+    "GUID": "{D4348A10-8A10-1A10-1010-101010101010}",
+    "Language": "SFX",
+    "Hash": "3970343478",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SB_755C73B4B3394D7BA530BEA7447405A0",
+    "ShortName": "SB_755C73B4B3394D7BA530BEA7447405A0",
+    "Path": "SB_755C73B4B3394D7BA530BEA7447405A0.bnk",
+    "IncludedEvents": [
+     {
+      "Id": "2757849860",
+      "Name": "SFX_BigDoor_Start",
+      "ObjectPath": "\\Events\\Default Work Unit\\Alexis\\SFX\\SFX_BigDoor_Start",
+      "GUID": "{755C73B4-B339-4D7B-A530-BEA7447405A0}",
+      "MaxAttenuation": "200000.",
+      "DurationType": "Infinite",
+      "ExcludedMemoryFiles": [
+       {
+        "Id": "594541188",
+        "Language": "SFX",
+        "ShortName": "SFX_BigDoor_Sustain_LP.wav",
+        "Path": "SFX\\SFX_BigDoor_Sustain_LP_D79FB2B7.wem"
+       },
+       {
+        "Id": "975195804",
+        "Language": "SFX",
+        "ShortName": "SFX_BigDoor_Start.wav",
+        "Path": "SFX\\SFX_BigDoor_Start_10C4C929.wem"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

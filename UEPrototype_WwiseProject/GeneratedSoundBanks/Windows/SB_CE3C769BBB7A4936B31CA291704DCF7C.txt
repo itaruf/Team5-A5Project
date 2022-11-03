@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2698611628	Stop_AMB_Bed_lvl1			\Default Work Unit\Alexis\AMB\Stop_AMB_Bed_lvl1	
+

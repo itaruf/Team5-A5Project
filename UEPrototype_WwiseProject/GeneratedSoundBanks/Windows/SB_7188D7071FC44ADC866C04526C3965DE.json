@@ -1,0 +1,42 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "12",
+  "SoundbankVersion": "140",
+  "RootPaths": {
+   "ProjectRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\",
+   "SourceFilesRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\.cache\\Windows\\",
+   "SoundBanksRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows\\",
+   "ExternalSourcesInputFile": "",
+   "ExternalSourcesOutputRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows"
+  },
+  "SoundBanks": [
+   {
+    "Id": "2294918770",
+    "GUID": "{88C9AE72-AE72-1E72-7272-727272727272}",
+    "Language": "SFX",
+    "Hash": "2497295986",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SB_7188D7071FC44ADC866C04526C3965DE",
+    "ShortName": "SB_7188D7071FC44ADC866C04526C3965DE",
+    "Path": "SB_7188D7071FC44ADC866C04526C3965DE.bnk",
+    "IncludedAuxBusses": [
+     {
+      "Id": "4001587643",
+      "Name": "RVB_Cave",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\RVB_Cave",
+      "GUID": "{7188D707-1FC4-4ADC-866C-04526C3965DE}"
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "2918011349",
+      "Name": "MasterVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Alexis\\MasterVolume",
+      "GUID": "{5B45EAC9-2C25-4E26-BE21-B7E898D85C87}"
+     }
+    ]
+   }
+  ]
+ }
+}

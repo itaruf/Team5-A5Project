@@ -1,0 +1,44 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "12",
+  "SoundbankVersion": "140",
+  "RootPaths": {
+   "ProjectRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\",
+   "SourceFilesRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\.cache\\Windows\\",
+   "SoundBanksRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows\\",
+   "ExternalSourcesInputFile": "",
+   "ExternalSourcesOutputRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows"
+  },
+  "SoundBanks": [
+   {
+    "Id": "4191783808",
+    "GUID": "{F9D98B80-8B80-1B80-8080-808080808080}",
+    "Language": "SFX",
+    "Hash": "196706514",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SB_A754753925584E76BAF997167B960FDA",
+    "ShortName": "SB_A754753925584E76BAF997167B960FDA",
+    "Path": "SB_A754753925584E76BAF997167B960FDA.bnk",
+    "IncludedEvents": [
+     {
+      "Id": "1825180967",
+      "Name": "Play_AMB_Bed_lvl2_Temple",
+      "ObjectPath": "\\Events\\Default Work Unit\\Alexis\\AMB\\Play_AMB_Bed_lvl2_Temple",
+      "GUID": "{A7547539-2558-4E76-BAF9-97167B960FDA}",
+      "MaxAttenuation": "5000.",
+      "DurationType": "Infinite",
+      "ReferencedStreamedFiles": [
+       {
+        "Id": "781522490",
+        "Language": "SFX",
+        "ShortName": "AMB_Bed_lvl2_Temple_LP.wav",
+        "Path": "SFX\\AMB_Bed_lvl2_Temple_LP_D79FB2B7.wem"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

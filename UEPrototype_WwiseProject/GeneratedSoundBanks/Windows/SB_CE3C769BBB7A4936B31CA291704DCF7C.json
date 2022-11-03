@@ -1,0 +1,38 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "12",
+  "SoundbankVersion": "140",
+  "RootPaths": {
+   "ProjectRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\",
+   "SourceFilesRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\.cache\\Windows\\",
+   "SoundBanksRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows\\",
+   "ExternalSourcesInputFile": "",
+   "ExternalSourcesOutputRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows"
+  },
+  "SoundBanks": [
+   {
+    "Id": "2641148313",
+    "GUID": "{9D6CB999-B999-1999-9999-999999999999}",
+    "Language": "SFX",
+    "Hash": "3700539618",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SB_CE3C769BBB7A4936B31CA291704DCF7C",
+    "ShortName": "SB_CE3C769BBB7A4936B31CA291704DCF7C",
+    "Path": "SB_CE3C769BBB7A4936B31CA291704DCF7C.bnk",
+    "IncludedEvents": [
+     {
+      "Id": "2698611628",
+      "Name": "Stop_AMB_Bed_lvl1",
+      "ObjectPath": "\\Events\\Default Work Unit\\Alexis\\AMB\\Stop_AMB_Bed_lvl1",
+      "GUID": "{CE3C769B-BB7A-4936-B31C-A291704DCF7C}",
+      "MaxAttenuation": "0.",
+      "DurationType": "OneShot",
+      "DurationMin": "0.",
+      "DurationMax": "0."
+     }
+    ]
+   }
+  ]
+ }
+}

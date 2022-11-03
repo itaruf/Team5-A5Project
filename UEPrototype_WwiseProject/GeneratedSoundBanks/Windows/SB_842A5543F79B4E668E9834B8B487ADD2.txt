@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1052199365	SFX_Freefall_Start			\Default Work Unit\Alexis\SFX\SFX_Freefall_Start	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	3108029302	RTPC_DiveSpeed			\Default Work Unit\Alexis\RTPC_DiveSpeed	
+

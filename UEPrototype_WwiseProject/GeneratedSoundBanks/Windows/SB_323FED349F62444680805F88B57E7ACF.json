@@ -1,0 +1,45 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "12",
+  "SoundbankVersion": "140",
+  "RootPaths": {
+   "ProjectRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\",
+   "SourceFilesRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\.cache\\Windows\\",
+   "SoundBanksRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows\\",
+   "ExternalSourcesInputFile": "",
+   "ExternalSourcesOutputRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows"
+  },
+  "SoundBanks": [
+   {
+    "Id": "1819505229",
+    "GUID": "{6C73724D-724D-124D-4D4D-4D4D4D4D4D4D}",
+    "Language": "SFX",
+    "Hash": "4187387364",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SB_323FED349F62444680805F88B57E7ACF",
+    "ShortName": "SB_323FED349F62444680805F88B57E7ACF",
+    "Path": "SB_323FED349F62444680805F88B57E7ACF.bnk",
+    "IncludedEvents": [
+     {
+      "Id": "2878931726",
+      "Name": "SFX_SlowMoActivation",
+      "ObjectPath": "\\Events\\Default Work Unit\\Jules\\SFX\\SFX_SlowMoActivation",
+      "GUID": "{323FED34-9F62-4446-8080-5F88B57E7ACF}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.833333",
+      "DurationMax": "2.833333",
+      "ExcludedMemoryFiles": [
+       {
+        "Id": "265292219",
+        "Language": "SFX",
+        "ShortName": "SFX_SlowMoEffect_V2.wav",
+        "Path": "SFX\\SFX_SlowMoEffect_V2_10C4C929.wem"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

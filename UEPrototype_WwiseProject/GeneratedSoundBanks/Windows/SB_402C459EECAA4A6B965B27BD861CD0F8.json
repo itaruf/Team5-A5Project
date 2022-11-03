@@ -1,0 +1,45 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "12",
+  "SoundbankVersion": "140",
+  "RootPaths": {
+   "ProjectRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\",
+   "SourceFilesRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\.cache\\Windows\\",
+   "SoundBanksRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows\\",
+   "ExternalSourcesInputFile": "",
+   "ExternalSourcesOutputRoot": "C:\\Users\\admin\\Documents\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows"
+  },
+  "SoundBanks": [
+   {
+    "Id": "1370032227",
+    "GUID": "{51A90863-0863-1863-6363-636363636363}",
+    "Language": "SFX",
+    "Hash": "2866014095",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\SB_402C459EECAA4A6B965B27BD861CD0F8",
+    "ShortName": "SB_402C459EECAA4A6B965B27BD861CD0F8",
+    "Path": "SB_402C459EECAA4A6B965B27BD861CD0F8.bnk",
+    "IncludedEvents": [
+     {
+      "Id": "2163476404",
+      "Name": "UI_Menu_Hover",
+      "ObjectPath": "\\Events\\Default Work Unit\\Alexis\\UI\\UI_Menu_Hover",
+      "GUID": "{402C459E-ECAA-4A6B-965B-27BD861CD0F8}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.466667",
+      "DurationMax": "0.466667",
+      "ExcludedMemoryFiles": [
+       {
+        "Id": "952170396",
+        "Language": "SFX",
+        "ShortName": "UI_Menu_Hover.wav",
+        "Path": "SFX\\UI_Menu_Hover_10C4C929.wem"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}
