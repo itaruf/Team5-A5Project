@@ -134,7 +134,7 @@
 												<RTPC Name="" ID="{75F73105-7C0D-4BF8-BCC6-0AAA9FFEFF98}" ShortID="83923562">
 													<ReferenceList>
 														<Reference Name="ControlInput">
-															<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
+															<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{F8A5D19F-B407-403E-A4C1-2F40F32BFE45}"/>
 														</Reference>
 													</ReferenceList>
 													<Curve Name="" ID="{9E9DAE8D-6DD0-45B1-8846-8CCA8D590E3D}">
@@ -174,7 +174,7 @@
 												<RTPC Name="" ID="{0C45FB71-C17D-4B3C-93D9-96E8B3CBE75B}" ShortID="964911345">
 													<ReferenceList>
 														<Reference Name="ControlInput">
-															<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
+															<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{F8A5D19F-B407-403E-A4C1-2F40F32BFE45}"/>
 														</Reference>
 													</ReferenceList>
 													<Curve Name="" ID="{21A87589-AFF3-4102-9F86-3C99506D6605}">
@@ -206,7 +206,7 @@
 												<RTPC Name="" ID="{B2596FC3-3193-4741-8316-94D11CF0C9FF}" ShortID="270825209">
 													<ReferenceList>
 														<Reference Name="ControlInput">
-															<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
+															<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{F8A5D19F-B407-403E-A4C1-2F40F32BFE45}"/>
 														</Reference>
 													</ReferenceList>
 													<Curve Name="" ID="{DF486D4F-1AEF-43DC-A19C-A1833D63572F}">
@@ -422,7 +422,7 @@
 												<RTPC Name="" ID="{51D29341-2471-4113-A630-7709AFF0ED9D}" ShortID="687647345">
 													<ReferenceList>
 														<Reference Name="ControlInput">
-															<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
+															<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{F8A5D19F-B407-403E-A4C1-2F40F32BFE45}"/>
 														</Reference>
 													</ReferenceList>
 													<Curve Name="" ID="{F92AB2BB-7BA9-43D8-9DAC-A1EAF78C7CA2}">
@@ -462,7 +462,7 @@
 												<RTPC Name="" ID="{F28B8C5A-5B2C-4AFD-8C2A-66D820C4ED9E}" ShortID="884566833">
 													<ReferenceList>
 														<Reference Name="ControlInput">
-															<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
+															<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{F8A5D19F-B407-403E-A4C1-2F40F32BFE45}"/>
 														</Reference>
 													</ReferenceList>
 													<Curve Name="" ID="{1E565B44-EC3D-4B90-9EDD-2A3CB0FB2D52}">
@@ -494,7 +494,7 @@
 												<RTPC Name="" ID="{D11F2E50-2378-4F8E-A9C1-758619EBDAAD}" ShortID="644806455">
 													<ReferenceList>
 														<Reference Name="ControlInput">
-															<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
+															<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{F8A5D19F-B407-403E-A4C1-2F40F32BFE45}"/>
 														</Reference>
 													</ReferenceList>
 													<Curve Name="" ID="{C646E542-7AEB-486A-8D10-1C44CCC3DBED}">
@@ -1196,7 +1196,7 @@
 												<RTPC Name="" ID="{4154292C-E226-4B96-BE57-19CCFA7F8D50}" ShortID="701967798">
 													<ReferenceList>
 														<Reference Name="ControlInput">
-															<ObjectRef Name="RTPC_WindSpeed" ID="{AEFD0C2B-4F71-404D-BB40-2112CF08A532}" WorkUnitID="{B33E0AE4-683A-4118-98EA-BBEFCBF7E5A5}"/>
+															<ObjectRef Name="RTPC_WindSpeed" ID="{AEFD0C2B-4F71-404D-BB40-2112CF08A532}" WorkUnitID="{C6842C24-F9C6-4EB3-A160-2E701BA56107}"/>
 														</Reference>
 													</ReferenceList>
 													<Curve Name="" ID="{ECC695D3-C630-43F0-BED9-0AE11AD020A9}">
@@ -1235,7 +1235,7 @@
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="LayerCrossFadeControlInput">
-											<ObjectRef Name="RTPC_WindSpeed" ID="{AEFD0C2B-4F71-404D-BB40-2112CF08A532}" WorkUnitID="{B33E0AE4-683A-4118-98EA-BBEFCBF7E5A5}"/>
+											<ObjectRef Name="RTPC_WindSpeed" ID="{AEFD0C2B-4F71-404D-BB40-2112CF08A532}" WorkUnitID="{C6842C24-F9C6-4EB3-A160-2E701BA56107}"/>
 										</Reference>
 									</ReferenceList>
 									<BlendTrackAssocList>
@@ -1267,7 +1267,7 @@
 												<RTPC Name="" ID="{DE090CDF-A611-4741-99A4-2A3DA90BE501}" ShortID="642071387">
 													<ReferenceList>
 														<Reference Name="ControlInput">
-															<ObjectRef Name="RTPC_WindSpeed" ID="{AEFD0C2B-4F71-404D-BB40-2112CF08A532}" WorkUnitID="{B33E0AE4-683A-4118-98EA-BBEFCBF7E5A5}"/>
+															<ObjectRef Name="RTPC_WindSpeed" ID="{AEFD0C2B-4F71-404D-BB40-2112CF08A532}" WorkUnitID="{C6842C24-F9C6-4EB3-A160-2E701BA56107}"/>
 														</Reference>
 													</ReferenceList>
 													<Curve Name="" ID="{DE6BA5DC-29FE-48FE-B648-1698DF67CAA6}">
@@ -1318,7 +1318,7 @@
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="LayerCrossFadeControlInput">
-											<ObjectRef Name="RTPC_WindSpeed" ID="{AEFD0C2B-4F71-404D-BB40-2112CF08A532}" WorkUnitID="{B33E0AE4-683A-4118-98EA-BBEFCBF7E5A5}"/>
+											<ObjectRef Name="RTPC_WindSpeed" ID="{AEFD0C2B-4F71-404D-BB40-2112CF08A532}" WorkUnitID="{C6842C24-F9C6-4EB3-A160-2E701BA56107}"/>
 										</Reference>
 									</ReferenceList>
 									<BlendTrackAssocList>
@@ -1621,7 +1621,7 @@
 												<RTPC Name="" ID="{8BF759A3-DDB5-41E5-AC12-AF3E5C464BC6}" ShortID="389286312">
 													<ReferenceList>
 														<Reference Name="ControlInput">
-															<ObjectRef Name="RTPC_MagicDoorPosition" ID="{42B37403-7E20-45F1-BC55-D7706D029A1E}" WorkUnitID="{B33E0AE4-683A-4118-98EA-BBEFCBF7E5A5}"/>
+															<ObjectRef Name="RTPC_MagicDoorPosition" ID="{42B37403-7E20-45F1-BC55-D7706D029A1E}" WorkUnitID="{C6842C24-F9C6-4EB3-A160-2E701BA56107}"/>
 														</Reference>
 													</ReferenceList>
 													<Curve Name="" ID="{E08E1F08-574D-457C-9218-226E7B1E313A}">
@@ -1750,7 +1750,7 @@
 												<RTPC Name="" ID="{E0A39327-A319-4015-9691-EFAB5E9517DC}" ShortID="204505405">
 													<ReferenceList>
 														<Reference Name="ControlInput">
-															<ObjectRef Name="RTPC_MagicDoorPosition" ID="{42B37403-7E20-45F1-BC55-D7706D029A1E}" WorkUnitID="{B33E0AE4-683A-4118-98EA-BBEFCBF7E5A5}"/>
+															<ObjectRef Name="RTPC_MagicDoorPosition" ID="{42B37403-7E20-45F1-BC55-D7706D029A1E}" WorkUnitID="{C6842C24-F9C6-4EB3-A160-2E701BA56107}"/>
 														</Reference>
 													</ReferenceList>
 													<Curve Name="" ID="{86816562-6087-4188-BDAA-CEE4CE80BB59}">
@@ -1800,7 +1800,7 @@
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="LayerCrossFadeControlInput">
-											<ObjectRef Name="RTPC_MagicDoorPosition" ID="{42B37403-7E20-45F1-BC55-D7706D029A1E}" WorkUnitID="{B33E0AE4-683A-4118-98EA-BBEFCBF7E5A5}"/>
+											<ObjectRef Name="RTPC_MagicDoorPosition" ID="{42B37403-7E20-45F1-BC55-D7706D029A1E}" WorkUnitID="{C6842C24-F9C6-4EB3-A160-2E701BA56107}"/>
 										</Reference>
 									</ReferenceList>
 									<BlendTrackAssocList>

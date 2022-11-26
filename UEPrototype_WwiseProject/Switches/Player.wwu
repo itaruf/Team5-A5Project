@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{FAF60658-236D-4A53-8DE3-BED411FEA1DF}" SchemaVersion="103" RootDocumentID="{4B48BDF5-E22D-47AC-B83F-215A0B7EF6D4}" ParentDocumentID="{4B48BDF5-E22D-47AC-B83F-215A0B7EF6D4}">
+<WwiseDocument Type="WorkUnit" ID="{EBA3CEEC-BC2B-49E8-A7E7-74B1ED343117}" SchemaVersion="103" RootDocumentID="{4B48BDF5-E22D-47AC-B83F-215A0B7EF6D4}" ParentDocumentID="{4B48BDF5-E22D-47AC-B83F-215A0B7EF6D4}">
 	<Switches>
-		<WorkUnit Name="Jules" ID="{FAF60658-236D-4A53-8DE3-BED411FEA1DF}" OwnerID="{4B48BDF5-E22D-47AC-B83F-215A0B7EF6D4}" PersistMode="Nested">
+		<WorkUnit Name="Player" ID="{EBA3CEEC-BC2B-49E8-A7E7-74B1ED343117}" OwnerID="{4B48BDF5-E22D-47AC-B83F-215A0B7EF6D4}" PersistMode="Nested">
 			<ChildrenList>
-				<SwitchGroup Name="GroundMaterial" ID="{83629B62-F799-43ED-89B9-0C66FF055C0D}">
-					<ChildrenList>
-						<Switch Name="Stone" ID="{FBA5D6FC-BB79-43BA-80B2-ABEA585C003B}"/>
-						<Switch Name="Dirt" ID="{C21DBD70-DDF8-408B-94DD-B9AD5A402C7F}"/>
-						<Switch Name="Water" ID="{A008443E-3AE0-4101-9B6D-5F65FD589FD6}"/>
-						<Switch Name="Grass" ID="{AF0B5F0B-9DBE-4ADD-BBCA-EF6F1BD0E3B0}"/>
-					</ChildrenList>
-				</SwitchGroup>
 				<SwitchGroup Name="PlayerSpeed" ID="{C322E38C-C54E-4826-8239-004827EC3649}">
 					<PropertyList>
 						<Property Name="UseGameParameter" Type="bool" Value="True"/>

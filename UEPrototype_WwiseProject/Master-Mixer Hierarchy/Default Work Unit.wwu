@@ -13,7 +13,7 @@
 								<RTPC Name="" ID="{349262F4-AB5C-4F07-8028-8B8E7F61BC1D}" ShortID="142794907">
 									<ReferenceList>
 										<Reference Name="ControlInput">
-											<ObjectRef Name="MasterVolume" ID="{5B45EAC9-2C25-4E26-BE21-B7E898D85C87}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
+											<ObjectRef Name="MasterVolume" ID="{5B45EAC9-2C25-4E26-BE21-B7E898D85C87}" WorkUnitID="{D612C9AE-D6B6-4E2E-B62B-06B4EF6E8BD9}"/>
 										</Reference>
 									</ReferenceList>
 									<Curve Name="" ID="{94E60A29-81EB-491E-B303-854501935913}">
