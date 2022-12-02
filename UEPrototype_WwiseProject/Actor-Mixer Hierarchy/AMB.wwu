@@ -1,0 +1,2501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{594289DA-4551-496F-B557-01EEEB6BDB98}" SchemaVersion="103" RootDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" ParentDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}">
+	<AudioObjects>
+		<WorkUnit Name="AMB" ID="{594289DA-4551-496F-B557-01EEEB6BDB98}" OwnerID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" PersistMode="Nested">
+			<ChildrenList>
+				<ActorMixer Name="AMB" ID="{26568A3B-6A77-4BD6-BC3F-E2C29C4577B3}" ShortID="388164429">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="15"/>
+						<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
+						<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+						<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>16</Value>
+							</ValueList>
+						</Property>
+						<Property Name="OverLimitBehavior" Type="int16" Value="1"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+						<Property Name="OverrideOutput" Type="bool" Value="True"/>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="AMB" ID="{CDAACF0F-C751-406F-9073-3F6016218135}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<ActorMixer Name="SP" ID="{E7327BF5-1AE9-42A2-8EEC-531D58FC16F7}" ShortID="551120574">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<BlendContainer Name="AMB_SP_Waterfall_Blend" ID="{5F6A136D-D2E0-47BF-88E9-54225CDFE964}" ShortID="827444230">
+									<PropertyList>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-14</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="AMB_WaterFall_Close_ST_LP" ID="{48637122-4D89-47D0-A6E3-E73FF6828BA5}" ShortID="77151311">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="IsStreamingEnabled" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_WaterFall_Close_ST_LP" ID="{DF53DC6E-BC92-41A6-87DA-4C8AF1FC6371}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_WaterFall_Close_ST_LP.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="437553770"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_WaterFall_Close_ST_LP" ID="{DF53DC6E-BC92-41A6-87DA-4C8AF1FC6371}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_WaterFall_Far_ST_LP" ID="{994ECD00-8A10-437C-9ADA-CF417D2E07C2}" ShortID="771215950">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="IsStreamingEnabled" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_WaterFall_Far_ST_LP" ID="{7D733F9B-0AAB-448A-B056-9A8FDF0FE5D0}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_WaterFall_Far_ST_LP.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="573836452"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_WaterFall_Far_ST_LP" ID="{7D733F9B-0AAB-448A-B056-9A8FDF0FE5D0}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_WaterFall_MidRange_ST_LP" ID="{4A70E5ED-7495-4711-95B8-FB1F744E6F56}" ShortID="116380745">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="IsStreamingEnabled" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_WaterFall_MidRange_ST_LP" ID="{8F65A50B-8F19-47CC-8D18-31BF90D2EC14}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_WaterFall_MidRange_ST_LP.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="39914743"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_WaterFall_MidRange_ST_LP" ID="{8F65A50B-8F19-47CC-8D18-31BF90D2EC14}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+									<BlendTrackList>
+										<BlendTrack Name="Waterfall_Distance" ID="{5CF10226-FA20-43D4-97E4-5F64498D5610}" ShortID="27009372">
+											<PropertyList>
+												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<RTPCList>
+														<RTPC Name="" ID="{8BED14FD-ED41-47B5-974E-1CEDDB3BB15A}" ShortID="180091462">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{A84227D0-2EF8-469C-BD7C-9B9CE1BF2E8A}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>0</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>8356.99797160247</XPos>
+																		<YPos>0</YPos>
+																		<Flags>0</Flags>
+																		<SegmentShape>Log2</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>10000</XPos>
+																		<YPos>-8.0667</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="LayerCrossFadeControlInput">
+													<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+												</Reference>
+											</ReferenceList>
+											<BlendTrackAssocList>
+												<BlendTrackAssoc>
+													<ItemRef Name="AMB_WaterFall_Close_ST_LP" ID="{48637122-4D89-47D0-A6E3-E73FF6828BA5}"/>
+													<CrossfadingInfo>
+														<LeftEdgePos>0</LeftEdgePos>
+														<LeftFadingMode>Automatic</LeftFadingMode>
+														<RightEdgePos>5000</RightEdgePos>
+														<RightFadingMode>Automatic</RightFadingMode>
+													</CrossfadingInfo>
+												</BlendTrackAssoc>
+												<BlendTrackAssoc>
+													<ItemRef Name="AMB_WaterFall_MidRange_ST_LP" ID="{4A70E5ED-7495-4711-95B8-FB1F744E6F56}"/>
+													<CrossfadingInfo>
+														<LeftEdgePos>1528.05949966193</LeftEdgePos>
+														<LeftFadingMode>Automatic</LeftFadingMode>
+														<RightEdgePos>8333.33333333333</RightEdgePos>
+														<RightFadingMode>Automatic</RightFadingMode>
+													</CrossfadingInfo>
+												</BlendTrackAssoc>
+												<BlendTrackAssoc>
+													<ItemRef Name="AMB_WaterFall_Far_ST_LP" ID="{994ECD00-8A10-437C-9ADA-CF417D2E07C2}"/>
+													<CrossfadingInfo>
+														<LeftEdgePos>5040.56795131846</LeftEdgePos>
+														<LeftFadingMode>Automatic</LeftFadingMode>
+														<RightEdgePos>10000</RightEdgePos>
+														<RightFadingMode>Automatic</RightFadingMode>
+													</CrossfadingInfo>
+												</BlendTrackAssoc>
+											</BlendTrackAssocList>
+										</BlendTrack>
+									</BlendTrackList>
+								</BlendContainer>
+								<BlendContainer Name="AMB_SP_WaterFallSmall_Blend" ID="{D753DC15-7C1A-45B5-9BA1-D2DF96400256}" ShortID="248975390">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="BelowThresholdBehavior" Type="int16" Value="2"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="OverridePriority" Type="bool" Value="True"/>
+										<Property Name="OverrideVirtualVoice" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-4</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="ATT_WaterFallSmall" ID="{49ED90B8-43F8-44B9-9998-9AD192B26ADB}" WorkUnitID="{C730687D-413E-4BFB-8D51-3089D8FA5CE2}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="AMB_SP_WaterFallSmallClose_LP" ID="{B7848B1B-FD70-4FC6-8392-4132A24BE51F}" ShortID="518923319">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="IsStreamingEnabled" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_SP_WaterFallSmallClose_LP" ID="{70D09F03-3D49-4BAC-8176-2A5D0C17C21D}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_SP_WaterFallSmallClose_LP.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="89149906"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_SP_WaterFallSmallClose_LP" ID="{70D09F03-3D49-4BAC-8176-2A5D0C17C21D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_SP_WaterFallSmallDistant_LP" ID="{8AB920FB-4574-46A1-8D54-1766A94DEF87}" ShortID="403632430">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="IsStreamingEnabled" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_SP_WaterFallSmallDistant_LP" ID="{A6A9A667-E305-441C-8D81-9BBDBB6C2BF0}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_SP_WaterFallSmallDistant_LP.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="300715388"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_SP_WaterFallSmallDistant_LP" ID="{A6A9A667-E305-441C-8D81-9BBDBB6C2BF0}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_SP_WaterFallSmallMid_LP" ID="{B4D8E7E9-15D2-4E67-92A2-6CF57A7FA076}" ShortID="762771079">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="IsStreamingEnabled" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_SP_WaterFallSmallMid_LP" ID="{F1FA129B-B3EE-4CC8-9DE6-A3825CC55E0D}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_SP_WaterFallSmallMid_LP.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="119492835"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_SP_WaterFallSmallMid_LP" ID="{F1FA129B-B3EE-4CC8-9DE6-A3825CC55E0D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_SP_WaterFallSmallVeryDistant_LP" ID="{DDFF85EB-F1E9-4C74-B093-223F3063AD14}" ShortID="634858762">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="IsStreamingEnabled" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Lowpass" Type="int16">
+													<ValueList>
+														<Value>21</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_SP_WaterFallSmallVeryDistant_LP" ID="{C1BA360D-8BC5-4986-B6D9-14205B4D14AE}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_SP_WaterFallSmallVeryDistant_LP.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="101453379"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_SP_WaterFallSmallVeryDistant_LP" ID="{C1BA360D-8BC5-4986-B6D9-14205B4D14AE}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+									<BlendTrackList>
+										<BlendTrack Name="WaterFallSmall_Close" ID="{9773E604-92D5-4177-89C6-AC1FBD55ADED}" ShortID="192935168">
+											<PropertyList>
+												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<RTPCList>
+														<RTPC Name="" ID="{6AB89C18-AD8E-418D-A249-A8652B096F8C}" ShortID="984446159">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{53E13BC9-4CBE-4BF1-9E9F-EC34D25A7C8F}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>0</YPos>
+																		<Flags>5</Flags>
+																		<SegmentShape>SCurve</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>10000</XPos>
+																		<YPos>-200</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="LayerCrossFadeControlInput">
+													<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+												</Reference>
+											</ReferenceList>
+											<BlendTrackAssocList>
+												<BlendTrackAssoc>
+													<ItemRef Name="AMB_SP_WaterFallSmallClose_LP" ID="{B7848B1B-FD70-4FC6-8392-4132A24BE51F}"/>
+													<CrossfadingInfo>
+														<LeftEdgePos>0</LeftEdgePos>
+														<LeftFadingMode>None</LeftFadingMode>
+														<RightEdgePos>5000</RightEdgePos>
+														<RightFadingMode>Manual</RightFadingMode>
+														<RightFadingPos>3351.43139190523</RightFadingPos>
+													</CrossfadingInfo>
+												</BlendTrackAssoc>
+											</BlendTrackAssocList>
+										</BlendTrack>
+										<BlendTrack Name="WaterFallSmall_Mid" ID="{83B6E595-9A64-4539-8190-FDFAC06DC0AB}" ShortID="261719638">
+											<PropertyList>
+												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<RTPCList>
+														<RTPC Name="" ID="{1BA83D5C-0FEE-4658-92B0-051DDA3F9819}" ShortID="554290704">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{B83E2671-0683-4844-9C31-1F9A359B27A5}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-2.18289</YPos>
+																		<Flags>5</Flags>
+																		<SegmentShape>SCurve</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>3333.33333333333</XPos>
+																		<YPos>-3.0522</YPos>
+																		<Flags>0</Flags>
+																		<SegmentShape>SCurve</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>10000</XPos>
+																		<YPos>-200</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="LayerCrossFadeControlInput">
+													<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+												</Reference>
+											</ReferenceList>
+											<BlendTrackAssocList>
+												<BlendTrackAssoc>
+													<ItemRef Name="AMB_SP_WaterFallSmallMid_LP" ID="{B4D8E7E9-15D2-4E67-92A2-6CF57A7FA076}"/>
+													<CrossfadingInfo>
+														<LeftEdgePos>0</LeftEdgePos>
+														<LeftFadingMode>None</LeftFadingMode>
+														<RightEdgePos>10000</RightEdgePos>
+														<RightFadingMode>None</RightFadingMode>
+													</CrossfadingInfo>
+												</BlendTrackAssoc>
+											</BlendTrackAssocList>
+										</BlendTrack>
+										<BlendTrack Name="WaterFallSmall_Far" ID="{1C443FEA-9C94-48F3-9060-E632B25EBC02}" ShortID="546539365">
+											<PropertyList>
+												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<RTPCList>
+														<RTPC Name="" ID="{822FBF93-22EC-4AA8-A4CB-9227A4A38588}" ShortID="439834593">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{6DED5CE0-89F2-4E3C-822E-134262E529AC}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>0</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>10000</XPos>
+																		<YPos>0</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="LayerCrossFadeControlInput">
+													<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+												</Reference>
+											</ReferenceList>
+											<BlendTrackAssocList>
+												<BlendTrackAssoc>
+													<ItemRef Name="AMB_SP_WaterFallSmallDistant_LP" ID="{8AB920FB-4574-46A1-8D54-1766A94DEF87}"/>
+													<CrossfadingInfo>
+														<LeftEdgePos>1666.66666666667</LeftEdgePos>
+														<LeftFadingMode>Manual</LeftFadingMode>
+														<LeftFadingPos>4784.46857518921</LeftFadingPos>
+														<RightEdgePos>10000</RightEdgePos>
+														<RightFadingMode>Manual</RightFadingMode>
+														<RightFadingPos>4784.46857518921</RightFadingPos>
+													</CrossfadingInfo>
+												</BlendTrackAssoc>
+											</BlendTrackAssocList>
+										</BlendTrack>
+										<BlendTrack Name="WaterFallSmall_VeryFar" ID="{0F607B93-69E2-438F-BF0A-FABB3B2386D3}" ShortID="861472831">
+											<PropertyList>
+												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<RTPCList>
+														<RTPC Name="" ID="{7EF10AA1-2CC5-4C58-8A45-F2B6737B7F3B}" ShortID="890312290">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{FD4F74DD-3AED-44C8-850C-C320A7CA55E5}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>0</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>6666.66666666667</XPos>
+																		<YPos>0</YPos>
+																		<Flags>0</Flags>
+																		<SegmentShape>SCurve</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>10000</XPos>
+																		<YPos>0</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="LayerCrossFadeControlInput">
+													<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+												</Reference>
+											</ReferenceList>
+											<BlendTrackAssocList>
+												<BlendTrackAssoc>
+													<ItemRef Name="AMB_SP_WaterFallSmallVeryDistant_LP" ID="{DDFF85EB-F1E9-4C74-B093-223F3063AD14}"/>
+													<CrossfadingInfo>
+														<LeftEdgePos>3333.33333333333</LeftEdgePos>
+														<LeftFadingMode>Manual</LeftFadingMode>
+														<LeftFadingPos>8328.3974991774</LeftFadingPos>
+														<RightEdgePos>10000</RightEdgePos>
+														<RightFadingMode>None</RightFadingMode>
+													</CrossfadingInfo>
+												</BlendTrackAssoc>
+											</BlendTrackAssocList>
+										</BlendTrack>
+									</BlendTrackList>
+								</BlendContainer>
+								<BlendContainer Name="AMB_SP_WaterFallMed_Blend" ID="{9BDACA8E-0A1A-476E-B000-F3ACE5F478FC}" ShortID="962171192">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="BelowThresholdBehavior" Type="int16" Value="2"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="OverridePriority" Type="bool" Value="True"/>
+										<Property Name="OverrideVirtualVoice" Type="bool" Value="True"/>
+										<Property Name="Priority" Type="int16">
+											<ValueList>
+												<Value>60</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-16</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="ATT_WaterFallMed" ID="{C3AB0A77-B120-4A1F-8750-AEB55B01ACFB}" WorkUnitID="{C730687D-413E-4BFB-8D51-3089D8FA5CE2}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="AMB" ID="{CDAACF0F-C751-406F-9073-3F6016218135}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="AMB_SP_WaterFallMedClose_LP" ID="{534A78F2-37A7-4F33-B7D5-E81AEDE8B692}" ShortID="36850451">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="IsStreamingEnabled" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_SP_WaterFallMedClose_LP" ID="{3C395684-9AEE-4B61-AC22-4A19C284C75F}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_SP_WaterFallMedClose_LP.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="985174232"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_SP_WaterFallMedClose_LP" ID="{3C395684-9AEE-4B61-AC22-4A19C284C75F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_SP_WaterFallMedDistant_LP" ID="{3174FCD2-CFCD-4D9E-A2C5-1C1DD2D31DD1}" ShortID="877140184">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="IsStreamingEnabled" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Lowpass" Type="int16">
+													<ValueList>
+														<Value>21</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-6</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_SP_WaterFallMedDistant_LP" ID="{D012039F-0B57-4C6E-B8B4-9DFC6E809EA6}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_SP_WaterFallMedDistant_LP.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="776232042"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_SP_WaterFallMedDistant_LP" ID="{D012039F-0B57-4C6E-B8B4-9DFC6E809EA6}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_SP_WaterFallMedMid_LP" ID="{8A6AFC05-9918-4B12-8A13-6E9C7624432A}" ShortID="248761198">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="IsStreamingEnabled" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_SP_WaterFallMedMid_LP" ID="{2713D3C7-D849-4F6E-9CC7-003A74788594}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_SP_WaterFallMedMid_LP.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="357217649"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_SP_WaterFallMedMid_LP" ID="{2713D3C7-D849-4F6E-9CC7-003A74788594}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+									<BlendTrackList>
+										<BlendTrack Name="WaterFallMed_Close" ID="{F53204AC-4B6D-447B-82DF-E5ED7B5A18F6}" ShortID="65787052">
+											<PropertyList>
+												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<RTPCList>
+														<RTPC Name="" ID="{B82154B0-8F8B-4906-9ADD-2B337913B75F}" ShortID="467412569">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="RTPC_WaterFallMedDistance" ID="{30BBCABF-1EE6-465D-8559-10DB16449DC6}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{F135A585-363C-4843-99AD-E6CE746945E9}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>0</YPos>
+																		<Flags>5</Flags>
+																		<SegmentShape>SCurve</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>15000</XPos>
+																		<YPos>-200</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="LayerCrossFadeControlInput">
+													<ObjectRef Name="RTPC_WaterFallMedDistance" ID="{30BBCABF-1EE6-465D-8559-10DB16449DC6}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+												</Reference>
+											</ReferenceList>
+											<BlendTrackAssocList>
+												<BlendTrackAssoc>
+													<ItemRef Name="AMB_SP_WaterFallMedClose_LP" ID="{534A78F2-37A7-4F33-B7D5-E81AEDE8B692}"/>
+													<CrossfadingInfo>
+														<LeftEdgePos>0</LeftEdgePos>
+														<LeftFadingMode>None</LeftFadingMode>
+														<RightEdgePos>9375</RightEdgePos>
+														<RightFadingMode>Manual</RightFadingMode>
+														<RightFadingPos>3750</RightFadingPos>
+													</CrossfadingInfo>
+												</BlendTrackAssoc>
+											</BlendTrackAssocList>
+										</BlendTrack>
+										<BlendTrack Name="WaterFallMed_Mid" ID="{DFC593E8-C8F9-4C98-8A3D-806A6BA2DE7A}" ShortID="153822704">
+											<PropertyList>
+												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<RTPCList>
+														<RTPC Name="" ID="{E1DFC936-C02A-46C7-9C02-1AD25A4EC224}" ShortID="223719032">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="RTPC_WaterFallMedDistance" ID="{30BBCABF-1EE6-465D-8559-10DB16449DC6}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{EDBD2DEF-DED8-455D-83FB-A2C1E2F8A965}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-4.0183</YPos>
+																		<Flags>5</Flags>
+																		<SegmentShape>SCurve</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>7500</XPos>
+																		<YPos>0</YPos>
+																		<Flags>0</Flags>
+																		<SegmentShape>SCurve</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>15000</XPos>
+																		<YPos>0</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="LayerCrossFadeControlInput">
+													<ObjectRef Name="RTPC_WaterFallMedDistance" ID="{30BBCABF-1EE6-465D-8559-10DB16449DC6}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+												</Reference>
+											</ReferenceList>
+											<BlendTrackAssocList>
+												<BlendTrackAssoc>
+													<ItemRef Name="AMB_SP_WaterFallMedMid_LP" ID="{8A6AFC05-9918-4B12-8A13-6E9C7624432A}"/>
+													<CrossfadingInfo>
+														<LeftEdgePos>0</LeftEdgePos>
+														<LeftFadingMode>None</LeftFadingMode>
+														<RightEdgePos>15000</RightEdgePos>
+														<RightFadingMode>None</RightFadingMode>
+													</CrossfadingInfo>
+												</BlendTrackAssoc>
+											</BlendTrackAssocList>
+										</BlendTrack>
+										<BlendTrack Name="WaterFallMed_Distant" ID="{60CD079A-2875-4915-BE41-4AB1BF1CA3DB}" ShortID="801344212">
+											<PropertyList>
+												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<RTPCList>
+														<RTPC Name="" ID="{8699E2FF-C247-47B3-9094-7B10A35BF243}" ShortID="944596321">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="RTPC_WaterFallMedDistance" ID="{30BBCABF-1EE6-465D-8559-10DB16449DC6}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{039755A7-284B-4253-A464-90552A8F6644}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>0</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>11250</XPos>
+																		<YPos>0</YPos>
+																		<Flags>0</Flags>
+																		<SegmentShape>SCurve</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>15000</XPos>
+																		<YPos>0</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="LayerCrossFadeControlInput">
+													<ObjectRef Name="RTPC_WaterFallMedDistance" ID="{30BBCABF-1EE6-465D-8559-10DB16449DC6}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+												</Reference>
+											</ReferenceList>
+											<BlendTrackAssocList>
+												<BlendTrackAssoc>
+													<ItemRef Name="AMB_SP_WaterFallMedDistant_LP" ID="{3174FCD2-CFCD-4D9E-A2C5-1C1DD2D31DD1}"/>
+													<CrossfadingInfo>
+														<LeftEdgePos>3750</LeftEdgePos>
+														<LeftFadingMode>Manual</LeftFadingMode>
+														<LeftFadingPos>9375</LeftFadingPos>
+														<RightEdgePos>15000</RightEdgePos>
+														<RightFadingMode>None</RightFadingMode>
+													</CrossfadingInfo>
+												</BlendTrackAssoc>
+											</BlendTrackAssocList>
+										</BlendTrack>
+									</BlendTrackList>
+								</BlendContainer>
+								<BlendContainer Name="AMB_SP_WaterFallBig_Blend" ID="{98A63FC9-7411-4144-A499-F119109E5059}" ShortID="577579625">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="BelowThresholdBehavior" Type="int16" Value="2"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="OverridePriority" Type="bool" Value="True"/>
+										<Property Name="OverrideVirtualVoice" Type="bool" Value="True"/>
+										<Property Name="Priority" Type="int16">
+											<ValueList>
+												<Value>75</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-16</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="ATT_WaterFallBig" ID="{56CBB63A-03B5-4D7E-AA3C-35206E319F58}" WorkUnitID="{C730687D-413E-4BFB-8D51-3089D8FA5CE2}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="AMB" ID="{CDAACF0F-C751-406F-9073-3F6016218135}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="AMB_SP_WaterFallBigClose_LP" ID="{09AE6F62-BA36-4E62-8DB4-6300456FA748}" ShortID="684668520">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="IsStreamingEnabled" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_SP_WaterFallBigClose_LP" ID="{E333B720-9075-43A6-84D2-FDF64593DDA4}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_SP_WaterFallBigClose_LP.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="642854615"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_SP_WaterFallBigClose_LP" ID="{E333B720-9075-43A6-84D2-FDF64593DDA4}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_SP_WaterFallBigDistant_LP" ID="{6A147F18-5EA4-4563-A920-8AEECF72B3BB}" ShortID="1014013894">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="IsStreamingEnabled" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_SP_WaterFallBigDistant_LP" ID="{6E45B2D1-1399-4A9A-BC15-0A1CCDFC5CA7}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_SP_WaterFallBigDistant_LP.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="765821890"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_SP_WaterFallBigDistant_LP" ID="{6E45B2D1-1399-4A9A-BC15-0A1CCDFC5CA7}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_SP_WaterFallBigMid_LP" ID="{B0247CF1-A947-4BCE-863A-D4C15344115E}" ShortID="144237876">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="IsStreamingEnabled" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_SP_WaterFallBigMid_LP" ID="{636D5463-AC30-4D7F-B3BC-F7BFBF19B6AF}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_SP_WaterFallBigMid_LP.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="762086237"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_SP_WaterFallBigMid_LP" ID="{636D5463-AC30-4D7F-B3BC-F7BFBF19B6AF}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+									<BlendTrackList>
+										<BlendTrack Name="WaterFallSmall_Close" ID="{87967E06-7526-42B4-9885-B5921757567E}" ShortID="17193110">
+											<PropertyList>
+												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<RTPCList>
+														<RTPC Name="" ID="{42A9AE14-EB3F-41FB-A778-B70A67145A67}" ShortID="751528476">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="RTPC_WaterFallBigDistance" ID="{E44C6EE4-B46F-45ED-8B1E-1CE323B3070D}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{009A6011-7709-4E78-AD3D-0B43EE3C7538}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>0</YPos>
+																		<Flags>5</Flags>
+																		<SegmentShape>SCurve</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>16959.5261533333</XPos>
+																		<YPos>-200</YPos>
+																		<Flags>0</Flags>
+																		<SegmentShape>SCurve</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>20000</XPos>
+																		<YPos>-200</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="LayerCrossFadeControlInput">
+													<ObjectRef Name="RTPC_WaterFallBigDistance" ID="{E44C6EE4-B46F-45ED-8B1E-1CE323B3070D}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+												</Reference>
+											</ReferenceList>
+											<BlendTrackAssocList>
+												<BlendTrackAssoc>
+													<ItemRef Name="AMB_SP_WaterFallBigClose_LP" ID="{09AE6F62-BA36-4E62-8DB4-6300456FA748}"/>
+													<CrossfadingInfo>
+														<LeftEdgePos>0</LeftEdgePos>
+														<LeftFadingMode>Automatic</LeftFadingMode>
+														<RightEdgePos>13333.3333333333</RightEdgePos>
+														<RightFadingMode>Automatic</RightFadingMode>
+													</CrossfadingInfo>
+												</BlendTrackAssoc>
+											</BlendTrackAssocList>
+										</BlendTrack>
+										<BlendTrack Name="WaterFallSmall_Mid" ID="{39AFC30C-5276-4DEA-9638-3B40C7A1A206}" ShortID="509756113">
+											<PropertyList>
+												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<RTPCList>
+														<RTPC Name="" ID="{D5ED2773-72AB-49CD-95F5-B14FD318ECA4}" ShortID="614250900">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="RTPC_WaterFallBigDistance" ID="{E44C6EE4-B46F-45ED-8B1E-1CE323B3070D}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{2C870B55-9FCB-4C9A-AB35-F8C5E63FDA71}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-5.10545</YPos>
+																		<Flags>5</Flags>
+																		<SegmentShape>SCurve</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>8333.33333333333</XPos>
+																		<YPos>0</YPos>
+																		<Flags>0</Flags>
+																		<SegmentShape>SCurve</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>20000</XPos>
+																		<YPos>0</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="LayerCrossFadeControlInput">
+													<ObjectRef Name="RTPC_WaterFallBigDistance" ID="{E44C6EE4-B46F-45ED-8B1E-1CE323B3070D}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+												</Reference>
+											</ReferenceList>
+											<BlendTrackAssocList>
+												<BlendTrackAssoc>
+													<ItemRef Name="AMB_SP_WaterFallBigMid_LP" ID="{B0247CF1-A947-4BCE-863A-D4C15344115E}"/>
+													<CrossfadingInfo>
+														<LeftEdgePos>0</LeftEdgePos>
+														<LeftFadingMode>Automatic</LeftFadingMode>
+														<RightEdgePos>20000</RightEdgePos>
+														<RightFadingMode>Automatic</RightFadingMode>
+													</CrossfadingInfo>
+												</BlendTrackAssoc>
+											</BlendTrackAssocList>
+										</BlendTrack>
+										<BlendTrack Name="WaterFallSmall_Distant" ID="{2E0D93B7-0AB4-41FF-9F43-EB6CED082168}" ShortID="347739099">
+											<PropertyList>
+												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<RTPCList>
+														<RTPC Name="" ID="{2D1E805F-E99E-4F83-A68D-FBB314FB4BDC}" ShortID="274331123">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="RTPC_WaterFallBigDistance" ID="{E44C6EE4-B46F-45ED-8B1E-1CE323B3070D}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{897439AC-8F03-481A-8081-59DF170D0AE0}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>0</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>13333.3333333333</XPos>
+																		<YPos>0</YPos>
+																		<Flags>0</Flags>
+																		<SegmentShape>SCurve</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>20000</XPos>
+																		<YPos>0</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="LayerCrossFadeControlInput">
+													<ObjectRef Name="RTPC_WaterFallBigDistance" ID="{E44C6EE4-B46F-45ED-8B1E-1CE323B3070D}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+												</Reference>
+											</ReferenceList>
+											<BlendTrackAssocList>
+												<BlendTrackAssoc>
+													<ItemRef Name="AMB_SP_WaterFallBigDistant_LP" ID="{6A147F18-5EA4-4563-A920-8AEECF72B3BB}"/>
+													<CrossfadingInfo>
+														<LeftEdgePos>5000</LeftEdgePos>
+														<LeftFadingMode>Manual</LeftFadingMode>
+														<LeftFadingPos>11666.6666666667</LeftFadingPos>
+														<RightEdgePos>20000</RightEdgePos>
+														<RightFadingMode>Automatic</RightFadingMode>
+													</CrossfadingInfo>
+												</BlendTrackAssoc>
+											</BlendTrackAssocList>
+										</BlendTrack>
+									</BlendTrackList>
+								</BlendContainer>
+								<RandomSequenceContainer Name="AMB_SP_FireStatue" ID="{DF3FD0E6-E879-4587-A38F-E84115BF00D4}" ShortID="722514500">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="BelowThresholdBehavior" Type="int16" Value="2"/>
+										<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="OverridePriority" Type="bool" Value="True"/>
+										<Property Name="OverrideVirtualVoice" Type="bool" Value="True"/>
+										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="ATT_FireTStatue" ID="{AF2E18C2-EE77-426D-AA8E-A1A286893804}" WorkUnitID="{C730687D-413E-4BFB-8D51-3089D8FA5CE2}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="AMB_SP_FireStatue_01" ID="{15DAD543-77BB-445F-ABEE-CCBD04909CBA}" ShortID="797540939">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="IsStreamingEnabled" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_SP_FireStatue_01" ID="{37A337EB-9A43-4B0C-B381-C8D5F9780825}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_SP_FireStatue_01.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="23140063"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_SP_FireStatue_01" ID="{37A337EB-9A43-4B0C-B381-C8D5F9780825}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_SP_FireStatue_02" ID="{DADB790D-62A4-4FDB-B779-9251DEA74876}" ShortID="110212257">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="IsStreamingEnabled" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_SP_FireStatue_02" ID="{1F248122-D43C-4C13-B180-C356EC4436C0}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_SP_FireStatue_02.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="419866259"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_SP_FireStatue_02" ID="{1F248122-D43C-4C13-B180-C356EC4436C0}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_SP_FireStatue_03" ID="{418DBFF0-A51B-4494-99F5-AE9E47B84538}" ShortID="383468331">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="IsStreamingEnabled" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_SP_FireStatue_03" ID="{EB8367DD-7EFD-4FE3-A54E-D7F8A92DF36C}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_SP_FireStatue_03.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="887923690"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_SP_FireStatue_03" ID="{EB8367DD-7EFD-4FE3-A54E-D7F8A92DF36C}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+								</RandomSequenceContainer>
+								<Sound Name="AMB_SP_LavaPurpleBig_ST_LP" ID="{861ED3A4-4304-41D6-B448-0D10B4C3DA80}" ShortID="79912738">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="BelowThresholdBehavior" Type="int16" Value="2"/>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="IsStreamingEnabled" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="OverridePriority" Type="bool" Value="True"/>
+										<Property Name="OverrideVirtualVoice" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>1200</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>12</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="ATT_LavaBig" ID="{CDA7139C-1F69-47DE-AF3B-2095AD5A30D9}" WorkUnitID="{C730687D-413E-4BFB-8D51-3089D8FA5CE2}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_SP_PurpleLavaBig_ST_LP" ID="{4451F36C-D2C4-498C-904E-11F3ADDE641A}">
+											<Language>SFX</Language>
+											<AudioFile>AMB_SP_PurpleLavaBig_ST_LP.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1119328"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_SP_PurpleLavaBig_ST_LP" ID="{4451F36C-D2C4-498C-904E-11F3ADDE641A}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_SP_LavaPurpleSmall_LP" ID="{FEDE433F-37FA-418B-954F-E1B66F0681E6}" ShortID="922421436">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="BelowThresholdBehavior" Type="int16" Value="2"/>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="IsStreamingEnabled" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="OverridePriority" Type="bool" Value="True"/>
+										<Property Name="OverrideVirtualVoice" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>1200</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Priority" Type="int16">
+											<ValueList>
+												<Value>45</Value>
+											</ValueList>
+										</Property>
+										<Property Name="PriorityDistanceFactor" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-4</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="ATT_LavaSmall" ID="{3E3C0E7A-42C2-4EA2-8C60-C658F16F3BE9}" WorkUnitID="{C730687D-413E-4BFB-8D51-3089D8FA5CE2}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_SP_PurpleLavaSmall_LP" ID="{1824E39B-FD31-46BE-A123-D3C534EC0570}">
+											<Language>SFX</Language>
+											<AudioFile>AMB_SP_PurpleLavaSmall_LP.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1000175725"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_SP_PurpleLavaSmall_LP" ID="{1824E39B-FD31-46BE-A123-D3C534EC0570}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_SP_FireTorch_LP" ID="{113A0DBF-E233-4841-A501-655F3B3C9017}" ShortID="145292270">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="IsStreamingEnabled" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="OverridePriority" Type="bool" Value="True"/>
+										<Property Name="Priority" Type="int16">
+											<ValueList>
+												<Value>45</Value>
+											</ValueList>
+										</Property>
+										<Property Name="PriorityDistanceFactor" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="ATT_Torch" ID="{981983FC-3E4E-4B45-964C-0456F134B326}" WorkUnitID="{C730687D-413E-4BFB-8D51-3089D8FA5CE2}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_SP_FireTorch_LP" ID="{A7BA15E0-26BD-4179-9A65-90656CF5892E}">
+											<Language>SFX</Language>
+											<AudioFile>AMB_SP_FireTorch_LP.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="91485875"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_SP_FireTorch_LP" ID="{A7BA15E0-26BD-4179-9A65-90656CF5892E}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_SP_WaterFlowBig_ST_LP" ID="{D473CA52-5C53-44F9-8706-B87D4ECCC0A9}" ShortID="776008248">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="BelowThresholdBehavior" Type="int16" Value="2"/>
+										<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
+										<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="IsStreamingEnabled" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>2</Value>
+											</ValueList>
+										</Property>
+										<Property Name="OverLimitBehavior" Type="int16" Value="1"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="OverridePriority" Type="bool" Value="True"/>
+										<Property Name="OverrideVirtualVoice" Type="bool" Value="True"/>
+										<Property Name="Priority" Type="int16">
+											<ValueList>
+												<Value>70</Value>
+											</ValueList>
+										</Property>
+										<Property Name="PriorityDistanceFactor" Type="bool" Value="True"/>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>6</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="ATT_WaterFlowBig" ID="{48C7418A-07AC-4C7A-A7F5-111D73F87233}" WorkUnitID="{C730687D-413E-4BFB-8D51-3089D8FA5CE2}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_SP_WaterFlowBig_ST_LP" ID="{C6C9A95F-91C0-449F-94D7-19F4FB0D9BFC}">
+											<Language>SFX</Language>
+											<AudioFile>AMB_SP_WaterFlowBig_ST_LP.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="784759116"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_SP_WaterFlowBig_ST_LP" ID="{C6C9A95F-91C0-449F-94D7-19F4FB0D9BFC}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_SP_WaterFlowMed_ST_LP" ID="{28C012A5-DD38-4725-A46D-0ABEF823CB47}" ShortID="191786775">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="BelowThresholdBehavior" Type="int16" Value="2"/>
+										<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="IsStreamingEnabled" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>3</Value>
+											</ValueList>
+										</Property>
+										<Property Name="OverLimitBehavior" Type="int16" Value="1"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="OverridePriority" Type="bool" Value="True"/>
+										<Property Name="OverrideVirtualVoice" Type="bool" Value="True"/>
+										<Property Name="Priority" Type="int16">
+											<ValueList>
+												<Value>65</Value>
+											</ValueList>
+										</Property>
+										<Property Name="PriorityDistanceFactor" Type="bool" Value="True"/>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>4</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="ATT_WaterFlowMed" ID="{2C4A4217-C7F0-403A-AFCD-3897A61840A4}" WorkUnitID="{C730687D-413E-4BFB-8D51-3089D8FA5CE2}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_SP_WaterFlowMed_ST_LP" ID="{74B64A4F-991D-4806-B1E6-48F62CD10607}">
+											<Language>SFX</Language>
+											<AudioFile>AMB_SP_WaterFlowMed_ST_LP.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1041200681"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_SP_WaterFlowMed_ST_LP" ID="{74B64A4F-991D-4806-B1E6-48F62CD10607}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_SP_WaterFlowSmall_ST_LP" ID="{1F811A0C-98C3-4911-9329-62C7B7068AB7}" ShortID="303041871">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="IsStreamingEnabled" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="OverridePriority" Type="bool" Value="True"/>
+										<Property Name="Priority" Type="int16">
+											<ValueList>
+												<Value>60</Value>
+											</ValueList>
+										</Property>
+										<Property Name="PriorityDistanceFactor" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="ATT_WaterFLowSmall" ID="{3A43B676-4E77-445B-AF92-8E5AD642EF96}" WorkUnitID="{C730687D-413E-4BFB-8D51-3089D8FA5CE2}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_SP_WaterFlowSmall_ST_LP" ID="{9FB69647-96F4-41C3-9AB4-85189E205288}">
+											<Language>SFX</Language>
+											<AudioFile>AMB_SP_WaterFlowSmall_ST_LP.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="655677380"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_SP_WaterFlowSmall_ST_LP" ID="{9FB69647-96F4-41C3-9AB4-85189E205288}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<ObjectLists/>
+						</ActorMixer>
+						<ActorMixer Name="RFX" ID="{9C82110A-8C7D-4783-8A31-08D74D4918CE}" ShortID="519075607">
+							<PropertyList>
+								<Property Name="OverridePriority" Type="bool" Value="True"/>
+								<Property Name="Priority" Type="int16">
+									<ValueList>
+										<Value>30</Value>
+									</ValueList>
+								</Property>
+								<Property Name="PriorityDistanceFactor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="AMB_RFX_GroundRumble" ID="{BF9674B1-88D8-4ED7-B998-F6AEDB065183}" ShortID="840136702">
+									<PropertyList>
+										<Property Name="InitialDelay" Type="Real64">
+											<ValueList>
+												<Value>2</Value>
+											</ValueList>
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{05A77D11-9DB7-4299-8CEE-CBFF7117AB24}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="1"/>
+															<Property Name="Min" Type="Real64" Value="-1"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{10B5DBE0-A674-41B4-8144-C8C641F5C252}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="25"/>
+															<Property Name="Min" Type="Real64" Value="-25"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
+										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="5">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{3E681891-9C96-419F-9AFF-4F8E360F489C}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="2"/>
+															<Property Name="Min" Type="Real64" Value="-2"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="6"/>
+										<Property Name="Volume" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{C267A369-ED15-4608-94D4-CD78C80681EA}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Min" Type="Real64" Value="-10"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="AMB_RFX_DirtFall" ID="{1C3C8262-F5F9-49B1-9D0D-4059C97F6A8A}" ShortID="152598581">
+									<PropertyList>
+										<Property Name="3DPosition" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="HoldEmitterPositionOrientation" Type="bool" Value="True"/>
+										<Property Name="InitialDelay" Type="Real64">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{18610367-2984-44BF-A5BF-FCC706AAC65A}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="0.5"/>
+															<Property Name="Min" Type="Real64" Value="-0.5"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+										<Property Name="OverrideGameAuxSends" Type="bool" Value="True"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{51B0016A-DF17-480E-8584-05179F605084}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="25"/>
+															<Property Name="Min" Type="Real64" Value="-25"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
+										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="4">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{33972302-948E-40C7-A313-4285043C0C1B}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="1"/>
+															<Property Name="Min" Type="Real64" Value="-3"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="13"/>
+										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-18</Value>
+											</ValueList>
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{6CE3E6DF-E99E-49AD-8826-63E7DB210E44}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Min" Type="Real64" Value="-10"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="ATT_RFX_DustFall" ID="{48577D3E-C7D1-48CE-9B73-DE8DEEAB299E}" WorkUnitID="{C730687D-413E-4BFB-8D51-3089D8FA5CE2}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="AMB_RFX_DustFall_01" ID="{5EA0BACF-3866-4419-A8AC-4C48DF1F3ED7}" ShortID="508996821">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_RFX_DustFall_01" ID="{85CC5825-2C71-4F7F-BC5F-636B356E4489}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_RFX_DustFall_01.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="859958553"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_RFX_DustFall_01" ID="{85CC5825-2C71-4F7F-BC5F-636B356E4489}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_RFX_DustFall_02" ID="{A22EE422-BA16-43C6-9E17-B8BBBBFFBE21}" ShortID="506740415">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_RFX_DustFall_02" ID="{2A544922-09AB-4891-AA05-B09DC34750BE}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_RFX_DustFall_02.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1060471439"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_RFX_DustFall_02" ID="{2A544922-09AB-4891-AA05-B09DC34750BE}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_RFX_DustFall_03" ID="{5C8032CD-DB2E-4FE3-853B-558159F001AC}" ShortID="450220720">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_RFX_DustFall_03" ID="{ABBDCA61-4F2E-419E-B83B-FDCD066E03EA}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_RFX_DustFall_03.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="354917680"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_RFX_DustFall_03" ID="{ABBDCA61-4F2E-419E-B83B-FDCD066E03EA}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_RFX_DustFall_04" ID="{8D966543-3546-45EE-99A0-597214EF1042}" ShortID="82605508">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_RFX_DustFall_04" ID="{DF2E9A27-FCCE-49B2-AFD7-C793C49F9A53}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_RFX_DustFall_04.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="283194711"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_RFX_DustFall_04" ID="{DF2E9A27-FCCE-49B2-AFD7-C793C49F9A53}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_RFX_DustFall_05" ID="{1E88F14A-527A-492C-BABA-5F4EC056075C}" ShortID="169071356">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_RFX_DustFall_05" ID="{B79719FE-7C51-4FA4-8FE9-011D88D0F50E}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_RFX_DustFall_05.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="403081189"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_RFX_DustFall_05" ID="{B79719FE-7C51-4FA4-8FE9-011D88D0F50E}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_RFX_DustFall_06" ID="{ED387478-290D-4D8B-B921-33F55B095456}" ShortID="485541467">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_RFX_DustFall_06" ID="{60E77BC2-AEA8-4D29-A252-6EB347983B93}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_RFX_DustFall_06.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="351811936"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_RFX_DustFall_06" ID="{60E77BC2-AEA8-4D29-A252-6EB347983B93}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_RFX_DustFall_07" ID="{0B7BE843-628B-4560-99E1-FFD7DA5B6142}" ShortID="155377715">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_RFX_DustFall_07" ID="{CDE66EA3-F755-4B61-BF86-D8A201A137D7}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_RFX_DustFall_07.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="152265288"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_RFX_DustFall_07" ID="{CDE66EA3-F755-4B61-BF86-D8A201A137D7}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_RFX_DustFall_08" ID="{C37CF1E5-7362-4982-8F0C-F1C27D4709EA}" ShortID="114843152">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_RFX_DustFall_08" ID="{79F1CDB3-0EB6-4C5F-AF04-25BEDE96CF41}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_RFX_DustFall_08.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="816418443"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_RFX_DustFall_08" ID="{79F1CDB3-0EB6-4C5F-AF04-25BEDE96CF41}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_RFX_DustFall_09" ID="{B636997A-EE34-4889-A67C-161A2B1B42E8}" ShortID="818290335">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_RFX_DustFall_09" ID="{511D6139-A718-4671-BA98-9B90E39BA28D}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_RFX_DustFall_09.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="290716691"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_RFX_DustFall_09" ID="{511D6139-A718-4671-BA98-9B90E39BA28D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_RFX_DustFall_10" ID="{FBC8F9DE-EE85-47C2-9BA6-544902B26ADF}" ShortID="328398011">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_RFX_DustFall_10" ID="{F3897B26-62F4-429C-A786-FA8CE51C189D}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_RFX_DustFall_10.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="932755460"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_RFX_DustFall_10" ID="{F3897B26-62F4-429C-A786-FA8CE51C189D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_RFX_DustFall_11" ID="{647E8E46-355D-4B36-8CFB-E90CD3D54B72}" ShortID="701626838">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_RFX_DustFall_11" ID="{18B80ED1-8216-485E-8E42-FC432775B30E}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_RFX_DustFall_11.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="409967007"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_RFX_DustFall_11" ID="{18B80ED1-8216-485E-8E42-FC432775B30E}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_RFX_DustFall_12" ID="{57ADE087-3391-4370-BF41-AA48364520CD}" ShortID="60313774">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_RFX_DustFall_12" ID="{F3EB6416-D5A1-4883-977B-36AF4B933790}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_RFX_DustFall_12.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="761501090"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_RFX_DustFall_12" ID="{F3EB6416-D5A1-4883-977B-36AF4B933790}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_RFX_DustFall_13" ID="{153482BC-26A6-4894-9A49-82EC2F90B7D1}" ShortID="751104434">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_RFX_DustFall_13" ID="{67944E82-237B-4E9D-95FA-A6C9E136E279}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_RFX_DustFall_13.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="13437684"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_RFX_DustFall_13" ID="{67944E82-237B-4E9D-95FA-A6C9E136E279}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<PositioningInfo>
+										<Position Name="" ID="{A419CD72-5FFE-41D4-99DF-948D888CF79C}"/>
+									</PositioningInfo>
+									<ObjectLists/>
+								</RandomSequenceContainer>
+							</ChildrenList>
+							<ObjectLists/>
+						</ActorMixer>
+						<ActorMixer Name="ST" ID="{2D0326FA-C77B-4C2B-8EC6-86587BD201F7}" ShortID="914372562">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<BlendContainer Name="AMB_Vegetation_Blend" ID="{39A54498-F4FA-4A9B-9350-5E20205B9B2A}" ShortID="328982083">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="AMB_VegetationHigh_ST_LP" ID="{778DE908-444E-47BA-A284-5FE560CB0E8A}" ShortID="1023090678">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="IsStreamingEnabled" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-7</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_VegetationHigh_ST_LP" ID="{64810578-C8E3-458A-A69A-69B59FFF07A2}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_VegetationHigh_ST_LP.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="55723591"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_VegetationHigh_ST_LP" ID="{64810578-C8E3-458A-A69A-69B59FFF07A2}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_VegetationLow_ST_LP" ID="{C6C98B30-5B8F-429C-B1D7-2E6A310171F7}" ShortID="1023261617">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="IsStreamingEnabled" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Lowpass" Type="int16">
+													<ValueList>
+														<Value>24</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-13</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_VegetationLow_ST_LP" ID="{0B8CD4C1-14A9-4721-9453-4DDDFC414669}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_VegetationLow_ST_LP.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="485390150"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_VegetationLow_ST_LP" ID="{0B8CD4C1-14A9-4721-9453-4DDDFC414669}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="AMB_VegetationMed_ST_LP" ID="{EA60B5FD-5050-4AE7-AAE7-B230A0857E92}" ShortID="413580513">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="IsStreamingEnabled" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-11</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="AMB_VegetationMed_ST_LP" ID="{93CEEE1F-DCE9-4081-8477-783418605A03}">
+													<Language>SFX</Language>
+													<AudioFile>AMB_VegetationMed_ST_LP.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="341514032"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="AMB_VegetationMed_ST_LP" ID="{93CEEE1F-DCE9-4081-8477-783418605A03}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+									<BlendTrackList>
+										<BlendTrack Name="VegetationProportion" ID="{D32FD289-4C97-4AF4-B641-15FFBB240EF0}" ShortID="566893986">
+											<PropertyList>
+												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<RTPCList>
+														<RTPC Name="" ID="{BED5BD72-9461-44B0-A53F-216604230739}" ShortID="384004727">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="RTPC_Vegetation" ID="{AE9E92CD-9763-4B65-9735-3567D41C582E}" WorkUnitID="{C6842C24-F9C6-4EB3-A160-2E701BA56107}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{3BB53D91-5EF7-42EC-90B6-7CC195002BAB}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-3.36245</YPos>
+																		<Flags>5</Flags>
+																		<SegmentShape>Exp1</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>15</XPos>
+																		<YPos>0</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="LayerCrossFadeControlInput">
+													<ObjectRef Name="RTPC_Vegetation" ID="{AE9E92CD-9763-4B65-9735-3567D41C582E}" WorkUnitID="{C6842C24-F9C6-4EB3-A160-2E701BA56107}"/>
+												</Reference>
+											</ReferenceList>
+											<BlendTrackAssocList>
+												<BlendTrackAssoc>
+													<ItemRef Name="AMB_VegetationLow_ST_LP" ID="{C6C98B30-5B8F-429C-B1D7-2E6A310171F7}"/>
+													<CrossfadingInfo>
+														<LeftEdgePos>0</LeftEdgePos>
+														<LeftFadingMode>Manual</LeftFadingMode>
+														<LeftFadingPos>1</LeftFadingPos>
+														<RightEdgePos>6</RightEdgePos>
+														<RightFadingMode>Automatic</RightFadingMode>
+													</CrossfadingInfo>
+												</BlendTrackAssoc>
+												<BlendTrackAssoc>
+													<ItemRef Name="AMB_VegetationMed_ST_LP" ID="{EA60B5FD-5050-4AE7-AAE7-B230A0857E92}"/>
+													<CrossfadingInfo>
+														<LeftEdgePos>1.51480750246792</LeftEdgePos>
+														<LeftFadingMode>Automatic</LeftFadingMode>
+														<RightEdgePos>12.0148075024679</RightEdgePos>
+														<RightFadingMode>Automatic</RightFadingMode>
+													</CrossfadingInfo>
+												</BlendTrackAssoc>
+												<BlendTrackAssoc>
+													<ItemRef Name="AMB_VegetationHigh_ST_LP" ID="{778DE908-444E-47BA-A284-5FE560CB0E8A}"/>
+													<CrossfadingInfo>
+														<LeftEdgePos>7.5</LeftEdgePos>
+														<LeftFadingMode>Automatic</LeftFadingMode>
+														<RightEdgePos>15</RightEdgePos>
+														<RightFadingMode>None</RightFadingMode>
+													</CrossfadingInfo>
+												</BlendTrackAssoc>
+											</BlendTrackAssocList>
+										</BlendTrack>
+									</BlendTrackList>
+								</BlendContainer>
+							</ChildrenList>
+							<ObjectLists/>
+						</ActorMixer>
+						<ActorMixer Name="Bed" ID="{172C5603-B926-440B-B9C5-3C9CE71E86A1}" ShortID="761246176">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="AMB_Bed_lvl1_Cave_LP" ID="{3CE3BDD3-1ECD-4527-9075-7F1A2444ECA4}" ShortID="55881510">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="IsStreamingEnabled" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-16</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="ATT_Portals" ID="{7B20DE71-BA58-4AE3-949A-15FA63BE6C24}" WorkUnitID="{A2E70B8F-5F4D-4AA3-9EC7-CD0BEFA74353}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="AMB" ID="{CDAACF0F-C751-406F-9073-3F6016218135}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_Bed_lvl1_Interior_LP" ID="{46F3E304-BF89-4097-A85A-3A4C79D840C2}">
+											<Language>SFX</Language>
+											<AudioFile>AMB_Bed_lvl1_Interior_LP.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="437084495"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_Bed_lvl1_Interior_LP" ID="{46F3E304-BF89-4097-A85A-3A4C79D840C2}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_Bed_lvl1_LP" ID="{A411F9C6-A752-46AF-ABA9-C4603C74214C}" ShortID="319663824">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="IsStreamingEnabled" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+										<Property Name="OverrideGameAuxSends" Type="bool" Value="True"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-20</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="ATT_Portals" ID="{7B20DE71-BA58-4AE3-949A-15FA63BE6C24}" WorkUnitID="{A2E70B8F-5F4D-4AA3-9EC7-CD0BEFA74353}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="AMB" ID="{CDAACF0F-C751-406F-9073-3F6016218135}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_Bed_lvl1_LP" ID="{D21C41C6-808C-4A92-B86E-F3256E6801AA}">
+											<Language>SFX</Language>
+											<AudioFile>AMB_Bed_lvl1_LP.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="876070072"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_Bed_lvl1_LP" ID="{D21C41C6-808C-4A92-B86E-F3256E6801AA}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="AMB_Bed_Temple_LP" ID="{B9F6609A-1108-4C28-A4A0-979134A64730}" ShortID="1011996660">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="IsStreamingEnabled" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+										<Property Name="OverrideGameAuxSends" Type="bool" Value="True"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-9</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="ATT_Portals" ID="{7B20DE71-BA58-4AE3-949A-15FA63BE6C24}" WorkUnitID="{A2E70B8F-5F4D-4AA3-9EC7-CD0BEFA74353}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="AMB" ID="{CDAACF0F-C751-406F-9073-3F6016218135}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_Bed_lvl2_Temple_LP" ID="{9798D66D-664D-4921-A3B6-EA167D4AE8D5}">
+											<Language>SFX</Language>
+											<AudioFile>AMB_Bed_lvl2_Temple_LP.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="781522490"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_Bed_lvl2_Temple_LP" ID="{9798D66D-664D-4921-A3B6-EA167D4AE8D5}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<ObjectLists/>
+						</ActorMixer>
+					</ChildrenList>
+					<ObjectLists/>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

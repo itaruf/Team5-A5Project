@@ -10,7 +10,7 @@
 								<RTPC Name="" ID="{1911D9F1-070A-436A-809E-EB0688D2EA9C}" ShortID="420578990">
 									<ReferenceList>
 										<Reference Name="ControlInput">
-											<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}"/>
+											<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{F8A5D19F-B407-403E-A4C1-2F40F32BFE45}"/>
 										</Reference>
 									</ReferenceList>
 									<Curve Name="" ID="{229E60A2-CF7C-4D1F-A2B5-F66B02E1AA87}">

@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}" SchemaVersion="103" RootDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}" ParentDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}">
+<WwiseDocument Type="WorkUnit" ID="{D612C9AE-D6B6-4E2E-B62B-06B4EF6E8BD9}" SchemaVersion="103" RootDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}" ParentDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}">
 	<GameParameters>
-		<WorkUnit Name="Alexis" ID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}" OwnerID="{2E3B1270-9C0A-453D-8324-D76519F899C5}" PersistMode="Nested">
+		<WorkUnit Name="Volume" ID="{D612C9AE-D6B6-4E2E-B62B-06B4EF6E8BD9}" OwnerID="{2E3B1270-9C0A-453D-8324-D76519F899C5}" PersistMode="Nested">
 			<ChildrenList>
 				<GameParameter Name="MasterVolume" ID="{5B45EAC9-2C25-4E26-BE21-B7E898D85C87}">
 					<PropertyList>
 						<Property Name="InitialValue" Type="Real64" Value="1"/>
 						<Property Name="Max" Type="Real64" Value="1"/>
-					</PropertyList>
-				</GameParameter>
-				<GameParameter Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}">
-					<PropertyList>
-						<Property Name="InitialValue" Type="Real64" Value="0"/>
-						<Property Name="Max" Type="Real64" Value="3000"/>
-						<Property Name="RTPCRamping" Type="int16" Value="1"/>
-						<Property Name="SlewRateDown" Type="Real64" Value="2500"/>
-						<Property Name="SlewRateUp" Type="Real64" Value="3000"/>
 					</PropertyList>
 				</GameParameter>
 				<GameParameter Name="MusicVolume" ID="{768F620D-53F8-4590-A9FE-D608EFC505F2}">
