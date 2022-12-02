@@ -6,9 +6,6 @@
 				<Bus Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
 					<PropertyList>
 						<Property Name="BusVolume" Type="Real64">
-							<ValueList>
-								<Value>12</Value>
-							</ValueList>
 							<RTPCList>
 								<RTPC Name="" ID="{349262F4-AB5C-4F07-8028-8B8E7F61BC1D}" ShortID="142794907">
 									<ReferenceList>
@@ -29,7 +26,7 @@
 											</Point>
 											<Point>
 												<XPos>1</XPos>
-												<YPos>0</YPos>
+												<YPos>22.60664</YPos>
 												<Flags>37</Flags>
 											</Point>
 										</PointList>
