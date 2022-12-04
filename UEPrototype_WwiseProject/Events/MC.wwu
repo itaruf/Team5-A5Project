@@ -77,7 +77,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="MC_Death_Crash" ID="{03A938CB-E3B1-4E9F-89B2-82B40A6CFE67}">
+				<Event Name="MC_Death" ID="{03A938CB-E3B1-4E9F-89B2-82B40A6CFE67}">
 					<ChildrenList>
 						<Action Name="" ID="{313CD596-CDF5-4A28-8468-81526B13ADE7}" ShortID="457629402">
 							<ReferenceList>
@@ -115,17 +115,6 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Dead" ID="{CB238342-84ED-4395-815B-912C29F7CDBB}" WorkUnitID="{D2DE9D4C-61A1-46CC-AB2F-8D5FA822B62A}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{C02CB376-01EA-43EF-AAB8-8E1D9036C50D}" ShortID="352549850">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="22"/>
-								<Property Name="Delay" Type="Real64" Value="2.5"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Alive" ID="{E8CC3D28-0F71-43A1-8071-556C82C64DB2}" WorkUnitID="{D2DE9D4C-61A1-46CC-AB2F-8D5FA822B62A}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

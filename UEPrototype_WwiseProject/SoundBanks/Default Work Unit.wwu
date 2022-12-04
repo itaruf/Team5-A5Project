@@ -36,19 +36,19 @@
 						<ObjectRef Name="SFX_MagicDoor" ID="{BC8ED75C-5C8C-49F1-A877-28266565A909}" WorkUnitID="{BA1490DE-47E6-4156-B646-4F805520E928}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="UI_Menu_Hover" ID="{402C459E-ECAA-4A6B-965B-27BD861CD0F8}" WorkUnitID="{5B9AEA61-1DA5-4A87-9C25-DF4194671C79}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="SP_WaterFlowMed" ID="{7FA8E679-430E-4B06-AB0E-F41AEE80B1F4}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="ST_Vegetation" ID="{0CE58AE0-148A-4C0E-92C7-DD9C20E06E29}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="AMB_Vegetation" ID="{0CE58AE0-148A-4C0E-92C7-DD9C20E06E29}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="MUS_MenuStart_Stop" ID="{662B1549-5E63-4C2E-9A5F-E7CF088798FE}" WorkUnitID="{C2C381D3-88F5-4DB0-98EC-F7D9E9F098BD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="SP_WaterFallSmall" ID="{B2A9D75A-C3C7-4C42-8DCA-B7A4D7AF9D33}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="SFX_Wind" ID="{9F29A3D7-4B2F-4C43-A096-ABB70E88BAB4}" WorkUnitID="{BA1490DE-47E6-4156-B646-4F805520E928}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="UI_Menu_Confirm" ID="{8843FDA7-0D68-4C93-963F-92849B596110}" WorkUnitID="{5B9AEA61-1DA5-4A87-9C25-DF4194671C79}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="SP_LavaPurpleSmall" ID="{AB7C09A6-7030-4D26-AC12-774EA7D11706}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="SFX_BigDoor_Start" ID="{755C73B4-B339-4D7B-A530-BEA7447405A0}" WorkUnitID="{BA1490DE-47E6-4156-B646-4F805520E928}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="SP_WaterFallMed" ID="{44FD23A1-F917-4E26-8EF9-34E98C653B2B}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="AMB_River" ID="{44FD23A1-F917-4E26-8EF9-34E98C653B2B}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="SFX_PlayerInAir" ID="{842A5543-F79B-4E66-8E98-34B8B487ADD2}" WorkUnitID="{BA1490DE-47E6-4156-B646-4F805520E928}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="SFX_Freefall_Stop_NoEnergy" ID="{D56F931A-6E8A-4E68-AAB5-947606E7EC7B}" WorkUnitID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_AMB_Bed_lvl2_Temple" ID="{A7547539-2558-4E76-BAF9-97167B960FDA}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="SP_WaterFallBig" ID="{49FCB4E9-F4D9-4E9C-A9D9-B1B632F3F221}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="MC_Death_Crash" ID="{03A938CB-E3B1-4E9F-89B2-82B40A6CFE67}" WorkUnitID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MC_Death" ID="{03A938CB-E3B1-4E9F-89B2-82B40A6CFE67}" WorkUnitID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="MUS_MenuStart_Play" ID="{17338B33-3C8F-4EA8-981E-4395F7F6937E}" WorkUnitID="{C2C381D3-88F5-4DB0-98EC-F7D9E9F098BD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_AMB_Bed_lvl1" ID="{4451A411-DE72-4F14-8F94-64731FF465B2}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="MUS_Level0_Start" ID="{23188369-16F1-4F36-9CD7-E7380DB3D94A}" WorkUnitID="{C2C381D3-88F5-4DB0-98EC-F7D9E9F098BD}" Origin="Manual" Filter="7"/>
