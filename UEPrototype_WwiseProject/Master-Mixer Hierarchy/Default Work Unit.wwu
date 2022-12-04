@@ -6,33 +6,9 @@
 				<Bus Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
 					<PropertyList>
 						<Property Name="BusVolume" Type="Real64">
-							<RTPCList>
-								<RTPC Name="" ID="{349262F4-AB5C-4F07-8028-8B8E7F61BC1D}" ShortID="142794907">
-									<ReferenceList>
-										<Reference Name="ControlInput">
-											<ObjectRef Name="MasterVolume" ID="{5B45EAC9-2C25-4E26-BE21-B7E898D85C87}" WorkUnitID="{D612C9AE-D6B6-4E2E-B62B-06B4EF6E8BD9}"/>
-										</Reference>
-									</ReferenceList>
-									<Curve Name="" ID="{94E60A29-81EB-491E-B303-854501935913}">
-										<PropertyList>
-											<Property Name="Flags" Type="int32" Value="3"/>
-										</PropertyList>
-										<PointList>
-											<Point>
-												<XPos>0</XPos>
-												<YPos>-200</YPos>
-												<Flags>5</Flags>
-												<SegmentShape>Exp2</SegmentShape>
-											</Point>
-											<Point>
-												<XPos>1</XPos>
-												<YPos>22.60664</YPos>
-												<Flags>37</Flags>
-											</Point>
-										</PointList>
-									</Curve>
-								</RTPC>
-							</RTPCList>
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
 						</Property>
 					</PropertyList>
 					<ReferenceList>
