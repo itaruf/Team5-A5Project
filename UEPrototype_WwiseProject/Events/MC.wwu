@@ -2,6 +2,10 @@
 <WwiseDocument Type="WorkUnit" ID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" SchemaVersion="103" RootDocumentID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}" ParentDocumentID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}">
 	<Events>
 		<WorkUnit Name="MC" ID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" OwnerID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}" PersistMode="Nested">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="8"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
 			<ChildrenList>
 				<Event Name="MC_FT_Jump" ID="{09415A2F-7044-41AF-A061-2D0E199B46F4}">
 					<ChildrenList>
@@ -115,6 +119,17 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Dead" ID="{CB238342-84ED-4395-815B-912C29F7CDBB}" WorkUnitID="{D2DE9D4C-61A1-46CC-AB2F-8D5FA822B62A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="MC_Dash" ID="{A96A0AD7-8652-4227-AF75-205FCFDFA8F0}">
+					<ChildrenList>
+						<Action Name="" ID="{AB9D0214-4B6F-47F8-9734-B3340FDA1242}" ShortID="19814604">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Dash_iteration" ID="{BE12D9B4-6CBF-4F31-9DB9-18D8B931D980}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

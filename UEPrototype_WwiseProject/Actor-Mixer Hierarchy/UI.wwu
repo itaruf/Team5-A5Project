@@ -2,10 +2,14 @@
 <WwiseDocument Type="WorkUnit" ID="{1E3A6EE9-9F32-46E2-A68A-0A7215298BCD}" SchemaVersion="103" RootDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" ParentDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}">
 	<AudioObjects>
 		<WorkUnit Name="UI" ID="{1E3A6EE9-9F32-46E2-A68A-0A7215298BCD}" OwnerID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" PersistMode="Nested">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="25"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
 			<ChildrenList>
 				<ActorMixer Name="UI" ID="{9783890A-D5FE-46FA-B8D8-0D3F5575AD74}" ShortID="504151075">
 					<PropertyList>
-						<Property Name="Color" Type="int16" Value="19"/>
+						<Property Name="Color" Type="int16" Value="25"/>
 						<Property Name="Highpass" Type="int16">
 							<ValueList>
 								<Value>35</Value>

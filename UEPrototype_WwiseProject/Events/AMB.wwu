@@ -2,6 +2,10 @@
 <WwiseDocument Type="WorkUnit" ID="{554E2F4C-2293-405F-963F-CC5D0996C675}" SchemaVersion="103" RootDocumentID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}" ParentDocumentID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}">
 	<Events>
 		<WorkUnit Name="AMB" ID="{554E2F4C-2293-405F-963F-CC5D0996C675}" OwnerID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}" PersistMode="Nested">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="19"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
 			<ChildrenList>
 				<Event Name="AMB_River" ID="{44FD23A1-F917-4E26-8EF9-34E98C653B2B}">
 					<ChildrenList>

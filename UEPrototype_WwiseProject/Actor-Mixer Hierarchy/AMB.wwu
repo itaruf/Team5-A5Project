@@ -2,10 +2,14 @@
 <WwiseDocument Type="WorkUnit" ID="{594289DA-4551-496F-B557-01EEEB6BDB98}" SchemaVersion="103" RootDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" ParentDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}">
 	<AudioObjects>
 		<WorkUnit Name="AMB" ID="{594289DA-4551-496F-B557-01EEEB6BDB98}" OwnerID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" PersistMode="Nested">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="19"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
 			<ChildrenList>
 				<ActorMixer Name="AMB" ID="{26568A3B-6A77-4BD6-BC3F-E2C29C4577B3}" ShortID="388164429">
 					<PropertyList>
-						<Property Name="Color" Type="int16" Value="15"/>
+						<Property Name="Color" Type="int16" Value="19"/>
 						<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 						<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
 						<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>

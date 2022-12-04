@@ -2,6 +2,10 @@
 <WwiseDocument Type="WorkUnit" ID="{770F098B-B93C-4720-A984-3E030EB04B8D}" SchemaVersion="103" RootDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" ParentDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}">
 	<AudioObjects>
 		<WorkUnit Name="MC" ID="{770F098B-B93C-4720-A984-3E030EB04B8D}" OwnerID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" PersistMode="Nested">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="8"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
 			<ChildrenList>
 				<ActorMixer Name="MC" ID="{97DDC955-517D-4E6B-A016-90253F172554}" ShortID="13910117">
 					<PropertyList>

@@ -2,11 +2,15 @@
 <WwiseDocument Type="WorkUnit" ID="{FEC01D41-8690-4D8F-84C7-D18862505C81}" SchemaVersion="103" RootDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" ParentDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}">
 	<AudioObjects>
 		<WorkUnit Name="SFX" ID="{FEC01D41-8690-4D8F-84C7-D18862505C81}" OwnerID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" PersistMode="Nested">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="15"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
 			<ChildrenList>
 				<ActorMixer Name="SFX" ID="{35FAFE6F-D3DB-4F7E-B558-E792D5166838}" ShortID="344180215">
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="1"/>
-						<Property Name="Color" Type="int16" Value="16"/>
+						<Property Name="Color" Type="int16" Value="15"/>
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 						<Property Name="OverrideOutput" Type="bool" Value="True"/>
 					</PropertyList>
