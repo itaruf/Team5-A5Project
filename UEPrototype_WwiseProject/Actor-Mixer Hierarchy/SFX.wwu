@@ -5,6 +5,7 @@
 			<ChildrenList>
 				<ActorMixer Name="SFX" ID="{35FAFE6F-D3DB-4F7E-B558-E792D5166838}" ShortID="344180215">
 					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="1"/>
 						<Property Name="Color" Type="int16" Value="16"/>
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 						<Property Name="OverrideOutput" Type="bool" Value="True"/>
@@ -22,6 +23,11 @@
 							<ChildrenList>
 								<RandomSequenceContainer Name="SFX_Freefall_Start" ID="{130CB51F-A96B-4F85-940E-16879C5A12B9}" ShortID="858694313">
 									<PropertyList>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
+											</ValueList>
+										</Property>
 										<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
@@ -164,6 +170,11 @@
 												</RTPC>
 											</RTPCList>
 										</Property>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
+											</ValueList>
+										</Property>
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 										<Property Name="OverrideGameAuxSends" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
@@ -272,7 +283,7 @@
 														<PropertyList>
 															<Property Name="Enabled" Type="bool" Value="True"/>
 															<Property Name="Max" Type="Real64" Value="75"/>
-															<Property Name="Min" Type="Real64" Value="-75"/>
+															<Property Name="Min" Type="Real64" Value="-100"/>
 														</PropertyList>
 													</Modifier>
 												</ModifierInfo>
@@ -477,7 +488,7 @@
 															</Point>
 															<Point>
 																<XPos>3000</XPos>
-																<YPos>232</YPos>
+																<YPos>436</YPos>
 																<Flags>37</Flags>
 															</Point>
 														</PointList>
@@ -509,7 +520,7 @@
 															</Point>
 															<Point>
 																<XPos>3000</XPos>
-																<YPos>0</YPos>
+																<YPos>3.89953</YPos>
 																<Flags>37</Flags>
 															</Point>
 														</PointList>
@@ -558,6 +569,11 @@
 						</Folder>
 						<Sound Name="SFX_Checkpoint" ID="{4C6CF91A-DC73-4533-B940-0346431A488C}" ShortID="547437283">
 							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
 										<Value>-5</Value>
@@ -587,10 +603,22 @@
 							</ActiveSourceList>
 						</Sound>
 						<Folder Name="BigDoor" ID="{CD3FC48C-919E-40DC-8E79-8E7F7CD40819}" ShortID="144718140">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ChildrenList>
 								<ActorMixer Name="BigDoor_AM" ID="{3E010909-89A5-4E19-829A-AECAAE3BD938}" ShortID="425158857">
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
+											</ValueList>
+										</Property>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
@@ -690,6 +718,7 @@
 						<BlendContainer Name="SFX_Wind_Blend" ID="{4FE5E99D-AF51-4EFA-B39B-6BACE6194EA3}" ShortID="535292105">
 							<PropertyList>
 								<Property Name="BlendBehavior" Type="int16" Value="1"/>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
 										<Value>-17</Value>
@@ -1345,6 +1374,13 @@
 							</BlendTrackList>
 						</BlendContainer>
 						<Sound Name="SFX_SlowMoBackEffect" ID="{66E152AF-76D0-4A36-8DC3-D949154F55EA}" ShortID="198764641">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
@@ -1367,7 +1403,7 @@
 								<ActiveSource Name="SFX_SlowMoBackEffect" ID="{559497C3-B0E8-44F7-9F93-4A07A5AB43E5}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<RandomSequenceContainer Name="SFX_Waterfall_Impact" ID="{CEF1ACFE-A866-4CC0-8376-75DD28A6A336}" ShortID="77595437">
+						<RandomSequenceContainer Name="SFX_WaterMeteorCrash" ID="{CEF1ACFE-A866-4CC0-8376-75DD28A6A336}" ShortID="77595437">
 							<PropertyList>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 								<Property Name="Pitch" Type="int32">
@@ -1385,6 +1421,9 @@
 								</Property>
 								<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
 								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-18</Value>
+									</ValueList>
 									<ModifierList>
 										<ModifierInfo>
 											<Modifier Name="" ID="{3259D9A5-17FC-435B-BBC4-EC7A75D37832}">
@@ -1456,6 +1495,13 @@
 							<ObjectLists/>
 						</RandomSequenceContainer>
 						<Sound Name="SFX_SlowMoEffect" ID="{178B97D6-F58A-4210-9068-63FE556F5B9D}" ShortID="397668444">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
@@ -1481,6 +1527,11 @@
 						<RandomSequenceContainer Name="SFX_MagicDoor_Sequence" ID="{7769D137-4234-46E5-9A3C-4F0895F9CF48}" ShortID="829879793">
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
 								<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
@@ -1599,6 +1650,11 @@
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="2"/>
 								<Property Name="BlendBehavior" Type="int16" Value="1"/>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
 							</PropertyList>
 							<ReferenceList>

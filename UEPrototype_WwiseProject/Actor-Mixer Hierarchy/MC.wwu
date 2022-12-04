@@ -556,7 +556,7 @@
 										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-11</Value>
+												<Value>-28</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -6110,6 +6110,11 @@
 										</SwitchContainer>
 										<SwitchContainer Name="MC_FT_WallRun_GroundSwitch" ID="{261F0B73-8815-4C3B-A936-1E53A89942B5}" ShortID="1023433653">
 											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>-11</Value>
@@ -7031,6 +7036,11 @@
 										</SwitchContainer>
 										<RandomSequenceContainer Name="MC_FT_MagicLayer" ID="{53DD9E2D-9A76-4EDB-B309-11E2954146B5}" ShortID="433426513">
 											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
 												<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
@@ -7260,6 +7270,11 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="MC_FT_Jump_MagicLayer" ID="{4B6F1162-B6C1-4C8F-8C50-F60E7D67F068}" ShortID="560021208">
 											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
 												<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
@@ -7411,6 +7426,11 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="MC_FT_Land_MagicLayer" ID="{053A5CA1-D6BB-450F-B38C-2E04BD5EDD6A}" ShortID="312874822">
 											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
 												<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
@@ -7548,6 +7568,11 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="MC_FT_WallJump_MagicLayer" ID="{5F0430D8-4478-41E9-8C16-C7BE4F183CCD}" ShortID="210793967">
 											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
 												<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
@@ -7685,6 +7710,11 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="MC_FT_WallZap_MagicLayer" ID="{9AE511FD-4DBB-4D44-86EF-CDBACFEB4975}" ShortID="1035467552">
 											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
 												<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
@@ -8200,6 +8230,11 @@
 										</RandomSequenceContainer>
 										<Sound Name="MC_FT_WallRun_Scrape_LP" ID="{227DEF3F-3002-4F3E-83FC-A212F703F653}" ShortID="768039935">
 											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 												<Property Name="Volume" Type="Real64">

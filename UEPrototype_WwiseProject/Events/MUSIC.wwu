@@ -26,7 +26,7 @@
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="End" ID="{B3FF19C2-F492-4C90-BA33-3ABAE92F6B58}" WorkUnitID="{C74913D5-01F3-42A1-989E-6FA374259590}"/>
+									<ObjectRef Name="End" ID="{B3FF19C2-F492-4C90-BA33-3ABAE92F6B58}" WorkUnitID="{D2DE9D4C-61A1-46CC-AB2F-8D5FA822B62A}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

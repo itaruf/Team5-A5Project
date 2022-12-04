@@ -6,6 +6,16 @@
 				<ActorMixer Name="UI" ID="{9783890A-D5FE-46FA-B8D8-0D3F5575AD74}" ShortID="504151075">
 					<PropertyList>
 						<Property Name="Color" Type="int16" Value="19"/>
+						<Property Name="Highpass" Type="int16">
+							<ValueList>
+								<Value>35</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Lowpass" Type="int16">
+							<ValueList>
+								<Value>9</Value>
+							</ValueList>
+						</Property>
 						<Property Name="OverrideColor" Type="bool" Value="True"/>
 						<Property Name="OverrideOutput" Type="bool" Value="True"/>
 					</PropertyList>
@@ -87,7 +97,7 @@
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-15</Value>
+										<Value>-9</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -114,6 +124,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="UI_Menu_Select" ID="{714C42B2-AB02-414B-8AC6-A85B92FC1AB5}" ShortID="196346562">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-4</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
@@ -140,7 +157,7 @@
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-5</Value>
+										<Value>-8</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -170,7 +187,7 @@
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-9</Value>
+										<Value>-8</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
