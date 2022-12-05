@@ -244,6 +244,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="SFX_Donut_Rolling" ID="{2DDE88B0-96F0-4D53-87A1-4D05EAE38C36}">
+					<ChildrenList>
+						<Action Name="" ID="{393FCDB0-378D-4B87-B272-30CB9C15F85E}" ShortID="825406848">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_Donut_Rolling" ID="{82B2280C-8F53-4926-9F8C-0B532EA0CEF3}" WorkUnitID="{FEC01D41-8690-4D8F-84C7-D18862505C81}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

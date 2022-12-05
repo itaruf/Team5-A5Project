@@ -6,33 +6,9 @@
 				<Bus Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
 					<PropertyList>
 						<Property Name="BusVolume" Type="Real64">
-							<RTPCList>
-								<RTPC Name="" ID="{349262F4-AB5C-4F07-8028-8B8E7F61BC1D}" ShortID="142794907">
-									<ReferenceList>
-										<Reference Name="ControlInput">
-											<ObjectRef Name="MasterVolume" ID="{5B45EAC9-2C25-4E26-BE21-B7E898D85C87}" WorkUnitID="{D612C9AE-D6B6-4E2E-B62B-06B4EF6E8BD9}"/>
-										</Reference>
-									</ReferenceList>
-									<Curve Name="" ID="{94E60A29-81EB-491E-B303-854501935913}">
-										<PropertyList>
-											<Property Name="Flags" Type="int32" Value="3"/>
-										</PropertyList>
-										<PointList>
-											<Point>
-												<XPos>0</XPos>
-												<YPos>-200</YPos>
-												<Flags>5</Flags>
-												<SegmentShape>Exp2</SegmentShape>
-											</Point>
-											<Point>
-												<XPos>1</XPos>
-												<YPos>22.60664</YPos>
-												<Flags>37</Flags>
-											</Point>
-										</PointList>
-									</Curve>
-								</RTPC>
-							</RTPCList>
+							<ValueList>
+								<Value>12</Value>
+							</ValueList>
 						</Property>
 					</PropertyList>
 					<ReferenceList>
@@ -43,7 +19,7 @@
 					<ChildrenList>
 						<Bus Name="AMB" ID="{CDAACF0F-C751-406F-9073-3F6016218135}">
 							<PropertyList>
-								<Property Name="Color" Type="int16" Value="15"/>
+								<Property Name="Color" Type="int16" Value="19"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
 							<StateInfo>
@@ -101,13 +77,6 @@
 						</Bus>
 						<Bus Name="UI" ID="{810B9E20-27DC-44EE-82C9-184684B56A94}">
 							<PropertyList>
-								<Property Name="Color" Type="int16" Value="19"/>
-								<Property Name="OverrideColor" Type="bool" Value="True"/>
-							</PropertyList>
-							<ObjectLists/>
-						</Bus>
-						<Bus Name="NPC" ID="{B955C7C1-6C5F-4379-8FB3-DD13E36B5A38}">
-							<PropertyList>
 								<Property Name="Color" Type="int16" Value="25"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
@@ -115,7 +84,7 @@
 						</Bus>
 						<Bus Name="SFX" ID="{F425DD9C-4B7D-40B0-B495-D58654E0B77E}">
 							<PropertyList>
-								<Property Name="Color" Type="int16" Value="16"/>
+								<Property Name="Color" Type="int16" Value="15"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
 							<StateInfo>
@@ -155,63 +124,6 @@
 							</ReferenceList>
 							<ObjectLists/>
 						</AuxBus>
-						<AuxBus Name="RVB_Temple" ID="{153304D8-442C-4DEE-8DC4-95365AC34075}">
-							<PropertyList>
-								<Property Name="3DSpatialization" Type="int16" Value="1"/>
-								<Property Name="BusVolume" Type="Real64">
-									<ValueList>
-										<Value>-5</Value>
-									</ValueList>
-								</Property>
-								<Property Name="EnableDiffraction" Type="bool" Value="True"/>
-								<Property Name="ListenerRelativeRouting" Type="bool" Value="True"/>
-								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-									<ObjectRef Name="Hall_Large_Dark" ID="{0F6A7D6D-131C-4650-9561-FC05F5C7A37B}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-								</Reference>
-							</ReferenceList>
-							<ObjectLists/>
-						</AuxBus>
-						<AuxBus Name="RVB_Cave" ID="{7188D707-1FC4-4ADC-866C-04526C3965DE}">
-							<PropertyList>
-								<Property Name="3DSpatialization" Type="int16" Value="1"/>
-								<Property Name="BusVolume" Type="Real64">
-									<ValueList>
-										<Value>-3</Value>
-									</ValueList>
-								</Property>
-								<Property Name="EnableDiffraction" Type="bool" Value="True"/>
-								<Property Name="ListenerRelativeRouting" Type="bool" Value="True"/>
-								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-									<ObjectRef Name="Room_Large" ID="{AD8EFAFC-7121-4D5F-BE4D-B13FBD6CEBAE}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-								</Reference>
-							</ReferenceList>
-							<ObjectLists/>
-						</AuxBus>
-						<AuxBus Name="RVB_LittleCave" ID="{0328B0A3-01E7-4FBD-AE08-60B828BC3903}">
-							<PropertyList>
-								<Property Name="3DSpatialization" Type="int16" Value="1"/>
-								<Property Name="BusVolume" Type="Real64">
-									<ValueList>
-										<Value>-3</Value>
-									</ValueList>
-								</Property>
-								<Property Name="EnableDiffraction" Type="bool" Value="True"/>
-								<Property Name="ListenerRelativeRouting" Type="bool" Value="True"/>
-								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-									<ObjectRef Name="Room_Large" ID="{AD8EFAFC-7121-4D5F-BE4D-B13FBD6CEBAE}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-								</Reference>
-							</ReferenceList>
-							<ObjectLists/>
-						</AuxBus>
 						<Bus Name="MUSIC" ID="{92D4BD93-56C0-4EE8-92B3-800C27F369E2}">
 							<PropertyList>
 								<Property Name="BusVolume" Type="Real64">
@@ -219,7 +131,7 @@
 										<Value>5</Value>
 									</ValueList>
 								</Property>
-								<Property Name="Color" Type="int16" Value="26"/>
+								<Property Name="Color" Type="int16" Value="10"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
 							<StateInfo>
