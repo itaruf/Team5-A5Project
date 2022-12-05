@@ -2,41 +2,12 @@
 <WwiseDocument Type="WorkUnit" ID="{BA1490DE-47E6-4156-B646-4F805520E928}" SchemaVersion="103" RootDocumentID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}" ParentDocumentID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}">
 	<Events>
 		<WorkUnit Name="SFX" ID="{BA1490DE-47E6-4156-B646-4F805520E928}" OwnerID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}" PersistMode="Nested">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="15"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
 			<ChildrenList>
-				<Event Name="SFX_BigDoor_Start" ID="{755C73B4-B339-4D7B-A530-BEA7447405A0}">
-					<ChildrenList>
-						<Action Name="" ID="{88951F58-3417-4156-89E7-D11AD405435F}" ShortID="858000109">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="SFX_BigDoor_Start" ID="{33A8C2F5-DF5F-4B4F-88CD-45777D4B7597}" WorkUnitID="{FEC01D41-8690-4D8F-84C7-D18862505C81}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{20169736-75B9-46B5-82D0-A52B08C735BB}" ShortID="1016385731">
-							<PropertyList>
-								<Property Name="Delay" Type="Real64" Value="0.3"/>
-								<Property Name="FadeTime" Type="Real64" Value="0.5"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="SFX_BigDoor_Sustain_LP" ID="{581F876C-E30B-4F2D-8FCE-7764D07332DB}" WorkUnitID="{FEC01D41-8690-4D8F-84C7-D18862505C81}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="SFX_Checkpoint" ID="{82E90F93-FCC3-47EA-B7A0-C3AE732F8F58}">
-					<ChildrenList>
-						<Action Name="" ID="{A7A1A9AE-4485-4561-9E43-812E73D9A262}" ShortID="1002092486">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="SFX_Checkpoint" ID="{4C6CF91A-DC73-4533-B940-0346431A488C}" WorkUnitID="{FEC01D41-8690-4D8F-84C7-D18862505C81}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="SFX_Freefall_Start" ID="{842A5543-F79B-4E66-8E98-34B8B487ADD2}">
+				<Event Name="SFX_PlayerInAir" ID="{842A5543-F79B-4E66-8E98-34B8B487ADD2}">
 					<ChildrenList>
 						<Action Name="" ID="{B6D2A888-6100-4ABC-B52C-1054C6E230A9}" ShortID="215320803">
 							<ReferenceList>
@@ -60,28 +31,6 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="MC_FOL_FreeFall_LP" ID="{83440EC0-3E5F-4A4F-BE99-D13BDAECBF93}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{3B00A9E9-ABB3-496B-A69B-DDE6E0658896}" ShortID="137631837">
-							<PropertyList>
-								<Property Name="Delay" Type="Real64">
-									<ModifierList>
-										<ModifierInfo>
-											<Modifier Name="" ID="{8C964EC0-FE65-413F-96A1-27197F7E148F}">
-												<PropertyList>
-													<Property Name="Enabled" Type="bool" Value="True"/>
-													<Property Name="Max" Type="Real64" Value="0.2"/>
-												</PropertyList>
-											</Modifier>
-										</ModifierInfo>
-									</ModifierList>
-								</Property>
-								<Property Name="FadeTime" Type="Real64" Value="0.3"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="VO_MC_Glide_Start" ID="{E96402B5-29E4-4AD3-AA68-BED040824D4D}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -112,23 +61,12 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="SFX_WaterFallImpact" ID="{CAC85376-D0E8-4673-99D5-487BD51B540E}">
+				<Event Name="SFX_WaterMeteorCrash" ID="{CAC85376-D0E8-4673-99D5-487BD51B540E}">
 					<ChildrenList>
 						<Action Name="" ID="{49E766D8-DB2B-48BA-959D-5A25F2B6C028}" ShortID="316045691">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="SFX_Waterfall_Impact" ID="{CEF1ACFE-A866-4CC0-8376-75DD28A6A336}" WorkUnitID="{FEC01D41-8690-4D8F-84C7-D18862505C81}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="SFX_SlowMoActivation" ID="{323FED34-9F62-4446-8080-5F88B57E7ACF}">
-					<ChildrenList>
-						<Action Name="" ID="{6FCFEEE8-F502-4864-8847-1ECE85025FAB}" ShortID="585730351">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="SFX_SlowMoEffect" ID="{178B97D6-F58A-4210-9068-63FE556F5B9D}" WorkUnitID="{FEC01D41-8690-4D8F-84C7-D18862505C81}"/>
+									<ObjectRef Name="SFX_WaterMeteorCrash" ID="{CEF1ACFE-A866-4CC0-8376-75DD28A6A336}" WorkUnitID="{FEC01D41-8690-4D8F-84C7-D18862505C81}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -145,7 +83,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="SFX_Freefall_Stop" ID="{413B43DB-F8ED-42C7-84A7-FCFA1FB5D0E3}">
+				<Event Name="SFX_PlayerInAirStop" ID="{413B43DB-F8ED-42C7-84A7-FCFA1FB5D0E3}">
 					<ChildrenList>
 						<Action Name="" ID="{FC570F24-EC00-41C4-96B0-D833F4E21BAD}" ShortID="737648034">
 							<PropertyList>
@@ -180,17 +118,6 @@
 								</Reference>
 							</ReferenceList>
 						</Action>
-						<Action Name="" ID="{0641CAEC-B294-4546-AD07-339B5F5AB2EF}" ShortID="722799421">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="2"/>
-								<Property Name="FadeTime" Type="Real64" Value="0.3"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="SFX_Glide_Magic_LP" ID="{BD902CBD-D098-40E8-B9FF-37FEA5A4B0E3}" WorkUnitID="{FEC01D41-8690-4D8F-84C7-D18862505C81}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
 						<Action Name="" ID="{755AFA4C-0987-423C-B371-42E4F2F8F87E}" ShortID="687376882">
 							<ReferenceList>
 								<Reference Name="Target">
@@ -211,34 +138,12 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="SFX_WallJumpMagic" ID="{BC9F9EFA-C4AE-48E3-99B2-0C028EC8550F}">
+				<Event Name="SFX_Collectible_Pickup" ID="{E396D04C-53F2-4D13-BF26-8656E749B9E8}">
 					<ChildrenList>
-						<Action Name="" ID="{AAE0D30D-0181-433E-8B16-CFD9AE0CE841}" ShortID="763870276">
+						<Action Name="" ID="{9C9EB292-4170-4058-9091-D91347DA98CA}" ShortID="423448516">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="MC_FT_WallJump_MagicLayer" ID="{5F0430D8-4478-41E9-8C16-C7BE4F183CCD}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="SFX_MagicDoor" ID="{BC8ED75C-5C8C-49F1-A877-28266565A909}">
-					<ChildrenList>
-						<Action Name="" ID="{58756583-0EA1-44CD-B374-A243B403B504}" ShortID="382730632">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="SFX_MagicDoor_Blend" ID="{2DD9C8A2-E587-410A-B681-6490CF2104F6}" WorkUnitID="{FEC01D41-8690-4D8F-84C7-D18862505C81}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="SFX_SlowMoDesactivation" ID="{D889DB18-2A06-41A5-BB0E-8E346E963B4B}">
-					<ChildrenList>
-						<Action Name="" ID="{75307B72-ABFA-42FF-82D1-D4BFFE7752D3}" ShortID="980747683">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="SFX_SlowMoBackEffect" ID="{66E152AF-76D0-4A36-8DC3-D949154F55EA}" WorkUnitID="{FEC01D41-8690-4D8F-84C7-D18862505C81}"/>
+									<ObjectRef Name="Collectible_Rdm" ID="{65DDECCB-F62F-4713-A452-AB523DB05993}" WorkUnitID="{FEC01D41-8690-4D8F-84C7-D18862505C81}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

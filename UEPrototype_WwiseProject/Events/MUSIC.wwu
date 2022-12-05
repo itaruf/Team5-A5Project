@@ -2,6 +2,10 @@
 <WwiseDocument Type="WorkUnit" ID="{C2C381D3-88F5-4DB0-98EC-F7D9E9F098BD}" SchemaVersion="103" RootDocumentID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}" ParentDocumentID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}">
 	<Events>
 		<WorkUnit Name="MUSIC" ID="{C2C381D3-88F5-4DB0-98EC-F7D9E9F098BD}" OwnerID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}" PersistMode="Nested">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="10"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
 			<ChildrenList>
 				<Event Name="MUS_Level0_Start" ID="{23188369-16F1-4F36-9CD7-E7380DB3D94A}">
 					<ChildrenList>
@@ -11,7 +15,7 @@
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Level0" ID="{BD4B3FC6-6510-4467-BF8D-B396EFFF9A28}" WorkUnitID="{A1C2F120-70F5-4932-9C1D-3546DE478B0F}"/>
+									<ObjectRef Name="Level0" ID="{BD4B3FC6-6510-4467-BF8D-B396EFFF9A28}" WorkUnitID="{657EB8A3-3BC0-47C8-88BA-93663A548EB0}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -26,7 +30,7 @@
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="End" ID="{B3FF19C2-F492-4C90-BA33-3ABAE92F6B58}" WorkUnitID="{C74913D5-01F3-42A1-989E-6FA374259590}"/>
+									<ObjectRef Name="End" ID="{B3FF19C2-F492-4C90-BA33-3ABAE92F6B58}" WorkUnitID="{D2DE9D4C-61A1-46CC-AB2F-8D5FA822B62A}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -55,7 +59,7 @@
 						<Action Name="" ID="{51DCD01B-7F33-4297-A1AD-D156A00C8DA7}" ShortID="1801574">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="MenuStart" ID="{254A522A-0EBD-4DAF-A9BB-BB4AFA0E34A9}" WorkUnitID="{A1C2F120-70F5-4932-9C1D-3546DE478B0F}"/>
+									<ObjectRef Name="MenuStart" ID="{254A522A-0EBD-4DAF-A9BB-BB4AFA0E34A9}" WorkUnitID="{657EB8A3-3BC0-47C8-88BA-93663A548EB0}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -70,7 +74,7 @@
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="MenuStart" ID="{254A522A-0EBD-4DAF-A9BB-BB4AFA0E34A9}" WorkUnitID="{A1C2F120-70F5-4932-9C1D-3546DE478B0F}"/>
+									<ObjectRef Name="MenuStart" ID="{254A522A-0EBD-4DAF-A9BB-BB4AFA0E34A9}" WorkUnitID="{657EB8A3-3BC0-47C8-88BA-93663A548EB0}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
