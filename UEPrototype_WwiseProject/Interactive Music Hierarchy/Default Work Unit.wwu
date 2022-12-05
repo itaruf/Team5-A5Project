@@ -5,6 +5,11 @@
 			<ChildrenList>
 				<MusicPlaylistContainer Name="MenuStart" ID="{254A522A-0EBD-4DAF-A9BB-BB4AFA0E34A9}" ShortID="344557440">
 					<PropertyList>
+						<Property Name="Inclusion" Type="bool">
+							<ValueList>
+								<Value>False</Value>
+							</ValueList>
+						</Property>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
 								<Value>-3</Value>
@@ -204,6 +209,13 @@
 					</Playlist>
 				</MusicPlaylistContainer>
 				<MusicSwitchContainer Name="Level0" ID="{BD4B3FC6-6510-4467-BF8D-B396EFFF9A28}" ShortID="663117814">
+					<PropertyList>
+						<Property Name="Inclusion" Type="bool">
+							<ValueList>
+								<Value>False</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
@@ -1608,6 +1620,7 @@
 						</Entry>
 					</EntryList>
 				</MusicSwitchContainer>
+				<WorkUnit Name="RunSong" ID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}" PersistMode="Reference"/>
 			</ChildrenList>
 		</WorkUnit>
 	</InteractiveMusic>

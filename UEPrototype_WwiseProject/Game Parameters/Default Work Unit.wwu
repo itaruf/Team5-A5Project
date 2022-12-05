@@ -3,8 +3,10 @@
 	<GameParameters>
 		<WorkUnit Name="Default Work Unit" ID="{2E3B1270-9C0A-453D-8324-D76519F899C5}" PersistMode="Standalone">
 			<ChildrenList>
-				<WorkUnit Name="Jules" ID="{B33E0AE4-683A-4118-98EA-BBEFCBF7E5A5}" PersistMode="Reference"/>
-				<WorkUnit Name="Alexis" ID="{2267CC50-2CB3-43FF-AD07-2C2C8FCF4501}" PersistMode="Reference"/>
+				<WorkUnit Name="Waterfall" ID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}" PersistMode="Reference"/>
+				<WorkUnit Name="Volume" ID="{D612C9AE-D6B6-4E2E-B62B-06B4EF6E8BD9}" PersistMode="Reference"/>
+				<WorkUnit Name="Player" ID="{F8A5D19F-B407-403E-A4C1-2F40F32BFE45}" PersistMode="Reference"/>
+				<WorkUnit Name="Environment" ID="{C6842C24-F9C6-4EB3-A160-2E701BA56107}" PersistMode="Reference"/>
 			</ChildrenList>
 		</WorkUnit>
 	</GameParameters>
