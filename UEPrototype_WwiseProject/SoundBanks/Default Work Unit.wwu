@@ -3,55 +3,39 @@
 	<SoundBanks>
 		<WorkUnit Name="Default Work Unit" ID="{A38AAF0B-B92D-4F40-8CBD-74C49D8C5A81}" PersistMode="Standalone">
 			<ChildrenList>
-				<SoundBank Name="Downfall" ID="{0F11AE9C-15CE-431B-8EEA-D25B7331DD0C}">
+				<SoundBank Name="SugarCrush" ID="{0F11AE9C-15CE-431B-8EEA-D25B7331DD0C}">
 					<ObjectInclusionList>
-						<ObjectRef Name="SFX_SlowMoDesactivation" ID="{D889DB18-2A06-41A5-BB0E-8E346E963B4B}" WorkUnitID="{BA1490DE-47E6-4156-B646-4F805520E928}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="AMB_Desert" ID="{01845B08-8C4C-4038-9BB5-A3DFE747222E}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="AMB" ID="{554E2F4C-2293-405F-963F-CC5D0996C675}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MC_Full_Life" ID="{35712861-8B85-40A7-AD28-5008DABDE306}" WorkUnitID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SFX" ID="{BA1490DE-47E6-4156-B646-4F805520E928}" WorkUnitID="{BA1490DE-47E6-4156-B646-4F805520E928}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="MC_FT_Jump" ID="{09415A2F-7044-41AF-A061-2D0E199B46F4}" WorkUnitID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="MC_Death_FallingVoid" ID="{A7B12DBC-766B-4222-9459-8A33A879EB5D}" WorkUnitID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="MC_FT_WallRun" ID="{6D2EBAF7-DC3E-42C2-B75E-887F38161E51}" WorkUnitID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MC_Dash" ID="{A96A0AD7-8652-4227-AF75-205FCFDFA8F0}" WorkUnitID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MC_FT_Grass_Slide" ID="{FF32D1E0-5874-423A-8CD4-4B753ABA9FAA}" WorkUnitID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="SFX_PlayerInAirStop" ID="{413B43DB-F8ED-42C7-84A7-FCFA1FB5D0E3}" WorkUnitID="{BA1490DE-47E6-4156-B646-4F805520E928}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="UI_Menu_Slider" ID="{B1A596BB-85DC-4360-9373-415E0FC66271}" WorkUnitID="{5B9AEA61-1DA5-4A87-9C25-DF4194671C79}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="MC_FT_WallJump" ID="{27C1EB19-6DDA-4365-A9D0-4F95E986689B}" WorkUnitID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="UI_PauseMenu_Select" ID="{1FD8540E-CB1C-439C-9499-E88298BDD20D}" WorkUnitID="{5B9AEA61-1DA5-4A87-9C25-DF4194671C79}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="MC_FT_WallZap" ID="{03ADCF4D-B952-4408-B64E-A3E96A842B36}" WorkUnitID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="UI_PauseMenu_Cancel" ID="{B62EDCD4-F235-4434-A999-5C1ACF9FCEBA}" WorkUnitID="{5B9AEA61-1DA5-4A87-9C25-DF4194671C79}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="SFX_SlowMoActivation" ID="{323FED34-9F62-4446-8080-5F88B57E7ACF}" WorkUnitID="{BA1490DE-47E6-4156-B646-4F805520E928}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Play_AMB_Bed_lvl1_Cave" ID="{F1D8AD49-403F-4499-A9F7-2C1C0870FA6F}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="MC_FOL_Run" ID="{6A61AAA8-C318-44A1-B963-E64DCB3C77C9}" WorkUnitID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="SP_FireStatue" ID="{9851DC11-D377-44B9-97BD-A93A511A6265}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="SP_FireTorch" ID="{96BF6D63-244F-44EA-B495-42CDD81AE58A}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="SP_LavaPurpleBig" ID="{C0698F26-DC77-450F-9E07-E4BB8B8081BD}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="SP_WaterFlowBig" ID="{AEC0FB0E-50E5-4615-AAEA-876FEEED4153}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="SFX_WaterMeteorCrash" ID="{CAC85376-D0E8-4673-99D5-487BD51B540E}" WorkUnitID="{BA1490DE-47E6-4156-B646-4F805520E928}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Level0End" ID="{4BD356DD-9227-468D-B440-C5421B937AD0}" WorkUnitID="{C2C381D3-88F5-4DB0-98EC-F7D9E9F098BD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="UI_Menu_Select" ID="{BC612A96-F0DF-474E-91B0-E0FD9AB6F4DB}" WorkUnitID="{5B9AEA61-1DA5-4A87-9C25-DF4194671C79}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="MC_FOL_Jump" ID="{A212AF9F-2C27-4797-BBC0-9646A045376F}" WorkUnitID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="SFX_Checkpoint" ID="{82E90F93-FCC3-47EA-B7A0-C3AE732F8F58}" WorkUnitID="{BA1490DE-47E6-4156-B646-4F805520E928}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="SP_WaterFlowSmall" ID="{E404123B-9104-4814-8820-9E17B9897E2A}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="RFX_DirtFall" ID="{4422A52E-1B39-482E-9099-8E91601CFD0F}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="FT_Water_Slide" ID="{E6D16246-31AC-4756-A6FE-921795873D37}" WorkUnitID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MC" ID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" WorkUnitID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="UI_Menu_Cancel" ID="{3759F788-F115-487F-9DEA-F1F8551C87B1}" WorkUnitID="{5B9AEA61-1DA5-4A87-9C25-DF4194671C79}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="SFX_WallJumpMagic" ID="{BC9F9EFA-C4AE-48E3-99B2-0C028EC8550F}" WorkUnitID="{BA1490DE-47E6-4156-B646-4F805520E928}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="MC_FT" ID="{8E7E8E1F-BC05-4921-9475-B21AC48B0931}" WorkUnitID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Stop_AMB_Bed_lvl1" ID="{CE3C769B-BB7A-4936-B31C-A291704DCF7C}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="SFX_MagicDoor" ID="{BC8ED75C-5C8C-49F1-A877-28266565A909}" WorkUnitID="{BA1490DE-47E6-4156-B646-4F805520E928}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Amb_Forest" ID="{DAFFAB4D-0E34-4956-92B8-70BBF43CC5C2}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="UI_Menu_Hover" ID="{402C459E-ECAA-4A6B-965B-27BD861CD0F8}" WorkUnitID="{5B9AEA61-1DA5-4A87-9C25-DF4194671C79}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="SP_WaterFlowMed" ID="{7FA8E679-430E-4B06-AB0E-F41AEE80B1F4}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="UI" ID="{5B9AEA61-1DA5-4A87-9C25-DF4194671C79}" WorkUnitID="{5B9AEA61-1DA5-4A87-9C25-DF4194671C79}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="AMB_Vegetation" ID="{0CE58AE0-148A-4C0E-92C7-DD9C20E06E29}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="MUS_MenuStart_Stop" ID="{662B1549-5E63-4C2E-9A5F-E7CF088798FE}" WorkUnitID="{C2C381D3-88F5-4DB0-98EC-F7D9E9F098BD}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="SP_WaterFallSmall" ID="{B2A9D75A-C3C7-4C42-8DCA-B7A4D7AF9D33}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="SFX_Wind" ID="{9F29A3D7-4B2F-4C43-A096-ABB70E88BAB4}" WorkUnitID="{BA1490DE-47E6-4156-B646-4F805520E928}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="UI_Menu_Confirm" ID="{8843FDA7-0D68-4C93-963F-92849B596110}" WorkUnitID="{5B9AEA61-1DA5-4A87-9C25-DF4194671C79}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="SP_LavaPurpleSmall" ID="{AB7C09A6-7030-4D26-AC12-774EA7D11706}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="SFX_BigDoor_Start" ID="{755C73B4-B339-4D7B-A530-BEA7447405A0}" WorkUnitID="{BA1490DE-47E6-4156-B646-4F805520E928}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SFX_Collectible_Pickup" ID="{E396D04C-53F2-4D13-BF26-8656E749B9E8}" WorkUnitID="{BA1490DE-47E6-4156-B646-4F805520E928}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MC_Respawn" ID="{5844AC8D-B122-4D22-A39A-701B12C18E78}" WorkUnitID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SFX_Donut_Rolling" ID="{2DDE88B0-96F0-4D53-87A1-4D05EAE38C36}" WorkUnitID="{BA1490DE-47E6-4156-B646-4F805520E928}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="MUSIC" ID="{C2C381D3-88F5-4DB0-98EC-F7D9E9F098BD}" WorkUnitID="{C2C381D3-88F5-4DB0-98EC-F7D9E9F098BD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="AMB_River" ID="{44FD23A1-F917-4E26-8EF9-34E98C653B2B}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="SFX_PlayerInAir" ID="{842A5543-F79B-4E66-8E98-34B8B487ADD2}" WorkUnitID="{BA1490DE-47E6-4156-B646-4F805520E928}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="SFX_Freefall_Stop_NoEnergy" ID="{D56F931A-6E8A-4E68-AAB5-947606E7EC7B}" WorkUnitID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Play_AMB_Bed_lvl2_Temple" ID="{A7547539-2558-4E76-BAF9-97167B960FDA}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="SP_WaterFallBig" ID="{49FCB4E9-F4D9-4E9C-A9D9-B1B632F3F221}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Music" ID="{94D81937-EB06-4E8B-B07D-37ADDF726492}" WorkUnitID="{C2C381D3-88F5-4DB0-98EC-F7D9E9F098BD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="MC_Death" ID="{03A938CB-E3B1-4E9F-89B2-82B40A6CFE67}" WorkUnitID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="MUS_MenuStart_Play" ID="{17338B33-3C8F-4EA8-981E-4395F7F6937E}" WorkUnitID="{C2C381D3-88F5-4DB0-98EC-F7D9E9F098BD}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Play_AMB_Bed_lvl1" ID="{4451A411-DE72-4F14-8F94-64731FF465B2}" WorkUnitID="{554E2F4C-2293-405F-963F-CC5D0996C675}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="MUS_Level0_Start" ID="{23188369-16F1-4F36-9CD7-E7380DB3D94A}" WorkUnitID="{C2C381D3-88F5-4DB0-98EC-F7D9E9F098BD}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="MC_FT_Land" ID="{488B1B77-8269-4FDB-8527-E9D60A8E5509}" WorkUnitID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>

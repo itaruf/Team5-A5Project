@@ -149,7 +149,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_SFX_Donut_Rolling" ID="{2DDE88B0-96F0-4D53-87A1-4D05EAE38C36}">
+				<Event Name="SFX_Donut_Rolling" ID="{2DDE88B0-96F0-4D53-87A1-4D05EAE38C36}">
 					<ChildrenList>
 						<Action Name="" ID="{393FCDB0-378D-4B87-B272-30CB9C15F85E}" ShortID="825406848">
 							<ReferenceList>
