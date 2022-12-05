@@ -2,10 +2,6 @@
 <WwiseDocument Type="WorkUnit" ID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" SchemaVersion="103" RootDocumentID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}" ParentDocumentID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}">
 	<Events>
 		<WorkUnit Name="MC" ID="{076AEB8C-0C88-4793-AD29-B61EF283F5E2}" OwnerID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}" PersistMode="Nested">
-			<PropertyList>
-				<Property Name="Color" Type="int16" Value="8"/>
-				<Property Name="OverrideColor" Type="bool" Value="True"/>
-			</PropertyList>
 			<ChildrenList>
 				<Event Name="MC_FT_Jump" ID="{09415A2F-7044-41AF-A061-2D0E199B46F4}">
 					<ChildrenList>
@@ -20,6 +16,13 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="MC_FOL_Jump" ID="{4F953C74-2A3F-4A73-A5CB-EC5E5B6ADD2A}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{BD1D8A2F-EE68-4E17-8BAA-EDEFF0970E41}" ShortID="278116233">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_FT_Jump_MagicLayer" ID="{4B6F1162-B6C1-4C8F-8C50-F60E7D67F068}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -58,6 +61,59 @@
 								</Reference>
 							</ReferenceList>
 						</Action>
+						<Action Name="" ID="{92D4F225-66AE-46C2-A5F3-D6F8F6353DA2}" ShortID="657295453">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_FT_MagicLayer" ID="{53DD9E2D-9A76-4EDB-B309-11E2954146B5}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="MC_FT_WallRun" ID="{6D2EBAF7-DC3E-42C2-B75E-887F38161E51}">
+					<ChildrenList>
+						<Action Name="" ID="{A27C9284-1B43-48B7-92D3-0FC3D53FDD7D}" ShortID="544697355">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_FT_WallRun_GroundSwitch" ID="{261F0B73-8815-4C3B-A936-1E53A89942B5}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{C92ABD1E-C9ED-4815-B0A8-9367076BEE2E}" ShortID="321335214">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_FT_MagicLayer" ID="{53DD9E2D-9A76-4EDB-B309-11E2954146B5}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="MC_FT_WallJump" ID="{27C1EB19-6DDA-4365-A9D0-4F95E986689B}">
+					<ChildrenList>
+						<Action Name="" ID="{037D31C9-4075-463E-BB0E-649C3C777D27}" ShortID="669856200">
+							<PropertyList>
+								<Property Name="Probability" Type="Real64" Value="50"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_FT_Jump_GroundSwitch" ID="{4D3567D7-4DE4-4321-884C-4016EBA8976C}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{E19568C4-8331-4306-9EE1-9F547F0DF7E2}" ShortID="488038152">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_FT_WallJump_MagicLayer" ID="{5F0430D8-4478-41E9-8C16-C7BE4F183CCD}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{44EF2944-1FBC-417D-BC81-72B9C5CEDC70}" ShortID="545426685">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="VO_MC_Jump" ID="{4D1659FB-974D-4285-82B9-163484CC300D}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
 					</ChildrenList>
 				</Event>
 				<Event Name="MC_FT_Land" ID="{488B1B77-8269-4FDB-8527-E9D60A8E5509}">
@@ -66,6 +122,13 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="MC_FT_Land_GroundSwitch" ID="{86C8D5AC-D304-42FF-B3B3-42774BF0423D}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{4B780F51-7DC8-4938-887B-265303DF35C0}" ShortID="176521297">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_FT_Land_MagicLayer" ID="{053A5CA1-D6BB-450F-B38C-2E04BD5EDD6A}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -79,16 +142,142 @@
 								</Reference>
 							</ReferenceList>
 						</Action>
-						<Action Name="" ID="{C2B3CCF1-48ED-453A-9E1D-55250ADB4C2A}" ShortID="686018445">
+					</ChildrenList>
+				</Event>
+				<Event Name="MC_FT_WallZap" ID="{03ADCF4D-B952-4408-B64E-A3E96A842B36}">
+					<ChildrenList>
+						<Action Name="" ID="{CBF31C27-D1DF-477A-9F7E-A3D907B2B9CC}" ShortID="299922419">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="SFX_Freefall_Stop" ID="{37CB0EE1-C490-44AC-8271-FE307FF3ED90}" WorkUnitID="{FEC01D41-8690-4D8F-84C7-D18862505C81}"/>
+									<ObjectRef Name="MC_FT_WallZap_MagicLayer" ID="{9AE511FD-4DBB-4D44-86EF-CDBACFEB4975}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="MC_Death" ID="{03A938CB-E3B1-4E9F-89B2-82B40A6CFE67}">
+				<Event Name="SFX_Freefall_Stop_NoEnergy" ID="{D56F931A-6E8A-4E68-AAB5-947606E7EC7B}">
+					<ChildrenList>
+						<Action Name="" ID="{89BE4726-64FD-4EA9-B3A4-F2D62613D5E2}" ShortID="135017974">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.3"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_FOL_FreeFall_LP" ID="{83440EC0-3E5F-4A4F-BE99-D13BDAECBF93}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{431EA07B-59A8-4E57-AED2-8F6781C8546F}" ShortID="1006120064">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="0.2">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{A88726E8-626E-4630-802A-B3FF12194E06}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="0.2"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Probability" Type="Real64" Value="50"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="VO_MC_Glide_Stop_NoEnergy" ID="{81C767E3-3B94-4BA6-9551-0EB0966D646D}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{4859C3E4-0370-46A6-A4C4-E56625497821}" ShortID="804212946">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.3"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_Glide_Magic_LP" ID="{BD902CBD-D098-40E8-B9FF-37FEA5A4B0E3}" WorkUnitID="{FEC01D41-8690-4D8F-84C7-D18862505C81}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="MC_FOL_Run" ID="{6A61AAA8-C318-44A1-B963-E64DCB3C77C9}">
+					<ChildrenList>
+						<Action Name="" ID="{4AFAD026-9BF4-4499-BE34-0D8F1706B534}" ShortID="645651507">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_FOL_Run" ID="{508FD4D3-C805-4B2C-9F65-914E40FC4914}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="MC_FOL_Jump" ID="{A212AF9F-2C27-4797-BBC0-9646A045376F}">
+					<ChildrenList>
+						<Action Name="" ID="{094AE458-0B53-444F-9F8F-597822641D85}" ShortID="882223352">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_FOL_Jump" ID="{4F953C74-2A3F-4A73-A5CB-EC5E5B6ADD2A}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="MC_Death_FallingVoid" ID="{A7B12DBC-766B-4222-9459-8A33A879EB5D}">
+					<ChildrenList>
+						<Action Name="" ID="{97FB6BE2-5754-47F4-B085-52BC2B58679D}" ShortID="164747482">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="VO_MC_FallingVoid" ID="{199EF73C-301B-466F-B26C-662C87535C3D}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{846E2E3D-1076-496A-818A-BCB6218B6D81}" ShortID="799513508">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_Glide_Magic_LP" ID="{BD902CBD-D098-40E8-B9FF-37FEA5A4B0E3}" WorkUnitID="{FEC01D41-8690-4D8F-84C7-D18862505C81}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{3133FF9F-00F4-44E0-9321-F76CEFC993AF}" ShortID="246810867">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_Glide_Wind_LP" ID="{C051383B-7E5A-4990-A18C-0FAD97380A88}" WorkUnitID="{FEC01D41-8690-4D8F-84C7-D18862505C81}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{53AE3495-E550-4C7B-9343-A2CDE8521916}" ShortID="883831105">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="22"/>
+								<Property Name="Delay" Type="Real64" Value="2.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Alive" ID="{E8CC3D28-0F71-43A1-8071-556C82C64DB2}" WorkUnitID="{C74913D5-01F3-42A1-989E-6FA374259590}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{01C0B933-5AF4-4291-9CC8-3CE0436B0429}" ShortID="757942508">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="22"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Dead" ID="{CB238342-84ED-4395-815B-912C29F7CDBB}" WorkUnitID="{C74913D5-01F3-42A1-989E-6FA374259590}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="MC_Death_Crash" ID="{03A938CB-E3B1-4E9F-89B2-82B40A6CFE67}">
 					<ChildrenList>
 						<Action Name="" ID="{313CD596-CDF5-4A28-8468-81526B13ADE7}" ShortID="457629402">
 							<ReferenceList>
@@ -98,9 +287,13 @@
 							</ReferenceList>
 						</Action>
 						<Action Name="" ID="{E8EC07D2-89D3-4425-A3FF-AAB0305676C4}" ShortID="1023055346">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.3"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="SFX_DeathSound" ID="{E23B4D88-E208-489A-BD0B-459BB4FBEDBA}" WorkUnitID="{FEC01D41-8690-4D8F-84C7-D18862505C81}"/>
+									<ObjectRef Name="SFX_Glide_Magic_LP" ID="{BD902CBD-D098-40E8-B9FF-37FEA5A4B0E3}" WorkUnitID="{FEC01D41-8690-4D8F-84C7-D18862505C81}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -118,54 +311,21 @@
 						<Action Name="" ID="{A3A9414D-1F0F-49E9-98A9-B8F5E69ACB1F}" ShortID="968888022">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="22"/>
-								<Property Name="Delay" Type="Real64" Value="0.5"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Dead" ID="{CB238342-84ED-4395-815B-912C29F7CDBB}" WorkUnitID="{D2DE9D4C-61A1-46CC-AB2F-8D5FA822B62A}"/>
+									<ObjectRef Name="Dead" ID="{CB238342-84ED-4395-815B-912C29F7CDBB}" WorkUnitID="{C74913D5-01F3-42A1-989E-6FA374259590}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
-						<Action Name="" ID="{65809433-029D-44F8-8296-3115520C5FFC}" ShortID="253154103">
+						<Action Name="" ID="{C02CB376-01EA-43EF-AAB8-8E1D9036C50D}" ShortID="352549850">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="22"/>
-								<Property Name="Delay" Type="Real64" Value="0.5"/>
+								<Property Name="Delay" Type="Real64" Value="2.5"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Alive" ID="{E8CC3D28-0F71-43A1-8071-556C82C64DB2}" WorkUnitID="{D2DE9D4C-61A1-46CC-AB2F-8D5FA822B62A}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="MC_Dash" ID="{A96A0AD7-8652-4227-AF75-205FCFDFA8F0}">
-					<ChildrenList>
-						<Action Name="" ID="{AB9D0214-4B6F-47F8-9734-B3340FDA1242}" ShortID="19814604">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Dash_iteration" ID="{BE12D9B4-6CBF-4F31-9DB9-18D8B931D980}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="MC_Respawn" ID="{5844AC8D-B122-4D22-A39A-701B12C18E78}">
-					<ChildrenList>
-						<Action Name="" ID="{031659CE-BE6F-4759-8D63-C309BB80E61D}" ShortID="805385887">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="22"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Alive" ID="{E8CC3D28-0F71-43A1-8071-556C82C64DB2}" WorkUnitID="{D2DE9D4C-61A1-46CC-AB2F-8D5FA822B62A}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{D5DB6A5E-D2C4-4FBD-87EE-FB5884C6EE03}" ShortID="803410586">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="SFX_RespawnSound" ID="{979417FA-0B17-40B6-95F9-58CA690FB328}" WorkUnitID="{FEC01D41-8690-4D8F-84C7-D18862505C81}"/>
+									<ObjectRef Name="Alive" ID="{E8CC3D28-0F71-43A1-8071-556C82C64DB2}" WorkUnitID="{C74913D5-01F3-42A1-989E-6FA374259590}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

@@ -2,10 +2,6 @@
 <WwiseDocument Type="WorkUnit" ID="{5B9AEA61-1DA5-4A87-9C25-DF4194671C79}" SchemaVersion="103" RootDocumentID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}" ParentDocumentID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}">
 	<Events>
 		<WorkUnit Name="UI" ID="{5B9AEA61-1DA5-4A87-9C25-DF4194671C79}" OwnerID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}" PersistMode="Nested">
-			<PropertyList>
-				<Property Name="Color" Type="int16" Value="25"/>
-				<Property Name="OverrideColor" Type="bool" Value="True"/>
-			</PropertyList>
 			<ChildrenList>
 				<Event Name="UI_PauseMenu_Cancel" ID="{B62EDCD4-F235-4434-A999-5C1ACF9FCEBA}">
 					<ChildrenList>
