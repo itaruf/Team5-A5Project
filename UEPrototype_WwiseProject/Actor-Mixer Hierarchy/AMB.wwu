@@ -2528,6 +2528,109 @@
 							</ChildrenList>
 							<ObjectLists/>
 						</ActorMixer>
+						<ActorMixer Name="Amb_Forest" ID="{BC5BBABF-FD99-42DE-A836-340E45C35D62}" ShortID="478545724">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="AMB_Forest" ID="{3C9A3BA2-AD64-41DD-BC86-9DC35C43326D}" ShortID="401197313">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="Lowpass" Type="int16">
+											<ValueList>
+												<Value>31</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-26</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_Forest" ID="{3530FBDE-6EE3-40C2-B4FC-F3437B29CF88}">
+											<Language>SFX</Language>
+											<AudioFile>AMB_Forest.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="397093666"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_Forest" ID="{3530FBDE-6EE3-40C2-B4FC-F3437B29CF88}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<ObjectLists/>
+						</ActorMixer>
+						<ActorMixer Name="Amb_Desert" ID="{6CD7ECFB-2C99-416D-9EC2-66B0DBB0D79A}" ShortID="145478093">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="AMB_Desert" ID="{D2400BB5-C6FF-41A4-839D-421F45AFE858}" ShortID="844560381">
+									<PropertyList>
+										<Property Name="Highpass" Type="int16">
+											<ValueList>
+												<Value>4</Value>
+											</ValueList>
+										</Property>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="Lowpass" Type="int16">
+											<ValueList>
+												<Value>27</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-16</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="AMB_Desert" ID="{6B7FA784-007F-4AAA-AA31-5590BFC53403}">
+											<Language>SFX</Language>
+											<AudioFile>AMB_Desert.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="323486213"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="AMB_Desert" ID="{6B7FA784-007F-4AAA-AA31-5590BFC53403}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<ObjectLists/>
+						</ActorMixer>
 					</ChildrenList>
 					<ObjectLists/>
 				</ActorMixer>

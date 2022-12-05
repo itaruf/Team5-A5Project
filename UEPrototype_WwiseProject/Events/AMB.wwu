@@ -59,6 +59,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Amb_Forest" ID="{DAFFAB4D-0E34-4956-92B8-70BBF43CC5C2}">
+					<ChildrenList>
+						<Action Name="" ID="{A88D3358-9383-451D-AA62-8B16D6A8C278}" ShortID="312531646">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_Forest" ID="{3C9A3BA2-AD64-41DD-BC86-9DC35C43326D}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="AMB_Desert" ID="{01845B08-8C4C-4038-9BB5-A3DFE747222E}">
+					<ChildrenList>
+						<Action Name="" ID="{F403BF78-F4DA-406E-AF87-889EC3CAE848}" ShortID="426034294">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_Desert" ID="{D2400BB5-C6FF-41A4-839D-421F45AFE858}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
