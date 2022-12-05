@@ -23,6 +23,7 @@
 						<State Name="End" ID="{B3FF19C2-F492-4C90-BA33-3ABAE92F6B58}"/>
 					</ChildrenList>
 				</StateGroup>
+				<WorkUnit Name="Music" ID="{4847E5EF-13D0-4864-BB1D-748D66F92170}" PersistMode="Reference"/>
 			</ChildrenList>
 		</WorkUnit>
 	</States>
