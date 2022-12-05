@@ -171,6 +171,39 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_MC_FT_Water_Slide" ID="{E6D16246-31AC-4756-A6FE-921795873D37}">
+					<ChildrenList>
+						<Action Name="" ID="{C4C127CF-B362-4ACA-B693-17D6BE6DC948}" ShortID="333305835">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_FT_Water_Slide" ID="{E7D544A0-4AF3-4067-8C34-38CA604F6A0F}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MC_FT_Grass_Slide" ID="{FF32D1E0-5874-423A-8CD4-4B753ABA9FAA}">
+					<ChildrenList>
+						<Action Name="" ID="{1F7159D8-C7D3-40C7-88FA-7E01AC7AFDE0}" ShortID="791390697">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MC_FT_Grass_Slide" ID="{26D3A0BA-DE12-4AF6-9135-1F56044D3628}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_MC_Full_Life" ID="{35712861-8B85-40A7-AD28-5008DABDE306}">
+					<ChildrenList>
+						<Action Name="" ID="{1295312F-F95A-45D3-AB00-6B7941B9AF0A}" ShortID="838229668">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_MC_Full_Life" ID="{B49B6C53-2434-4E2B-AE55-BD4565F5EA13}" WorkUnitID="{770F098B-B93C-4720-A984-3E030EB04B8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

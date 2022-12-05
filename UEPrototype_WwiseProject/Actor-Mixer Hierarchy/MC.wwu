@@ -8634,6 +8634,29 @@
 								</ActorMixer>
 							</ChildrenList>
 						</Folder>
+						<Sound Name="SFX_MC_Full_Life" ID="{B49B6C53-2434-4E2B-AE55-BD4565F5EA13}" ShortID="601554698">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="SFX_MC_Full_Life" ID="{7AC00D13-AA70-4253-86F2-EB0D0A234964}">
+									<Language>SFX</Language>
+									<AudioFile>SFX_MC_Full_Life.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="550340099"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="SFX_MC_Full_Life" ID="{7AC00D13-AA70-4253-86F2-EB0D0A234964}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
 					<ObjectLists/>
 				</ActorMixer>
