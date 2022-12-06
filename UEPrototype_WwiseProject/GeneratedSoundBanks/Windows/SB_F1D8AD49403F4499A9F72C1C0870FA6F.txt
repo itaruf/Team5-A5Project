@@ -1,6 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	1394008602	Play_AMB_Bed_lvl1_Cave			\Default Work Unit\Alexis\AMB\Play_AMB_Bed_lvl1_Cave	
-
-Streamed Audio	ID	Name	Audio source file	Generated audio file	Wwise Object Path	Notes
-	437084495	AMB_Bed_lvl1_Cave_LP	C:\Users\admin\Documents\Team5-A5Project\UEPrototype_WwiseProject\.cache\Windows\SFX\AMB_Bed_lvl1_Interior_LP_D79FB2B7.wem	437084495.wem	\Actor-Mixer Hierarchy\Default Work Unit\Alexis\Master\AMB\AMB_Bed_lvl1_Cave_LP	
-

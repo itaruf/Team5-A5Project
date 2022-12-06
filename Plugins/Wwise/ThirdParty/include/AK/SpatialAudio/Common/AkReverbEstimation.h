@@ -21,8 +21,7 @@ under the Apache License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 OR CONDITIONS OF ANY KIND, either express or implied. See the Apache License for
 the specific language governing permissions and limitations under the License.
 
-Version: v2021.1.10  Build: 7883
-Copyright (c) 2006-2022 Audiokinetic Inc.
+Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
 
 /// \file 
@@ -147,7 +146,7 @@ namespace ReverbEstimation
 			return AKRESULT::AK_Fail;
 		}
 		const float minDimension = AkMin(AkMin(in_environmentExtentMeters.X, in_environmentExtentMeters.Y), in_environmentExtentMeters.Z);
-		out_timeToFirstReflectionMs = minDimension / in_speedOfSound;
+		out_timeToFirstReflectionMs = (minDimension / in_speedOfSound) * 1000.0f;
 		return AKRESULT::AK_Success;
 	}
 

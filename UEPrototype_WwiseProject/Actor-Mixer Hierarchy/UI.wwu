@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{1E3A6EE9-9F32-46E2-A68A-0A7215298BCD}" SchemaVersion="103" RootDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" ParentDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}">
+<WwiseDocument Type="WorkUnit" ID="{1E3A6EE9-9F32-46E2-A68A-0A7215298BCD}" SchemaVersion="110" RootDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" ParentDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}">
 	<AudioObjects>
 		<WorkUnit Name="UI" ID="{1E3A6EE9-9F32-46E2-A68A-0A7215298BCD}" OwnerID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" PersistMode="Nested">
 			<PropertyList>
@@ -57,7 +57,6 @@
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
-							<ObjectLists/>
 							<ActiveSourceList>
 								<ActiveSource Name="UI_Menu_Cancel" ID="{04354529-C7C3-4A69-8871-8CE111EAE9FC}" Platform="Linked"/>
 							</ActiveSourceList>
@@ -85,7 +84,6 @@
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
-							<ObjectLists/>
 							<ActiveSourceList>
 								<ActiveSource Name="UI_Menu_Confirm" ID="{62204306-3D60-4CA1-AB52-2CAA73F8BFDE}" Platform="Linked"/>
 							</ActiveSourceList>
@@ -108,7 +106,6 @@
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
-							<ObjectLists/>
 							<ActiveSourceList>
 								<ActiveSource Name="UI_Menu_Hover" ID="{2EE29DDD-7780-4DBC-8A89-9822A8B71CD5}" Platform="Linked"/>
 							</ActiveSourceList>
@@ -138,7 +135,6 @@
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
-							<ObjectLists/>
 							<ActiveSourceList>
 								<ActiveSource Name="UI_Menu_Select" ID="{81BD525C-F16C-4C57-BE85-820A791FCA75}" Platform="Linked"/>
 							</ActiveSourceList>
@@ -161,7 +157,6 @@
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
-							<ObjectLists/>
 							<ActiveSourceList>
 								<ActiveSource Name="UI_Menu_Slider" ID="{E173173B-5EF1-42BC-A3A7-C096F2AC0193}" Platform="Linked"/>
 							</ActiveSourceList>
@@ -184,7 +179,6 @@
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
-							<ObjectLists/>
 							<ActiveSourceList>
 								<ActiveSource Name="UI_PauseMenu_Cancel" ID="{470AC9FF-4EB5-4A36-96B9-640552B8FF39}" Platform="Linked"/>
 							</ActiveSourceList>
@@ -207,13 +201,11 @@
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
-							<ObjectLists/>
 							<ActiveSourceList>
 								<ActiveSource Name="UI_PauseMenu_Select" ID="{1152D208-A7B8-4E49-80CC-FB40DC254994}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
-					<ObjectLists/>
 				</ActorMixer>
 			</ChildrenList>
 		</WorkUnit>

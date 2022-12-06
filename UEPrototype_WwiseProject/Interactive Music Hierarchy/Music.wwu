@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{657EB8A3-3BC0-47C8-88BA-93663A548EB0}" SchemaVersion="103" RootDocumentID="{A1C2F120-70F5-4932-9C1D-3546DE478B0F}" ParentDocumentID="{A1C2F120-70F5-4932-9C1D-3546DE478B0F}">
+<WwiseDocument Type="WorkUnit" ID="{657EB8A3-3BC0-47C8-88BA-93663A548EB0}" SchemaVersion="110" RootDocumentID="{A1C2F120-70F5-4932-9C1D-3546DE478B0F}" ParentDocumentID="{A1C2F120-70F5-4932-9C1D-3546DE478B0F}">
 	<InteractiveMusic>
 		<WorkUnit Name="Music" ID="{657EB8A3-3BC0-47C8-88BA-93663A548EB0}" OwnerID="{A1C2F120-70F5-4932-9C1D-3546DE478B0F}" PersistMode="Nested">
 			<PropertyList>
@@ -193,7 +193,6 @@
 							<TransitionInfo/>
 						</MusicTransition>
 					</TransitionList>
-					<ObjectLists/>
 					<Playlist>
 						<MusicPlaylistItem Name="" ID="{EA7E9A43-FDC9-492A-B071-A7A17588E6E9}" ShortID="569986382">
 							<PropertyList>
@@ -575,7 +574,6 @@
 									<TransitionInfo/>
 								</MusicTransition>
 							</TransitionList>
-							<ObjectLists/>
 							<Playlist>
 								<MusicPlaylistItem Name="" ID="{AF4E1A23-EB6B-4D05-85D2-3F6A6AFB6240}" ShortID="241340344">
 									<PropertyList>
@@ -876,7 +874,6 @@
 									<TransitionInfo/>
 								</MusicTransition>
 							</TransitionList>
-							<ObjectLists/>
 							<Playlist>
 								<MusicPlaylistItem Name="" ID="{FC4B5D7D-8B30-44DC-AD0D-E79260B5D426}" ShortID="967479555">
 									<PropertyList>
@@ -1091,7 +1088,6 @@
 									<TransitionInfo/>
 								</MusicTransition>
 							</TransitionList>
-							<ObjectLists/>
 							<Playlist>
 								<MusicPlaylistItem Name="" ID="{A6C086AE-F0A1-4A0E-9B03-E9A134465223}" ShortID="323491">
 									<PropertyList>
@@ -1313,7 +1309,6 @@
 									<TransitionInfo/>
 								</MusicTransition>
 							</TransitionList>
-							<ObjectLists/>
 							<Playlist>
 								<MusicPlaylistItem Name="" ID="{690EC6C6-9E76-4A8E-AD6B-1791F79AEC46}" ShortID="1037081748">
 									<PropertyList>
@@ -1513,7 +1508,6 @@
 									<TransitionInfo/>
 								</MusicTransition>
 							</TransitionList>
-							<ObjectLists/>
 							<Playlist>
 								<MusicPlaylistItem Name="" ID="{AC8C5E4B-6056-4EDC-BA2B-6C2E2B35FA44}" ShortID="648822388">
 									<PropertyList>
@@ -1568,7 +1562,6 @@
 							<TransitionInfo/>
 						</MusicTransition>
 					</TransitionList>
-					<ObjectLists/>
 					<ArgumentList>
 						<ArgumentRef Name="Level0_state" ID="{33379167-B165-42B5-8A74-9C6F3FBA609E}"/>
 					</ArgumentList>

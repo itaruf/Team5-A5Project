@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{1B6F5921-F647-4065-8004-B5EFE7036339}" SchemaVersion="103">
+	<Busses>
+		<WorkUnit Name="Default Work Unit" ID="{1B6F5921-F647-4065-8004-B5EFE7036339}" PersistMode="Standalone">
+			<ChildrenList>
+				<Bus Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
+					<PropertyList>
+						<Property Name="BusVolume" Type="Real64">
+							<ValueList>
+								<Value>12</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="AudioDevice">
+							<ObjectRef Name="System" ID="{6B7432B9-C029-45FA-A9AB-3F872EC98FE0}" WorkUnitID="{5958FD67-625C-43DB-BE52-F7A0C375F380}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Bus Name="AMB" ID="{CDAACF0F-C751-406F-9073-3F6016218135}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="19"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<StateInfo>
+								<StateGroupList>
+									<StateGroupInfo>
+										<StateGroupRef Name="Player" ID="{A35C2FA7-3FB8-4308-B646-C70734A65B5B}"/>
+									</StateGroupInfo>
+								</StateGroupList>
+								<CustomStateList>
+									<CustomState>
+										<StateRef Name="Dead" ID="{CB238342-84ED-4395-815B-912C29F7CDBB}"/>
+										<CustomState Name="" ID="{BED99765-68A7-4A0D-9770-FD68203BC294}" ShortID="946076613">
+											<PropertyList>
+												<Property Name="BusVolume" Type="Real64" Value="-5"/>
+												<Property Name="Lowpass" Type="int16" Value="61"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="Alive" ID="{E8CC3D28-0F71-43A1-8071-556C82C64DB2}"/>
+										<CustomState Name="" ID="{E763C0E1-0158-4C7C-8AAB-397ACDE58C11}" ShortID="155733306"/>
+									</CustomState>
+								</CustomStateList>
+							</StateInfo>
+							<ObjectLists/>
+						</Bus>
+						<Bus Name="MC" ID="{85FDBF6E-125A-4553-8D26-BE71B76B2425}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="9"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<StateInfo>
+								<StateGroupList>
+									<StateGroupInfo>
+										<StateGroupRef Name="Player" ID="{A35C2FA7-3FB8-4308-B646-C70734A65B5B}"/>
+									</StateGroupInfo>
+								</StateGroupList>
+								<CustomStateList>
+									<CustomState>
+										<StateRef Name="Dead" ID="{CB238342-84ED-4395-815B-912C29F7CDBB}"/>
+										<CustomState Name="" ID="{0519F9A7-8EC3-4154-BEC8-56CC59DB414C}" ShortID="834661551">
+											<PropertyList>
+												<Property Name="BusVolume" Type="Real64" Value="-4"/>
+												<Property Name="Lowpass" Type="int16" Value="61"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="Alive" ID="{E8CC3D28-0F71-43A1-8071-556C82C64DB2}"/>
+										<CustomState Name="" ID="{F5B19007-CC8D-44CD-94DF-B8714D7AE5D3}" ShortID="461852880"/>
+									</CustomState>
+								</CustomStateList>
+							</StateInfo>
+							<ObjectLists/>
+						</Bus>
+						<Bus Name="UI" ID="{810B9E20-27DC-44EE-82C9-184684B56A94}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="25"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ObjectLists/>
+						</Bus>
+						<Bus Name="SFX" ID="{F425DD9C-4B7D-40B0-B495-D58654E0B77E}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="15"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<StateInfo>
+								<StateGroupList>
+									<StateGroupInfo>
+										<StateGroupRef Name="Player" ID="{A35C2FA7-3FB8-4308-B646-C70734A65B5B}"/>
+									</StateGroupInfo>
+								</StateGroupList>
+								<CustomStateList>
+									<CustomState>
+										<StateRef Name="Dead" ID="{CB238342-84ED-4395-815B-912C29F7CDBB}"/>
+										<CustomState Name="" ID="{29DF1E4D-0BAA-49E5-BE64-56CFA11E1665}" ShortID="403346557">
+											<PropertyList>
+												<Property Name="Lowpass" Type="int16" Value="61"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="Alive" ID="{E8CC3D28-0F71-43A1-8071-556C82C64DB2}"/>
+										<CustomState Name="" ID="{24C7267F-C4A2-41A3-8CCA-A31C22B16CF2}" ShortID="940206312"/>
+									</CustomState>
+								</CustomStateList>
+							</StateInfo>
+							<ObjectLists/>
+						</Bus>
+						<AuxBus Name="RVB_Exterior" ID="{9AA47515-D1F5-4B5E-B74C-B787C0B8B927}">
+							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="1"/>
+								<Property Name="EnableDiffraction" Type="bool" Value="True"/>
+								<Property Name="ListenerRelativeRouting" Type="bool" Value="True"/>
+								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+									<ObjectRef Name="Have_U_Ever_Been_Outside" ID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+								</Reference>
+							</ReferenceList>
+							<ObjectLists/>
+						</AuxBus>
+						<Bus Name="MUSIC" ID="{92D4BD93-56C0-4EE8-92B3-800C27F369E2}">
+							<PropertyList>
+								<Property Name="BusVolume" Type="Real64">
+									<ValueList>
+										<Value>5</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Color" Type="int16" Value="10"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<StateInfo>
+								<StateGroupList>
+									<StateGroupInfo>
+										<StateGroupRef Name="Player" ID="{A35C2FA7-3FB8-4308-B646-C70734A65B5B}"/>
+									</StateGroupInfo>
+								</StateGroupList>
+								<CustomStateList>
+									<CustomState>
+										<StateRef Name="Dead" ID="{CB238342-84ED-4395-815B-912C29F7CDBB}"/>
+										<CustomState Name="" ID="{1678E8BD-CD2D-493A-85F8-E6BF09A22670}" ShortID="704198304">
+											<PropertyList>
+												<Property Name="BusVolume" Type="Real64" Value="-3"/>
+												<Property Name="Lowpass" Type="int16" Value="29"/>
+												<Property Name="Pitch" Type="int32" Value="-1920"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="Alive" ID="{E8CC3D28-0F71-43A1-8071-556C82C64DB2}"/>
+										<CustomState Name="" ID="{6B3753BA-3D2C-416F-9FE6-465F15E0D168}" ShortID="29015262"/>
+									</CustomState>
+								</CustomStateList>
+							</StateInfo>
+							<ObjectLists/>
+						</Bus>
+					</ChildrenList>
+					<ObjectLists/>
+				</Bus>
+			</ChildrenList>
+		</WorkUnit>
+	</Busses>
+</WwiseDocument>

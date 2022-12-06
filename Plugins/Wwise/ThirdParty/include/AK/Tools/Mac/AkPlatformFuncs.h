@@ -21,8 +21,7 @@ under the Apache License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 OR CONDITIONS OF ANY KIND, either express or implied. See the Apache License for
 the specific language governing permissions and limitations under the License.
 
-  Version: v2021.1.10  Build: 7883
-  Copyright (c) 2006-2022 Audiokinetic Inc.
+  Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -89,12 +88,19 @@ namespace AKPLATFORM
 		AKVERIFY( semaphore_signal( in_event ) == noErr );
 	}
 	
+
 	/// Platform Independent Helper
-	inline AKRESULT AkCreateSemaphore( AkSemaphore* out_semaphore, AkUInt32 in_initialCount )
+	AkForceInline void AkClearSemaphore(AkSemaphore& io_semaphore)
+	{
+		io_semaphore = 0;
+	}
+
+	/// Platform Independent Helper
+	inline AKRESULT AkCreateSemaphore( AkSemaphore& out_semaphore, AkUInt32 in_initialCount )
 	{
 		kern_return_t ret = semaphore_create(	
 							mach_task_self(),
-							out_semaphore,
+							&out_semaphore,
 							SYNC_POLICY_FIFO,
 							in_initialCount );
 		
@@ -102,25 +108,24 @@ namespace AKPLATFORM
 	}
 
 	/// Platform Independent Helper
-	inline void AkDestroySemaphore( AkSemaphore* io_semaphore )
+	inline void AkDestroySemaphore( AkSemaphore& io_semaphore )
 	{
-		if( io_semaphore != 0 )
-		{
-			AKVERIFY( semaphore_destroy( mach_task_self(), *io_semaphore ) == noErr);
-		}
-		io_semaphore = 0;
-	}	
-
-	/// Platform Independent Helper - Semaphore wait, aka Operation P. Decrements value of semaphore, and, if the semaphore would be less than 0, waits for the semaphore to be released.
-	inline void AkWaitForSemaphore( AkSemaphore* in_semaphore )
-	{
-		AKVERIFY( semaphore_wait( *in_semaphore ) == noErr );
+		AKVERIFY(semaphore_destroy(mach_task_self(), io_semaphore) == noErr);
 	}
 
-	/// Platform Independent Helper - Semaphore signal, aka Operation V. Increments value of semaphore.
-	inline void AkReleaseSemaphore( AkSemaphore* in_semaphore )
+	/// Platform Independent Helper - Semaphore wait, aka Operation P. Decrements value of semaphore, and, if the semaphore would be less than 0, waits for the semaphore to be released.
+	inline void AkWaitForSemaphore(AkSemaphore& in_semaphore)
 	{
-		AKVERIFY( semaphore_signal( *in_semaphore ) == noErr );
+		AKVERIFY(semaphore_wait(in_semaphore) == noErr);
+	}
+
+	/// Platform Independent Helper - Semaphore signal, aka Operation V. Increments value of semaphore by an arbitrary count.
+	inline void AkReleaseSemaphore(AkSemaphore& in_semaphore, AkUInt32 in_count)
+	{
+		for (int i=0; i < in_count; i++)
+		{
+			AKVERIFY(semaphore_signal(in_semaphore) == noErr);
+		}
 	}
 	
     // Time functions
@@ -219,9 +224,9 @@ namespace AKPLATFORM
 	#define AK_WCHAR_TO_UTF16(	in_pdDest, in_pSrc, in_MaxSize )	AKPLATFORM::AkMacConvertString<AkUtf16, wchar_t>(	in_pdDest, in_pSrc, in_MaxSize, &AKPLATFORM::AkUtf16StrLen, &wcslen )
 	#define AK_UTF16_TO_OSCHAR(	in_pdDest, in_pSrc, in_MaxSize )	AKPLATFORM::AkMacConvertString<AkOSChar, AkUtf16>(	in_pdDest, in_pSrc, in_MaxSize, strlen, AKPLATFORM::AkUtf16StrLen )
 	#define AK_UTF16_TO_CHAR(	in_pdDest, in_pSrc, in_MaxSize )	AKPLATFORM::AkMacConvertString<char, AkUtf16>(	in_pdDest, in_pSrc, in_MaxSize, strlen, AKPLATFORM::AkUtf16StrLen )
-	#define AK_CHAR_TO_UTF16(	in_pdDest, in_pSrc, in_MaxSize )	AKPLATFORM::AkMacConvertString<AkUtf16, char>(	in_pdDest, in_pSrc, in_MaxSize, AKPLATFORM::AkUtf16StrLen, strlen)
-	#define AK_OSCHAR_TO_UTF16(	in_pdDest, in_pSrc, in_MaxSize )	AKPLATFORM::AkMacConvertString<AkUtf16, AkOSChar>(	in_pdDest, in_pSrc, in_MaxSize, AKPLATFORM::AkUtf16StrLen, strlen)
-
+	#define AK_CHAR_TO_UTF16(	in_pdDest, in_pSrc, in_MaxSize )	AKPLATFORM::AkMacConvertString<AkUtf16, char>(	in_pdDest, in_pSrc, in_MaxSize, AKPLATFORM::AkUtf16StrLen, strlen)	
+	#define AK_OSCHAR_TO_UTF16(	in_pdDest, in_pSrc, in_MaxSize )	AKPLATFORM::AkMacConvertString<AkUtf16, AkOSChar>(	in_pdDest, in_pSrc, in_MaxSize, AKPLATFORM::AkUtf16StrLen, strlen)	
+	
 	/// Stack allocations.
 	#define AkAlloca( _size_ ) alloca( _size_ )
 
@@ -231,6 +236,9 @@ namespace AKPLATFORM
 
 	#define AK_LIBRARY_PREFIX               ("")
 	#define AK_DYNAMIC_LIBRARY_EXTENSION	(".dylib")
+
+	#define AK_FILEHANDLE_TO_UINTPTR(_h) ((AkUIntPtr)_h)
+	#define AK_SET_FILEHANDLE_TO_UINTPTR(_h,_u) _h = (AkFileHandle)_u
 
 #if (defined(AK_CPU_X86_64) || defined(AK_CPU_X86))
 	/// Support to fetch the CPUID for the platform. Only valid for X86 targets

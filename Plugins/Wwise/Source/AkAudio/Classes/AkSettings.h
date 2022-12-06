@@ -1,39 +1,78 @@
 /*******************************************************************************
-The content of the files in this repository include portions of the
-AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
-package.
-
-Commercial License Usage
-
-Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
-may use these files in accordance with the end user license agreement provided
-with the software or, alternatively, in accordance with the terms contained in a
-written agreement between you and Audiokinetic Inc.
-
-Copyright (c) 2021 Audiokinetic Inc.
+The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
+Technology released in source code form as part of the game integration package.
+The content of this file may not be used without valid licenses to the
+AUDIOKINETIC Wwise Technology.
+Note that the use of the game engine is subject to the Unreal(R) Engine End User
+License Agreement at https://www.unrealengine.com/en-US/eula/unreal
+ 
+License Usage
+ 
+Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
+this file in accordance with the end user license agreement provided with the
+software or, alternatively, in accordance with the terms contained
+in a written agreement between you and Audiokinetic Inc.
+Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
 
+#include "AkAcousticTexture.h"
 #include "Engine/EngineTypes.h"
 #include "PhysicalMaterials/PhysicalMaterial.h"
-#include "AssetRegistryModule.h"
+#include "AssetRegistry/AssetRegistryModule.h"
 #include "AkUEFeatures.h"
 #include "AkRtpc.h"
 #include "AkSettings.generated.h"
 
+class UAkInitBank;
 class UAkAcousticTexture;
+
+DECLARE_MULTICAST_DELEGATE(FOnSoundBanksPathChangedDelegate);
+
+
+/** Custom Collision Channel enum with an option to take the value from the Wwise Integration Settings (this follows a similar approach to that of EActorUpdateOverlapsMethod in Actor.h). */
+UENUM(BlueprintType)
+enum EAkCollisionChannel
+{
+	EAKCC_WorldStatic UMETA(DisplayName = "WorldStatic"),
+	EAKCC_WorldDynamic UMETA(DisplayName = "WorldDynamic"),
+	EAKCC_Pawn UMETA(DisplayName = "Pawn"),
+	EAKCC_Visibility UMETA(DisplayName = "Visibility", TraceQuery = "1"),
+	EAKCC_Camera UMETA(DisplayName = "Camera", TraceQuery = "1"),
+	EAKCC_PhysicsBody UMETA(DisplayName = "PhysicsBody"),
+	EAKCC_Vehicle UMETA(DisplayName = "Vehicle"),
+	EAKCC_Destructible UMETA(DisplayName = "Destructible"),
+	EAKCC_UseIntegrationSettingsDefault UMETA(DisplayName = "Use Integration Settings Default"), // Use the default value specified by Wwise Integration Settings.
+};
 
 USTRUCT()
 struct FAkGeometrySurfacePropertiesToMap
 {
-	GENERATED_USTRUCT_BODY()
+	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere, Category = "AkGeometry Surface Properties Map")
 	TSoftObjectPtr<class UAkAcousticTexture> AcousticTexture = nullptr;
 	
 	UPROPERTY(EditAnywhere, DisplayName = "Transmission Loss", Category = "AkGeometry Surface Properties Map", meta = (ClampMin = "0.0", ClampMax = "1.0"))
 	float OcclusionValue = 1.f;
+
+	bool operator==(const FAkGeometrySurfacePropertiesToMap& Rhs) const
+	{
+		if (OcclusionValue != Rhs.OcclusionValue)
+		{
+			return false;
+		}
+		if (!AcousticTexture.IsValid() != !Rhs.AcousticTexture.IsValid())
+		{
+			return false;
+		}
+		if (!AcousticTexture.IsValid())
+		{
+			return true;
+		}
+		return AcousticTexture->GetFName() == Rhs.AcousticTexture->GetFName();
+	}
 };
 
 struct AkGeometrySurfaceProperties
@@ -45,7 +84,7 @@ struct AkGeometrySurfaceProperties
 USTRUCT()
 struct FAkAcousticTextureParams
 {
-	GENERATED_USTRUCT_BODY()
+	GENERATED_BODY()
 	UPROPERTY()
 	FVector4 AbsorptionValues = FVector4(FVector::ZeroVector, 0.0f);
 	uint32 shortID = 0;
@@ -62,6 +101,7 @@ struct FAkAcousticTextureParams
 
 DECLARE_EVENT(UAkSettings, ActivatedNewAssetManagement);
 DECLARE_EVENT(UAkSettings, ShowRoomsPortalsChanged);
+DECLARE_EVENT(UAkSettings, ShowReverbInfoChanged)
 DECLARE_EVENT(UAkSettings, AuxBusAssignmentMapChanged);
 DECLARE_EVENT(UAkSettings, ReverbRTPCChanged);
 DECLARE_EVENT_TwoParams(UAkSettings, SoundDataFolderChanged, const FString&, const FString&);
@@ -70,9 +110,21 @@ DECLARE_EVENT_OneParam(UAkSettings, AcousticTextureParamsChanged, const FGuid&)
 UCLASS(config = Game, defaultconfig)
 class AKAUDIO_API UAkSettings : public UObject
 {
-	GENERATED_UCLASS_BODY()
+	GENERATED_BODY()
 
+public:
+	UAkSettings(const FObjectInitializer& ObjectInitializer);
 	~UAkSettings();
+
+	/**
+	Converts between EAkCollisionChannel and ECollisionChannel. Returns Wwise Integration Settings default if CollisionChannel == UseIntegrationSettingsDefault. Otherwise, casts CollisionChannel to ECollisionChannel.
+	*/
+	static ECollisionChannel ConvertFitToGeomCollisionChannel(EAkCollisionChannel CollisionChannel);
+
+	/**
+	Converts between EAkCollisionChannel and ECollisionChannel. Returns Wwise Integration Settings default if CollisionChannel == UseIntegrationSettingsDefault. Otherwise, casts CollisionChannel to ECollisionChannel.
+	*/
+	static ECollisionChannel ConvertOcclusionCollisionChannel(EAkCollisionChannel CollisionChannel);
 
 	// The maximum number of reverb auxiliary sends that will be simultaneously applied to a sound source
 	// Reverbs from a Spatial Audio room will be active even if this maximum is reached.
@@ -80,15 +132,34 @@ class AKAUDIO_API UAkSettings : public UObject
 	uint8 MaxSimultaneousReverbVolumes = AK_MAX_AUX_PER_OBJ;
 
 	// Wwise Project Path
-	UPROPERTY(Config, EditAnywhere, Category="Installation", meta=(FilePathFilter="wproj", AbsolutePath))
+	UPROPERTY(Config, EditAnywhere, Category="Installation", meta=(FilePathFilter="wproj", AbsolutePath))	
 	FFilePath WwiseProjectPath;
 
 	// Where the Sound Data will be generated in the Content Folder
-	UPROPERTY(Config, EditAnywhere, Category = "Sound Data", meta=(RelativeToGameContentDir))
+	UPROPERTY()
 	FDirectoryPath WwiseSoundDataFolder;
 
+	UPROPERTY(Config, EditAnywhere, Category="Installation", meta=( AbsolutePath))
+	FDirectoryPath GeneratedSoundBanksFolder;
+
+	//Where wwise .bnk and .wem files will be copied to when staging files during cooking
+	UPROPERTY(Config, EditAnywhere, Category = "Cooking", meta=(RelativeToGameContentDir))
+	FDirectoryPath WwiseStagingDirectory = {TEXT("WwiseAudio")};
+
+	//Used to track whether SoundBanks have been transferred to Wwise after migration to 2022.1 (or later)
 	UPROPERTY(Config)
-	bool bAutoConnectToWAAPI_DEPRECATED;
+	bool bSoundBanksTransfered = false;
+
+	//Used after migration to track whether assets have been re-serialized after migration to 2022.1 (or later)
+	UPROPERTY(Config)
+	bool bAssetsMigrated = false;
+
+	//Used after migration to track whether project settings have been updated after migration to 2022.1 (or later)
+	UPROPERTY(Config)
+	bool bProjectMigrated = false;
+
+	UPROPERTY(Config)
+	bool bAutoConnectToWAAPI_DEPRECATED = false;
 
 	// Default value for Occlusion Collision Channel when creating a new Ak Component.
 	UPROPERTY(Config, EditAnywhere, Category = "Occlusion")
@@ -100,11 +171,11 @@ class AKAUDIO_API UAkSettings : public UObject
 
 	// PhysicalMaterial to AcousticTexture and Occlusion Value Map
 	UPROPERTY(Config, EditAnywhere, EditFixedSize, Category = "AkGeometry Surface Properties Map")
-	TMap<TSoftObjectPtr<class UPhysicalMaterial>, FAkGeometrySurfacePropertiesToMap> AkGeometryMap;
+	TMap<TSoftObjectPtr<UPhysicalMaterial>, FAkGeometrySurfacePropertiesToMap> AkGeometryMap;
 
 	// Global surface absorption value to use when estimating environment decay value. Acts as a global scale factor for the decay estimations. Defaults to 0.5.
 	UPROPERTY(Config, EditAnywhere, Category = "Reverb Assignment Map", meta = (ClampMin = 0.1f, ClampMax = 1.0f, UIMin = 0.1f, UIMax = 1.0f))
-	float GlobalDecayAbsorption;
+	float GlobalDecayAbsorption = .5f;
 
 	// Default reverb aux bus to apply to rooms
 	UPROPERTY(Config, EditAnywhere, Category = "Reverb Assignment Map")
@@ -141,33 +212,36 @@ class AKAUDIO_API UAkSettings : public UObject
 
 	// When generating the event data, the media contained in switch containers will be splitted by state/switch value
 	// and only loaded if the state/switch value are currently loaded
-	UPROPERTY(Config, EditAnywhere, Category = "Sound Data", meta=(EditCondition="UseEventBasedPackaging"))
+	UPROPERTY(Config, meta = (Deprecated, DeprecationMessage="Setting now exists for each AK Audio Event"))
 	bool SplitSwitchContainerMedia = false;
 
-	// Split Media folder into several folders.
-	// Perforce has a limit of 32000 files per folder, if you are using Perforce you are strongly suggested to enable this.
-	UPROPERTY(Config, EditAnywhere, Category = "Sound Data", meta = (EditCondition = "UseEventBasedPackaging"))
-	bool SplitMediaPerFolder = false;
-
-	// Enable the new Event-based Soundbank Pipeline
-	// When ticking this to true, it will delete the content of the SoundBank folder
-	// and modify the Wwise project for the required changes in the project settings.
-	// The new assets will be created the next time you open the editor.
-	UPROPERTY(Config, EditAnywhere, Category = "Sound Data", meta=(DisplayName="Use Event-Based Packaging"))
-	bool UseEventBasedPackaging = false;
-
+	//Deprecated in 2022.1
+	//Used in migration from previous versions
 	UPROPERTY(Config)
-	bool EnableAutomaticAssetSynchronization_DEPRECATED;
+	bool SplitMediaPerFolder= false;
+
+	// Deprecated in 2022.1
+	//Used in migration from previous versions
+	UPROPERTY(Config)
+	bool UseEventBasedPackaging= false;
 
 	// Commit message that GenerateSoundBanksCommandlet will use
-	UPROPERTY(Config, EditAnywhere, Category = "Sound Data")
+	UPROPERTY()
 	FString CommandletCommitMessage = TEXT("Unreal Wwise Sound Data auto-generation");
 	
-	UPROPERTY(Config, EditAnywhere, Category = "Sound Data")
+	UPROPERTY(Config, EditAnywhere, Category = "Localization")
 	TMap<FString, FString> UnrealCultureToWwiseCulture;
 
+	// When an asset is dragged from the Wwise / Waapi pickers, assets are created by default in this path.
+	UPROPERTY(Config, EditAnywhere, Category = "Asset Creation")
+	FString DefaultAssetCreationPath = "/Game/WwiseAudio";
+
+	// The unique Init Bank for the Wwise project. This contains the basic information necessary for properly setting up the SoundEngine.
+	UPROPERTY(Config, EditAnywhere, Category = "Initialization")
+	TSoftObjectPtr<UAkInitBank> InitBank;
+
 	UPROPERTY(Config)
-	bool AskedToUseNewAssetManagement = false;
+	bool AskedToUseNewAssetManagement_DEPRECATED = false;
 
 	UPROPERTY(Config)
 	bool bEnableMultiCoreRendering_DEPRECATED = false;
@@ -186,8 +260,6 @@ class AKAUDIO_API UAkSettings : public UObject
 
 	static FString DefaultSoundDataFolder;
 
-
-
 	virtual void PostInitProperties() override;
 
 	bool ReverbRTPCsInUse() const;
@@ -199,14 +271,18 @@ class AKAUDIO_API UAkSettings : public UObject
 	bool GetAssociatedOcclusionValue(const UPhysicalMaterial* physMaterial, float& occlusionValue) const;
 
 #if WITH_EDITOR
+	bool UpdateGeneratedSoundBanksPath();
+	bool UpdateGeneratedSoundBanksPath(FString Path);
+	bool GeneratedSoundBanksPathExists() const;
+	bool AreSoundBanksGenerated() const;
 #if AK_SUPPORT_WAAPI
 	/** This needs to be called after the waapi client has been initialized, which happens after AkSettings is constructed. */
 	void InitWaapiSync();
 	/** Set the color of a UAkAcousticTexture asset using a color from the UnrealWwiseObjectColorPalette (this is the same as the 'dark theme' in Wwise Authoring). Send a colorIndex of -1 to use the 'unset' color. */
 	void SetTextureColor(FGuid textureID, int colorIndex);
 #endif
-	void EnsureSoundDataPathIsInAlwaysCook() const;
 	void RemoveSoundDataFromAlwaysStageAsUFS(const FString& SoundDataPath);
+	void RemoveSoundDataFromAlwaysCook(const FString& SoundDataPath);
 	void EnsurePluginContentIsInAlwaysCook() const;
 	void InitAkGeometryMap();
 	void DecayAuxBusMapChanged();
@@ -217,17 +293,13 @@ class AKAUDIO_API UAkSettings : public UObject
 protected:
 #if WITH_EDITOR
 	virtual void PostEditChangeProperty( struct FPropertyChangedEvent& PropertyChangedEvent ) override;
-#if UE_4_25_OR_LATER
 	virtual void PreEditChange(FProperty* PropertyAboutToChange) override;
-#else
-	virtual void PreEditChange(UProperty* PropertyAboutToChange) override;
-#endif
 #endif
 
 private:
 #if WITH_EDITOR
 	FString PreviousWwiseProjectPath;
-	FString PreviousWwiseSoundBankFolder;
+	FString PreviousWwiseGeneratedSoundBankFolder;
 	bool bTextureMapInitialized = false;
 	TMap< UPhysicalMaterial*, UAkAcousticTexture* > TextureMapInternal;
 	FAssetRegistryModule* AssetRegistryModule;
@@ -236,9 +308,8 @@ private:
 	void OnAssetRemoved(const struct FAssetData& AssetData);
 	void FillAkGeometryMap(const TArray<FAssetData>& PhysicalMaterials, const TArray<FAssetData>& AcousticTextureAssets);
 	void UpdateAkGeometryMap();
-	void RemoveSoundDataFromAlwaysCook(const FString& SoundDataPath);
-	void AddSoundDataToAlwaysStageAsUFS();
-	void SplitOrMergeMedia();
+	void SanitizeProjectPath(FString& Path, const FString& PreviousPath, const FText& DialogMessage);
+
 
 	bool bAkGeometryMapInitialized = false;
 	TMap< UPhysicalMaterial*, UAkAcousticTexture* > PhysicalMaterialAcousticTextureMap;
@@ -260,8 +331,6 @@ public:
 	bool bRequestRefresh = false;
 	const FAkAcousticTextureParams* GetTextureParams(const uint32& shortID) const;
 #if WITH_EDITOR
-	mutable ActivatedNewAssetManagement OnActivatedNewAssetManagement;
-	mutable SoundDataFolderChanged OnSoundDataFolderChanged;
 	void ClearAkRoomDecayAuxBusMap();
 	void InsertDecayKeyValue(const float& decayKey);
 	void SetAcousticTextureParams(const FGuid& textureID, const FAkAcousticTextureParams& params);
@@ -276,17 +345,29 @@ public:
 	void UpdateTextureParams(const FGuid& textureID);
 	/** Use WAAPI to query the color for a given texture and Update the corresponding UAkAcousticTexture asset. */
 	void UpdateTextureColor(const FGuid& textureID);
-	mutable AcousticTextureParamsChanged OnTextureParamsChanged;
 #endif // AK_SUPPORT_WAAPI
+	mutable AcousticTextureParamsChanged OnTextureParamsChanged;
+
 #endif // WITH_EDITOR
 
 #if WITH_EDITORONLY_DATA
 	// Visualize rooms and portals in the viewport. This requires 'realtime' to be enabled in the viewport.
 	UPROPERTY(Config, EditAnywhere, Category = "Viewports")
 	bool VisualizeRoomsAndPortals = false;
+	// Flips the state of VisualizeRoomsAndPortals. Used for the viewport menu options. (See FAudiokineticToolsModule in AudiokineticTooslModule.cpp).
+	void ToggleVisualizeRoomsAndPortals();
+	// When enabled, information about AkReverbComponents will be displayed in viewports, above the component's UPrimitiveComponent parent. This requires 'realtime' to be enabled in the viewport.
+	UPROPERTY(Config, EditAnywhere, Category = "Viewports")
+	bool bShowReverbInfo = true;
+	// Flips the state of bShowReverbInfo. Used for the viewport menu options. (See FAudiokineticToolsModule in AudiokineticTooslModule.cpp).
+	void ToggleShowReverbInfo();
 	ShowRoomsPortalsChanged OnShowRoomsPortalsChanged;
+	ShowReverbInfoChanged OnShowReverbInfoChanged;
 	AuxBusAssignmentMapChanged OnAuxBusAssignmentMapChanged;
 	ReverbRTPCChanged OnReverbRTPCChanged;
+
+	FOnSoundBanksPathChangedDelegate OnGeneratedSoundBanksPathChanged;
+
 #endif
 
 	/** Get the associated AuxBus for the given environment decay value.

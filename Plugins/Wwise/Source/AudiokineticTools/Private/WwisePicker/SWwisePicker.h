@@ -1,35 +1,30 @@
 /*******************************************************************************
-The content of the files in this repository include portions of the
-AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
-package.
-
-Commercial License Usage
-
-Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
-may use these files in accordance with the end user license agreement provided
-with the software or, alternatively, in accordance with the terms contained in a
-written agreement between you and Audiokinetic Inc.
-
-Copyright (c) 2021 Audiokinetic Inc.
+The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
+Technology released in source code form as part of the game integration package.
+The content of this file may not be used without valid licenses to the
+AUDIOKINETIC Wwise Technology.
+Note that the use of the game engine is subject to the Unreal(R) Engine End User
+License Agreement at https://www.unrealengine.com/en-US/eula/unreal
+ 
+License Usage
+ 
+Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
+this file in accordance with the end user license agreement provided with the
+software or, alternatively, in accordance with the terms contained
+in a written agreement between you and Audiokinetic Inc.
+Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
 
-
-/*------------------------------------------------------------------------------------
-	SWwisePicker.h
-------------------------------------------------------------------------------------*/
 #pragma once
 
-/*------------------------------------------------------------------------------------
-	SWwisePicker
-------------------------------------------------------------------------------------*/
 #include "Misc/TextFilter.h"
 #include "WaapiPicker/WwiseTreeItem.h"
 #include "Widgets/Views/STreeView.h"
-#include "WwiseProject/WwiseWorkUnitParser.h"
 
 using StringFilter = TTextFilter<const FString&>;
 
 class WwisePickerBuilderVisitor;
+class FWwisePickerDataLoader;
 
 class SWwisePicker : public SCompoundWidget
 {
@@ -79,6 +74,8 @@ public:
 
 	static FReply DoDragDetected(const FPointerEvent& MouseEvent, const TArray<TSharedPtr<FWwiseTreeItem>>& SelectedItems);
 
+	static void ImportWwiseAssets(const TArray<TSharedPtr<FWwiseTreeItem>>& SelectedItems, const FString& PackagePath);
+
 private:
 	/** The tree view widget */
 	TSharedPtr< STreeView< TSharedPtr<FWwiseTreeItem>> > TreeViewPtr;
@@ -98,16 +95,16 @@ private:
 	/** Remember the expanded items. Useful when filtering to preserve expansion status. */
 	TSet< FString > LastExpandedPaths;
 
-	/** Ran when the Populate button is clicked. Parses the Wwise project (using the WwiseWwuParser) and populates the window. */
-	FReply OnPopulateClicked();
+	//Open the Wwise Integration settings
+	FReply OnOpenSettingsClicked();
 
+	/** Ran when the Refresh button is clicked. Parses the Wwise project (using the WwiseWwuParser) and populates the window. */
+	FReply OnRefreshClicked();
+	
 	FReply OnGenerateSoundBanksClicked();
 
 	/** Populates the picker window only (does not parse the Wwise project) */
 	void ConstructTree();
-
-	/** Change the watched folder for the wwu parser */
-	void UpdateDirectoryWatcher();
 
 	/** Generate a row in the tree view */
 	TSharedRef<ITableRow> GenerateRow( TSharedPtr<FWwiseTreeItem> TreeItem, const TSharedRef<STableViewBase>& OwnerTable );
@@ -115,13 +112,20 @@ private:
 	/** Get the children of a specific tree element */
 	void GetChildrenForTree( TSharedPtr< FWwiseTreeItem > TreeItem, TArray< TSharedPtr<FWwiseTreeItem> >& OutChildren );
 
+	/** Commands handled by this widget */
+	TSharedRef<FUICommandList> CommandList;
+
 	/** Handle Drag & Drop */
-	FReply OnDragDetected(const FGeometry& Geometry, const FPointerEvent& MouseEvent);
+	virtual FReply OnDragDetected(const FGeometry& Geometry, const FPointerEvent& MouseEvent) override;
 
 	void ExpandFirstLevel();
 	void ExpandParents(TSharedPtr<FWwiseTreeItem> Item);
 
 	FText GetProjectName() const;
+
+	EVisibility isWarningVisible() const;
+	EVisibility isWarningNotVisible() const;
+	FText GetWarningText() const;
 
 	/** Used by the search filter */
 	void PopulateSearchStrings( const FString& FolderName, OUT TArray< FString >& OutSearchStrings ) const;
@@ -137,23 +141,15 @@ private:
 	/** Handler for tree view expansion changes */
 	void TreeExpansionChanged( TSharedPtr< FWwiseTreeItem > TreeItem, bool bIsExpanded );
 
-	void OnProjectDirectoryChanged(const TArray<struct FFileChangeData>& ChangedFiles);
-	FDelegateHandle ProjectDirectoryModifiedDelegateHandle;
-	FString ProjectFolder;
-	FString ProjectName;
+	/** Builds the command list for the context menu on Wwise Picker items. */
+	void CreateWwisePickerCommands();
 
+	/** Callback for creating a context menu for the Wwise items list. */
+	TSharedPtr<SWidget> MakeWwisePickerContextMenu();
 
-	/* Callback handles. */
-	FDelegateHandle ProjectLoadedHandle;
-	FDelegateHandle ConnectionLostHandle;
-	FDelegateHandle ClientBeginDestroyHandle;
-	void RemoveClientCallbacks();
+	/** Callback to import a Wwise item into the project's Contents*/
+	void HandleImportWwiseItemCommandExecute() const;
 
-	/* Used to show/hide the Picker/Warning */
-	EVisibility isPickerAllowed() const;
-	EVisibility isWarningVisible() const;
-	bool isPickerVisible;
-
-	WwiseWorkUnitParser workUnitParser;
-	TUniquePtr<WwisePickerBuilderVisitor> builderVisitor;
+	TUniquePtr<FWwisePickerDataLoader> DataLoader;
+	FDelegateHandle OnDatabaseUpdateCompleteHandle;
 };

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{4EA0F5E4-E356-4560-9E80-C6095821A52C}" SchemaVersion="103">
+	<Presets>
+		<WorkUnit Name="Default Work Unit" ID="{4EA0F5E4-E356-4560-9E80-C6095821A52C}" PersistMode="Standalone">
+			<ChildrenList>
+				<RandomSequenceContainer Name="MC_FT" ID="{3D5E7B8A-ACEB-4686-9547-9A0A36E4D195}">
+					<PropertyList>
+						<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{ED381E7C-633A-4275-99C1-E4E8BEF04996}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="25"/>
+											<Property Name="Min" Type="Real64" Value="-25"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="10"/>
+						<Property Name="Volume" Type="Real64">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{B50680FD-CFD6-4E46-9689-71912F757515}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Min" Type="Real64" Value="-5"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="MC" ID="{85FDBF6E-125A-4553-8D26-BE71B76B2425}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+						</Reference>
+					</ReferenceList>
+					<ObjectLists/>
+				</RandomSequenceContainer>
+			</ChildrenList>
+		</WorkUnit>
+	</Presets>
+</WwiseDocument>

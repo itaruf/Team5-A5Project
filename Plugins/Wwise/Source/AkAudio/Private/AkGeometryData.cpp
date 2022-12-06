@@ -1,19 +1,23 @@
 /*******************************************************************************
-The content of the files in this repository include portions of the
-AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
-package.
-
-Commercial License Usage
-
-Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
-may use these files in accordance with the end user license agreement provided
-with the software or, alternatively, in accordance with the terms contained in a
-written agreement between you and Audiokinetic Inc.
-
-Copyright (c) 2021 Audiokinetic Inc.
+The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
+Technology released in source code form as part of the game integration package.
+The content of this file may not be used without valid licenses to the
+AUDIOKINETIC Wwise Technology.
+Note that the use of the game engine is subject to the Unreal(R) Engine End User
+License Agreement at https://www.unrealengine.com/en-US/eula/unreal
+ 
+License Usage
+ 
+Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
+this file in accordance with the end user license agreement provided with the
+software or, alternatively, in accordance with the terms contained
+in a written agreement between you and Audiokinetic Inc.
+Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkGeometryData.h"
+
+#include "PhysicalMaterials/PhysicalMaterial.h"
 
 void GetBasicBoxGeometryData(TArray<FVector>& Vertices, TArray<FAkTriangle>& Triangles)
 {
@@ -40,6 +44,45 @@ void GetBasicBoxGeometryData(TArray<FVector>& Vertices, TArray<FAkTriangle>& Tri
 	Triangles[9] = { 2, 6, 7, AK_INVALID_SURFACE };
 	Triangles[10] = { 4, 5, 7, AK_INVALID_SURFACE };
 	Triangles[11] = { 4, 6, 7, AK_INVALID_SURFACE };
+}
+
+void GetBasicXYPlaneGeometryData(TArray<FVector>& Vertices, TArray<FAkTriangle>& Triangles)
+{
+	Vertices.Init(FVector(0, 0, 0), 4);
+	Vertices[0] = FVector(-1, -1, 1);
+	Vertices[1] = FVector(-1, 1, 1);
+	Vertices[2] = FVector(1, -1, 1);
+	Vertices[3] = FVector(1, 1, 1);
+
+	Triangles.Init(FAkTriangle(), 2);
+	Triangles[0] = { 0, 1, 2, AK_INVALID_SURFACE };
+	Triangles[1] = { 1, 3, 2, AK_INVALID_SURFACE };
+}
+
+void GetBasicXZPlaneGeometryData(TArray<FVector>& Vertices, TArray<FAkTriangle>& Triangles)
+{
+	Vertices.Init(FVector(0, 0, 0), 4);
+	Vertices[0] = FVector(-1, 1, -1);
+	Vertices[1] = FVector(-1, 1, 1);
+	Vertices[2] = FVector(1, 1, -1);
+	Vertices[3] = FVector(1, 1, 1);
+
+	Triangles.Init(FAkTriangle(), 2);
+	Triangles[0] = { 0, 1, 2, AK_INVALID_SURFACE };
+	Triangles[1] = { 1, 3, 2, AK_INVALID_SURFACE };
+}
+
+void GetBasicYZPlaneGeometryData(TArray<FVector>& Vertices, TArray<FAkTriangle>& Triangles)
+{
+	Vertices.Init(FVector(0, 0, 0), 4);
+	Vertices[0] = FVector(1, -1, -1);
+	Vertices[1] = FVector(1, -1, 1);
+	Vertices[2] = FVector(1, 1, -1);
+	Vertices[3] = FVector(1, 1, 1);
+
+	Triangles.Init(FAkTriangle(), 2);
+	Triangles[0] = { 0, 1, 2, AK_INVALID_SURFACE };
+	Triangles[1] = { 1, 3, 2, AK_INVALID_SURFACE };
 }
 
 /** Taken from GetOrientedHalfSphereMesh in PrimitiveDrawingUtils.cpp. See original for adding tangents and texture coords. */
@@ -190,7 +233,15 @@ void FAkGeometryData::AddBox(AkSurfIdx surfIdx, FVector center, FVector extent, 
 {
 	TArray<FVector> boxVertices;
 	TArray<FAkTriangle> boxTriangles;
-	GetBasicBoxGeometryData(boxVertices, boxTriangles);
+
+	if (extent.Z == 0.0f)
+		GetBasicXYPlaneGeometryData(boxVertices, boxTriangles);
+	else if (extent.Y == 0.0f)
+		GetBasicXZPlaneGeometryData(boxVertices, boxTriangles);
+	else if (extent.X == 0.0f)
+		GetBasicYZPlaneGeometryData(boxVertices, boxTriangles);
+	else
+		GetBasicBoxGeometryData(boxVertices, boxTriangles);
 
 	AkVertIdx initialVertIdx = Vertices.Num();
 

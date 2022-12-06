@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{5B9AEA61-1DA5-4A87-9C25-DF4194671C79}" SchemaVersion="103" RootDocumentID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}" ParentDocumentID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}">
+	<Events>
+		<WorkUnit Name="UI" ID="{5B9AEA61-1DA5-4A87-9C25-DF4194671C79}" OwnerID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}" PersistMode="Nested">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="25"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+			<ChildrenList>
+				<Event Name="UI_PauseMenu_Cancel" ID="{B62EDCD4-F235-4434-A999-5C1ACF9FCEBA}">
+					<ChildrenList>
+						<Action Name="" ID="{4A8C0092-60C1-4244-8D53-FE49D54DA199}" ShortID="447630657">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UI_PauseMenu_Cancel" ID="{F714C5BB-C52F-488B-9062-8985B1988AFF}" WorkUnitID="{1E3A6EE9-9F32-46E2-A68A-0A7215298BCD}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="UI_Menu_Select" ID="{BC612A96-F0DF-474E-91B0-E0FD9AB6F4DB}">
+					<ChildrenList>
+						<Action Name="" ID="{77CE9878-4661-4C21-8095-AE08FB194B88}" ShortID="1051535721">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UI_Menu_Select" ID="{714C42B2-AB02-414B-8AC6-A85B92FC1AB5}" WorkUnitID="{1E3A6EE9-9F32-46E2-A68A-0A7215298BCD}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="UI_Menu_Slider" ID="{B1A596BB-85DC-4360-9373-415E0FC66271}">
+					<ChildrenList>
+						<Action Name="" ID="{C33511BF-506F-433B-8E3B-844A2C89C737}" ShortID="338558468">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UI_Menu_Slider" ID="{ED308565-7C5D-42AD-9E2D-6B7B24ECC769}" WorkUnitID="{1E3A6EE9-9F32-46E2-A68A-0A7215298BCD}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="UI_PauseMenu_Select" ID="{1FD8540E-CB1C-439C-9499-E88298BDD20D}">
+					<ChildrenList>
+						<Action Name="" ID="{B0CDBDD9-79A7-4868-A7AC-DAA4E0759EE6}" ShortID="80341314">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UI_PauseMenu_Select" ID="{0DE637C6-6F90-48A6-9E44-FEDCF65EFC4B}" WorkUnitID="{1E3A6EE9-9F32-46E2-A68A-0A7215298BCD}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="UI_Menu_Hover" ID="{402C459E-ECAA-4A6B-965B-27BD861CD0F8}">
+					<ChildrenList>
+						<Action Name="" ID="{4AAD0205-E96B-42D6-8EF8-0B1D7F889F05}" ShortID="316205198">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UI_Menu_Hover" ID="{F871812F-D0BE-4868-A5B3-DB260A9F471C}" WorkUnitID="{1E3A6EE9-9F32-46E2-A68A-0A7215298BCD}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="UI_Menu_Confirm" ID="{8843FDA7-0D68-4C93-963F-92849B596110}">
+					<ChildrenList>
+						<Action Name="" ID="{FF1A39A9-059A-4AC8-9BD9-979918FA4ABC}" ShortID="125948612">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UI_Menu_Confirm" ID="{546E7EC1-8F61-402E-9218-EC09576BE38F}" WorkUnitID="{1E3A6EE9-9F32-46E2-A68A-0A7215298BCD}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="UI_Menu_Cancel" ID="{3759F788-F115-487F-9DEA-F1F8551C87B1}">
+					<ChildrenList>
+						<Action Name="" ID="{4DC2D398-B0EA-4E63-8756-AA1A3A8BF6D2}" ShortID="63388038">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UI_Menu_Cancel" ID="{40FC9CE0-B564-454B-9F99-4D8F4B0FFBFA}" WorkUnitID="{1E3A6EE9-9F32-46E2-A68A-0A7215298BCD}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

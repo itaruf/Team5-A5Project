@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{554E2F4C-2293-405F-963F-CC5D0996C675}" SchemaVersion="103" RootDocumentID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}" ParentDocumentID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}">
+	<Events>
+		<WorkUnit Name="AMB" ID="{554E2F4C-2293-405F-963F-CC5D0996C675}" OwnerID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}" PersistMode="Nested">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="19"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+			<ChildrenList>
+				<Event Name="AMB_River" ID="{44FD23A1-F917-4E26-8EF9-34E98C653B2B}">
+					<ChildrenList>
+						<Action Name="" ID="{6A7D3A19-B5D6-4473-BFF3-EEB7E75C9CED}" ShortID="310402317">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="36"/>
+								<Property Name="SeekPercent" Type="Real64">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{83FD7985-16CB-487F-B49D-28DF9AFD89CD}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="100"/>
+													<Property Name="Min" Type="Real64" Value="-100"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_SP_WaterFallMed_Blend" ID="{9BDACA8E-0A1A-476E-B000-F3ACE5F478FC}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{F2B0222C-4589-49AF-A166-149F635B313F}" ShortID="322327946">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_SP_WaterFallMed_Blend" ID="{9BDACA8E-0A1A-476E-B000-F3ACE5F478FC}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{84FDFEA5-6243-4257-AB41-9DF6CD46A081}" ShortID="816273858">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_SP_WaterFallSmall_Blend" ID="{D753DC15-7C1A-45B5-9BA1-D2DF96400256}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="AMB_Vegetation" ID="{0CE58AE0-148A-4C0E-92C7-DD9C20E06E29}">
+					<ChildrenList>
+						<Action Name="" ID="{2E446F95-2FB0-4C9A-A8D5-A1699BBF8F0D}" ShortID="1039486779">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_Vegetation_Blend" ID="{39A54498-F4FA-4A9B-9350-5E20205B9B2A}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Amb_Forest" ID="{DAFFAB4D-0E34-4956-92B8-70BBF43CC5C2}">
+					<ChildrenList>
+						<Action Name="" ID="{A88D3358-9383-451D-AA62-8B16D6A8C278}" ShortID="312531646">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_Forest" ID="{3C9A3BA2-AD64-41DD-BC86-9DC35C43326D}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="AMB_Desert" ID="{01845B08-8C4C-4038-9BB5-A3DFE747222E}">
+					<ChildrenList>
+						<Action Name="" ID="{F403BF78-F4DA-406E-AF87-889EC3CAE848}" ShortID="426034294">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_Desert" ID="{D2400BB5-C6FF-41A4-839D-421F45AFE858}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

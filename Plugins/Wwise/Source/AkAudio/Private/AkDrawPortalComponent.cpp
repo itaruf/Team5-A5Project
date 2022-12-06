@@ -1,18 +1,19 @@
 /*******************************************************************************
-The content of the files in this repository include portions of the
-AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
-package.
-
-Commercial License Usage
-
-Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
-may use these files in accordance with the end user license agreement provided
-with the software or, alternatively, in accordance with the terms contained in a
-written agreement between you and Audiokinetic Inc.
-
-Copyright (c) 2021 Audiokinetic Inc.
+The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
+Technology released in source code form as part of the game integration package.
+The content of this file may not be used without valid licenses to the
+AUDIOKINETIC Wwise Technology.
+Note that the use of the game engine is subject to the Unreal(R) Engine End User
+License Agreement at https://www.unrealengine.com/en-US/eula/unreal
+ 
+License Usage
+ 
+Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
+this file in accordance with the end user license agreement provided with the
+software or, alternatively, in accordance with the terms contained
+in a written agreement between you and Audiokinetic Inc.
+Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
-
 
 /*=============================================================================
 	AkDrawPortalComponent.cpp:
@@ -57,28 +58,28 @@ void UDrawPortalComponent::DrawPortalOutline(const FSceneView* View, FPrimitiveD
 		AkDrawBounds DrawBounds(T, BoxExtent);
 
 		/** Draw outline of 'front' (positive X) on portal */
-		PDI->DrawLine(DrawBounds.RU(), DrawBounds.FRU(), FrontDrawColor, SDPG_Foreground, Thickness);
-		PDI->DrawLine(DrawBounds.FRU(), DrawBounds.FRD(), FrontDrawColor, SDPG_Foreground, Thickness);
-		PDI->DrawLine(DrawBounds.FRD(), DrawBounds.RD(), FrontDrawColor, SDPG_Foreground, Thickness);
-		PDI->DrawLine(DrawBounds.LU(), DrawBounds.FLU(), FrontDrawColor, SDPG_Foreground, Thickness);
-		PDI->DrawLine(DrawBounds.FLU(), DrawBounds.FLD(), FrontDrawColor, SDPG_Foreground, Thickness);
-		PDI->DrawLine(DrawBounds.FLD(), DrawBounds.LD(), FrontDrawColor, SDPG_Foreground, Thickness);
-		PDI->DrawLine(DrawBounds.FRU(), DrawBounds.FLU(), FrontDrawColor, SDPG_Foreground, Thickness);
-		PDI->DrawLine(DrawBounds.FRD(), DrawBounds.FLD(), FrontDrawColor, SDPG_Foreground, Thickness);
+		PDI->DrawLine(DrawBounds.RU(), DrawBounds.FRU(), FrontDrawColor, SDPG_MAX, Thickness);
+		PDI->DrawLine(DrawBounds.FRU(), DrawBounds.FRD(), FrontDrawColor, SDPG_MAX, Thickness);
+		PDI->DrawLine(DrawBounds.FRD(), DrawBounds.RD(), FrontDrawColor, SDPG_MAX, Thickness);
+		PDI->DrawLine(DrawBounds.LU(), DrawBounds.FLU(), FrontDrawColor, SDPG_MAX, Thickness);
+		PDI->DrawLine(DrawBounds.FLU(), DrawBounds.FLD(), FrontDrawColor, SDPG_MAX, Thickness);
+		PDI->DrawLine(DrawBounds.FLD(), DrawBounds.LD(), FrontDrawColor, SDPG_MAX, Thickness);
+		PDI->DrawLine(DrawBounds.FRU(), DrawBounds.FLU(), FrontDrawColor, SDPG_MAX, Thickness);
+		PDI->DrawLine(DrawBounds.FRD(), DrawBounds.FLD(), FrontDrawColor, SDPG_MAX, Thickness);
 		/** Draw outline of 'back' (negative X) on portal */
-		PDI->DrawLine(DrawBounds.RU(), DrawBounds.BRU(), BackDrawColor, SDPG_Foreground, Thickness);
-		PDI->DrawLine(DrawBounds.BRU(), DrawBounds.BRD(), BackDrawColor, SDPG_Foreground, Thickness);
-		PDI->DrawLine(DrawBounds.BRD(), DrawBounds.RD(), BackDrawColor, SDPG_Foreground, Thickness);
-		PDI->DrawLine(DrawBounds.LU(), DrawBounds.BLU(), BackDrawColor, SDPG_Foreground, Thickness);
-		PDI->DrawLine(DrawBounds.BLU(), DrawBounds.BLD(), BackDrawColor, SDPG_Foreground, Thickness);
-		PDI->DrawLine(DrawBounds.BLD(), DrawBounds.LD(), BackDrawColor, SDPG_Foreground, Thickness);
-		PDI->DrawLine(DrawBounds.BLU(), DrawBounds.BRU(), BackDrawColor, SDPG_Foreground, Thickness);
-		PDI->DrawLine(DrawBounds.BLD(), DrawBounds.BRD(), BackDrawColor, SDPG_Foreground, Thickness);
+		PDI->DrawLine(DrawBounds.RU(), DrawBounds.BRU(), BackDrawColor, SDPG_MAX, Thickness);
+		PDI->DrawLine(DrawBounds.BRU(), DrawBounds.BRD(), BackDrawColor, SDPG_MAX, Thickness);
+		PDI->DrawLine(DrawBounds.BRD(), DrawBounds.RD(), BackDrawColor, SDPG_MAX, Thickness);
+		PDI->DrawLine(DrawBounds.LU(), DrawBounds.BLU(), BackDrawColor, SDPG_MAX, Thickness);
+		PDI->DrawLine(DrawBounds.BLU(), DrawBounds.BLD(), BackDrawColor, SDPG_MAX, Thickness);
+		PDI->DrawLine(DrawBounds.BLD(), DrawBounds.LD(), BackDrawColor, SDPG_MAX, Thickness);
+		PDI->DrawLine(DrawBounds.BLU(), DrawBounds.BRU(), BackDrawColor, SDPG_MAX, Thickness);
+		PDI->DrawLine(DrawBounds.BLD(), DrawBounds.BRD(), BackDrawColor, SDPG_MAX, Thickness);
 		/** Draw outline around centre of portal (YZ plane) */
-		PDI->DrawLine(DrawBounds.LU(), DrawBounds.LD(), OutlineColor, SDPG_Foreground, Thickness);
-		PDI->DrawLine(DrawBounds.LD(), DrawBounds.RD(), OutlineColor, SDPG_Foreground, Thickness);
-		PDI->DrawLine(DrawBounds.RD(), DrawBounds.RU(), OutlineColor, SDPG_Foreground, Thickness);
-		PDI->DrawLine(DrawBounds.RU(), DrawBounds.LU(), OutlineColor, SDPG_Foreground, Thickness);
+		PDI->DrawLine(DrawBounds.LU(), DrawBounds.LD(), OutlineColor, SDPG_MAX, Thickness);
+		PDI->DrawLine(DrawBounds.LD(), DrawBounds.RD(), OutlineColor, SDPG_MAX, Thickness);
+		PDI->DrawLine(DrawBounds.RD(), DrawBounds.RU(), OutlineColor, SDPG_MAX, Thickness);
+		PDI->DrawLine(DrawBounds.RU(), DrawBounds.LU(), OutlineColor, SDPG_MAX, Thickness);
 
 		UWorld* world = GetWorld();
 		if (world != nullptr)
@@ -87,8 +88,8 @@ void UDrawPortalComponent::DrawPortalOutline(const FSceneView* View, FPrimitiveD
 			if (!(worldType == EWorldType::Game || worldType == EWorldType::PIE) && PortalComponent->InitialState == AkAcousticPortalState::Closed ||
 				(worldType == EWorldType::Game || worldType == EWorldType::PIE) && PortalComponent->GetCurrentState() == AkAcousticPortalState::Closed)
 			{
-				PDI->DrawLine(DrawBounds.FRU(), DrawBounds.BRD(), FrontDrawColor, SDPG_Foreground, Thickness);
-				PDI->DrawLine(DrawBounds.FLD(), DrawBounds.BLU(), BackDrawColor, SDPG_Foreground, Thickness);
+				PDI->DrawLine(DrawBounds.FRU(), DrawBounds.BRD(), FrontDrawColor, SDPG_MAX, Thickness);
+				PDI->DrawLine(DrawBounds.FLD(), DrawBounds.BLU(), BackDrawColor, SDPG_MAX, Thickness);
 			}
 		}
 
@@ -98,15 +99,26 @@ void UDrawPortalComponent::DrawPortalOutline(const FSceneView* View, FPrimitiveD
 		FVector BackPoint = FVector(-BoxExtent.X, 0.0f, 0.0f);
 		if (PortalComponent->GetFrontRoomComponent() != nullptr && PortalComponent->GetFrontRoomComponent()->GetPrimitiveParent() != nullptr)
 		{
+			// Setup front facing vector to test if line from portal to room points 'backwards' (i.e. if it goes back through the portal). In this case, we extend the 'From' point slightly.
+			FVector Front = PrimitiveParent->GetComponentTransform().TransformVector(FVector(1.0f, 0.0f, 0.0f));
 			FVector From = PrimitiveParent->GetComponentTransform().TransformPosition(FrontPoint);
 			FVector To = PortalComponent->GetFrontRoomComponent()->GetPrimitiveParent()->GetComponentTransform().TransformPosition(FVector(0.0f, 0.0f, 0.0f));
-			PDI->DrawLine(From, To, OutlineColor, SDPG_Foreground, Thickness);
+			//PDI->DrawLine(From, To, OutlineColor, SDPG_MAX, Thickness);
+			FVector ToRoom = To - From;
+			ToRoom.Normalize();
+			PDI->DrawLine(From, To, OutlineColor, SDPG_MAX, Thickness);
 		}
+		Thickness = AkDrawConstants::PortalRoomConnectionThickness;
 		if (PortalComponent->GetBackRoomComponent() != nullptr && PortalComponent->GetBackRoomComponent()->GetPrimitiveParent() != nullptr)
 		{
+			// Setup back facing vector to test if line from portal to room points 'backwards' (i.e. if it goes back through the portal). In this case, we extend the 'From' point slightly
+			FVector Back = PrimitiveParent->GetComponentTransform().TransformVector(FVector(-1.0f, 0.0f, 0.0f));
 			FVector From = PrimitiveParent->GetComponentTransform().TransformPosition(BackPoint);
 			FVector To = PortalComponent->GetBackRoomComponent()->GetPrimitiveParent()->GetComponentTransform().TransformPosition(FVector(0.0f, 0.0f, 0.0f));
-			PDI->DrawLine(From, To, OutlineColor, SDPG_Foreground, Thickness);
+			//PDI->DrawLine(From, To, OutlineColor, SDPG_MAX, Thickness);
+			FVector ToRoom = To - From;
+			ToRoom.Normalize();
+			PDI->DrawLine(From, To, OutlineColor, SDPG_MAX, Thickness);
 		}
 	}
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{594289DA-4551-496F-B557-01EEEB6BDB98}" SchemaVersion="103" RootDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" ParentDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}">
+<WwiseDocument Type="WorkUnit" ID="{594289DA-4551-496F-B557-01EEEB6BDB98}" SchemaVersion="110" RootDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" ParentDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}">
 	<AudioObjects>
 		<WorkUnit Name="AMB" ID="{594289DA-4551-496F-B557-01EEEB6BDB98}" OwnerID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" PersistMode="Nested">
 			<PropertyList>
@@ -94,7 +94,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_WaterFall_Close_ST_LP" ID="{DF53DC6E-BC92-41A6-87DA-4C8AF1FC6371}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -125,7 +124,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_WaterFall_Far_ST_LP" ID="{7D733F9B-0AAB-448A-B056-9A8FDF0FE5D0}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -156,57 +154,66 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_WaterFall_MidRange_ST_LP" ID="{8F65A50B-8F19-47CC-8D18-31BF90D2EC14}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
-									<ObjectLists/>
 									<BlendTrackList>
 										<BlendTrack Name="Waterfall_Distance" ID="{5CF10226-FA20-43D4-97E4-5F64498D5610}" ShortID="27009372">
 											<PropertyList>
 												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<RTPCList>
-														<RTPC Name="" ID="{8BED14FD-ED41-47B5-974E-1CEDDB3BB15A}" ShortID="180091462">
-															<ReferenceList>
-																<Reference Name="ControlInput">
-																	<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
-																</Reference>
-															</ReferenceList>
-															<Curve Name="" ID="{A84227D0-2EF8-469C-BD7C-9B9CE1BF2E8A}">
-																<PropertyList>
-																	<Property Name="Flags" Type="int32" Value="3"/>
-																</PropertyList>
-																<PointList>
-																	<Point>
-																		<XPos>0</XPos>
-																		<YPos>0</YPos>
-																		<Flags>5</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>8356.99797160247</XPos>
-																		<YPos>0</YPos>
-																		<Flags>0</Flags>
-																		<SegmentShape>Log2</SegmentShape>
-																	</Point>
-																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>-8.0667</YPos>
-																		<Flags>37</Flags>
-																	</Point>
-																</PointList>
-															</Curve>
-														</RTPC>
-													</RTPCList>
-												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="LayerCrossFadeControlInput">
 													<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
 												</Reference>
 											</ReferenceList>
+											<ObjectLists>
+												<ObjectList Name="RTPC">
+													<Reference>
+														<Local>
+															<RTPC Name="" ID="{8BED14FD-ED41-47B5-974E-1CEDDB3BB15A}" ShortID="180091462">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="Volume"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{A84227D0-2EF8-469C-BD7C-9B9CE1BF2E8A}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="3"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>0</YPos>
+																						<Flags>5</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>8356.99797160247</XPos>
+																						<YPos>0</YPos>
+																						<Flags>0</Flags>
+																						<SegmentShape>Log2</SegmentShape>
+																					</Point>
+																					<Point>
+																						<XPos>10000</XPos>
+																						<YPos>-8.0667</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
 											<BlendTrackAssocList>
 												<BlendTrackAssoc>
 													<ItemRef Name="AMB_WaterFall_Close_ST_LP" ID="{48637122-4D89-47D0-A6E3-E73FF6828BA5}"/>
@@ -290,7 +297,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_SP_WaterFallSmallClose_LP" ID="{70D09F03-3D49-4BAC-8176-2A5D0C17C21D}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -321,7 +327,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_SP_WaterFallSmallDistant_LP" ID="{A6A9A667-E305-441C-8D81-9BBDBB6C2BF0}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -352,7 +357,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_SP_WaterFallSmallMid_LP" ID="{F1FA129B-B3EE-4CC8-9DE6-A3825CC55E0D}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -393,52 +397,61 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_SP_WaterFallSmallVeryDistant_LP" ID="{C1BA360D-8BC5-4986-B6D9-14205B4D14AE}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
-									<ObjectLists/>
 									<BlendTrackList>
 										<BlendTrack Name="WaterFallSmall_Close" ID="{9773E604-92D5-4177-89C6-AC1FBD55ADED}" ShortID="192935168">
 											<PropertyList>
 												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<RTPCList>
-														<RTPC Name="" ID="{6AB89C18-AD8E-418D-A249-A8652B096F8C}" ShortID="984446159">
-															<ReferenceList>
-																<Reference Name="ControlInput">
-																	<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
-																</Reference>
-															</ReferenceList>
-															<Curve Name="" ID="{53E13BC9-4CBE-4BF1-9E9F-EC34D25A7C8F}">
-																<PropertyList>
-																	<Property Name="Flags" Type="int32" Value="3"/>
-																</PropertyList>
-																<PointList>
-																	<Point>
-																		<XPos>0</XPos>
-																		<YPos>0</YPos>
-																		<Flags>5</Flags>
-																		<SegmentShape>SCurve</SegmentShape>
-																	</Point>
-																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>-200</YPos>
-																		<Flags>37</Flags>
-																	</Point>
-																</PointList>
-															</Curve>
-														</RTPC>
-													</RTPCList>
-												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="LayerCrossFadeControlInput">
 													<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
 												</Reference>
 											</ReferenceList>
+											<ObjectLists>
+												<ObjectList Name="RTPC">
+													<Reference>
+														<Local>
+															<RTPC Name="" ID="{6AB89C18-AD8E-418D-A249-A8652B096F8C}" ShortID="984446159">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="Volume"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{53E13BC9-4CBE-4BF1-9E9F-EC34D25A7C8F}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="3"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>0</YPos>
+																						<Flags>5</Flags>
+																						<SegmentShape>SCurve</SegmentShape>
+																					</Point>
+																					<Point>
+																						<XPos>10000</XPos>
+																						<YPos>-200</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
 											<BlendTrackAssocList>
 												<BlendTrackAssoc>
 													<ItemRef Name="AMB_SP_WaterFallSmallClose_LP" ID="{B7848B1B-FD70-4FC6-8392-4132A24BE51F}"/>
@@ -455,47 +468,58 @@
 										<BlendTrack Name="WaterFallSmall_Mid" ID="{83B6E595-9A64-4539-8190-FDFAC06DC0AB}" ShortID="261719638">
 											<PropertyList>
 												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<RTPCList>
-														<RTPC Name="" ID="{1BA83D5C-0FEE-4658-92B0-051DDA3F9819}" ShortID="554290704">
-															<ReferenceList>
-																<Reference Name="ControlInput">
-																	<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
-																</Reference>
-															</ReferenceList>
-															<Curve Name="" ID="{B83E2671-0683-4844-9C31-1F9A359B27A5}">
-																<PropertyList>
-																	<Property Name="Flags" Type="int32" Value="3"/>
-																</PropertyList>
-																<PointList>
-																	<Point>
-																		<XPos>0</XPos>
-																		<YPos>-2.18289</YPos>
-																		<Flags>5</Flags>
-																		<SegmentShape>SCurve</SegmentShape>
-																	</Point>
-																	<Point>
-																		<XPos>3333.33333333333</XPos>
-																		<YPos>-3.0522</YPos>
-																		<Flags>0</Flags>
-																		<SegmentShape>SCurve</SegmentShape>
-																	</Point>
-																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>-200</YPos>
-																		<Flags>37</Flags>
-																	</Point>
-																</PointList>
-															</Curve>
-														</RTPC>
-													</RTPCList>
-												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="LayerCrossFadeControlInput">
 													<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
 												</Reference>
 											</ReferenceList>
+											<ObjectLists>
+												<ObjectList Name="RTPC">
+													<Reference>
+														<Local>
+															<RTPC Name="" ID="{1BA83D5C-0FEE-4658-92B0-051DDA3F9819}" ShortID="554290704">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="Volume"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{B83E2671-0683-4844-9C31-1F9A359B27A5}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="3"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>-2.18289</YPos>
+																						<Flags>5</Flags>
+																						<SegmentShape>SCurve</SegmentShape>
+																					</Point>
+																					<Point>
+																						<XPos>3333.33333333333</XPos>
+																						<YPos>-3.0522</YPos>
+																						<Flags>0</Flags>
+																						<SegmentShape>SCurve</SegmentShape>
+																					</Point>
+																					<Point>
+																						<XPos>10000</XPos>
+																						<YPos>-200</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
 											<BlendTrackAssocList>
 												<BlendTrackAssoc>
 													<ItemRef Name="AMB_SP_WaterFallSmallMid_LP" ID="{B4D8E7E9-15D2-4E67-92A2-6CF57A7FA076}"/>
@@ -511,40 +535,51 @@
 										<BlendTrack Name="WaterFallSmall_Far" ID="{1C443FEA-9C94-48F3-9060-E632B25EBC02}" ShortID="546539365">
 											<PropertyList>
 												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<RTPCList>
-														<RTPC Name="" ID="{822FBF93-22EC-4AA8-A4CB-9227A4A38588}" ShortID="439834593">
-															<ReferenceList>
-																<Reference Name="ControlInput">
-																	<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
-																</Reference>
-															</ReferenceList>
-															<Curve Name="" ID="{6DED5CE0-89F2-4E3C-822E-134262E529AC}">
-																<PropertyList>
-																	<Property Name="Flags" Type="int32" Value="3"/>
-																</PropertyList>
-																<PointList>
-																	<Point>
-																		<XPos>0</XPos>
-																		<YPos>0</YPos>
-																		<Flags>5</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>0</YPos>
-																		<Flags>37</Flags>
-																	</Point>
-																</PointList>
-															</Curve>
-														</RTPC>
-													</RTPCList>
-												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="LayerCrossFadeControlInput">
 													<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
 												</Reference>
 											</ReferenceList>
+											<ObjectLists>
+												<ObjectList Name="RTPC">
+													<Reference>
+														<Local>
+															<RTPC Name="" ID="{822FBF93-22EC-4AA8-A4CB-9227A4A38588}" ShortID="439834593">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="Volume"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{6DED5CE0-89F2-4E3C-822E-134262E529AC}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="3"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>0</YPos>
+																						<Flags>5</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>10000</XPos>
+																						<YPos>0</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
 											<BlendTrackAssocList>
 												<BlendTrackAssoc>
 													<ItemRef Name="AMB_SP_WaterFallSmallDistant_LP" ID="{8AB920FB-4574-46A1-8D54-1766A94DEF87}"/>
@@ -562,46 +597,57 @@
 										<BlendTrack Name="WaterFallSmall_VeryFar" ID="{0F607B93-69E2-438F-BF0A-FABB3B2386D3}" ShortID="861472831">
 											<PropertyList>
 												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<RTPCList>
-														<RTPC Name="" ID="{7EF10AA1-2CC5-4C58-8A45-F2B6737B7F3B}" ShortID="890312290">
-															<ReferenceList>
-																<Reference Name="ControlInput">
-																	<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
-																</Reference>
-															</ReferenceList>
-															<Curve Name="" ID="{FD4F74DD-3AED-44C8-850C-C320A7CA55E5}">
-																<PropertyList>
-																	<Property Name="Flags" Type="int32" Value="3"/>
-																</PropertyList>
-																<PointList>
-																	<Point>
-																		<XPos>0</XPos>
-																		<YPos>0</YPos>
-																		<Flags>5</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>6666.66666666667</XPos>
-																		<YPos>0</YPos>
-																		<Flags>0</Flags>
-																		<SegmentShape>SCurve</SegmentShape>
-																	</Point>
-																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>0</YPos>
-																		<Flags>37</Flags>
-																	</Point>
-																</PointList>
-															</Curve>
-														</RTPC>
-													</RTPCList>
-												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="LayerCrossFadeControlInput">
 													<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
 												</Reference>
 											</ReferenceList>
+											<ObjectLists>
+												<ObjectList Name="RTPC">
+													<Reference>
+														<Local>
+															<RTPC Name="" ID="{7EF10AA1-2CC5-4C58-8A45-F2B6737B7F3B}" ShortID="890312290">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="Volume"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="RTPC_WaterFallSmallDistance" ID="{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{FD4F74DD-3AED-44C8-850C-C320A7CA55E5}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="3"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>0</YPos>
+																						<Flags>5</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>6666.66666666667</XPos>
+																						<YPos>0</YPos>
+																						<Flags>0</Flags>
+																						<SegmentShape>SCurve</SegmentShape>
+																					</Point>
+																					<Point>
+																						<XPos>10000</XPos>
+																						<YPos>0</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
 											<BlendTrackAssocList>
 												<BlendTrackAssoc>
 													<ItemRef Name="AMB_SP_WaterFallSmallVeryDistant_LP" ID="{DDFF85EB-F1E9-4C74-B093-223F3063AD14}"/>
@@ -673,7 +719,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_SP_WaterFallMedClose_LP" ID="{3C395684-9AEE-4B61-AC22-4A19C284C75F}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -714,7 +759,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_SP_WaterFallMedDistant_LP" ID="{D012039F-0B57-4C6E-B8B4-9DFC6E809EA6}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -745,52 +789,61 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_SP_WaterFallMedMid_LP" ID="{2713D3C7-D849-4F6E-9CC7-003A74788594}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
-									<ObjectLists/>
 									<BlendTrackList>
 										<BlendTrack Name="WaterFallMed_Close" ID="{F53204AC-4B6D-447B-82DF-E5ED7B5A18F6}" ShortID="65787052">
 											<PropertyList>
 												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<RTPCList>
-														<RTPC Name="" ID="{B82154B0-8F8B-4906-9ADD-2B337913B75F}" ShortID="467412569">
-															<ReferenceList>
-																<Reference Name="ControlInput">
-																	<ObjectRef Name="RTPC_WaterFallMedDistance" ID="{30BBCABF-1EE6-465D-8559-10DB16449DC6}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
-																</Reference>
-															</ReferenceList>
-															<Curve Name="" ID="{F135A585-363C-4843-99AD-E6CE746945E9}">
-																<PropertyList>
-																	<Property Name="Flags" Type="int32" Value="3"/>
-																</PropertyList>
-																<PointList>
-																	<Point>
-																		<XPos>0</XPos>
-																		<YPos>0</YPos>
-																		<Flags>5</Flags>
-																		<SegmentShape>SCurve</SegmentShape>
-																	</Point>
-																	<Point>
-																		<XPos>15000</XPos>
-																		<YPos>-200</YPos>
-																		<Flags>37</Flags>
-																	</Point>
-																</PointList>
-															</Curve>
-														</RTPC>
-													</RTPCList>
-												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="LayerCrossFadeControlInput">
 													<ObjectRef Name="RTPC_WaterFallMedDistance" ID="{30BBCABF-1EE6-465D-8559-10DB16449DC6}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
 												</Reference>
 											</ReferenceList>
+											<ObjectLists>
+												<ObjectList Name="RTPC">
+													<Reference>
+														<Local>
+															<RTPC Name="" ID="{B82154B0-8F8B-4906-9ADD-2B337913B75F}" ShortID="467412569">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="Volume"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="RTPC_WaterFallMedDistance" ID="{30BBCABF-1EE6-465D-8559-10DB16449DC6}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{F135A585-363C-4843-99AD-E6CE746945E9}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="3"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>0</YPos>
+																						<Flags>5</Flags>
+																						<SegmentShape>SCurve</SegmentShape>
+																					</Point>
+																					<Point>
+																						<XPos>15000</XPos>
+																						<YPos>-200</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
 											<BlendTrackAssocList>
 												<BlendTrackAssoc>
 													<ItemRef Name="AMB_SP_WaterFallMedClose_LP" ID="{534A78F2-37A7-4F33-B7D5-E81AEDE8B692}"/>
@@ -807,47 +860,58 @@
 										<BlendTrack Name="WaterFallMed_Mid" ID="{DFC593E8-C8F9-4C98-8A3D-806A6BA2DE7A}" ShortID="153822704">
 											<PropertyList>
 												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<RTPCList>
-														<RTPC Name="" ID="{E1DFC936-C02A-46C7-9C02-1AD25A4EC224}" ShortID="223719032">
-															<ReferenceList>
-																<Reference Name="ControlInput">
-																	<ObjectRef Name="RTPC_WaterFallMedDistance" ID="{30BBCABF-1EE6-465D-8559-10DB16449DC6}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
-																</Reference>
-															</ReferenceList>
-															<Curve Name="" ID="{EDBD2DEF-DED8-455D-83FB-A2C1E2F8A965}">
-																<PropertyList>
-																	<Property Name="Flags" Type="int32" Value="3"/>
-																</PropertyList>
-																<PointList>
-																	<Point>
-																		<XPos>0</XPos>
-																		<YPos>-4.0183</YPos>
-																		<Flags>5</Flags>
-																		<SegmentShape>SCurve</SegmentShape>
-																	</Point>
-																	<Point>
-																		<XPos>7500</XPos>
-																		<YPos>0</YPos>
-																		<Flags>0</Flags>
-																		<SegmentShape>SCurve</SegmentShape>
-																	</Point>
-																	<Point>
-																		<XPos>15000</XPos>
-																		<YPos>0</YPos>
-																		<Flags>37</Flags>
-																	</Point>
-																</PointList>
-															</Curve>
-														</RTPC>
-													</RTPCList>
-												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="LayerCrossFadeControlInput">
 													<ObjectRef Name="RTPC_WaterFallMedDistance" ID="{30BBCABF-1EE6-465D-8559-10DB16449DC6}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
 												</Reference>
 											</ReferenceList>
+											<ObjectLists>
+												<ObjectList Name="RTPC">
+													<Reference>
+														<Local>
+															<RTPC Name="" ID="{E1DFC936-C02A-46C7-9C02-1AD25A4EC224}" ShortID="223719032">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="Volume"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="RTPC_WaterFallMedDistance" ID="{30BBCABF-1EE6-465D-8559-10DB16449DC6}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{EDBD2DEF-DED8-455D-83FB-A2C1E2F8A965}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="3"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>-4.0183</YPos>
+																						<Flags>5</Flags>
+																						<SegmentShape>SCurve</SegmentShape>
+																					</Point>
+																					<Point>
+																						<XPos>7500</XPos>
+																						<YPos>0</YPos>
+																						<Flags>0</Flags>
+																						<SegmentShape>SCurve</SegmentShape>
+																					</Point>
+																					<Point>
+																						<XPos>15000</XPos>
+																						<YPos>0</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
 											<BlendTrackAssocList>
 												<BlendTrackAssoc>
 													<ItemRef Name="AMB_SP_WaterFallMedMid_LP" ID="{8A6AFC05-9918-4B12-8A13-6E9C7624432A}"/>
@@ -863,46 +927,57 @@
 										<BlendTrack Name="WaterFallMed_Distant" ID="{60CD079A-2875-4915-BE41-4AB1BF1CA3DB}" ShortID="801344212">
 											<PropertyList>
 												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<RTPCList>
-														<RTPC Name="" ID="{8699E2FF-C247-47B3-9094-7B10A35BF243}" ShortID="944596321">
-															<ReferenceList>
-																<Reference Name="ControlInput">
-																	<ObjectRef Name="RTPC_WaterFallMedDistance" ID="{30BBCABF-1EE6-465D-8559-10DB16449DC6}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
-																</Reference>
-															</ReferenceList>
-															<Curve Name="" ID="{039755A7-284B-4253-A464-90552A8F6644}">
-																<PropertyList>
-																	<Property Name="Flags" Type="int32" Value="3"/>
-																</PropertyList>
-																<PointList>
-																	<Point>
-																		<XPos>0</XPos>
-																		<YPos>0</YPos>
-																		<Flags>5</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>11250</XPos>
-																		<YPos>0</YPos>
-																		<Flags>0</Flags>
-																		<SegmentShape>SCurve</SegmentShape>
-																	</Point>
-																	<Point>
-																		<XPos>15000</XPos>
-																		<YPos>0</YPos>
-																		<Flags>37</Flags>
-																	</Point>
-																</PointList>
-															</Curve>
-														</RTPC>
-													</RTPCList>
-												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="LayerCrossFadeControlInput">
 													<ObjectRef Name="RTPC_WaterFallMedDistance" ID="{30BBCABF-1EE6-465D-8559-10DB16449DC6}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
 												</Reference>
 											</ReferenceList>
+											<ObjectLists>
+												<ObjectList Name="RTPC">
+													<Reference>
+														<Local>
+															<RTPC Name="" ID="{8699E2FF-C247-47B3-9094-7B10A35BF243}" ShortID="944596321">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="Volume"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="RTPC_WaterFallMedDistance" ID="{30BBCABF-1EE6-465D-8559-10DB16449DC6}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{039755A7-284B-4253-A464-90552A8F6644}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="3"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>0</YPos>
+																						<Flags>5</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>11250</XPos>
+																						<YPos>0</YPos>
+																						<Flags>0</Flags>
+																						<SegmentShape>SCurve</SegmentShape>
+																					</Point>
+																					<Point>
+																						<XPos>15000</XPos>
+																						<YPos>0</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
 											<BlendTrackAssocList>
 												<BlendTrackAssoc>
 													<ItemRef Name="AMB_SP_WaterFallMedDistant_LP" ID="{3174FCD2-CFCD-4D9E-A2C5-1C1DD2D31DD1}"/>
@@ -974,7 +1049,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_SP_WaterFallBigClose_LP" ID="{E333B720-9075-43A6-84D2-FDF64593DDA4}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -1005,7 +1079,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_SP_WaterFallBigDistant_LP" ID="{6E45B2D1-1399-4A9A-BC15-0A1CCDFC5CA7}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -1036,58 +1109,67 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_SP_WaterFallBigMid_LP" ID="{636D5463-AC30-4D7F-B3BC-F7BFBF19B6AF}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
-									<ObjectLists/>
 									<BlendTrackList>
 										<BlendTrack Name="WaterFallSmall_Close" ID="{87967E06-7526-42B4-9885-B5921757567E}" ShortID="17193110">
 											<PropertyList>
 												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<RTPCList>
-														<RTPC Name="" ID="{42A9AE14-EB3F-41FB-A778-B70A67145A67}" ShortID="751528476">
-															<ReferenceList>
-																<Reference Name="ControlInput">
-																	<ObjectRef Name="RTPC_WaterFallBigDistance" ID="{E44C6EE4-B46F-45ED-8B1E-1CE323B3070D}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
-																</Reference>
-															</ReferenceList>
-															<Curve Name="" ID="{009A6011-7709-4E78-AD3D-0B43EE3C7538}">
-																<PropertyList>
-																	<Property Name="Flags" Type="int32" Value="3"/>
-																</PropertyList>
-																<PointList>
-																	<Point>
-																		<XPos>0</XPos>
-																		<YPos>0</YPos>
-																		<Flags>5</Flags>
-																		<SegmentShape>SCurve</SegmentShape>
-																	</Point>
-																	<Point>
-																		<XPos>16959.5261533333</XPos>
-																		<YPos>-200</YPos>
-																		<Flags>0</Flags>
-																		<SegmentShape>SCurve</SegmentShape>
-																	</Point>
-																	<Point>
-																		<XPos>20000</XPos>
-																		<YPos>-200</YPos>
-																		<Flags>37</Flags>
-																	</Point>
-																</PointList>
-															</Curve>
-														</RTPC>
-													</RTPCList>
-												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="LayerCrossFadeControlInput">
 													<ObjectRef Name="RTPC_WaterFallBigDistance" ID="{E44C6EE4-B46F-45ED-8B1E-1CE323B3070D}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
 												</Reference>
 											</ReferenceList>
+											<ObjectLists>
+												<ObjectList Name="RTPC">
+													<Reference>
+														<Local>
+															<RTPC Name="" ID="{42A9AE14-EB3F-41FB-A778-B70A67145A67}" ShortID="751528476">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="Volume"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="RTPC_WaterFallBigDistance" ID="{E44C6EE4-B46F-45ED-8B1E-1CE323B3070D}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{009A6011-7709-4E78-AD3D-0B43EE3C7538}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="3"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>0</YPos>
+																						<Flags>5</Flags>
+																						<SegmentShape>SCurve</SegmentShape>
+																					</Point>
+																					<Point>
+																						<XPos>16959.5261533333</XPos>
+																						<YPos>-200</YPos>
+																						<Flags>0</Flags>
+																						<SegmentShape>SCurve</SegmentShape>
+																					</Point>
+																					<Point>
+																						<XPos>20000</XPos>
+																						<YPos>-200</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
 											<BlendTrackAssocList>
 												<BlendTrackAssoc>
 													<ItemRef Name="AMB_SP_WaterFallBigClose_LP" ID="{09AE6F62-BA36-4E62-8DB4-6300456FA748}"/>
@@ -1103,47 +1185,58 @@
 										<BlendTrack Name="WaterFallSmall_Mid" ID="{39AFC30C-5276-4DEA-9638-3B40C7A1A206}" ShortID="509756113">
 											<PropertyList>
 												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<RTPCList>
-														<RTPC Name="" ID="{D5ED2773-72AB-49CD-95F5-B14FD318ECA4}" ShortID="614250900">
-															<ReferenceList>
-																<Reference Name="ControlInput">
-																	<ObjectRef Name="RTPC_WaterFallBigDistance" ID="{E44C6EE4-B46F-45ED-8B1E-1CE323B3070D}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
-																</Reference>
-															</ReferenceList>
-															<Curve Name="" ID="{2C870B55-9FCB-4C9A-AB35-F8C5E63FDA71}">
-																<PropertyList>
-																	<Property Name="Flags" Type="int32" Value="3"/>
-																</PropertyList>
-																<PointList>
-																	<Point>
-																		<XPos>0</XPos>
-																		<YPos>-5.10545</YPos>
-																		<Flags>5</Flags>
-																		<SegmentShape>SCurve</SegmentShape>
-																	</Point>
-																	<Point>
-																		<XPos>8333.33333333333</XPos>
-																		<YPos>0</YPos>
-																		<Flags>0</Flags>
-																		<SegmentShape>SCurve</SegmentShape>
-																	</Point>
-																	<Point>
-																		<XPos>20000</XPos>
-																		<YPos>0</YPos>
-																		<Flags>37</Flags>
-																	</Point>
-																</PointList>
-															</Curve>
-														</RTPC>
-													</RTPCList>
-												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="LayerCrossFadeControlInput">
 													<ObjectRef Name="RTPC_WaterFallBigDistance" ID="{E44C6EE4-B46F-45ED-8B1E-1CE323B3070D}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
 												</Reference>
 											</ReferenceList>
+											<ObjectLists>
+												<ObjectList Name="RTPC">
+													<Reference>
+														<Local>
+															<RTPC Name="" ID="{D5ED2773-72AB-49CD-95F5-B14FD318ECA4}" ShortID="614250900">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="Volume"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="RTPC_WaterFallBigDistance" ID="{E44C6EE4-B46F-45ED-8B1E-1CE323B3070D}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{2C870B55-9FCB-4C9A-AB35-F8C5E63FDA71}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="3"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>-5.10545</YPos>
+																						<Flags>5</Flags>
+																						<SegmentShape>SCurve</SegmentShape>
+																					</Point>
+																					<Point>
+																						<XPos>8333.33333333333</XPos>
+																						<YPos>0</YPos>
+																						<Flags>0</Flags>
+																						<SegmentShape>SCurve</SegmentShape>
+																					</Point>
+																					<Point>
+																						<XPos>20000</XPos>
+																						<YPos>0</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
 											<BlendTrackAssocList>
 												<BlendTrackAssoc>
 													<ItemRef Name="AMB_SP_WaterFallBigMid_LP" ID="{B0247CF1-A947-4BCE-863A-D4C15344115E}"/>
@@ -1159,46 +1252,57 @@
 										<BlendTrack Name="WaterFallSmall_Distant" ID="{2E0D93B7-0AB4-41FF-9F43-EB6CED082168}" ShortID="347739099">
 											<PropertyList>
 												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<RTPCList>
-														<RTPC Name="" ID="{2D1E805F-E99E-4F83-A68D-FBB314FB4BDC}" ShortID="274331123">
-															<ReferenceList>
-																<Reference Name="ControlInput">
-																	<ObjectRef Name="RTPC_WaterFallBigDistance" ID="{E44C6EE4-B46F-45ED-8B1E-1CE323B3070D}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
-																</Reference>
-															</ReferenceList>
-															<Curve Name="" ID="{897439AC-8F03-481A-8081-59DF170D0AE0}">
-																<PropertyList>
-																	<Property Name="Flags" Type="int32" Value="3"/>
-																</PropertyList>
-																<PointList>
-																	<Point>
-																		<XPos>0</XPos>
-																		<YPos>0</YPos>
-																		<Flags>5</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>13333.3333333333</XPos>
-																		<YPos>0</YPos>
-																		<Flags>0</Flags>
-																		<SegmentShape>SCurve</SegmentShape>
-																	</Point>
-																	<Point>
-																		<XPos>20000</XPos>
-																		<YPos>0</YPos>
-																		<Flags>37</Flags>
-																	</Point>
-																</PointList>
-															</Curve>
-														</RTPC>
-													</RTPCList>
-												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="LayerCrossFadeControlInput">
 													<ObjectRef Name="RTPC_WaterFallBigDistance" ID="{E44C6EE4-B46F-45ED-8B1E-1CE323B3070D}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
 												</Reference>
 											</ReferenceList>
+											<ObjectLists>
+												<ObjectList Name="RTPC">
+													<Reference>
+														<Local>
+															<RTPC Name="" ID="{2D1E805F-E99E-4F83-A68D-FBB314FB4BDC}" ShortID="274331123">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="Volume"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="RTPC_WaterFallBigDistance" ID="{E44C6EE4-B46F-45ED-8B1E-1CE323B3070D}" WorkUnitID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{897439AC-8F03-481A-8081-59DF170D0AE0}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="3"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>0</YPos>
+																						<Flags>5</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>13333.3333333333</XPos>
+																						<YPos>0</YPos>
+																						<Flags>0</Flags>
+																						<SegmentShape>SCurve</SegmentShape>
+																					</Point>
+																					<Point>
+																						<XPos>20000</XPos>
+																						<YPos>0</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
 											<BlendTrackAssocList>
 												<BlendTrackAssoc>
 													<ItemRef Name="AMB_SP_WaterFallBigDistant_LP" ID="{6A147F18-5EA4-4563-A920-8AEECF72B3BB}"/>
@@ -1267,7 +1371,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_SP_FireStatue_01" ID="{37A337EB-9A43-4B0C-B381-C8D5F9780825}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -1298,7 +1401,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_SP_FireStatue_02" ID="{1F248122-D43C-4C13-B180-C356EC4436C0}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -1329,13 +1431,11 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_SP_FireStatue_03" ID="{EB8367DD-7EFD-4FE3-A54E-D7F8A92DF36C}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
-									<ObjectLists/>
 								</RandomSequenceContainer>
 								<Sound Name="AMB_SP_LavaPurpleBig_ST_LP" ID="{861ED3A4-4304-41D6-B448-0D10B4C3DA80}" ShortID="79912738">
 									<PropertyList>
@@ -1386,7 +1486,6 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
-									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="AMB_SP_PurpleLavaBig_ST_LP" ID="{4451F36C-D2C4-498C-904E-11F3ADDE641A}" Platform="Linked"/>
 									</ActiveSourceList>
@@ -1446,7 +1545,6 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
-									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="AMB_SP_PurpleLavaSmall_LP" ID="{1824E39B-FD31-46BE-A123-D3C534EC0570}" Platform="Linked"/>
 									</ActiveSourceList>
@@ -1499,7 +1597,6 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
-									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="AMB_SP_FireTorch_LP" ID="{A7BA15E0-26BD-4179-9A65-90656CF5892E}" Platform="Linked"/>
 									</ActiveSourceList>
@@ -1562,7 +1659,6 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
-									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="AMB_SP_WaterFlowBig_ST_LP" ID="{C6C9A95F-91C0-449F-94D7-19F4FB0D9BFC}" Platform="Linked"/>
 									</ActiveSourceList>
@@ -1624,7 +1720,6 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
-									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="AMB_SP_WaterFlowMed_ST_LP" ID="{74B64A4F-991D-4806-B1E6-48F62CD10607}" Platform="Linked"/>
 									</ActiveSourceList>
@@ -1672,13 +1767,11 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
-									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="AMB_SP_WaterFlowSmall_ST_LP" ID="{9FB69647-96F4-41C3-9AB4-85189E205288}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
-							<ObjectLists/>
 						</ActorMixer>
 						<ActorMixer Name="RFX" ID="{9C82110A-8C7D-4783-8A31-08D74D4918CE}" ShortID="519075607">
 							<PropertyList>
@@ -1775,7 +1868,6 @@
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
 										</Reference>
 									</ReferenceList>
-									<ObjectLists/>
 								</RandomSequenceContainer>
 								<RandomSequenceContainer Name="AMB_RFX_DirtFall" ID="{1C3C8262-F5F9-49B1-9D0D-4059C97F6A8A}" ShortID="152598581">
 									<PropertyList>
@@ -1879,7 +1971,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_RFX_DustFall_01" ID="{85CC5825-2C71-4F7F-BC5F-636B356E4489}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -1902,7 +1993,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_RFX_DustFall_02" ID="{2A544922-09AB-4891-AA05-B09DC34750BE}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -1925,7 +2015,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_RFX_DustFall_03" ID="{ABBDCA61-4F2E-419E-B83B-FDCD066E03EA}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -1948,7 +2037,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_RFX_DustFall_04" ID="{DF2E9A27-FCCE-49B2-AFD7-C793C49F9A53}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -1971,7 +2059,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_RFX_DustFall_05" ID="{B79719FE-7C51-4FA4-8FE9-011D88D0F50E}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -1994,7 +2081,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_RFX_DustFall_06" ID="{60E77BC2-AEA8-4D29-A252-6EB347983B93}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -2017,7 +2103,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_RFX_DustFall_07" ID="{CDE66EA3-F755-4B61-BF86-D8A201A137D7}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -2040,7 +2125,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_RFX_DustFall_08" ID="{79F1CDB3-0EB6-4C5F-AF04-25BEDE96CF41}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -2063,7 +2147,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_RFX_DustFall_09" ID="{511D6139-A718-4671-BA98-9B90E39BA28D}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -2086,7 +2169,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_RFX_DustFall_10" ID="{F3897B26-62F4-429C-A786-FA8CE51C189D}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -2109,7 +2191,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_RFX_DustFall_11" ID="{18B80ED1-8216-485E-8E42-FC432775B30E}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -2132,7 +2213,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_RFX_DustFall_12" ID="{F3EB6416-D5A1-4883-977B-36AF4B933790}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -2155,7 +2235,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_RFX_DustFall_13" ID="{67944E82-237B-4E9D-95FA-A6C9E136E279}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -2164,10 +2243,8 @@
 									<PositioningInfo>
 										<Position Name="" ID="{A419CD72-5FFE-41D4-99DF-948D888CF79C}"/>
 									</PositioningInfo>
-									<ObjectLists/>
 								</RandomSequenceContainer>
 							</ChildrenList>
-							<ObjectLists/>
 						</ActorMixer>
 						<ActorMixer Name="ST" ID="{2D0326FA-C77B-4C2B-8EC6-86587BD201F7}" ShortID="914372562">
 							<ReferenceList>
@@ -2220,7 +2297,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_VegetationHigh_ST_LP" ID="{64810578-C8E3-458A-A69A-69B59FFF07A2}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -2261,7 +2337,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_VegetationLow_ST_LP" ID="{0B8CD4C1-14A9-4721-9453-4DDDFC414669}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -2297,52 +2372,61 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="AMB_VegetationMed_ST_LP" ID="{93CEEE1F-DCE9-4081-8477-783418605A03}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
-									<ObjectLists/>
 									<BlendTrackList>
 										<BlendTrack Name="VegetationProportion" ID="{D32FD289-4C97-4AF4-B641-15FFBB240EF0}" ShortID="566893986">
 											<PropertyList>
 												<Property Name="EnableCrossFading" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<RTPCList>
-														<RTPC Name="" ID="{BED5BD72-9461-44B0-A53F-216604230739}" ShortID="384004727">
-															<ReferenceList>
-																<Reference Name="ControlInput">
-																	<ObjectRef Name="RTPC_Vegetation" ID="{AE9E92CD-9763-4B65-9735-3567D41C582E}" WorkUnitID="{C6842C24-F9C6-4EB3-A160-2E701BA56107}"/>
-																</Reference>
-															</ReferenceList>
-															<Curve Name="" ID="{3BB53D91-5EF7-42EC-90B6-7CC195002BAB}">
-																<PropertyList>
-																	<Property Name="Flags" Type="int32" Value="3"/>
-																</PropertyList>
-																<PointList>
-																	<Point>
-																		<XPos>0</XPos>
-																		<YPos>-3.36245</YPos>
-																		<Flags>5</Flags>
-																		<SegmentShape>Exp1</SegmentShape>
-																	</Point>
-																	<Point>
-																		<XPos>15</XPos>
-																		<YPos>0</YPos>
-																		<Flags>37</Flags>
-																	</Point>
-																</PointList>
-															</Curve>
-														</RTPC>
-													</RTPCList>
-												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="LayerCrossFadeControlInput">
 													<ObjectRef Name="RTPC_Vegetation" ID="{AE9E92CD-9763-4B65-9735-3567D41C582E}" WorkUnitID="{C6842C24-F9C6-4EB3-A160-2E701BA56107}"/>
 												</Reference>
 											</ReferenceList>
+											<ObjectLists>
+												<ObjectList Name="RTPC">
+													<Reference>
+														<Local>
+															<RTPC Name="" ID="{BED5BD72-9461-44B0-A53F-216604230739}" ShortID="384004727">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="Volume"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="RTPC_Vegetation" ID="{AE9E92CD-9763-4B65-9735-3567D41C582E}" WorkUnitID="{C6842C24-F9C6-4EB3-A160-2E701BA56107}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{3BB53D91-5EF7-42EC-90B6-7CC195002BAB}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="3"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>-3.36245</YPos>
+																						<Flags>5</Flags>
+																						<SegmentShape>Exp1</SegmentShape>
+																					</Point>
+																					<Point>
+																						<XPos>15</XPos>
+																						<YPos>0</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
 											<BlendTrackAssocList>
 												<BlendTrackAssoc>
 													<ItemRef Name="AMB_VegetationLow_ST_LP" ID="{C6C98B30-5B8F-429C-B1D7-2E6A310171F7}"/>
@@ -2377,7 +2461,6 @@
 									</BlendTrackList>
 								</BlendContainer>
 							</ChildrenList>
-							<ObjectLists/>
 						</ActorMixer>
 						<ActorMixer Name="Bed" ID="{172C5603-B926-440B-B9C5-3C9CE71E86A1}" ShortID="761246176">
 							<PropertyList>
@@ -2432,7 +2515,6 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
-									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="AMB_Bed_lvl1_Interior_LP" ID="{46F3E304-BF89-4097-A85A-3A4C79D840C2}" Platform="Linked"/>
 									</ActiveSourceList>
@@ -2476,7 +2558,6 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
-									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="AMB_Bed_lvl1_LP" ID="{D21C41C6-808C-4A92-B86E-F3256E6801AA}" Platform="Linked"/>
 									</ActiveSourceList>
@@ -2520,13 +2601,11 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
-									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="AMB_Bed_lvl2_Temple_LP" ID="{9798D66D-664D-4921-A3B6-EA167D4AE8D5}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
-							<ObjectLists/>
 						</ActorMixer>
 						<ActorMixer Name="Amb_Forest" ID="{BC5BBABF-FD99-42DE-A836-340E45C35D62}" ShortID="478545724">
 							<ReferenceList>
@@ -2569,13 +2648,11 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
-									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="AMB_Forest" ID="{3530FBDE-6EE3-40C2-B4FC-F3437B29CF88}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
-							<ObjectLists/>
 						</ActorMixer>
 						<ActorMixer Name="Amb_Desert" ID="{6CD7ECFB-2C99-416D-9EC2-66B0DBB0D79A}" ShortID="145478093">
 							<ReferenceList>
@@ -2623,16 +2700,13 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
-									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="AMB_Desert" ID="{6B7FA784-007F-4AAA-AA31-5590BFC53403}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
-							<ObjectLists/>
 						</ActorMixer>
 					</ChildrenList>
-					<ObjectLists/>
 				</ActorMixer>
 			</ChildrenList>
 		</WorkUnit>
