@@ -21,8 +21,7 @@ under the Apache License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 OR CONDITIONS OF ANY KIND, either express or implied. See the Apache License for
 the specific language governing permissions and limitations under the License.
 
-  Version: v2021.1.10  Build: 7883
-  Copyright (c) 2006-2022 Audiokinetic Inc.
+  Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
 
 // AkQueryParameters.h
@@ -176,7 +175,7 @@ namespace AK
 			///		If the game object is unknown or unavailable, AK_INVALID_GAME_OBJECT can be passed in in_gameObjectID, and the game object will be looked up via in_playingID.  
 			///		However in this case, it is not possible to retrieve a game object value as a fall back value if the playing id does not exist.  It is best to pass in the game object if possible.
 			///		
-			/// \return AK_Success if succeeded, AK_IDNotFound if the game object was not registered, or AK_Fail if the RTPC value could not be obtained
+			/// \return AK_Success if succeeded, AK_IDNotFound if the RTPC does not exist
 			/// \sa 
 			/// - \ref soundengine_rtpc
 			/// - RTPCValue_type
@@ -199,7 +198,7 @@ namespace AK
 			///		If the game object is unknown or unavailable, AK_INVALID_GAME_OBJECT can be passed in in_gameObjectID, and the game object will be looked up via in_playingID.  
 			///		However in this case, it is not possible to retrieve a game object value as a fall back value if the playing id does not exist.  It is best to pass in the game object if possible.
 			///		
-			/// \return AK_Success if succeeded, AK_IDNotFound if the game object was not registered or the rtpc name could not be found, or AK_Fail if the RTPC value could not be obtained
+			/// \return AK_Success if succeeded, AK_IDNotFound if the RTPC does not exist
 			/// \sa 
 			/// - \ref soundengine_rtpc
 			/// - RTPCValue_type
@@ -222,7 +221,7 @@ namespace AK
 			///		If the game object is unknown or unavailable, AK_INVALID_GAME_OBJECT can be passed in in_gameObjectID, and the game object will be looked up via in_playingID.  
 			///		However in this case, it is not possible to retrieve a game object value as a fall back value if the playing id does not exist.  It is best to pass in the game object if possible.
 			///		
-			/// \return AK_Success if succeeded, AK_IDNotFound if the game object was not registered or the rtpc name could not be found, or AK_Fail if the RTPC value could not be obtained
+			/// \return AK_Success if succeeded, AK_IDNotFound if the RTPC does not exist
 			/// \sa 
 			/// - \ref soundengine_rtpc
 			/// - RTPCValue_type

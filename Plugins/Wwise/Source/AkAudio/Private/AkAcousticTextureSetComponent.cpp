@@ -1,16 +1,18 @@
 /*******************************************************************************
-The content of the files in this repository include portions of the
-AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
-package.
-
-Commercial License Usage
-
-Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
-may use these files in accordance with the end user license agreement provided
-with the software or, alternatively, in accordance with the terms contained in a
-written agreement between you and Audiokinetic Inc.
-
-Copyright (c) 2021 Audiokinetic Inc.
+The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
+Technology released in source code form as part of the game integration package.
+The content of this file may not be used without valid licenses to the
+AUDIOKINETIC Wwise Technology.
+Note that the use of the game engine is subject to the Unreal(R) Engine End User
+License Agreement at https://www.unrealengine.com/en-US/eula/unreal
+ 
+License Usage
+ 
+Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
+this file in accordance with the end user license agreement provided with the
+software or, alternatively, in accordance with the terms contained
+in a written agreement between you and Audiokinetic Inc.
+Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkAcousticTextureSetComponent.h"
@@ -157,7 +159,9 @@ void UAkAcousticTextureSetComponent::RegisterTextureParamChangeCallback(FGuid te
 		if (TextureDelegateHandles.Find(textureID) != nullptr)
 		{
 			if (TextureDelegateHandles[textureID].IsValid())
+			{
 				AkSettings->OnTextureParamsChanged.Remove(TextureDelegateHandles[textureID]);
+			}
 			TextureDelegateHandles.Remove(textureID);
 		}
 		TextureDelegateHandles.Add(textureID, AkSettings->OnTextureParamsChanged.AddLambda([&](const FGuid& textureID)
@@ -186,7 +190,7 @@ void UAkAcousticTextureSetComponent::UnregisterTextureParamChangeCallbacks()
 bool UAkAcousticTextureSetComponent::ShouldSendGeometry() const
 {
 	UWorld* CurrentWorld = GetWorld();
-	if (CurrentWorld && FAkAudioDevice::IsAudioAllowed())
+	if (CurrentWorld && !IsRunningCommandlet())
 	{
 		return CurrentWorld->WorldType == EWorldType::Game || CurrentWorld->WorldType == EWorldType::PIE;
 	}
@@ -203,12 +207,47 @@ void UAkAcousticTextureSetComponent::SendGeometryToWwise(const AkGeometryParams&
 	}
 }
 
+void UAkAcousticTextureSetComponent::SendGeometryInstanceToWwise(const FRotator& rotation, const FVector& location, const FVector& scale, const AkRoomID roomID)
+{
+	if (ShouldSendGeometry() && GeometryHasBeenSent)
+	{
+		AkVector front, up;
+		AkVector64 position;
+		FAkAudioDevice::FVectorToAKVector(rotation.RotateVector(FVector::ForwardVector), front);
+		FAkAudioDevice::FVectorToAKVector(rotation.RotateVector(FVector::UpVector), up); 
+		FAkAudioDevice::FVectorToAKVector64(location, position);
+
+		AkGeometryInstanceParams params;
+		params.PositionAndOrientation.Set(position, front, up);
+		FAkAudioDevice::FVectorToAKVector(scale, params.Scale);
+		params.GeometrySetID = GetGeometrySetID();
+		params.RoomID = roomID;
+
+		FAkAudioDevice* AkAudioDevice = FAkAudioDevice::Get();
+		if (AkAudioDevice != nullptr && AkAudioDevice->SetGeometryInstance(GetGeometrySetID(), params) == AK_Success)
+			GeometryInstanceHasBeenSent = true;
+	}
+}
+
 void UAkAcousticTextureSetComponent::RemoveGeometryFromWwise()
 {
 	if (ShouldSendGeometry() && GeometryHasBeenSent)
 	{
 		FAkAudioDevice* AkAudioDevice = FAkAudioDevice::Get();
 		if (AkAudioDevice != nullptr && AkAudioDevice->RemoveGeometrySet(GetGeometrySetID()) == AK_Success)
+		{
 			GeometryHasBeenSent = false;
+			GeometryInstanceHasBeenSent = false;
+		}
+	}
+}
+
+void UAkAcousticTextureSetComponent::RemoveGeometryInstanceFromWwise()
+{
+	if (ShouldSendGeometry() && GeometryInstanceHasBeenSent)
+	{
+		FAkAudioDevice* AkAudioDevice = FAkAudioDevice::Get();
+		if (AkAudioDevice != nullptr && AkAudioDevice->RemoveGeometrySet(GetGeometrySetID()) == AK_Success)
+			GeometryInstanceHasBeenSent = false;
 	}
 }

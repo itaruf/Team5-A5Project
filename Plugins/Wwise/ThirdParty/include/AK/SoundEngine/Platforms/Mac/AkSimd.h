@@ -21,8 +21,7 @@ under the Apache License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 OR CONDITIONS OF ANY KIND, either express or implied. See the Apache License for
 the specific language governing permissions and limitations under the License.
 
-  Version: v2021.1.10  Build: 7883
-  Copyright (c) 2006-2022 Audiokinetic Inc.
+  Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
 
 // AkSimd.h
@@ -34,15 +33,6 @@ the specific language governing permissions and limitations under the License.
 #define _AK_SIMD_PLATFORM_H_
 
 #include <AK/SoundEngine/Common/AkTypes.h>
-
-#undef AKSIMD_GETELEMENT_V4F32
-#define AKSIMD_GETELEMENT_V4F32( __vName, __num__ )            ((float*)&(__vName))[(__num__)]                            ///< Retrieve scalar element from vector.
-
-#undef AKSIMD_GETELEMENT_V2F32
-#define AKSIMD_GETELEMENT_V2F32( __vName, __num__ )            ((float*)&(__vName))[(__num__)]                            ///< Retrieve scalar element from vector.
-
-#undef AKSIMD_GETELEMENT_V4I32
-#define AKSIMD_GETELEMENT_V4I32( __vName, __num__ )            ((int*)&(__vName))[(__num__)]                            ///< Retrieve scalar element from vector.
 
 #ifdef AK_CPU_ARM_NEON
 #define AK_IOS_ARM_NEON

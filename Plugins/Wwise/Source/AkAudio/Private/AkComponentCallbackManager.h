@@ -1,18 +1,19 @@
 /*******************************************************************************
-The content of the files in this repository include portions of the
-AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
-package.
-
-Commercial License Usage
-
-Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
-may use these files in accordance with the end user license agreement provided
-with the software or, alternatively, in accordance with the terms contained in a
-written agreement between you and Audiokinetic Inc.
-
-Copyright (c) 2021 Audiokinetic Inc.
+The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
+Technology released in source code form as part of the game integration package.
+The content of this file may not be used without valid licenses to the
+AUDIOKINETIC Wwise Technology.
+Note that the use of the game engine is subject to the Unreal(R) Engine End User
+License Agreement at https://www.unrealengine.com/en-US/eula/unreal
+ 
+License Usage
+ 
+Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
+this file in accordance with the end user license agreement provided with the
+software or, alternatively, in accordance with the terms contained
+in a written agreement between you and Audiokinetic Inc.
+Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
-
 
 #pragma once
 
@@ -27,13 +28,16 @@ public:
 
 	uint32 KeyHash;
 
+	bool HasExternalSources = false;
+
 	IAkUserEventCallbackPackage()
 		: uUserFlags(0)
 	{}
 
-	IAkUserEventCallbackPackage(uint32 in_Flags, uint32 in_Hash)
+	IAkUserEventCallbackPackage(uint32 in_Flags, uint32 in_Hash, bool in_HasExternalSources)
 		: uUserFlags(in_Flags)
 		, KeyHash(in_Hash)
+		, HasExternalSources(in_HasExternalSources)
 	{}
 
 	virtual ~IAkUserEventCallbackPackage() {}
@@ -45,8 +49,8 @@ public:
 class FAkFunctionPtrEventCallbackPackage : public IAkUserEventCallbackPackage
 {
 public:
-	FAkFunctionPtrEventCallbackPackage(AkCallbackFunc CbFunc, void* Cookie, uint32 Flags, uint32 in_Hash)
-		: IAkUserEventCallbackPackage(Flags, in_Hash)
+	FAkFunctionPtrEventCallbackPackage(AkCallbackFunc CbFunc, void* Cookie, uint32 Flags, uint32 in_Hash, bool in_HasExternalSources)
+		: IAkUserEventCallbackPackage(Flags, in_Hash, in_HasExternalSources)
 		, pfnUserCallback(CbFunc)
 		, pUserCookie(Cookie)
 	{}
@@ -66,8 +70,8 @@ private:
 class FAkBlueprintDelegateEventCallbackPackage : public IAkUserEventCallbackPackage
 {
 public:
-	FAkBlueprintDelegateEventCallbackPackage(FOnAkPostEventCallback PostEventCallback, uint32 Flags, uint32 in_Hash)
-		: IAkUserEventCallbackPackage(Flags, in_Hash)
+	FAkBlueprintDelegateEventCallbackPackage(FOnAkPostEventCallback PostEventCallback, uint32 Flags, uint32 in_Hash, bool in_HasExternalSources)
+		: IAkUserEventCallbackPackage(Flags, in_Hash, in_HasExternalSources)
 		, BlueprintCallback(PostEventCallback)
 	{}
 
@@ -81,8 +85,8 @@ private:
 class FAkLatentActionEventCallbackPackage : public IAkUserEventCallbackPackage
 {
 public:
-	FAkLatentActionEventCallbackPackage(FWaitEndOfEventAction* LatentAction, uint32 in_Hash)
-		: IAkUserEventCallbackPackage(AK_EndOfEvent, in_Hash)
+	FAkLatentActionEventCallbackPackage(FWaitEndOfEventAction* LatentAction, uint32 in_Hash, bool in_HasExternalSources)
+		: IAkUserEventCallbackPackage(AK_EndOfEvent, in_Hash, in_HasExternalSources)
 		, EndOfEventLatentAction(LatentAction)
 	{
 		LatentActionValidityToken = MakeShared<FPendingLatentActionValidityToken, ESPMode::ThreadSafe>();
@@ -109,9 +113,9 @@ public:
 	FAkComponentCallbackManager();
 	~FAkComponentCallbackManager();
 
-	IAkUserEventCallbackPackage* CreateCallbackPackage(AkCallbackFunc in_cbFunc, void* in_Cookie, uint32 in_Flags, AkGameObjectID in_gameObjID);
-	IAkUserEventCallbackPackage* CreateCallbackPackage(FOnAkPostEventCallback BlueprintCallback, uint32 in_Flags, AkGameObjectID in_gameObjID);
-	IAkUserEventCallbackPackage* CreateCallbackPackage(FWaitEndOfEventAction* LatentAction, AkGameObjectID in_gameObjID);
+	IAkUserEventCallbackPackage* CreateCallbackPackage(AkCallbackFunc in_cbFunc, void* in_Cookie, uint32 in_Flags, AkGameObjectID in_gameObjID, bool HasExternalSources);
+	IAkUserEventCallbackPackage* CreateCallbackPackage(FOnAkPostEventCallback BlueprintCallback, uint32 in_Flags, AkGameObjectID in_gameObjID, bool HasExternalSources);
+	IAkUserEventCallbackPackage* CreateCallbackPackage(FWaitEndOfEventAction* LatentAction, AkGameObjectID in_gameObjID, bool HasExternalSources);
 	void RemoveCallbackPackage(IAkUserEventCallbackPackage* in_Package, AkGameObjectID in_gameObjID);
 
 	void CancelEventCallback(void* in_Cookie);

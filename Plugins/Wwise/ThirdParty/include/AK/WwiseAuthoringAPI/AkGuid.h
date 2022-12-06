@@ -21,8 +21,7 @@ under the Apache License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
 OR CONDITIONS OF ANY KIND, either express or implied. See the Apache License for
 the specific language governing permissions and limitations under the License.
 
-  Version: v2021.1.10  Build: 7883
-  Copyright (c) 2006-2022 Audiokinetic Inc.
+  Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
@@ -64,13 +63,24 @@ namespace AK
 			{
 				return *reinterpret_cast<const GUID*>(this);
 			}
+
+			inline bool operator==(const GUID& other) const
+			{
+				return AkGuidIsEqual(this, &other);
+			}
+
+			inline bool operator!=(const GUID& other) const
+			{
+				return !AkGuidIsEqual(this, &other);
+			}
 		#endif
+
 			inline bool operator==(const AkGuid& other) const
 			{
 				return AkGuidIsEqual(this, &other);
 			}
 
-			inline bool operator!=(const AkGuid& other)
+			inline bool operator!=(const AkGuid& other) const
 			{
 				return !AkGuidIsEqual(this, &other);
 			}

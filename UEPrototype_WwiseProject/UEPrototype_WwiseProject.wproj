@@ -13,6 +13,10 @@
 				<Language Name="SFX" ID="{531B7A1F-AE93-49CB-AD6D-59898C720575}"/>
 			</LanguageList>
 			<PropertyList>
+				<Property Name="RemoveUnusedGeneratedFiles" Type="bool" Value="True"/>
+				<Property Name="CopyLooseStreamedMedia" Type="bool" Value="True"/>
+				<Property Name="SoundBankGeneratePrintPath" Type="bool" Value="True"/>
+				<Property Name="AutoSoundBankEnabled" Type="bool" Value="True"/>
 				<Property Name="ExternalSourcesInputPath" Type="string">
 					<ValueList>
 						<Value Platform="Windows"></Value>
@@ -11886,8 +11890,8 @@
 				</ObsOccCurves>
 			</EnvironmentalSettings>
 			<LogCentralIgnoreList>
-				<IgnoreItem MessageId="MediaDuplicated"/>
-				<IgnoreItem MessageId="MediaNotFound"/>
+				
+				
 			</LogCentralIgnoreList>
 			<DefaultConversion Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}"/>
 			<PhysicalFolderList>

@@ -1,48 +1,56 @@
 /*******************************************************************************
-The content of the files in this repository include portions of the
-AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
-package.
-
-Commercial License Usage
-
-Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
-may use these files in accordance with the end user license agreement provided
-with the software or, alternatively, in accordance with the terms contained in a
-written agreement between you and Audiokinetic Inc.
-
-Copyright (c) 2021 Audiokinetic Inc.
+The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
+Technology released in source code form as part of the game integration package.
+The content of this file may not be used without valid licenses to the
+AUDIOKINETIC Wwise Technology.
+Note that the use of the game engine is subject to the Unreal(R) Engine End User
+License Agreement at https://www.unrealengine.com/en-US/eula/unreal
+ 
+License Usage
+ 
+Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
+this file in accordance with the end user license agreement provided with the
+software or, alternatively, in accordance with the terms contained
+in a written agreement between you and Audiokinetic Inc.
+Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
-
 
 /*------------------------------------------------------------------------------------
 	SWwisePicker.cpp
 ------------------------------------------------------------------------------------*/
 
-#include "WwisePicker/SWwisePicker.h"
+#include "SWwisePicker.h"
+#include "Wwise/WwiseProjectDatabaseDelegates.h"
+#include "WwisePicker/WwisePickerViewCommands.h"
 
 #include "AkAudioBankGenerationHelpers.h"
 #include "AkAudioDevice.h"
+#include "AkAudioModule.h"
 #include "AkAudioStyle.h"
 #include "AkAudioType.h"
 #include "AkSettings.h"
-#include "AkSettingsPerUser.h"
 #include "AkUnrealHelper.h"
-#include "AkWaapiClient.h"
-#include "AssetData.h"
+#include "IAudiokineticTools.h"
 #include "AssetManagement/AkAssetDatabase.h"
-#include "AssetRegistry/Public/AssetRegistryModule.h"
-#include "DirectoryWatcherModule.h"
+#include "Developer/DesktopPlatform/Public/DesktopPlatformModule.h"
 #include "DragAndDrop/AssetDragDropOp.h"
-#include "Editor/UnrealEd/Public/PackageTools.h"
-#include "IDirectoryWatcher.h"
+#include "Editor/UnrealEd/Public/EditorDirectories.h"
+#include "Framework/Commands/GenericCommands.h"
+#include "Framework/MultiBox/MultiBoxBuilder.h"
+#include "IDesktopPlatform.h"
+#include "Async/Async.h"
+#include "Misc/MessageDialog.h"
 #include "Misc/ScopedSlowTask.h"
 #include "Widgets/Input/SHyperlink.h"
 #include "Widgets/Input/SSearchBox.h"
 #include "Widgets/Layout/SSeparator.h"
 #include "Widgets/Layout/SSpacer.h"
+#include "Wwise/WwiseProjectDatabase.h"
+#include "Wwise/Metadata/WwiseMetadataProjectInfo.h"
 #include "WwisePicker/WwiseAssetDragDropOp.h"
-#include "WwisePicker/WwiseEventDragDropOp.h"
-#include "WwisePickerBuilderVisitor.h"
+#include "WwisePicker/WwisePickerHelpers.h"
+#include "WwisePicker/WwisePickerDataLoader.h"
+#include <ISettingsModule.h>
 
 #define LOCTEXT_NAMESPACE "AkAudio"
 
@@ -53,122 +61,74 @@ namespace SWwisePicker_Helper
 	const FName DirectoryWatcherModuleName = "DirectoryWatcher";
 }
 
-SWwisePicker::SWwisePicker()
+SWwisePicker::SWwisePicker(): CommandList(MakeShared<FUICommandList>())
 {
 	AllowTreeViewDelegates = true;
-	isPickerVisible = !FAkWaapiClient::IsProjectLoaded();
-
-	builderVisitor = MakeUnique<WwisePickerBuilderVisitor>();
-
-	workUnitParser.SetVisitor(builderVisitor.Get());
+	DataLoader = MakeUnique<FWwisePickerDataLoader>();
+	OnDatabaseUpdateCompleteHandle = FWwiseProjectDatabaseDelegates::Get().GetOnDatabaseUpdateCompletedDelegate().AddLambda([this]
+	{
+		AsyncTask(ENamedThreads::Type::GameThread, [this]
+		{
+			this->ForceRefresh();
+		});
+	});
 }
 
-void SWwisePicker::RemoveClientCallbacks()
+void SWwisePicker::CreateWwisePickerCommands()
 {
-	auto pWaapiClient = FAkWaapiClient::Get();
-	if (pWaapiClient != nullptr)
-	{
-		if (ProjectLoadedHandle.IsValid())
-		{
-			pWaapiClient->OnProjectLoaded.Remove(ProjectLoadedHandle);
-			ProjectLoadedHandle.Reset();
-		}
-		if (ConnectionLostHandle.IsValid())
-		{
-			pWaapiClient->OnConnectionLost.Remove(ConnectionLostHandle);
-			ConnectionLostHandle.Reset();
-		}
-	}
+	const FWwisePickerViewCommands& Commands = FWwisePickerViewCommands::Get();
+	FUICommandList& ActionList = *CommandList;
+
+	// Action for importing the selected items from the Waapi Picker.
+	ActionList.MapAction(
+		Commands.RequestImportWwiseItem,
+		FExecuteAction::CreateSP(this, &SWwisePicker::HandleImportWwiseItemCommandExecute));
 }
 
-void SWwisePicker::UpdateDirectoryWatcher()
+TSharedPtr<SWidget> SWwisePicker::MakeWwisePickerContextMenu()
 {
-	FString OldProjectFolder = ProjectFolder;
-	auto WwiseProjectPath = AkUnrealHelper::GetWwiseProjectPath();
-	ProjectFolder = FPaths::GetPath(WwiseProjectPath);
-	ProjectName = FPaths::GetCleanFilename(AkUnrealHelper::GetWwiseProjectPath());
+	const FWwisePickerViewCommands& Commands = FWwisePickerViewCommands::Get();
 
-	auto& DirectoryWatcherModule = FModuleManager::LoadModuleChecked<FDirectoryWatcherModule>(SWwisePicker_Helper::DirectoryWatcherModuleName);
-	if (ProjectDirectoryModifiedDelegateHandle.IsValid())
+	// Build up the menu
+	FMenuBuilder MenuBuilder(true, CommandList);
 	{
-		DirectoryWatcherModule.Get()->UnregisterDirectoryChangedCallback_Handle(OldProjectFolder, ProjectDirectoryModifiedDelegateHandle);
-	}
-
-	if (FPaths::FileExists(WwiseProjectPath))
-	{
-		DirectoryWatcherModule.Get()->RegisterDirectoryChangedCallback_Handle(
-			ProjectFolder
-			, IDirectoryWatcher::FDirectoryChanged::CreateRaw(this, &SWwisePicker::OnProjectDirectoryChanged)
-			, ProjectDirectoryModifiedDelegateHandle
-		);
-	}
-}
-
-void SWwisePicker::OnProjectDirectoryChanged(const TArray<struct FFileChangeData>& ChangedFiles)
-{
-	bool bFoundWorkUnit = false;
-	bool bProjectChanged = false;
-
-	for(auto& File : ChangedFiles)
-	{
-		if(File.Filename.EndsWith(FString(".wwu")))
+		MenuBuilder.BeginSection("WaapiPickerImport");
 		{
-			bFoundWorkUnit = true;
-			break;
+			MenuBuilder.AddMenuEntry(Commands.RequestImportWwiseItem);
 		}
-		if (File.Filename.EndsWith(FString(".wproj")))
-		{
-			bProjectChanged = true;
-			break;
-		}
+		MenuBuilder.EndSection();
 	}
-	
-	if(bFoundWorkUnit)
-	{
-		//Parse project, work units and construct tree
-		OnPopulateClicked();
-	}
-	else if (bProjectChanged)
-	{
-		//only parse project to see if physical folders changed
-		workUnitParser.ParsePhysicalFolders();
-		ConstructTree();
-	}
+	return MenuBuilder.MakeWidget();
 }
 
 SWwisePicker::~SWwisePicker()
 {
+	if (OnDatabaseUpdateCompleteHandle.IsValid())
+	{
+		FWwiseProjectDatabaseDelegates::Get().GetOnDatabaseUpdateCompletedDelegate().Remove(OnDatabaseUpdateCompleteHandle);
+		OnDatabaseUpdateCompleteHandle.Reset();
+	}
 	RootItems.Empty();
-	RemoveClientCallbacks();
-	auto pWaapiClient = FAkWaapiClient::Get();
-	if (pWaapiClient != nullptr)
-	{
-		pWaapiClient->OnClientBeginDestroy.Remove(ClientBeginDestroyHandle);
-	}
-
-	if (ProjectDirectoryModifiedDelegateHandle.IsValid())
-	{
-		auto& DirectoryWatcherModule = FModuleManager::LoadModuleChecked<FDirectoryWatcherModule>(SWwisePicker_Helper::DirectoryWatcherModuleName);
-		DirectoryWatcherModule.Get()->UnregisterDirectoryChangedCallback_Handle(ProjectFolder, ProjectDirectoryModifiedDelegateHandle);
-	}
 }
 
 void SWwisePicker::Construct(const FArguments& InArgs)
 {
-	if(isPickerVisible)
-		UpdateDirectoryWatcher();
+
+	FGenericCommands::Register();
+	FWwisePickerViewCommands::Register();
+	CreateWwisePickerCommands();
 
 	SearchBoxFilter = MakeShareable( new StringFilter( StringFilter::FItemToStringArray::CreateSP( this, &SWwisePicker::PopulateSearchStrings ) ) );
 	SearchBoxFilter->OnChanged().AddSP( this, &SWwisePicker::FilterUpdated );
 
     UAkSettings* AkSettings = GetMutableDefault<UAkSettings>();
-    AkSettings->bRequestRefresh = false;
+    AkSettings->bRequestRefresh = true;
     
 	ChildSlot
 	[
 		SNew(SBorder)
 		.Padding(4)
-		.BorderImage(FEditorStyle::GetBrush("ToolPanel.GroupBorder"))
+		.BorderImage(FAkAppStyle::Get().GetBrush("ToolPanel.GroupBorder"))
 		[
 			SNew(SOverlay)
 
@@ -177,7 +137,6 @@ void SWwisePicker::Construct(const FArguments& InArgs)
 			.VAlign(VAlign_Fill)
 			[
 				SNew(SVerticalBox)
-				.Visibility(this, &SWwisePicker::isPickerAllowed)
 
 				// Search
 				+ SVerticalBox::Slot()
@@ -221,7 +180,7 @@ void SWwisePicker::Construct(const FArguments& InArgs)
 					.Padding(0,0,3,0)
 					[
 						SNew(STextBlock)
-						.Font( FEditorStyle::GetFontStyle("ContentBrowser.SourceTitleFont") )
+						.Font( FAkAppStyle::Get().GetFontStyle("ContentBrowser.SourceTitleFont") )
 						.Text( this, &SWwisePicker::GetProjectName )
 						.Visibility(InArgs._ShowTreeTitle ? EVisibility::Visible : EVisibility::Collapsed)
 					]
@@ -236,14 +195,14 @@ void SWwisePicker::Construct(const FArguments& InArgs)
 					.AutoWidth()
 					[
 						SNew(SButton)
-						.Text(LOCTEXT("AkPickerPopulate", "Populate"))
-						.OnClicked(this, &SWwisePicker::OnPopulateClicked)
+						.Text(LOCTEXT("AkPickerRefresh", "Refresh"))
+						.OnClicked(this, &SWwisePicker::OnRefreshClicked)
 					]
 					+ SHorizontalBox::Slot()
 					.AutoWidth()
 					[
 						SNew(SButton)
-						.Text(LOCTEXT("AkPickerGenerate", "Generate Sound Data..."))
+						.Text(LOCTEXT("AkPickerGenerate", "Generate SoundBanks..."))
 						.OnClicked(this, &SWwisePicker::OnGenerateSoundBanksClicked)
 					]
 				]
@@ -262,7 +221,7 @@ void SWwisePicker::Construct(const FArguments& InArgs)
 				.FillHeight(1.f)
 				[
 					SAssignNew(TreeViewPtr, STreeView< TSharedPtr<FWwiseTreeItem> >)
-					.TreeItemsSource(&RootItems)
+					.TreeItemsSource(&RootItems).Visibility(this, &SWwisePicker::isWarningNotVisible)
 					.OnGenerateRow( this, &SWwisePicker::GenerateRow )
 					//.OnItemScrolledIntoView( this, &SPathView::TreeItemScrolledIntoView )
 					.ItemHeight(18)
@@ -270,6 +229,7 @@ void SWwisePicker::Construct(const FArguments& InArgs)
 					.OnSelectionChanged(this, &SWwisePicker::TreeSelectionChanged)
 					.OnExpansionChanged(this, &SWwisePicker::TreeExpansionChanged)
 					.OnGetChildren( this, &SWwisePicker::GetChildrenForTree )
+					.OnContextMenuOpening(this, &SWwisePicker::MakeWwisePickerContextMenu)
 					//.OnSetExpansionRecursive( this, &SPathView::SetTreeItemExpansionRecursive )
 					//.OnContextMenuOpening(this, &SPathView::MakePathViewContextMenu)
 					.ClearSelectionOnClick(false)
@@ -278,73 +238,40 @@ void SWwisePicker::Construct(const FArguments& InArgs)
 
 			// Empty Picker
 			+ SOverlay::Slot()
-			.VAlign(VAlign_Center)
-			.HAlign(HAlign_Center)
-			[
-				SNew(SVerticalBox)
-				+ SVerticalBox::Slot()
+				.VAlign(VAlign_Center)
+				.HAlign(HAlign_Center)
+				[
+					SNew(SVerticalBox)
+					+ SVerticalBox::Slot()
+					.VAlign(VAlign_Center)
+					.HAlign(HAlign_Center)
+					.AutoHeight()
+					[
+						SNew(STextBlock)
+						.Visibility(this, &SWwisePicker::isWarningVisible)
+						.AutoWrapText(true)
+						.Justification(ETextJustify::Center)
+						.Text(this, &SWwisePicker::GetWarningText)
+					]
+					+ SVerticalBox::Slot()
+					.VAlign(VAlign_Center)
+					.HAlign(HAlign_Center)
+					.AutoHeight()
+					[
+						SNew(SButton)
+						.Text(LOCTEXT("AkPickerOpenSettings", "Open Wwise Integration Settings"))
+						.Visibility(this, &SWwisePicker::isWarningVisible)
+						.OnClicked(this, &SWwisePicker::OnOpenSettingsClicked)
+					]
+					+ SVerticalBox::Slot()
 				.VAlign(VAlign_Center)
 				.HAlign(HAlign_Center)
 				.AutoHeight()
-				[
-					SNew(STextBlock)
-					.Visibility(this, &SWwisePicker::isWarningVisible)
-					.AutoWrapText(true)
-					.Justification(ETextJustify::Center)
-					.Text(LOCTEXT("EmptyWwiseTree", "WAAPI connection available; the Wwise Picker has been disabled. Please use the WAAPI Picker."))
 				]
-				+ SVerticalBox::Slot()
-				.VAlign(VAlign_Center)
-				.HAlign(HAlign_Center)
-				.AutoHeight()
-				[
-					SNew(SHyperlink)
-					.Visibility(this, &SWwisePicker::isWarningVisible)
-					.Text(LOCTEXT("WaapiDucumentation", "For more informaton, please Visit Waapi Documentation."))
-					.ToolTipText(LOCTEXT("WaapiDucumentationTooltip", "Opens Waapi documentation in a new browser window"))
-					.OnNavigate_Lambda([=]() { FPlatformProcess::LaunchURL(*FString("https://www.audiokinetic.com/library/?source=SDK&id=waapi.html"), nullptr, nullptr); })
-				]
-			]
 		]
 	];
 
-	auto pWaapiClient = FAkWaapiClient::Get();
-	if (pWaapiClient)
-	{
-		/* Empty the tree when we have the same project */
-		ProjectLoadedHandle = pWaapiClient->OnProjectLoaded.AddLambda([this]()
-		{
-			isPickerVisible = false;
-			RootItems.Empty();
-			ConstructTree();
-		});
-		/* Construct the tree when we have different projects */
-		ConnectionLostHandle = pWaapiClient->OnConnectionLost.AddLambda([this]()
-		{
-			isPickerVisible = true;
-			ForceRefresh();
-		});
-		ClientBeginDestroyHandle = pWaapiClient->OnClientBeginDestroy.AddLambda([this]()
-		{
-			RemoveClientCallbacks();
-		});
-	}
-
 	InitialParse();
-}
-
-EVisibility SWwisePicker::isPickerAllowed() const
-{
-	if (isPickerVisible)
-		return EVisibility::Visible;
-	return EVisibility::Hidden;
-}
-
-EVisibility SWwisePicker::isWarningVisible() const
-{
-	if (!isPickerVisible)
-		return EVisibility::Visible;
-	return EVisibility::Hidden;
 }
 
 void SWwisePicker::Tick( const FGeometry& AllottedGeometry, const double InCurrentTime, const float InDeltaTime )
@@ -359,47 +286,97 @@ void SWwisePicker::Tick( const FGeometry& AllottedGeometry, const double InCurre
 
 void SWwisePicker::ForceRefresh()
 {
-	workUnitParser.ForceParse();
-	UpdateDirectoryWatcher();
+	DataLoader->UpdateWwiseTree();
 	ConstructTree();
 }
 
 void SWwisePicker::InitialParse()
 {
-	OnPopulateClicked();
+	ForceRefresh();
 	TreeViewPtr->RequestTreeRefresh();
 	ExpandFirstLevel();
 }
 
 FText SWwisePicker::GetProjectName() const
 {
-	return FText::FromString(ProjectName);
+	auto* ProjectDatabase = FWwiseProjectDatabase::Get();
+	if (UNLIKELY(!ProjectDatabase))
+	{
+		return {};
+	}
+
+	const FWwiseDataStructureScopeLock DataStructure(*ProjectDatabase);
+	const FWwiseRefPlatform Platform = DataStructure.GetPlatform(ProjectDatabase->GetCurrentPlatform());
+
+	if (Platform.IsValid())
+	{
+		if (const auto* ProjectInfo = Platform.ProjectInfo.GetProjectInfo())
+		{
+			return FText::FromName(ProjectInfo->Project.Name);
+		}
+	}
+	return {};
 }
 
-FReply SWwisePicker::OnPopulateClicked()
+EVisibility SWwisePicker::isWarningVisible() const
 {
-	workUnitParser.Parse();
-	ConstructTree();
+	return GetProjectName().IsEmpty() ? EVisibility::Visible : EVisibility::Hidden;
+}
+
+EVisibility SWwisePicker::isWarningNotVisible() const
+{
+	return GetProjectName().IsEmpty() ? EVisibility::Hidden : EVisibility::Visible;
+}
+
+FText SWwisePicker::GetWarningText() const
+{
+	if (auto AkSettings = GetMutableDefault<UAkSettings>())
+	{
+		if (AkSettings->GeneratedSoundBanksFolder.Path.IsEmpty())
+		{
+			const FText WarningText = LOCTEXT("PickerSoundBanksFolderEmpty", "Generated SoundBanks Folder in Wwise Integration settings is empty.\nThis folder should match the \"Root Output Path\" in the Wwise Project's SoundBanks settings.");
+			return WarningText;
+		}
+	}
+
+	FString soundBankDirectory = AkUnrealHelper::GetSoundBankDirectory();
+	const FText WarningText = FText::FormatOrdered(LOCTEXT("P{ickerMissingSoundBanks", "SoundBank metadata was not found at path specified by \"Generated SoundBanks Folder\" setting: {0}.\nThis folder should match the \"Root Output Path\" in the Wwise Project's SoundBanks settings.\nEnsure the folders match, and that SoundBanks and JSON metadata are generated.\nPress the \"Refresh\" button to re-parse the generated metadata."), FText::FromString(soundBankDirectory));
+	return WarningText;
+}
+
+FReply SWwisePicker::OnOpenSettingsClicked()
+{
+	FModuleManager::LoadModuleChecked<ISettingsModule>("Settings").ShowViewer(FName("Project"), FName("Wwise"), FName("Integration"));
+	return FReply::Handled();
+}
+FReply SWwisePicker::OnRefreshClicked()
+{
+	if (FModuleManager::Get().IsModuleLoaded("AudiokineticTools"))
+	{
+		UE_LOG(LogAudiokineticTools, Verbose, TEXT("SWwisePicker::OnRefreshClicked: Reloading project data."));
+		FModuleManager::Get().GetModuleChecked<IAudiokineticTools>(FName("AudiokineticTools")).RefreshWwiseProject();
+	}
+	ForceRefresh();
 	return FReply::Handled();
 }
 
+
 FReply SWwisePicker::OnGenerateSoundBanksClicked()
 {
+	UE_LOG(LogAudiokineticTools, Verbose, TEXT("SWwisePicker::OnGenerateSoundBanksClicked: Opening Generate SoundBanks Window."));
 	AkAudioBankGenerationHelper::CreateGenerateSoundDataWindow();
 	return FReply::Handled();
 }
 
 void SWwisePicker::ConstructTree()
 {
-	if (!FAkWaapiClient::IsProjectLoaded())
+	RootItems.Empty(EWwiseItemType::LastWwisePickerType - EWwiseItemType::Event + 1);
+	for (int i = EWwiseItemType::Event; i <= EWwiseItemType::LastWwisePickerType; ++i)
 	{
-		RootItems.Empty(EWwiseItemType::LastWwiseDraggable - EWwiseItemType::Event + 1);
-		for (int i = EWwiseItemType::Event; i <= EWwiseItemType::LastWwiseDraggable; ++i)
-		{
-			TSharedPtr<FWwiseTreeItem> NewRoot = builderVisitor->GetTree(SearchBoxFilter, RootItems.Num() > i ? RootItems[i] : nullptr, static_cast<EWwiseItemType::Type>(i));
-			RootItems.Add(NewRoot);
-		}		
-	}
+		TSharedPtr<FWwiseTreeItem> NewRoot = DataLoader->GetTree(SearchBoxFilter, RootItems.Num() > i ? RootItems[i]: nullptr, static_cast<EWwiseItemType::Type>(i));
+		RootItems.Add(NewRoot);
+	}		
+
 	RestoreTreeExpansion(RootItems);
 	TreeViewPtr->RequestTreeRefresh();
 }
@@ -481,30 +458,49 @@ FReply SWwisePicker::DoDragDetected(const FPointerEvent& MouseEvent, const TArra
 		return FReply::Unhandled();
 	}
 
-	auto AkSettings = GetDefault<UAkSettings>();
-	auto AkSettingsPerUser = GetDefault<UAkSettingsPerUser>();
-	if (AkSettings && AkSettings->UseEventBasedPackaging && AkSettingsPerUser && AkSettingsPerUser->EnableAutomaticAssetSynchronization)
+	UE_LOG(LogAudiokineticTools, Verbose, TEXT("SWwisePicker::OnDragDetected: User drag operation started."));
+
+    auto AkSettings = GetMutableDefault<UAkSettings>();
+	const FString DefaultPath = AkSettings->DefaultAssetCreationPath;
+
+	// bool tracks whether the asset already existed. This is for proper cleanup after the drop operation.
+	TArray<WwisePickerHelpers::WwisePickerAssetPayload> DragAssets;
+	TSet<FGuid> SeenGuids;
+	for (auto& WwiseTreeItem : SelectedItems)
 	{
-		TArray<FAssetData> Assets;
-		for (auto& Item : SelectedItems)
+		if (!WwiseTreeItem->ItemId.IsValid() && !WwisePickerHelpers::IsFolder(WwiseTreeItem))
 		{
-			if (auto AkAssetPtr = AkAssetDatabase::Get().AudioTypeMap.Find(Item->ItemId))
-			{
-				Assets.Add(*AkAssetPtr);
-			}
+			UE_LOG(LogAudiokineticTools, Error, TEXT("Cannot drag selected Wwise asset: %s does not have a valid ID"), *(WwiseTreeItem->FolderPath));
+			continue;
 		}
 
-		if (Assets.Num() == 0)
-		{
-			return FReply::Unhandled();
-		}
+		WwisePickerHelpers::FindOrCreateAssetsRecursive(WwiseTreeItem,DragAssets,SeenGuids, WwisePickerHelpers::EAssetCreationMode::Transient);
+	}
 
-		return FReply::Handled().BeginDragDrop(FWwiseAssetDragDropOp::New(Assets));
-	}
-	else
+	if (DragAssets.Num() == 0)
 	{
-		return FReply::Handled().BeginDragDrop(FWwiseEventDragDropOp::New(SelectedItems));
+		UE_LOG(LogAudiokineticTools, Error, TEXT("Failed to find or create Wwise asset '%s'%s in Picker operation"),
+			*(SelectedItems[0]->FolderPath), SelectedItems.Num() > 1 ? TEXT(" and others"): TEXT(""));
+		return FReply::Unhandled();
 	}
+
+	return FReply::Handled().BeginDragDrop(FWwiseAssetDragDropOp::New(DragAssets));
+}
+
+void SWwisePicker::ImportWwiseAssets(const TArray<TSharedPtr<FWwiseTreeItem>>& SelectedItems, const FString& PackagePath)
+{
+	UE_LOG(LogAudiokineticTools, Verbose, TEXT("SWwisePicker::ImportWwiseAssets: Creating %d assets in %s."), SelectedItems.Num(), *PackagePath);
+	TArray<WwisePickerHelpers::WwisePickerAssetPayload> AssetsToImport;
+	TSet<FGuid> SeenGuids;
+	for(auto WwiseTreeItem: SelectedItems)
+	{
+		WwisePickerHelpers::FindOrCreateAssetsRecursive(WwiseTreeItem, AssetsToImport, SeenGuids, 
+			WwisePickerHelpers::EAssetCreationMode::InPackage, PackagePath);
+
+	}
+
+	WwisePickerHelpers::SaveSelectedAssets(AssetsToImport, PackagePath, 
+			WwisePickerHelpers::EAssetCreationMode::InPackage, WwisePickerHelpers::EAssetDuplicationMode::DoDuplication);
 }
 
 void SWwisePicker::PopulateSearchStrings(const FString& FolderName, OUT TArray< FString >& OutSearchStrings) const
@@ -528,7 +524,7 @@ void SWwisePicker::FilterUpdated()
 	SlowTask.MakeDialog();
 	for (int32 i = 0; i < RootItems.Num(); i++)
 	{
-		RootItems[i] = builderVisitor->GetTree(SearchBoxFilter, RootItems[i], static_cast<EWwiseItemType::Type>(i));
+		RootItems[i] = DataLoader->GetTree(SearchBoxFilter, RootItems.Num() > i ? RootItems[i]: nullptr, static_cast<EWwiseItemType::Type>(i));
 
 		AllowTreeViewDelegates = false;
 		RestoreTreeExpansion(RootItems);
@@ -610,4 +606,41 @@ void SWwisePicker::TreeExpansionChanged( TSharedPtr< FWwiseTreeItem > TreeItem, 
 	}
 }
 
+void SWwisePicker::HandleImportWwiseItemCommandExecute() const
+{
+	// If not prompting individual files, prompt the user to select a target directory.
+	IDesktopPlatform* DesktopPlatform = FDesktopPlatformModule::Get();
+	if (DesktopPlatform)
+	{
+		FString LastWwiseImportPath = FEditorDirectories::Get().GetLastDirectory(ELastDirectory::GENERIC_IMPORT);
+		FString FolderName;
+		const FString Title = NSLOCTEXT("UnrealEd", "ChooseADirectory", "Choose A Directory").ToString();
+		const bool bFolderSelected = DesktopPlatform->OpenDirectoryDialog(
+			FSlateApplication::Get().FindBestParentWindowHandleForDialogs(nullptr),
+			Title,
+			LastWwiseImportPath,
+			FolderName
+		);
+
+		if (bFolderSelected)
+		{
+			if (!FPaths::IsUnderDirectory(FolderName, FPaths::ProjectContentDir()))
+			{
+
+				const FText FailReason = FText::FormatOrdered(LOCTEXT("CannotImportWwiseItem", "Cannot import into {0}. Folder must be in content directory."), FText::FromString(FolderName));
+				FMessageDialog::Open(EAppMsgType::Ok, FailReason);
+				UE_LOG(LogAudiokineticTools, Error, TEXT("%s"), *FailReason.ToString());
+				return;
+			}
+			FPaths::MakePathRelativeTo(FolderName, *FPaths::ProjectContentDir());
+			FString PackagePath = TEXT("/Game");
+			if (!FolderName.IsEmpty())
+			{
+				PackagePath = PackagePath / FolderName;
+			}
+			FEditorDirectories::Get().SetLastDirectory(ELastDirectory::GENERIC_IMPORT, PackagePath);
+			ImportWwiseAssets(TreeViewPtr->GetSelectedItems(), PackagePath);
+		}
+	}
+}
 #undef LOCTEXT_NAMESPACE
