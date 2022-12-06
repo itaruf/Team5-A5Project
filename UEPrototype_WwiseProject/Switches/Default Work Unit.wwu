@@ -5,6 +5,7 @@
 			<ChildrenList>
 				<WorkUnit Name="Ground" ID="{E004A010-F504-4067-98A9-85016B6C045A}" PersistMode="Reference"/>
 				<WorkUnit Name="Player" ID="{EBA3CEEC-BC2B-49E8-A7E7-74B1ED343117}" PersistMode="Reference"/>
+				<WorkUnit Name="Music" ID="{FB2C2EB9-8C59-4302-A45E-9A6C4C587C2B}" PersistMode="Reference"/>
 			</ChildrenList>
 		</WorkUnit>
 	</Switches>

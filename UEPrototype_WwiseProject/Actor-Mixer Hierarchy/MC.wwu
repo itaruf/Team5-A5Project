@@ -2,6 +2,10 @@
 <WwiseDocument Type="WorkUnit" ID="{770F098B-B93C-4720-A984-3E030EB04B8D}" SchemaVersion="103" RootDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" ParentDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}">
 	<AudioObjects>
 		<WorkUnit Name="MC" ID="{770F098B-B93C-4720-A984-3E030EB04B8D}" OwnerID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" PersistMode="Nested">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="8"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
 			<ChildrenList>
 				<ActorMixer Name="MC" ID="{97DDC955-517D-4E6B-A016-90253F172554}" ShortID="13910117">
 					<PropertyList>
@@ -314,7 +318,7 @@
 										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-26</Value>
+												<Value>-12</Value>
 											</ValueList>
 											<ModifierList>
 												<ModifierInfo>
@@ -554,11 +558,6 @@
 										</Property>
 										<Property Name="OverrideGameAuxSends" Type="bool" Value="True"/>
 										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
-										<Property Name="Volume" Type="Real64">
-											<ValueList>
-												<Value>-11</Value>
-											</ValueList>
-										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -575,7 +574,7 @@
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-3</Value>
+														<Value>-5</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -713,7 +712,7 @@
 												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-3</Value>
+														<Value>-10</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -1194,11 +1193,6 @@
 												<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
 												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-3</Value>
-													</ValueList>
-												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -1440,13 +1434,6 @@
 									</ReferenceList>
 									<ChildrenList>
 										<SwitchContainer Name="MC_FT_SpeedSwitch" ID="{2ED4D6B0-7770-4A7E-878D-EEC6F24E1278}" ShortID="171005289">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-8</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
@@ -4704,9 +4691,22 @@
 										</SwitchContainer>
 										<SwitchContainer Name="MC_FT_Jump_GroundSwitch" ID="{4D3567D7-4DE4-4321-884C-4016EBA8976C}" ShortID="276952300">
 											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{CD618D51-E0FA-4275-A53D-EDC088915B07}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="100"/>
+																	<Property Name="Min" Type="Real64" Value="-100"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-7</Value>
+														<Value>1</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -6110,6 +6110,11 @@
 										</SwitchContainer>
 										<SwitchContainer Name="MC_FT_WallRun_GroundSwitch" ID="{261F0B73-8815-4C3B-A936-1E53A89942B5}" ShortID="1023433653">
 											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>-11</Value>
@@ -7031,6 +7036,11 @@
 										</SwitchContainer>
 										<RandomSequenceContainer Name="MC_FT_MagicLayer" ID="{53DD9E2D-9A76-4EDB-B309-11E2954146B5}" ShortID="433426513">
 											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
 												<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
@@ -7260,6 +7270,11 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="MC_FT_Jump_MagicLayer" ID="{4B6F1162-B6C1-4C8F-8C50-F60E7D67F068}" ShortID="560021208">
 											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
 												<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
@@ -7411,6 +7426,11 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="MC_FT_Land_MagicLayer" ID="{053A5CA1-D6BB-450F-B38C-2E04BD5EDD6A}" ShortID="312874822">
 											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
 												<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
@@ -7548,6 +7568,11 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="MC_FT_WallJump_MagicLayer" ID="{5F0430D8-4478-41E9-8C16-C7BE4F183CCD}" ShortID="210793967">
 											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
 												<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
@@ -7685,6 +7710,11 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="MC_FT_WallZap_MagicLayer" ID="{9AE511FD-4DBB-4D44-86EF-CDBACFEB4975}" ShortID="1035467552">
 											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
 												<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
@@ -7844,6 +7874,13 @@
 											<ObjectLists/>
 										</RandomSequenceContainer>
 										<SwitchContainer Name="MC_FT_WetStep_Switch" ID="{DDA592E0-5DD3-4B01-B747-13A26FAB57BB}" ShortID="23140924">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>12</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
@@ -8186,6 +8223,7 @@
 										</SwitchContainer>
 										<RandomSequenceContainer Name="MC_FT_Grass_Walk" ID="{A3955EB5-420E-42D7-ACF6-04961648AABC}" ShortID="975222626">
 											<PropertyList>
+												<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
@@ -8200,6 +8238,11 @@
 										</RandomSequenceContainer>
 										<Sound Name="MC_FT_WallRun_Scrape_LP" ID="{227DEF3F-3002-4F3E-83FC-A212F703F653}" ShortID="768039935">
 											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 												<Property Name="Volume" Type="Real64">
@@ -8232,11 +8275,388 @@
 												<ActiveSource Name="MC_FT_WallRun_Scrape_LP" ID="{E197DB41-DFB4-4F78-B182-B90AAC220508}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<RandomSequenceContainer Name="MC_FT_Grass_Slide" ID="{26D3A0BA-DE12-4AF6-9135-1F56044D3628}" ShortID="808427231">
+											<PropertyList>
+												<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="MC_FT_Grass_Slide_01" ID="{FAEBBF64-F0E8-476B-93CE-ADF9A6FBF5F6}" ShortID="863067848">
+													<PropertyList>
+														<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MC" ID="{85FDBF6E-125A-4553-8D26-BE71B76B2425}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="MC_FT_Grass_Slide_01" ID="{6294D0C8-B42A-4284-98C4-E2AE597D4FDD}">
+															<Language>SFX</Language>
+															<AudioFile>MC_FT_Grass_Slide_01.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="838203524"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="MC_FT_Grass_Slide_01" ID="{6294D0C8-B42A-4284-98C4-E2AE597D4FDD}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="MC_FT_Grass_Slide_02" ID="{1BEAA5BC-C5CA-476E-BE2D-2BDDD088F79C}" ShortID="278882348">
+													<PropertyList>
+														<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MC" ID="{85FDBF6E-125A-4553-8D26-BE71B76B2425}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="MC_FT_Grass_Slide_02" ID="{23962907-470A-42CB-A98A-D3BDC2EA9DD5}">
+															<Language>SFX</Language>
+															<AudioFile>MC_FT_Grass_Slide_02.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="780928233"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="MC_FT_Grass_Slide_02" ID="{23962907-470A-42CB-A98A-D3BDC2EA9DD5}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="MC_FT_Grass_Slide_03" ID="{8725E0A0-02BE-4B03-92D1-6B8263682CC8}" ShortID="719836551">
+													<PropertyList>
+														<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MC" ID="{85FDBF6E-125A-4553-8D26-BE71B76B2425}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="MC_FT_Grass_Slide_03" ID="{185CF28E-D321-4B58-8494-01549A936C83}">
+															<Language>SFX</Language>
+															<AudioFile>MC_FT_Grass_Slide_03.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="738220766"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="MC_FT_Grass_Slide_03" ID="{185CF28E-D321-4B58-8494-01549A936C83}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+											<ObjectLists/>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="MC_FT_Water_Slide" ID="{E7D544A0-4AF3-4067-8C34-38CA604F6A0F}" ShortID="589266019">
+											<PropertyList>
+												<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="MC_FT_Water_Slide_01" ID="{8B6B0173-A433-44DA-94EF-EFD4E654719B}" ShortID="989166239">
+													<PropertyList>
+														<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MC" ID="{85FDBF6E-125A-4553-8D26-BE71B76B2425}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="MC_FT_Water_Slide_01" ID="{E9CEBA7C-7C9C-4F8F-8E6C-B75B2871EBDF}">
+															<Language>SFX</Language>
+															<AudioFile>MC_FT_Water_Slide_01.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="202701071"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="MC_FT_Water_Slide_01" ID="{E9CEBA7C-7C9C-4F8F-8E6C-B75B2871EBDF}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="MC_FT_Water_Slide_02" ID="{CC22FE66-B26F-4667-9244-F8E2CD51C4AE}" ShortID="93533370">
+													<PropertyList>
+														<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MC" ID="{85FDBF6E-125A-4553-8D26-BE71B76B2425}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="MC_FT_Water_Slide_02" ID="{BC4F302B-B0FA-4753-AD07-3FEB56F101E3}">
+															<Language>SFX</Language>
+															<AudioFile>MC_FT_Water_Slide_02.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="902876032"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="MC_FT_Water_Slide_02" ID="{BC4F302B-B0FA-4753-AD07-3FEB56F101E3}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="MC_FT_Water_Slide_03" ID="{3448C6E6-8355-4EE9-8081-81BD2F922F6B}" ShortID="372320821">
+													<PropertyList>
+														<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="MC" ID="{85FDBF6E-125A-4553-8D26-BE71B76B2425}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="MC_FT_Water_Slide_03" ID="{B040901C-4A75-469A-9EE8-3B512F4B994A}">
+															<Language>SFX</Language>
+															<AudioFile>MC_FT_Water_Slide_03.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1040885661"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="MC_FT_Water_Slide_03" ID="{B040901C-4A75-469A-9EE8-3B512F4B994A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+											<ObjectLists/>
+										</RandomSequenceContainer>
 									</ChildrenList>
 									<ObjectLists/>
 								</ActorMixer>
 							</ChildrenList>
 						</Folder>
+						<Folder Name="Dash" ID="{3B68E523-DA13-4FE7-9BCF-B5483DE570C7}" ShortID="374151301">
+							<ChildrenList>
+								<ActorMixer Name="Dash" ID="{A00BEE5A-6CF9-43B1-9C41-73A71A82D821}" ShortID="1056711476">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Dash_iteration" ID="{BE12D9B4-6CBF-4F31-9DB9-18D8B931D980}" ShortID="158198604">
+											<PropertyList>
+												<Property Name="Highpass" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{ABE1D794-71F2-4C26-A020-AE6EA89D68F7}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="7"/>
+																	<Property Name="Min" Type="Real64" Value="-6"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{D8F115C7-DA19-4D0E-B326-3EAA2EDA0EDC}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="455"/>
+																	<Property Name="Min" Type="Real64" Value="-328"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{7EF8A703-C68D-4C39-A928-D7345139BB1C}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="2"/>
+																	<Property Name="Min" Type="Real64" Value="-1"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="SFX_Dash-001" ID="{5032CCE2-C330-4265-B5E8-48C6DE501525}" ShortID="352934504">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="SFX_Dash-001" ID="{D7909EC0-AE9E-43D5-852A-10C00A2DCBD2}">
+															<Language>SFX</Language>
+															<AudioFile>SFX_Dash-001.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="499131520"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="SFX_Dash-001" ID="{D7909EC0-AE9E-43D5-852A-10C00A2DCBD2}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="SFX_Dash-002" ID="{2B7C0DB7-3E55-43DF-B78D-D70F864887D9}" ShortID="1028672654">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="SFX_Dash-002" ID="{891F2AF2-F5F6-456B-BF89-396E3388EC27}">
+															<Language>SFX</Language>
+															<AudioFile>SFX_Dash-002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="871668984"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="SFX_Dash-002" ID="{891F2AF2-F5F6-456B-BF89-396E3388EC27}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="SFX_Dash-003" ID="{514E55CC-72CE-45A2-977C-7ABB4BD00CCC}" ShortID="283381575">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="SFX_Dash-003" ID="{C2C50A01-9563-4543-A464-72C689E6851C}">
+															<Language>SFX</Language>
+															<AudioFile>SFX_Dash-003.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="852972968"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="SFX_Dash-003" ID="{C2C50A01-9563-4543-A464-72C689E6851C}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="SFX_Dash-004" ID="{37D06D45-8BD9-44E1-8A85-77789E38527D}" ShortID="304846922">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="SFX_Dash-004" ID="{842A4A97-232F-47C4-9DF9-BFFE9F018678}">
+															<Language>SFX</Language>
+															<AudioFile>SFX_Dash-004.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="563620057"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="SFX_Dash-004" ID="{842A4A97-232F-47C4-9DF9-BFFE9F018678}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+											<ObjectLists/>
+										</RandomSequenceContainer>
+									</ChildrenList>
+									<ObjectLists/>
+								</ActorMixer>
+							</ChildrenList>
+						</Folder>
+						<Sound Name="SFX_MC_Full_Life" ID="{B49B6C53-2434-4E2B-AE55-BD4565F5EA13}" ShortID="601554698">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="SFX_MC_Full_Life" ID="{7AC00D13-AA70-4253-86F2-EB0D0A234964}">
+									<Language>SFX</Language>
+									<AudioFile>SFX_MC_Full_Life.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="550340099"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="SFX_MC_Full_Life" ID="{7AC00D13-AA70-4253-86F2-EB0D0A234964}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
 					<ObjectLists/>
 				</ActorMixer>

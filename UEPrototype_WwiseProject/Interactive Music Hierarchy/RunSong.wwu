@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}" SchemaVersion="103" RootDocumentID="{A1C2F120-70F5-4932-9C1D-3546DE478B0F}" ParentDocumentID="{A1C2F120-70F5-4932-9C1D-3546DE478B0F}">
+<WwiseDocument Type="WorkUnit" ID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}" SchemaVersion="103">
 	<InteractiveMusic>
-		<WorkUnit Name="RunSong" ID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}" OwnerID="{A1C2F120-70F5-4932-9C1D-3546DE478B0F}" PersistMode="Nested">
+		<WorkUnit Name="RunSong" ID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="10"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
 			<ChildrenList>
-				<MusicSwitchContainer Name="MusicRun" ID="{1ADFFBF9-EB45-42DD-A4CE-A1AA8CA29B5C}" ShortID="324895293">
+				<MusicSwitchContainer Name="IntroorIngame" ID="{B1E78675-C03C-4C17-B653-CD999E5CD9B9}" ShortID="906958150">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
@@ -13,7 +17,14 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<MusicPlaylistContainer Name="RunningMachine" ID="{B68FF184-F126-4E7C-BC95-23BD16FBD706}" ShortID="946858495">
+						<MusicSwitchContainer Name="Ingame" ID="{1ADFFBF9-EB45-42DD-A4CE-A1AA8CA29B5C}" ShortID="324895293">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-1</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
@@ -23,9 +34,872 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<MusicSegment Name="SugarCrushFirstSong_FirstSection" ID="{8860995A-34AA-440B-82DE-17A461A72C4E}" ShortID="793064745">
+								<MusicPlaylistContainer Name="Mid" ID="{180ECBE2-651D-4051-8D6B-7803BC9B1421}" ShortID="114481911">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<MusicSegment Name="MUSIC_LoopSpeedMid02_SugarCrush_120bpm_4-4" ID="{1A6B8EBD-152F-42C8-81A5-15BFD6BF748A}" ShortID="831714282">
+											<PropertyList>
+												<Property Name="EndPosition" Type="Real64" Value="16000"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<MusicTrack Name="MUSIC_LoopSpeedMid02_SugarCrush_120bpm_4-4" ID="{4359BD4B-76F7-4FAE-91E3-1A5AC592E8E2}" ShortID="533695356">
+													<ReferenceList>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="MUSIC_LoopSpeedMid02_SugarCrush_120bpm_4-4" ID="{5575614F-0CC3-4DEE-A082-1A4D0F904A3C}">
+															<Language>SFX</Language>
+															<AudioFile>MUSIC_LoopSpeedMid02_SugarCrush_120bpm_4-4.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="426828471"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<TransitionList>
+														<MusicTransition Name="Root" ID="{B415BE14-F8A5-4D82-B135-9D8430806DCB}">
+															<PropertyList>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</TransitionList>
+													<ObjectLists>
+														<ObjectList Name="Sequences">
+															<Reference>
+																<Local>
+																	<MusicTrackSequence Name="" ID="{2A0B649B-8DC0-4B60-8739-B62C1D7038AA}">
+																		<ObjectLists>
+																			<ObjectList Name="Clips">
+																				<Reference>
+																					<Local>
+																						<MusicClip Name="MUSIC_LoopSpeedMid02_SugarCrush_120bpm_4-4" ID="{3CF8B7CF-6710-420F-92D4-1EEEE837B5DD}">
+																							<PropertyList>
+																								<Property Name="EndTrimOffset" Type="Real64" Value="16000"/>
+																								<Property Name="FadeInMode" Type="int16" Value="0"/>
+																								<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																							</PropertyList>
+																							<AudioSourceRef Name="MUSIC_LoopSpeedMid02_SugarCrush_120bpm_4-4" ID="{5575614F-0CC3-4DEE-A082-1A4D0F904A3C}"/>
+																						</MusicClip>
+																					</Local>
+																				</Reference>
+																			</ObjectList>
+																		</ObjectLists>
+																	</MusicTrackSequence>
+																</Local>
+															</Reference>
+														</ObjectList>
+													</ObjectLists>
+												</MusicTrack>
+											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="Cues">
+													<Reference>
+														<Local>
+															<MusicCue Name="Entry Cue" ID="{EBBD28F2-9632-4962-BB87-551A2AE3F24D}"/>
+														</Local>
+													</Reference>
+													<Reference>
+														<Local>
+															<MusicCue Name="Exit Cue" ID="{E4C74989-CFF7-4B92-A007-CEB5E8AED82D}">
+																<PropertyList>
+																	<Property Name="CueType" Type="int16" Value="1"/>
+																	<Property Name="TimeMs" Type="Real64" Value="8000"/>
+																</PropertyList>
+															</MusicCue>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicSegment>
+										<MusicSegment Name="MUSIC_LoopSpeedMid01_SugarCrush_120bpm_4-4" ID="{639E3962-813E-4EFC-B0A6-76BC50914FA1}" ShortID="531790002">
+											<PropertyList>
+												<Property Name="EndPosition" Type="Real64" Value="16000"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<MusicTrack Name="MUSIC_LoopSpeedMid01_SugarCrush_120bpm_4-4" ID="{5D525292-A201-4345-A315-FABF943ABF35}" ShortID="994469331">
+													<ReferenceList>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="MUSIC_LoopSpeedMid01_SugarCrush_120bpm_4-4" ID="{81EEDA49-EDE9-468F-BACE-915B33324172}">
+															<Language>SFX</Language>
+															<AudioFile>MUSIC_LoopSpeedMid01_SugarCrush_120bpm_4-4.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1060645513"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<TransitionList>
+														<MusicTransition Name="Root" ID="{CC3835A7-E7B6-4117-9F17-7ED7BE6345E9}">
+															<PropertyList>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</TransitionList>
+													<ObjectLists>
+														<ObjectList Name="Sequences">
+															<Reference>
+																<Local>
+																	<MusicTrackSequence Name="" ID="{4D7A8A55-2664-4274-A786-7479CD803AAF}">
+																		<ObjectLists>
+																			<ObjectList Name="Clips">
+																				<Reference>
+																					<Local>
+																						<MusicClip Name="MUSIC_LoopSpeedMid01_SugarCrush_120bpm_4-4" ID="{1BEC1028-D3DD-44E7-9691-243E65EF33B7}">
+																							<PropertyList>
+																								<Property Name="EndTrimOffset" Type="Real64" Value="16000"/>
+																								<Property Name="FadeInMode" Type="int16" Value="0"/>
+																								<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																							</PropertyList>
+																							<AudioSourceRef Name="MUSIC_LoopSpeedMid01_SugarCrush_120bpm_4-4" ID="{81EEDA49-EDE9-468F-BACE-915B33324172}"/>
+																						</MusicClip>
+																					</Local>
+																				</Reference>
+																			</ObjectList>
+																		</ObjectLists>
+																	</MusicTrackSequence>
+																</Local>
+															</Reference>
+														</ObjectList>
+													</ObjectLists>
+												</MusicTrack>
+											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="Cues">
+													<Reference>
+														<Local>
+															<MusicCue Name="Entry Cue" ID="{0F53B75F-C5A1-40B3-9512-943FF6806CD8}"/>
+														</Local>
+													</Reference>
+													<Reference>
+														<Local>
+															<MusicCue Name="Exit Cue" ID="{9066CFC3-1251-40E0-808E-1BA0AF06DDAA}">
+																<PropertyList>
+																	<Property Name="CueType" Type="int16" Value="1"/>
+																	<Property Name="TimeMs" Type="Real64" Value="8000"/>
+																</PropertyList>
+															</MusicCue>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicSegment>
+									</ChildrenList>
+									<TransitionList>
+										<MusicTransition Name="Root" ID="{E0D6B4D3-F7B8-47F9-9292-5188AB6747AF}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicTransition Name="Transition" ID="{ED98DD0E-14E9-4C72-A986-4FD3BAA599B1}">
+													<TransitionInfo/>
+												</MusicTransition>
+											</ChildrenList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</TransitionList>
+									<ObjectLists/>
+									<Playlist>
+										<MusicPlaylistItem Name="" ID="{5B0F59C7-5496-496C-89B7-CC421EF6D508}" ShortID="843863247">
+											<PropertyList>
+												<Property Name="PlayMode" Type="int16" Value="2"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicPlaylistItem Name="" ID="{23E44C45-BFA1-49C9-8C0C-13E300BB195F}" ShortID="865827230">
+													<PropertyList>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<SegmentRef Name="MUSIC_LoopSpeedMid01_SugarCrush_120bpm_4-4" ID="{639E3962-813E-4EFC-B0A6-76BC50914FA1}"/>
+												</MusicPlaylistItem>
+												<MusicPlaylistItem Name="" ID="{09647EC6-281C-4701-B6CD-1FAF5258AA4E}" ShortID="1026261398">
+													<PropertyList>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<SegmentRef Name="MUSIC_LoopSpeedMid02_SugarCrush_120bpm_4-4" ID="{1A6B8EBD-152F-42C8-81A5-15BFD6BF748A}"/>
+												</MusicPlaylistItem>
+											</ChildrenList>
+										</MusicPlaylistItem>
+									</Playlist>
+								</MusicPlaylistContainer>
+								<MusicPlaylistContainer Name="Minimum" ID="{8AEEA332-4C5D-4ED5-A2CD-492BC63AD770}" ShortID="732395536">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<MusicSegment Name="MUSIC_LoopSpeedMinimum01_SugarCrush_120bpm_4-4" ID="{CA14AFA3-83DD-4E7E-87DD-3D5DA035B304}" ShortID="464154479">
+											<PropertyList>
+												<Property Name="EndPosition" Type="Real64" Value="16000"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<MusicTrack Name="MUSIC_LoopSpeedMinimum01_SugarCrush_120bpm_4-4" ID="{95FFF833-7BD5-4121-AB5F-36AA398D0F1B}" ShortID="1027784157">
+													<ReferenceList>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="MUSIC_LoopSpeedMinimum01_SugarCrush_120bpm_4-4" ID="{AC0AC01C-C0E8-4C69-90EA-01F879778AB6}">
+															<Language>SFX</Language>
+															<AudioFile>MUSIC_LoopSpeedMinimum01_SugarCrush_120bpm_4-4.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="667101803"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<TransitionList>
+														<MusicTransition Name="Root" ID="{B99898D1-DE34-48FF-8B6E-4C43F7E1FB07}">
+															<PropertyList>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</TransitionList>
+													<ObjectLists>
+														<ObjectList Name="Sequences">
+															<Reference>
+																<Local>
+																	<MusicTrackSequence Name="" ID="{5A204ACC-2D19-4418-B016-305AEFE42FCB}">
+																		<ObjectLists>
+																			<ObjectList Name="Clips">
+																				<Reference>
+																					<Local>
+																						<MusicClip Name="MUSIC_LoopSpeedMinimum01_SugarCrush_120bpm_4-4" ID="{82314463-131F-4FA1-973B-98E2C0037E03}">
+																							<PropertyList>
+																								<Property Name="EndTrimOffset" Type="Real64" Value="16000"/>
+																								<Property Name="FadeInMode" Type="int16" Value="0"/>
+																								<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																							</PropertyList>
+																							<AudioSourceRef Name="MUSIC_LoopSpeedMinimum01_SugarCrush_120bpm_4-4" ID="{AC0AC01C-C0E8-4C69-90EA-01F879778AB6}"/>
+																						</MusicClip>
+																					</Local>
+																				</Reference>
+																			</ObjectList>
+																		</ObjectLists>
+																	</MusicTrackSequence>
+																</Local>
+															</Reference>
+														</ObjectList>
+													</ObjectLists>
+												</MusicTrack>
+											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="Cues">
+													<Reference>
+														<Local>
+															<MusicCue Name="Entry Cue" ID="{944141B0-B76A-4000-B814-4687E9F555A3}"/>
+														</Local>
+													</Reference>
+													<Reference>
+														<Local>
+															<MusicCue Name="Exit Cue" ID="{7EFB0A27-801E-4382-BB07-62229D5D8675}">
+																<PropertyList>
+																	<Property Name="CueType" Type="int16" Value="1"/>
+																	<Property Name="TimeMs" Type="Real64" Value="8000"/>
+																</PropertyList>
+															</MusicCue>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicSegment>
+										<MusicSegment Name="MUSIC_LoopSpeedMinimum02_SugarCrush_120bpm_4-4" ID="{78D6FFE3-2AE8-49C3-8370-E51D236236C2}" ShortID="1061690527">
+											<PropertyList>
+												<Property Name="EndPosition" Type="Real64" Value="16000"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<MusicTrack Name="MUSIC_LoopSpeedMinimum02_SugarCrush_120bpm_4-4" ID="{EFAD18CF-9984-4A90-8FCD-ECCAF1608680}" ShortID="362675802">
+													<ReferenceList>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="MUSIC_LoopSpeedMinimum02_SugarCrush_120bpm_4-4" ID="{6CAF9910-54A5-4B18-940A-EF6C81778845}">
+															<Language>SFX</Language>
+															<AudioFile>MUSIC_LoopSpeedMinimum02_SugarCrush_120bpm_4-4.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="960778781"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<TransitionList>
+														<MusicTransition Name="Root" ID="{B8401023-8AD5-4B19-8CA5-0565C1FF59BE}">
+															<PropertyList>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</TransitionList>
+													<ObjectLists>
+														<ObjectList Name="Sequences">
+															<Reference>
+																<Local>
+																	<MusicTrackSequence Name="" ID="{479A4F92-0D34-49E2-894C-6D3355514736}">
+																		<ObjectLists>
+																			<ObjectList Name="Clips">
+																				<Reference>
+																					<Local>
+																						<MusicClip Name="MUSIC_LoopSpeedMinimum02_SugarCrush_120bpm_4-4" ID="{7676D06D-6099-4D24-96F5-1545DC91E33F}">
+																							<PropertyList>
+																								<Property Name="EndTrimOffset" Type="Real64" Value="16000"/>
+																								<Property Name="FadeInMode" Type="int16" Value="0"/>
+																								<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																							</PropertyList>
+																							<AudioSourceRef Name="MUSIC_LoopSpeedMinimum02_SugarCrush_120bpm_4-4" ID="{6CAF9910-54A5-4B18-940A-EF6C81778845}"/>
+																						</MusicClip>
+																					</Local>
+																				</Reference>
+																			</ObjectList>
+																		</ObjectLists>
+																	</MusicTrackSequence>
+																</Local>
+															</Reference>
+														</ObjectList>
+													</ObjectLists>
+												</MusicTrack>
+											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="Cues">
+													<Reference>
+														<Local>
+															<MusicCue Name="Entry Cue" ID="{33396B6A-1EFF-4EC4-AB63-87B64C6CE77A}"/>
+														</Local>
+													</Reference>
+													<Reference>
+														<Local>
+															<MusicCue Name="Exit Cue" ID="{28EF6A7E-2F91-42D2-A4CE-765DB7BF806A}">
+																<PropertyList>
+																	<Property Name="CueType" Type="int16" Value="1"/>
+																	<Property Name="TimeMs" Type="Real64" Value="8000"/>
+																</PropertyList>
+															</MusicCue>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicSegment>
+										<MusicSegment Name="MUSIC_LoopSpeedMinimum03_SugarCrush_120bpm_4-4" ID="{46A00735-FF0D-48ED-97CB-F338DBAD1A30}" ShortID="339600259">
+											<PropertyList>
+												<Property Name="EndPosition" Type="Real64" Value="16000"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<MusicTrack Name="MUSIC_LoopSpeedMinimum03_SugarCrush_120bpm_4-4" ID="{4E63B026-4804-4BCA-9928-4C79F5F156BA}" ShortID="124830866">
+													<ReferenceList>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="MUSIC_LoopSpeedMinimum03_SugarCrush_120bpm_4-4" ID="{221642F0-E15F-4C3A-9A90-2F2CCD7FE4E1}">
+															<Language>SFX</Language>
+															<AudioFile>MUSIC_LoopSpeedMinimum03_SugarCrush_120bpm_4-4.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="855513506"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<TransitionList>
+														<MusicTransition Name="Root" ID="{4C3CFE5A-CE14-47A0-BAC1-A94EC5B9A704}">
+															<PropertyList>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</TransitionList>
+													<ObjectLists>
+														<ObjectList Name="Sequences">
+															<Reference>
+																<Local>
+																	<MusicTrackSequence Name="" ID="{F9A16BEF-EE47-417B-AEA1-20F23EF08DF9}">
+																		<ObjectLists>
+																			<ObjectList Name="Clips">
+																				<Reference>
+																					<Local>
+																						<MusicClip Name="MUSIC_LoopSpeedMinimum03_SugarCrush_120bpm_4-4" ID="{50D816AC-FE01-4E59-A346-E949D80DD5C0}">
+																							<PropertyList>
+																								<Property Name="EndTrimOffset" Type="Real64" Value="16000"/>
+																								<Property Name="FadeInMode" Type="int16" Value="0"/>
+																								<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																							</PropertyList>
+																							<AudioSourceRef Name="MUSIC_LoopSpeedMinimum03_SugarCrush_120bpm_4-4" ID="{221642F0-E15F-4C3A-9A90-2F2CCD7FE4E1}"/>
+																						</MusicClip>
+																					</Local>
+																				</Reference>
+																			</ObjectList>
+																		</ObjectLists>
+																	</MusicTrackSequence>
+																</Local>
+															</Reference>
+														</ObjectList>
+													</ObjectLists>
+												</MusicTrack>
+											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="Cues">
+													<Reference>
+														<Local>
+															<MusicCue Name="Entry Cue" ID="{4B8D08D6-547E-404C-AED1-85F8D17B7F0F}"/>
+														</Local>
+													</Reference>
+													<Reference>
+														<Local>
+															<MusicCue Name="Exit Cue" ID="{A9751934-3A54-4F16-923F-421057F1B6D3}">
+																<PropertyList>
+																	<Property Name="CueType" Type="int16" Value="1"/>
+																	<Property Name="TimeMs" Type="Real64" Value="8000"/>
+																</PropertyList>
+															</MusicCue>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicSegment>
+									</ChildrenList>
+									<TransitionList>
+										<MusicTransition Name="Root" ID="{07DCC6D7-E7CE-4D29-8833-A87F91B333E1}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicTransition Name="Transition" ID="{CC879DAA-B928-4CAC-B0B8-406E19439673}">
+													<TransitionInfo/>
+												</MusicTransition>
+											</ChildrenList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</TransitionList>
+									<ObjectLists/>
+									<Playlist>
+										<MusicPlaylistItem Name="" ID="{A1271653-61BE-47FD-AFA6-7AF124172042}" ShortID="145720713">
+											<ChildrenList>
+												<MusicPlaylistItem Name="" ID="{02A1DAC4-2720-4E16-9E65-9D5FF80674D8}" ShortID="372206201">
+													<PropertyList>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<SegmentRef Name="MUSIC_LoopSpeedMinimum01_SugarCrush_120bpm_4-4" ID="{CA14AFA3-83DD-4E7E-87DD-3D5DA035B304}"/>
+												</MusicPlaylistItem>
+												<MusicPlaylistItem Name="" ID="{19F71767-5B81-4317-8521-5DF9407AFA8E}" ShortID="549554909">
+													<PropertyList>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<SegmentRef Name="MUSIC_LoopSpeedMinimum02_SugarCrush_120bpm_4-4" ID="{78D6FFE3-2AE8-49C3-8370-E51D236236C2}"/>
+												</MusicPlaylistItem>
+												<MusicPlaylistItem Name="" ID="{A4A5E453-78DB-46B8-90AE-FD059ACD21AE}" ShortID="847701727">
+													<PropertyList>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<SegmentRef Name="MUSIC_LoopSpeedMinimum03_SugarCrush_120bpm_4-4" ID="{46A00735-FF0D-48ED-97CB-F338DBAD1A30}"/>
+												</MusicPlaylistItem>
+											</ChildrenList>
+										</MusicPlaylistItem>
+									</Playlist>
+								</MusicPlaylistContainer>
+								<MusicPlaylistContainer Name="Maximum" ID="{23D3370B-D3B7-4291-80F1-CC4F6C226363}" ShortID="112146339">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<MusicSegment Name="MUSIC_LoopSpeedMax01_SugarCrush_120bpm_4-4" ID="{2A876726-A7A2-40A7-8D5D-98B9817B3CB0}" ShortID="132776248">
+											<PropertyList>
+												<Property Name="EndPosition" Type="Real64" Value="16000"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<MusicTrack Name="MUSIC_LoopSpeedMax01_SugarCrush_120bpm_4-4" ID="{806744F7-1BFF-4EBC-AB2C-F67D9DB6FA23}" ShortID="604971899">
+													<ReferenceList>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="MUSIC_LoopSpeedMax01_SugarCrush_120bpm_4-4" ID="{2B975092-E78E-48FB-AF16-64F45FEFD2D2}">
+															<Language>SFX</Language>
+															<AudioFile>MUSIC_LoopSpeedMax01_SugarCrush_120bpm_4-4.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1033328558"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<TransitionList>
+														<MusicTransition Name="Root" ID="{CCFDF9A4-DB0F-44D5-93DC-02D82C55E8A6}">
+															<PropertyList>
+																<Property Name="IsFolder" Type="bool" Value="True"/>
+															</PropertyList>
+															<TransitionInfo/>
+														</MusicTransition>
+													</TransitionList>
+													<ObjectLists>
+														<ObjectList Name="Sequences">
+															<Reference>
+																<Local>
+																	<MusicTrackSequence Name="" ID="{2EF33E8D-02AC-44BF-91E4-DA56B84E4E1F}">
+																		<ObjectLists>
+																			<ObjectList Name="Clips">
+																				<Reference>
+																					<Local>
+																						<MusicClip Name="MUSIC_LoopSpeedMax01_SugarCrush_120bpm_4-4" ID="{584F5336-46DA-4BBF-8781-900D373E312A}">
+																							<PropertyList>
+																								<Property Name="EndTrimOffset" Type="Real64" Value="16000"/>
+																								<Property Name="FadeInMode" Type="int16" Value="0"/>
+																								<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																							</PropertyList>
+																							<AudioSourceRef Name="MUSIC_LoopSpeedMax01_SugarCrush_120bpm_4-4" ID="{2B975092-E78E-48FB-AF16-64F45FEFD2D2}"/>
+																						</MusicClip>
+																					</Local>
+																				</Reference>
+																			</ObjectList>
+																		</ObjectLists>
+																	</MusicTrackSequence>
+																</Local>
+															</Reference>
+														</ObjectList>
+													</ObjectLists>
+												</MusicTrack>
+											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="Cues">
+													<Reference>
+														<Local>
+															<MusicCue Name="Entry Cue" ID="{AC5FB6FF-CD04-433A-ADC5-C165B9C68D73}"/>
+														</Local>
+													</Reference>
+													<Reference>
+														<Local>
+															<MusicCue Name="Exit Cue" ID="{14F6571D-E935-43A5-AB0A-164BB8A13FD6}">
+																<PropertyList>
+																	<Property Name="CueType" Type="int16" Value="1"/>
+																	<Property Name="TimeMs" Type="Real64" Value="10000"/>
+																</PropertyList>
+															</MusicCue>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicSegment>
+									</ChildrenList>
+									<TransitionList>
+										<MusicTransition Name="Root" ID="{86F4D90B-BD66-4F26-BA47-A4D7F70B0CB9}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicTransition Name="Transition" ID="{AA03EBA0-24B3-4099-AF1F-E10A26527D9A}">
+													<TransitionInfo/>
+												</MusicTransition>
+											</ChildrenList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</TransitionList>
+									<ObjectLists/>
+									<Playlist>
+										<MusicPlaylistItem Name="" ID="{C1607B04-AE00-456E-BA55-9A59B4BA2BD5}" ShortID="948814156">
+											<ChildrenList>
+												<MusicPlaylistItem Name="" ID="{9E2CB4EE-B258-4157-97E6-D429D7EE8E55}" ShortID="156897968">
+													<PropertyList>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<SegmentRef Name="MUSIC_LoopSpeedMax01_SugarCrush_120bpm_4-4" ID="{2A876726-A7A2-40A7-8D5D-98B9817B3CB0}"/>
+												</MusicPlaylistItem>
+											</ChildrenList>
+										</MusicPlaylistItem>
+									</Playlist>
+								</MusicPlaylistContainer>
+							</ChildrenList>
+							<TransitionList>
+								<MusicTransition Name="Root" ID="{0638BBCF-E684-4B40-BE7B-328A592F2230}">
 									<PropertyList>
-										<Property Name="EndPosition" Type="Real64" Value="8000"/>
+										<Property Name="IsFolder" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicTransition Name="Transition" ID="{87E16194-391C-4C29-89EE-77D703822A2B}">
+											<TransitionInfo/>
+										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{009399BD-EAAF-42AF-97CF-3109A0330F70}">
+											<PropertyList>
+												<Property Name="DestinationContextType" Type="int16" Value="2"/>
+												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+												<Property Name="ExitSourceAt" Type="int16" Value="3"/>
+												<Property Name="SourceContextType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="DestinationContextObject">
+													<ObjectRef Name="Mid" ID="{180ECBE2-651D-4051-8D6B-7803BC9B1421}" WorkUnitID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}"/>
+												</Reference>
+												<Reference Name="SourceContextObject">
+													<ObjectRef Name="Minimum" ID="{8AEEA332-4C5D-4ED5-A2CD-492BC63AD770}" WorkUnitID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}"/>
+												</Reference>
+											</ReferenceList>
+											<TransitionInfo>
+												<SourceFadeOut>
+													<MusicFade Name="Source Fade-out" ID="{4F419F62-37B5-47BF-85C5-A5CAC72FBCB6}">
+														<PropertyList>
+															<Property Name="FadeOffset" Type="Real64" Value="1"/>
+															<Property Name="FadeTime" Type="Real64" Value="1"/>
+															<Property Name="FadeType" Type="int16" Value="1"/>
+														</PropertyList>
+													</MusicFade>
+												</SourceFadeOut>
+											</TransitionInfo>
+										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{193A72FE-163E-4B61-868D-4653257495E5}">
+											<PropertyList>
+												<Property Name="DestinationContextType" Type="int16" Value="2"/>
+												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+												<Property Name="ExitSourceAt" Type="int16" Value="3"/>
+												<Property Name="SourceContextType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="DestinationContextObject">
+													<ObjectRef Name="Maximum" ID="{23D3370B-D3B7-4291-80F1-CC4F6C226363}" WorkUnitID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}"/>
+												</Reference>
+												<Reference Name="SourceContextObject">
+													<ObjectRef Name="Minimum" ID="{8AEEA332-4C5D-4ED5-A2CD-492BC63AD770}" WorkUnitID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}"/>
+												</Reference>
+											</ReferenceList>
+											<TransitionInfo>
+												<SourceFadeOut>
+													<MusicFade Name="Source Fade-out" ID="{A924577E-38E5-4845-9D52-C926083CB8E2}">
+														<PropertyList>
+															<Property Name="FadeOffset" Type="Real64" Value="1"/>
+															<Property Name="FadeTime" Type="Real64" Value="1"/>
+															<Property Name="FadeType" Type="int16" Value="1"/>
+														</PropertyList>
+													</MusicFade>
+												</SourceFadeOut>
+											</TransitionInfo>
+										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{BD517276-0667-4000-89BB-57065063CBBC}">
+											<PropertyList>
+												<Property Name="DestinationContextType" Type="int16" Value="2"/>
+												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+												<Property Name="ExitSourceAt" Type="int16" Value="3"/>
+												<Property Name="SourceContextType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="DestinationContextObject">
+													<ObjectRef Name="Minimum" ID="{8AEEA332-4C5D-4ED5-A2CD-492BC63AD770}" WorkUnitID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}"/>
+												</Reference>
+												<Reference Name="SourceContextObject">
+													<ObjectRef Name="Mid" ID="{180ECBE2-651D-4051-8D6B-7803BC9B1421}" WorkUnitID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}"/>
+												</Reference>
+											</ReferenceList>
+											<TransitionInfo>
+												<SourceFadeOut>
+													<MusicFade Name="Source Fade-out" ID="{E00F8A2C-5E89-48BB-85B7-30F64990B0F5}">
+														<PropertyList>
+															<Property Name="FadeOffset" Type="Real64" Value="1"/>
+															<Property Name="FadeTime" Type="Real64" Value="1"/>
+															<Property Name="FadeType" Type="int16" Value="1"/>
+														</PropertyList>
+													</MusicFade>
+												</SourceFadeOut>
+											</TransitionInfo>
+										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{23EC0E2C-5C62-46A9-834D-CBA51A597482}">
+											<PropertyList>
+												<Property Name="DestinationContextType" Type="int16" Value="2"/>
+												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+												<Property Name="ExitSourceAt" Type="int16" Value="3"/>
+												<Property Name="SourceContextType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="DestinationContextObject">
+													<ObjectRef Name="Maximum" ID="{23D3370B-D3B7-4291-80F1-CC4F6C226363}" WorkUnitID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}"/>
+												</Reference>
+												<Reference Name="SourceContextObject">
+													<ObjectRef Name="Mid" ID="{180ECBE2-651D-4051-8D6B-7803BC9B1421}" WorkUnitID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}"/>
+												</Reference>
+											</ReferenceList>
+											<TransitionInfo>
+												<SourceFadeOut>
+													<MusicFade Name="Source Fade-out" ID="{BA688428-652B-4554-81C7-F9F8FA458574}">
+														<PropertyList>
+															<Property Name="FadeOffset" Type="Real64" Value="1"/>
+															<Property Name="FadeTime" Type="Real64" Value="1"/>
+															<Property Name="FadeType" Type="int16" Value="1"/>
+														</PropertyList>
+													</MusicFade>
+												</SourceFadeOut>
+											</TransitionInfo>
+										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{9428B255-F397-464A-8634-5CFC6B681ACA}">
+											<PropertyList>
+												<Property Name="DestinationContextType" Type="int16" Value="2"/>
+												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+												<Property Name="ExitSourceAt" Type="int16" Value="3"/>
+												<Property Name="SourceContextType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="DestinationContextObject">
+													<ObjectRef Name="Mid" ID="{180ECBE2-651D-4051-8D6B-7803BC9B1421}" WorkUnitID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}"/>
+												</Reference>
+												<Reference Name="SourceContextObject">
+													<ObjectRef Name="Maximum" ID="{23D3370B-D3B7-4291-80F1-CC4F6C226363}" WorkUnitID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}"/>
+												</Reference>
+											</ReferenceList>
+											<TransitionInfo>
+												<SourceFadeOut>
+													<MusicFade Name="Source Fade-out" ID="{67AFF10A-2582-4378-B569-C670A523FA0C}">
+														<PropertyList>
+															<Property Name="FadeOffset" Type="Real64" Value="1"/>
+															<Property Name="FadeTime" Type="Real64" Value="1"/>
+															<Property Name="FadeType" Type="int16" Value="1"/>
+														</PropertyList>
+													</MusicFade>
+												</SourceFadeOut>
+											</TransitionInfo>
+										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{D92BB22F-01E2-4FEB-B2A4-0C207E730B47}">
+											<PropertyList>
+												<Property Name="DestinationContextType" Type="int16" Value="2"/>
+												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+												<Property Name="ExitSourceAt" Type="int16" Value="3"/>
+												<Property Name="SourceContextType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="DestinationContextObject">
+													<ObjectRef Name="Minimum" ID="{8AEEA332-4C5D-4ED5-A2CD-492BC63AD770}" WorkUnitID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}"/>
+												</Reference>
+												<Reference Name="SourceContextObject">
+													<ObjectRef Name="Maximum" ID="{23D3370B-D3B7-4291-80F1-CC4F6C226363}" WorkUnitID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}"/>
+												</Reference>
+											</ReferenceList>
+											<TransitionInfo>
+												<SourceFadeOut>
+													<MusicFade Name="Source Fade-out" ID="{6E3FAA24-4322-4CE1-B0CA-B960D426A3A8}">
+														<PropertyList>
+															<Property Name="FadeOffset" Type="Real64" Value="1"/>
+															<Property Name="FadeTime" Type="Real64" Value="1"/>
+															<Property Name="FadeType" Type="int16" Value="1"/>
+														</PropertyList>
+													</MusicFade>
+												</SourceFadeOut>
+											</TransitionInfo>
+										</MusicTransition>
+									</ChildrenList>
+									<TransitionInfo/>
+								</MusicTransition>
+							</TransitionList>
+							<ObjectLists/>
+							<ArgumentList>
+								<ArgumentRef Name="MusicSpeed" ID="{CBC0EA66-A1D3-42C5-8E1E-327A83391E49}"/>
+							</ArgumentList>
+							<EntryList>
+								<Entry>
+									<Path>
+										<PathElementRef Name="Medium" ID="{705EB459-EB95-4B30-B196-F387EEC2DC65}"/>
+									</Path>
+									<AudioNodeInfo>
+										<AudioNodeRef Name="Mid" ID="{180ECBE2-651D-4051-8D6B-7803BC9B1421}" WorkUnitID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}" Platform="Linked"/>
+									</AudioNodeInfo>
+								</Entry>
+								<Entry>
+									<Path>
+										<PathElementRef Name="Max" ID="{8439DF8E-348A-44ED-A6AA-BECCA5822234}"/>
+									</Path>
+									<AudioNodeInfo>
+										<AudioNodeRef Name="Maximum" ID="{23D3370B-D3B7-4291-80F1-CC4F6C226363}" WorkUnitID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}" Platform="Linked"/>
+									</AudioNodeInfo>
+								</Entry>
+								<Entry>
+									<Path>
+										<PathElementRef Name="Minimum" ID="{60B5C337-3221-40F2-91E4-F4076E8B5AE8}"/>
+									</Path>
+									<AudioNodeInfo>
+										<AudioNodeRef Name="Minimum" ID="{8AEEA332-4C5D-4ED5-A2CD-492BC63AD770}" WorkUnitID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}" Platform="Linked"/>
+									</AudioNodeInfo>
+								</Entry>
+							</EntryList>
+						</MusicSwitchContainer>
+						<MusicPlaylistContainer Name="Intro" ID="{B68FF184-F126-4E7C-BC95-23BD16FBD706}" ShortID="946858495">
+							<PropertyList>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>19</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicSegment Name="MUSIC_Intro_SugarCrush_120bpm_4-4" ID="{381B299F-85D8-4459-8911-13DCA981EE6B}" ShortID="1061293580">
+									<PropertyList>
+										<Property Name="EndPosition" Type="Real64" Value="32009.0370327899"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -36,23 +910,23 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<MusicTrack Name="SugarCrushFirstSong_FirstSection" ID="{47E2363C-4BA0-4B43-962F-77A977A0CC1F}" ShortID="675545555">
+										<MusicTrack Name="MUSIC_Intro_SugarCrush_120bpm_4-4" ID="{2108683F-26FD-4C77-BE1D-41B366F80214}" ShortID="552398616">
 											<ReferenceList>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="SugarCrushFirstSong_FirstSection" ID="{2E5757E3-CD4B-451C-8CBD-BA9BFE115AED}">
+												<AudioFileSource Name="MUSIC_Intro_SugarCrush_120bpm_4-4" ID="{0AC873E7-4A99-4268-8B5C-AC5F26F27C18}">
 													<Language>SFX</Language>
-													<AudioFile>SugarCrushFirstSong_FirstSection.wav</AudioFile>
+													<AudioFile>MUSIC_Intro_SugarCrush_120bpm_4-4.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="231946513"/>
+														<MediaID ID="108465275"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
 											<TransitionList>
-												<MusicTransition Name="Root" ID="{9489EC20-1DA0-4ACE-B1B5-DFD0C66B3798}">
+												<MusicTransition Name="Root" ID="{959F8D32-B3E6-4666-BAB9-002DB85E0004}">
 													<PropertyList>
 														<Property Name="IsFolder" Type="bool" Value="True"/>
 													</PropertyList>
@@ -63,38 +937,18 @@
 												<ObjectList Name="Sequences">
 													<Reference>
 														<Local>
-															<MusicTrackSequence Name="" ID="{05A7297E-DE57-4A16-B8FD-BFE88B8A33F7}">
+															<MusicTrackSequence Name="" ID="{7CCC3EC3-5985-4295-97AD-8D0124F6C52D}">
 																<ObjectLists>
 																	<ObjectList Name="Clips">
 																		<Reference>
 																			<Local>
-																				<MusicClip Name="SugarCrushFirstSong_FirstSection" ID="{E65EDCF0-36DE-41D4-AC85-FEE17025EC82}">
+																				<MusicClip Name="MUSIC_Intro_SugarCrush_120bpm_4-4" ID="{34609F93-5068-47FE-850E-20B5C4C86AF7}">
 																					<PropertyList>
-																						<Property Name="EndTrimOffset" Type="Real64" Value="8000"/>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="20000"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
 																					</PropertyList>
-																					<AudioSourceRef Name="SugarCrushFirstSong_FirstSection" ID="{2E5757E3-CD4B-451C-8CBD-BA9BFE115AED}"/>
-																					<PropertyCurveList>
-																						<PropertyCurve PropertyName="Lowpass">
-																							<Curve Name="" ID="{AC31D27E-7CCA-41EC-A69A-CA3F787151AD}">
-																								<PropertyList>
-																									<Property Name="Flags" Type="int32" Value="1"/>
-																								</PropertyList>
-																								<PointList>
-																									<Point>
-																										<XPos>0</XPos>
-																										<YPos>-0</YPos>
-																										<Flags>5</Flags>
-																										<SegmentShape>Log2</SegmentShape>
-																									</Point>
-																									<Point>
-																										<XPos>8</XPos>
-																										<YPos>0</YPos>
-																										<Flags>37</Flags>
-																									</Point>
-																								</PointList>
-																							</Curve>
-																						</PropertyCurve>
-																					</PropertyCurveList>
+																					<AudioSourceRef Name="MUSIC_Intro_SugarCrush_120bpm_4-4" ID="{0AC873E7-4A99-4268-8B5C-AC5F26F27C18}"/>
 																				</MusicClip>
 																			</Local>
 																		</Reference>
@@ -111,15 +965,15 @@
 										<ObjectList Name="Cues">
 											<Reference>
 												<Local>
-													<MusicCue Name="Entry Cue" ID="{10C742F8-E3A1-4575-AEC0-4822B45C573C}"/>
+													<MusicCue Name="Entry Cue" ID="{5D99FB21-1F29-4ABF-AD7B-C916D2B8AF17}"/>
 												</Local>
 											</Reference>
 											<Reference>
 												<Local>
-													<MusicCue Name="Exit Cue" ID="{54ACAC5C-B624-4C19-98BA-CED4B10DEA7F}">
+													<MusicCue Name="Exit Cue" ID="{DD8CA5DE-FA8A-4E01-AE5F-2DBEC5C1441B}">
 														<PropertyList>
 															<Property Name="CueType" Type="int16" Value="1"/>
-															<Property Name="TimeMs" Type="Real64" Value="8000"/>
+															<Property Name="TimeMs" Type="Real64" Value="16000"/>
 														</PropertyList>
 													</MusicCue>
 												</Local>
@@ -127,9 +981,9 @@
 										</ObjectList>
 									</ObjectLists>
 								</MusicSegment>
-								<MusicSegment Name="SugarCrushFirstSong_SecondSection" ID="{E1F39F6F-02AF-4BBF-8BBD-189C9F40331B}" ShortID="960440774">
+								<MusicSegment Name="MUSIC_Loop01_SugarCrush_NoRiser_NoSynths_NoMelody_120bpm_4-4" ID="{30801F65-8F0A-48EB-8566-F01C039696DB}" ShortID="212106172">
 									<PropertyList>
-										<Property Name="EndPosition" Type="Real64" Value="8000"/>
+										<Property Name="EndPosition" Type="Real64" Value="32009.0370327899"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -140,23 +994,26 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<MusicTrack Name="SugarCrushFirstSong_SecondSection" ID="{ED02585B-0649-4FB9-B9EB-14D8770D7C06}" ShortID="399954716">
+										<MusicTrack Name="MUSIC_Loop01_SugarCrush_NoRiser_NoSynths_NoMelody_120bpm_4-4" ID="{C14C84C6-504F-4575-A5A9-2DEA1E76DC71}" ShortID="360701628">
 											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{38FA1994-7668-4E6F-9137-666267031946}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="SugarCrushFirstSong_SecondSection" ID="{E9FCA1EC-5E74-4CF9-8ED6-A9EA098AD9B2}">
+												<AudioFileSource Name="MUSIC_Loop01_SugarCrush_NoRiser_NoSynths_NoMelody_120bpm_4-4" ID="{82EF2ADE-21E1-48D2-B21A-04F9A8838169}">
 													<Language>SFX</Language>
-													<AudioFile>SugarCrushFirstSong_SecondSection.wav</AudioFile>
+													<AudioFile>MUSIC_Loop01_SugarCrush_NoRiser_NoSynths_NoMelody_120bpm_4-4.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="180512827"/>
+														<MediaID ID="461083238"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
 											<TransitionList>
-												<MusicTransition Name="Root" ID="{38FF47EB-42B5-4374-98FA-24C652673350}">
+												<MusicTransition Name="Root" ID="{657331EA-B355-4CD7-B41B-A5781E00C3BF}">
 													<PropertyList>
 														<Property Name="IsFolder" Type="bool" Value="True"/>
 													</PropertyList>
@@ -167,16 +1024,18 @@
 												<ObjectList Name="Sequences">
 													<Reference>
 														<Local>
-															<MusicTrackSequence Name="" ID="{95CA5D09-C332-4FA5-A1D3-9232B4CB16A0}">
+															<MusicTrackSequence Name="" ID="{0DCB0415-53AD-4A53-8F13-F8401A067BDE}">
 																<ObjectLists>
 																	<ObjectList Name="Clips">
 																		<Reference>
 																			<Local>
-																				<MusicClip Name="SugarCrushFirstSong_SecondSection" ID="{BC86E15F-73CD-4ADD-9B32-A60405D823B1}">
+																				<MusicClip Name="MUSIC_Loop01_SugarCrush_NoRiser_NoSynths_NoMelody_120bpm_4-4" ID="{505F043A-BFB6-4DE4-9936-983ADBFF59D6}">
 																					<PropertyList>
-																						<Property Name="EndTrimOffset" Type="Real64" Value="8000"/>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="16000"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
 																					</PropertyList>
-																					<AudioSourceRef Name="SugarCrushFirstSong_SecondSection" ID="{E9FCA1EC-5E74-4CF9-8ED6-A9EA098AD9B2}"/>
+																					<AudioSourceRef Name="MUSIC_Loop01_SugarCrush_NoRiser_NoSynths_NoMelody_120bpm_4-4" ID="{82EF2ADE-21E1-48D2-B21A-04F9A8838169}"/>
 																				</MusicClip>
 																			</Local>
 																		</Reference>
@@ -193,15 +1052,15 @@
 										<ObjectList Name="Cues">
 											<Reference>
 												<Local>
-													<MusicCue Name="Entry Cue" ID="{16263D71-8DD4-4EED-AA72-BC47D00C3E9C}"/>
+													<MusicCue Name="Entry Cue" ID="{D810EA1A-5932-445D-AF0C-C2132B9CC673}"/>
 												</Local>
 											</Reference>
 											<Reference>
 												<Local>
-													<MusicCue Name="Exit Cue" ID="{23CBC8F8-996A-4BBE-96B7-C3459609864C}">
+													<MusicCue Name="Exit Cue" ID="{966F4DEB-F0C4-4F62-8FD6-68FD99D76EB5}">
 														<PropertyList>
 															<Property Name="CueType" Type="int16" Value="1"/>
-															<Property Name="TimeMs" Type="Real64" Value="8000"/>
+															<Property Name="TimeMs" Type="Real64" Value="16000"/>
 														</PropertyList>
 													</MusicCue>
 												</Local>
@@ -219,6 +1078,33 @@
 										<MusicTransition Name="Transition" ID="{A5D9C71B-AD6C-4F67-8A0B-AFD971595CD4}">
 											<TransitionInfo/>
 										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{418B9891-DFF7-43BD-A374-839FD61CCF0F}">
+											<PropertyList>
+												<Property Name="DestinationContextType" Type="int16" Value="2"/>
+												<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+												<Property Name="SourceContextType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="DestinationContextObject">
+													<ObjectRef Name="MUSIC_Loop01_SugarCrush_NoRiser_NoSynths_NoMelody_120bpm_4-4" ID="{30801F65-8F0A-48EB-8566-F01C039696DB}" WorkUnitID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}"/>
+												</Reference>
+												<Reference Name="SourceContextObject">
+													<ObjectRef Name="MUSIC_Intro_SugarCrush_120bpm_4-4" ID="{381B299F-85D8-4459-8911-13DCA981EE6B}" WorkUnitID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}"/>
+												</Reference>
+											</ReferenceList>
+											<TransitionInfo>
+												<SourceFadeOut>
+													<MusicFade Name="Source Fade-out" ID="{63E9D282-9D89-4023-8777-DDF34110FA46}">
+														<PropertyList>
+															<Property Name="FadeCurve" Type="int16" Value="1"/>
+															<Property Name="FadeOffset" Type="Real64" Value="2"/>
+															<Property Name="FadeTime" Type="Real64" Value="2"/>
+															<Property Name="FadeType" Type="int16" Value="1"/>
+														</PropertyList>
+													</MusicFade>
+												</SourceFadeOut>
+											</TransitionInfo>
+										</MusicTransition>
 									</ChildrenList>
 									<TransitionInfo/>
 								</MusicTransition>
@@ -227,30 +1113,52 @@
 							<Playlist>
 								<MusicPlaylistItem Name="" ID="{4E7C5E49-8B93-446E-A631-883A1AA13BDD}" ShortID="754416003">
 									<ChildrenList>
-										<MusicPlaylistItem Name="" ID="{D1140441-4A51-4662-AB66-6DF3D4016001}" ShortID="726330782">
+										<MusicPlaylistItem Name="" ID="{465C25B7-6006-464E-BB72-B2D8581E87E6}" ShortID="29258807">
 											<PropertyList>
 												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 											</PropertyList>
-											<SegmentRef Name="SugarCrushFirstSong_FirstSection" ID="{8860995A-34AA-440B-82DE-17A461A72C4E}"/>
+											<SegmentRef Name="MUSIC_Intro_SugarCrush_120bpm_4-4" ID="{381B299F-85D8-4459-8911-13DCA981EE6B}"/>
 										</MusicPlaylistItem>
-										<MusicPlaylistItem Name="" ID="{40D68439-1DBF-410D-A842-86F10D33E14E}" ShortID="132393305">
+										<MusicPlaylistItem Name="" ID="{4BCF3093-FD97-4F90-8D32-1AED7965EB1C}" ShortID="611262539">
 											<PropertyList>
 												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 											</PropertyList>
-											<SegmentRef Name="SugarCrushFirstSong_SecondSection" ID="{E1F39F6F-02AF-4BBF-8BBD-189C9F40331B}"/>
+											<SegmentRef Name="MUSIC_Loop01_SugarCrush_NoRiser_NoSynths_NoMelody_120bpm_4-4" ID="{30801F65-8F0A-48EB-8566-F01C039696DB}"/>
 										</MusicPlaylistItem>
 									</ChildrenList>
 								</MusicPlaylistItem>
 							</Playlist>
 						</MusicPlaylistContainer>
 					</ChildrenList>
+					<StateInfo>
+						<StateGroupList>
+							<StateGroupInfo>
+								<StateGroupRef Name="Player" ID="{A35C2FA7-3FB8-4308-B646-C70734A65B5B}"/>
+							</StateGroupInfo>
+						</StateGroupList>
+						<CustomStateList>
+							<CustomState>
+								<StateRef Name="Dead" ID="{CB238342-84ED-4395-815B-912C29F7CDBB}"/>
+								<CustomState Name="" ID="{E0E8843C-CC01-48A9-8D02-98CDA3B55840}" ShortID="423910424">
+									<PropertyList>
+										<Property Name="Lowpass" Type="int16" Value="60"/>
+										<Property Name="Volume" Type="Real64" Value="-13"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="Alive" ID="{E8CC3D28-0F71-43A1-8071-556C82C64DB2}"/>
+								<CustomState Name="" ID="{902194EF-369F-40BA-B100-A32B2B0BCD47}" ShortID="419688714"/>
+							</CustomState>
+						</CustomStateList>
+					</StateInfo>
 					<TransitionList>
-						<MusicTransition Name="Root" ID="{0638BBCF-E684-4B40-BE7B-328A592F2230}">
+						<MusicTransition Name="Root" ID="{ABA782D0-806B-4993-BBD9-D3FA5AE5F24F}">
 							<PropertyList>
 								<Property Name="IsFolder" Type="bool" Value="True"/>
 							</PropertyList>
 							<ChildrenList>
-								<MusicTransition Name="Transition" ID="{87E16194-391C-4C29-89EE-77D703822A2B}">
+								<MusicTransition Name="Transition" ID="{68D1BA81-8768-4327-84C5-92A9FD8969DF}">
 									<TransitionInfo/>
 								</MusicTransition>
 							</ChildrenList>
@@ -258,6 +1166,27 @@
 						</MusicTransition>
 					</TransitionList>
 					<ObjectLists/>
+					<ArgumentList>
+						<ArgumentRef Name="IntroOrIngame" ID="{2B7726F7-5DA4-466A-B392-FEE1D84C25FD}"/>
+					</ArgumentList>
+					<EntryList>
+						<Entry>
+							<Path>
+								<PathElementRef Name="Ingame" ID="{C3593569-598B-4A34-A393-857984273E13}"/>
+							</Path>
+							<AudioNodeInfo>
+								<AudioNodeRef Name="Ingame" ID="{1ADFFBF9-EB45-42DD-A4CE-A1AA8CA29B5C}" WorkUnitID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}" Platform="Linked"/>
+							</AudioNodeInfo>
+						</Entry>
+						<Entry>
+							<Path>
+								<PathElementRef Name="Intro" ID="{FF29A4C7-0EB6-478F-A797-EE858B6655F9}"/>
+							</Path>
+							<AudioNodeInfo>
+								<AudioNodeRef Name="Intro" ID="{B68FF184-F126-4E7C-BC95-23BD16FBD706}" WorkUnitID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}" Platform="Linked"/>
+							</AudioNodeInfo>
+						</Entry>
+					</EntryList>
 				</MusicSwitchContainer>
 			</ChildrenList>
 		</WorkUnit>
