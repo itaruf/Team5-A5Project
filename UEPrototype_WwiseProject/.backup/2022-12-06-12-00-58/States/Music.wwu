@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{4847E5EF-13D0-4864-BB1D-748D66F92170}" SchemaVersion="110" RootDocumentID="{D2DE9D4C-61A1-46CC-AB2F-8D5FA822B62A}" ParentDocumentID="{D2DE9D4C-61A1-46CC-AB2F-8D5FA822B62A}">
+	<States>
+		<WorkUnit Name="Music" ID="{4847E5EF-13D0-4864-BB1D-748D66F92170}" OwnerID="{D2DE9D4C-61A1-46CC-AB2F-8D5FA822B62A}" PersistMode="Nested">
+			<ChildrenList>
+				<StateGroup Name="Transitions" ID="{CEC7607A-4B1A-4E7C-B649-A0E682C5A13D}">
+					<ChildrenList>
+						<State Name="None" ID="{962B5826-9E09-4393-B705-25CD688B521B}"/>
+						<State Name="Debut" ID="{BC8ABD77-D9F9-49B4-A7C3-17BBB688B7E0}"/>
+						<State Name="Loop01" ID="{4C062D99-B7CC-4885-B225-BD15F4B9FE87}"/>
+						<State Name="Loop02" ID="{4CFAE661-A43B-4B06-A656-B2F98677BD2D}"/>
+						<State Name="Loop03" ID="{1D97039E-719E-4BD4-B198-73EEB17FEEEF}"/>
+						<State Name="Loop04" ID="{A4F1F93C-E5CE-4527-A92A-7FA76BF53117}"/>
+					</ChildrenList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
+	</States>
+</WwiseDocument>

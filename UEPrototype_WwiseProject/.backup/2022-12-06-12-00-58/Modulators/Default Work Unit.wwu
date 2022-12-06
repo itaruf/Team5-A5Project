@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{A5E70ED4-E0F3-4FC2-BDAF-FB37FAA79F1B}" SchemaVersion="110">
+	<Modulators>
+		<WorkUnit Name="Default Work Unit" ID="{A5E70ED4-E0F3-4FC2-BDAF-FB37FAA79F1B}" PersistMode="Standalone">
+			<ChildrenList>
+				<ModulatorLfo Name="GlideSpeedLFO" ID="{05CC185E-B97E-4C82-BBE6-DC1294B1A924}" ShortID="712134563">
+					<ObjectLists>
+						<ObjectList Name="RTPC">
+							<Reference>
+								<Local>
+									<RTPC Name="" ID="{1911D9F1-070A-436A-809E-EB0688D2EA9C}" ShortID="420578990">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="LfoFrequency"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput">
+												<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{F8A5D19F-B407-403E-A4C1-2F40F32BFE45}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{229E60A2-CF7C-4D1F-A2B5-F66B02E1AA87}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="5"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>1</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>3000</XPos>
+																<YPos>3.18897</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+								</Local>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
+				</ModulatorLfo>
+			</ChildrenList>
+		</WorkUnit>
+	</Modulators>
+</WwiseDocument>

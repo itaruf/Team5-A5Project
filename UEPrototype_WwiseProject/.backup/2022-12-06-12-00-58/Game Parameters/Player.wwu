@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{F8A5D19F-B407-403E-A4C1-2F40F32BFE45}" SchemaVersion="110" RootDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}" ParentDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}">
+	<GameParameters>
+		<WorkUnit Name="Player" ID="{F8A5D19F-B407-403E-A4C1-2F40F32BFE45}" OwnerID="{2E3B1270-9C0A-453D-8324-D76519F899C5}" PersistMode="Nested">
+			<ChildrenList>
+				<GameParameter Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+						<Property Name="Max" Type="Real64" Value="3000"/>
+						<Property Name="RTPCRamping" Type="int16" Value="1"/>
+						<Property Name="SlewRateDown" Type="Real64" Value="2500"/>
+						<Property Name="SlewRateUp" Type="Real64" Value="3000"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="RTPC_PlayerSpeed" ID="{E81B3401-03B0-4FBF-A942-900B5FB3AA30}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+						<Property Name="Max" Type="Real64" Value="3000"/>
+					</PropertyList>
+				</GameParameter>
+			</ChildrenList>
+		</WorkUnit>
+	</GameParameters>
+</WwiseDocument>
