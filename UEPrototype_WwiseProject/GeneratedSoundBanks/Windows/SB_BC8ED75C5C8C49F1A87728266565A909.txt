@@ -1,6 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	2473867810	SFX_MagicDoor			\Default Work Unit\Jules\SFX\SFX_MagicDoor	
-
-Game Parameter	ID	Name			Wwise Object Path	Notes
-	2901939645	RTPC_MagicDoorPosition			\Default Work Unit\Jules\RTPC_MagicDoorPosition	
-

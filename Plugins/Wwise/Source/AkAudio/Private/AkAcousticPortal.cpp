@@ -1,18 +1,19 @@
 /*******************************************************************************
-The content of the files in this repository include portions of the
-AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
-package.
-
-Commercial License Usage
-
-Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
-may use these files in accordance with the end user license agreement provided
-with the software or, alternatively, in accordance with the terms contained in a
-written agreement between you and Audiokinetic Inc.
-
-Copyright (c) 2021 Audiokinetic Inc.
+The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
+Technology released in source code form as part of the game integration package.
+The content of this file may not be used without valid licenses to the
+AUDIOKINETIC Wwise Technology.
+Note that the use of the game engine is subject to the Unreal(R) Engine End User
+License Agreement at https://www.unrealengine.com/en-US/eula/unreal
+ 
+License Usage
+ 
+Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
+this file in accordance with the end user license agreement provided with the
+software or, alternatively, in accordance with the terms contained
+in a written agreement between you and Audiokinetic Inc.
+Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
-
 
 /*=============================================================================
 	AAkAcousticPortal.cpp:
@@ -22,6 +23,7 @@ Copyright (c) 2021 Audiokinetic Inc.
 #include "AkAudioDevice.h"
 #include "AkComponentHelpers.h"
 #include "AkSpatialAudioHelper.h"
+#include "AkSpatialAudioDrawUtils.h"
 #include "Components/BrushComponent.h"
 #include "Model.h"
 #include "EngineUtils.h"
@@ -31,8 +33,6 @@ Copyright (c) 2021 Audiokinetic Inc.
 #include "Kismet/KismetMathLibrary.h"
 #include "AkSpatialAudioVolume.h"
 
-#include <algorithm>
-
 // A standard AAkAcousticPortal is based on a cube brush with verts at [+/-]100 X,Y,Z. 
 static const float kDefaultBrushExtents = 100.f;
 
@@ -41,7 +41,8 @@ static const float kMinPortalSize = 10.0f;
 
 #if WITH_EDITOR
 #include "AkDrawPortalComponent.h"
-#include "AkSettings.h"
+#include "AkAudioStyle.h"
+#include "LevelEditorViewport.h"
 #endif
 
 UAkPortalComponent::UAkPortalComponent(const class FObjectInitializer& ObjectInitializer) :
@@ -95,6 +96,12 @@ void UAkPortalComponent::OnRegister()
 void UAkPortalComponent::OnUnregister()
 {
 	Super::OnUnregister();
+#if WITH_EDITOR
+	if (!HasAnyFlags(RF_Transient))
+	{
+		DestroyTextVisualizers();
+	}
+#endif
 	FAkAudioDevice * Dev = FAkAudioDevice::Get();
 	if (Dev != nullptr)
 	{
@@ -168,6 +175,10 @@ bool UAkPortalComponent::MoveComponentImpl(
 void UAkPortalComponent::OnUpdateTransform(EUpdateTransformFlags UpdateTransformFlags, ETeleportType Teleport)
 {
 	PortalNeedUpdated = true;
+
+#if WITH_EDITOR
+	UpdateTextLocRotVis();
+#endif
 }
 
 
@@ -228,6 +239,12 @@ void UAkPortalComponent::InitializeParent()
 		{
 			AkComponentHelpers::LogAttachmentError(this, SceneParent, "UPrimitiveComponent");
 		}
+#if WITH_EDITOR
+		DestroyTextVisualizers();
+		InitTextVisualizers();
+		UpdateRoomNames();
+		UpdateTextLocRotVis();
+#endif
 	}
 }
 
@@ -305,6 +322,24 @@ void UAkPortalComponent::TickComponent(float DeltaTime, enum ELevelTick TickType
 			}
 		}
 	}
+
+#if WITH_EDITOR
+	UWorld* World = GetWorld();
+	if (World && (World->WorldType == EWorldType::Editor || World->WorldType == EWorldType::PIE))
+	{
+		// Only show the text renderer for selected actors.
+		if (GetOwner()->IsSelected() && !bWasSelected)
+		{
+			bWasSelected = true;
+			UpdateTextVisibility();
+		}
+		if (!GetOwner()->IsSelected() && bWasSelected)
+		{
+			bWasSelected = false;
+			UpdateTextVisibility();
+		}
+	}
+#endif
 }
 
 void UAkPortalComponent::ResetPortalState()
@@ -326,8 +361,14 @@ bool UAkPortalComponent::UpdateConnectedRooms()
 	LastRoomsUpdate = GetWorld()->GetTimeSeconds();
 	PreviousLocation = GetComponentLocation();
 	PreviousRotation = GetComponentRotation();
+	const bool bRoomsChanged = GetFrontRoom() != previousFront || GetBackRoom() != previousBack;
+#if WITH_EDITOR
+	if (bRoomsChanged)
+		UpdateRoomNames();
+	UpdateTextLocRotVis();
+#endif
 	/* Return true if any room connection has changed. */
-	return (GetFrontRoom() != previousFront || GetBackRoom() != previousBack);
+	return bRoomsChanged;
 }
 
 UPrimitiveComponent* UAkPortalComponent::GetPrimitiveParent() const
@@ -380,6 +421,188 @@ void UAkPortalComponent::FindConnectedComponents(FAkEnvironmentIndex& RoomIndex,
 	}
 }
 
+#if WITH_EDITOR
+bool UAkPortalComponent::AreTextVisualizersInitialized() const
+{
+	return FrontRoomText != nullptr || BackRoomText != nullptr;
+}
+
+void UAkPortalComponent::InitTextVisualizers()
+{
+	if (!HasAnyFlags(RF_Transient))
+	{
+		FString NamePrefix = GetOwner()->GetName() + GetName();
+		UMaterialInterface* mat = Cast<UMaterialInterface>(FAkAudioStyle::GetAkForegroundTextMaterial());
+		FrontRoomText = NewObject<UTextRenderComponent>(GetOuter(), *(NamePrefix + "_FrontRoomName"));
+		BackRoomText = NewObject<UTextRenderComponent>(GetOuter(), *(NamePrefix + "_BackRoomName"));
+		FrontRoomText->SetText(FText::FromString(""));
+		BackRoomText->SetText(FText::FromString(""));
+		TArray<UTextRenderComponent*> TextComponents{ FrontRoomText, BackRoomText };
+		for (UTextRenderComponent* Text : TextComponents)
+		{
+			if (mat != nullptr)
+				Text->SetTextMaterial(mat);
+			Text->RegisterComponentWithWorld(GetWorld());
+			Text->AttachToComponent(this, FAttachmentTransformRules::KeepWorldTransform);
+			Text->SetRelativeLocation(FVector(0.0f, 0.0f, 0.0f));
+			Text->bIsEditorOnly = true;
+			Text->bSelectable = true;
+			Text->bAlwaysRenderAsText = true;
+			Text->SetHorizontalAlignment(EHTA_Center);
+			Text->SetWorldScale3D(FVector(1.0f));
+		}
+		FrontRoomText->SetVerticalAlignment(EVRTA_TextTop);
+		BackRoomText->SetVerticalAlignment(EVRTA_TextBottom);
+	}
+}
+
+void UAkPortalComponent::DestroyTextVisualizers()
+{
+	if (FrontRoomText != nullptr)
+	{
+		FrontRoomText->DestroyComponent();
+		FrontRoomText = nullptr;
+	}
+	if (BackRoomText != nullptr)
+	{
+		BackRoomText->DestroyComponent();
+		FrontRoomText = nullptr;
+	}
+}
+
+void UAkPortalComponent::UpdateRoomNames()
+{
+	if (!Parent || HasAnyFlags(RF_Transient) || !AreTextVisualizersInitialized())
+		return;
+
+	if (FrontRoomText != nullptr)
+	{		
+		FrontRoomText->SetText(FText::FromString(""));
+		if (FrontRoom != nullptr)
+			FrontRoomText->SetText(FText::FromString(FrontRoom->GetRoomName()));
+	}
+	if (BackRoomText != nullptr)
+	{
+		BackRoomText->SetText(FText::FromString(""));
+		if (BackRoom != nullptr)
+			BackRoomText->SetText(FText::FromString(BackRoom->GetRoomName()));
+	}
+}
+
+void UAkPortalComponent::UpdateTextRotations() const
+{
+	if (Parent == nullptr || !AreTextVisualizersInitialized())
+		return;
+	FVector BoxExtent = Parent->CalcBounds(FTransform()).BoxExtent;
+	const FTransform T = Parent->GetComponentTransform();
+	AkDrawBounds DrawBounds(T, BoxExtent);
+	// Setup the font normal to orient the text.
+	FVector Front = DrawBounds.FLD() - DrawBounds.BLD();
+	Front.Normalize();
+	FVector Up = DrawBounds.FLU() - DrawBounds.FLD();
+	Up.Normalize();
+	if (FrontRoomText != nullptr)
+		FrontRoomText->SetVerticalAlignment(EVRTA_TextTop);
+	if (BackRoomText != nullptr)
+		BackRoomText->SetVerticalAlignment(EVRTA_TextBottom);
+	if (FVector::DotProduct(FVector::UpVector, Up) < 0.0f)
+	{
+		if (FrontRoomText != nullptr)
+			FrontRoomText->SetVerticalAlignment(EVRTA_TextBottom);
+		if (BackRoomText != nullptr)
+			BackRoomText->SetVerticalAlignment(EVRTA_TextTop);
+		Up *= -1.0f;
+	}
+	// Choose to point both text components towards the front or back of the portal, depending on the position of the camera, so that they are both always readable.
+	FVector CamToCentre;
+	if (GCurrentLevelEditingViewportClient != nullptr)
+	{
+		CamToCentre = GCurrentLevelEditingViewportClient->GetViewLocation() - Parent->Bounds.Origin;
+		if (FVector::DotProduct(CamToCentre, Front) < 0.0f)
+			Front *= -1.0f;
+	}
+	if (FrontRoomText != nullptr)
+		FrontRoomText->SetWorldRotation(UKismetMathLibrary::MakeRotFromXZ(Front, Up));
+	if (BackRoomText != nullptr)
+		BackRoomText->SetWorldRotation(UKismetMathLibrary::MakeRotFromXZ(Front, Up));
+}
+
+void UAkPortalComponent::UpdateTextVisibility()
+{
+	if (!AreTextVisualizersInitialized())
+		return;
+
+	bool Visible = false;
+	if (GetWorld() != nullptr)
+	{
+		EWorldType::Type WorldType = GetWorld()->WorldType;
+		if (WorldType == EWorldType::Editor)
+		{
+			Visible = GetOwner() != nullptr && GetOwner()->IsSelected();
+		}
+		else if (WorldType == EWorldType::EditorPreview)
+		{
+			Visible = true;
+		}
+	}
+	if (GetOwner() != nullptr)
+	{
+		if (BackRoomText != nullptr)
+			BackRoomText->SetVisibility(Visible);
+		if (FrontRoomText != nullptr)
+			FrontRoomText->SetVisibility(Visible);
+	}
+}
+
+void UAkPortalComponent::UpdateTextLocRotVis()
+{
+	if (Parent == nullptr || !AreTextVisualizersInitialized())
+		return;
+	FVector BoxExtent = Parent->CalcBounds(FTransform()).BoxExtent;
+	const FTransform T = Parent->GetComponentTransform();
+	AkDrawBounds DrawBounds(T, BoxExtent);
+	float PortalWidth = 0.0f;
+	FVector Right;
+	(DrawBounds.FRD() - DrawBounds.FLD()).ToDirectionAndLength(Right, PortalWidth);
+	// Setup the font normal to orient the text.
+	FVector Front = DrawBounds.FLD() - DrawBounds.BLD();
+	FVector Up = DrawBounds.FLU() - DrawBounds.FLD();
+
+	if (FrontRoomText != nullptr)
+	{
+		FrontRoomText->SetWorldScale3D(FVector(1.0f));
+		// Get a point at the top center of the local axis-aligned bounds, to position the front room text.
+		//FVector Top = Parent->Bounds.Origin + FVector(0.0f, 0.0f, Parent->Bounds.BoxExtent.Z);
+		FVector Top = Parent->Bounds.Origin;// +Front + Up;
+		// Add a depth offset so that the text sits out at the top front of the portal
+		Top += Front * 0.5f;
+		Top += Up * 0.5f;
+		FrontRoomText->SetWorldLocation(Top);
+		const FVector FrontTextWorldSize = FrontRoomText->GetTextWorldSize();
+		const float TextWidth = FrontTextWorldSize.GetAbsMax();
+		if (TextWidth > PortalWidth && PortalWidth > 0.0f)
+			FrontRoomText->SetWorldScale3D(FVector(PortalWidth / TextWidth));
+	}
+	if (BackRoomText != nullptr)
+	{
+		BackRoomText->SetWorldScale3D(FVector(1.0f));
+		// Get a point at the bottom center of the local axis-aligned bounds, to position the back room text.
+		//FVector Bottom = Parent->Bounds.Origin - FVector(0.0f, 0.0f, Parent->Bounds.BoxExtent.Z);
+		FVector Bottom = Parent->Bounds.Origin;
+		// Add a depth offset so that the text sits out at the bottom back of the portal
+		Bottom -= Front * 0.5f;
+		Bottom -= Up * 0.5f;
+		BackRoomText->SetWorldLocation(Bottom);
+		const FVector BackTextWorldSize = BackRoomText->GetTextWorldSize();
+		const float TextWidth = BackTextWorldSize.GetAbsMax();
+		if (TextWidth > PortalWidth && PortalWidth > 0.0f)
+			BackRoomText->SetWorldScale3D(FVector(PortalWidth / TextWidth));
+	}
+	UpdateTextRotations();
+	UpdateTextVisibility();
+}
+
+#endif
 /*------------------------------------------------------------------------------------
 	AAkAcousticPortal
 ------------------------------------------------------------------------------------*/
@@ -405,15 +628,7 @@ AAkAcousticPortal::AAkAcousticPortal(const class FObjectInitializer& ObjectIniti
 	Portal->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
 
 #if WITH_EDITOR
-	const UAkSettings* AkSettings = GetDefault<UAkSettings>();
-	if (AkSettings)
-	{
-		CollisionChannel = AkSettings->DefaultFitToGeometryCollisionChannel;
-	}
-	else
-	{
-		CollisionChannel = ECollisionChannel::ECC_WorldStatic;
-	}
+	CollisionChannel = EAkCollisionChannel::EAKCC_UseIntegrationSettingsDefault;
 #endif
 }
 
@@ -524,6 +739,10 @@ void AAkAcousticPortal::Serialize(FArchive& Ar)
 }
 
 #if WITH_EDITOR
+ECollisionChannel AAkAcousticPortal::GetCollisionChannel()
+{
+	return UAkSettings::ConvertFitToGeomCollisionChannel(CollisionChannel.GetValue());
+}
 
 void AAkAcousticPortal::FitRaycast()
 {
@@ -560,7 +779,7 @@ void AAkAcousticPortal::FitRaycast()
 		FVector to = RaycastOrigin + FVector(x, y, z) * RayLength;
 
 		OutHits.Empty();
-		World->LineTraceMultiByObjectType(OutHits, RaycastOrigin, to, (int)CollisionChannel, CollisionParams);
+		World->LineTraceMultiByObjectType(OutHits, RaycastOrigin, to, (int)GetCollisionChannel(), CollisionParams);
 
 		if (OutHits.Num() > 0)
 		{
@@ -583,7 +802,7 @@ void AAkAcousticPortal::FitRaycast()
 			if (bHit)
 			{
 				OutHits.Empty();
-				World->LineTraceMultiByObjectType(OutHits, ImpactPoint0, ImpactPoint0 + ImpactNormal0 * RayLength, (int)CollisionChannel, CollisionParams);
+				World->LineTraceMultiByObjectType(OutHits, ImpactPoint0, ImpactPoint0 + ImpactNormal0 * RayLength, (int)GetCollisionChannel(), CollisionParams);
 
 				bHit = false;
 				FVector ImpactPoint1;

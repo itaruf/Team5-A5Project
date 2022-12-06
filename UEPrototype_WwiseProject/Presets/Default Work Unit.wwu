@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{4EA0F5E4-E356-4560-9E80-C6095821A52C}" SchemaVersion="103">
+<WwiseDocument Type="WorkUnit" ID="{4EA0F5E4-E356-4560-9E80-C6095821A52C}" SchemaVersion="110">
 	<Presets>
 		<WorkUnit Name="Default Work Unit" ID="{4EA0F5E4-E356-4560-9E80-C6095821A52C}" PersistMode="Standalone">
 			<ChildrenList>
@@ -41,7 +41,6 @@
 							<ObjectRef Name="MC" ID="{85FDBF6E-125A-4553-8D26-BE71B76B2425}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
 						</Reference>
 					</ReferenceList>
-					<ObjectLists/>
 				</RandomSequenceContainer>
 			</ChildrenList>
 		</WorkUnit>

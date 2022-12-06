@@ -1,3 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	2958716089	MC_FOL_Run			\Default Work Unit\Alexis\MC\MC_FOL_Run	
-

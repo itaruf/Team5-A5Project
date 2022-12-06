@@ -1,18 +1,19 @@
 /*******************************************************************************
-The content of the files in this repository include portions of the
-AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
-package.
-
-Commercial License Usage
-
-Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
-may use these files in accordance with the end user license agreement provided
-with the software or, alternatively, in accordance with the terms contained in a
-written agreement between you and Audiokinetic Inc.
-
-Copyright (c) 2021 Audiokinetic Inc.
+The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
+Technology released in source code form as part of the game integration package.
+The content of this file may not be used without valid licenses to the
+AUDIOKINETIC Wwise Technology.
+Note that the use of the game engine is subject to the Unreal(R) Engine End User
+License Agreement at https://www.unrealengine.com/en-US/eula/unreal
+ 
+License Usage
+ 
+Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
+this file in accordance with the end user license agreement provided with the
+software or, alternatively, in accordance with the terms contained
+in a written agreement between you and Audiokinetic Inc.
+Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
-
 
 #include "AkAudioStyle.h"
 #include "AkAudioDevice.h"
@@ -162,6 +163,7 @@ void SetAkResourceBrushes(FSlateStyleSet& Style)
 	SetAkBrush(Style, "AudiokineticTools.SwitchIcon", "switch_nor");
 	SetAkBrush(Style, "AudiokineticTools.SwitchGroupIcon", "switchgroup_nor");
 	SetAkBrush(Style, "AudiokineticTools.TriggerIcon", "trigger_nor");
+	SetAkBrush(Style, "AudiokineticTools.EffectShareSetIcon", "effect_shareset_nor");
 
 	SetClassThumbnail(Style, "ClassThumbnail.AkAcousticTexture", "AkAcousticTexture");
 	SetClassThumbnail(Style, "ClassThumbnail.AkAudioEvent", "AkAudioEvent");
@@ -175,6 +177,7 @@ void SetAkResourceBrushes(FSlateStyleSet& Style)
 	SetClassThumbnail(Style, "ClassThumbnail.AkStateValue", "AkStateValue");
 	SetClassThumbnail(Style, "ClassThumbnail.AkSwitchValue", "AkSwitchValue");
 	SetClassThumbnail(Style, "ClassThumbnail.AkTrigger", "AkTrigger");
+	SetClassThumbnail(Style, "ClassThumbnail.AkEffectShareSet", "AkEffectShareSet");
 
 	SetClassThumbnail(Style, "ClassThumbnail.AkAcousticPortal", "AK_Acoustic_Portal");
 	SetClassIcon(Style, "ClassIcon.AkAcousticPortal", "AK_Acoustic_Portal_Explorer");
@@ -233,8 +236,13 @@ void FAkAudioStyle::Shutdown()
     }
 }
 
-void FAkAudioStyle::DisplayEditorMessgae(const FText& messageText, EWwiseItemType::Type wwiseItemType /* = EWwiseItemType::Type::None*/, float duration /* = 1.5f */)
+void FAkAudioStyle::DisplayEditorMessage(const FText& messageText, EWwiseItemType::Type wwiseItemType /* = EWwiseItemType::Type::None*/, float duration /* = 1.5f */)
 {
+	if (!FApp::CanEverRender())
+	{
+		UE_LOG(LogAkAudio, Display, TEXT("DisplayEditorMessage: %s"), *messageText.ToString());
+		return;
+	}
 	FNotificationInfo Info(messageText);
 	if (wwiseItemType == EWwiseItemType::None)
 		Info.Image = FAkAudioStyle::GetWwiseIcon();
@@ -297,6 +305,8 @@ const FSlateBrush* FAkAudioStyle::GetBrush(EWwiseItemType::Type ItemType)
 	case EWwiseItemType::Switch: return Style.GetBrush("AudiokineticTools.SwitchIcon");
 	case EWwiseItemType::SwitchGroup: return Style.GetBrush("AudiokineticTools.SwitchGroupIcon");
 	case EWwiseItemType::Trigger: return Style.GetBrush("AudiokineticTools.TriggerIcon");
+	case EWwiseItemType::EffectShareSet: return Style.GetBrush("AudiokineticTools.EffectShareSetIcon");
+
 	default:
 		return nullptr;
 	}

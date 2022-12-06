@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{4B48BDF5-E22D-47AC-B83F-215A0B7EF6D4}" SchemaVersion="103">
+	<Switches>
+		<WorkUnit Name="Default Work Unit" ID="{4B48BDF5-E22D-47AC-B83F-215A0B7EF6D4}" PersistMode="Standalone">
+			<ChildrenList>
+				<WorkUnit Name="Ground" ID="{E004A010-F504-4067-98A9-85016B6C045A}" PersistMode="Reference"/>
+				<WorkUnit Name="Player" ID="{EBA3CEEC-BC2B-49E8-A7E7-74B1ED343117}" PersistMode="Reference"/>
+				<WorkUnit Name="Music" ID="{FB2C2EB9-8C59-4302-A45E-9A6C4C587C2B}" PersistMode="Reference"/>
+			</ChildrenList>
+		</WorkUnit>
+	</Switches>
+</WwiseDocument>

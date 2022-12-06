@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{F8A5D19F-B407-403E-A4C1-2F40F32BFE45}" SchemaVersion="103" RootDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}" ParentDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}">
+<WwiseDocument Type="WorkUnit" ID="{F8A5D19F-B407-403E-A4C1-2F40F32BFE45}" SchemaVersion="110" RootDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}" ParentDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}">
 	<GameParameters>
 		<WorkUnit Name="Player" ID="{F8A5D19F-B407-403E-A4C1-2F40F32BFE45}" OwnerID="{2E3B1270-9C0A-453D-8324-D76519F899C5}" PersistMode="Nested">
 			<ChildrenList>

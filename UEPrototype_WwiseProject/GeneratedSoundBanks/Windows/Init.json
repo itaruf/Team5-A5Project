@@ -2,33 +2,208 @@
  "SoundBanksInfo": {
   "Platform": "Windows",
   "BasePlatform": "Windows",
-  "SchemaVersion": "12",
-  "SoundbankVersion": "140",
-  "RootPaths": {
-   "ProjectRoot": "D:\\GitHub\\Team5-A5Project\\UEPrototype_WwiseProject\\",
-   "SourceFilesRoot": "D:\\GitHub\\Team5-A5Project\\UEPrototype_WwiseProject\\.cache\\Windows\\",
-   "SoundBanksRoot": "D:\\GitHub\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows\\",
-   "ExternalSourcesInputFile": "",
-   "ExternalSourcesOutputRoot": "D:\\GitHub\\Team5-A5Project\\UEPrototype_WwiseProject\\GeneratedSoundBanks\\Windows"
-  },
+  "SchemaVersion": "16",
+  "SoundBankVersion": "145",
   "SoundBanks": [
    {
     "Id": "1355168291",
+    "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "2311712464",
+    "Hash": "{2BF2D0E8-2EA4-9A04-5AE5-6E155BB83147}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
-    "IncludedAuxBusses": [
+    "Plugins": {
+     "ShareSets": [
+      {
+       "Id": "48620415",
+       "Name": "Have_U_Ever_Been_Outside",
+       "ObjectPath": "\\Effects\\Factory Effects\\Wwise RoomVerb\\Exteriors\\Have_U_Ever_Been_Outside",
+       "GUID": "{FE29AE8D-FD86-4652-A95D-68D32F5760EC}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      }
+     ],
+     "AudioDevices": [
+      {
+       "Id": "2317455096",
+       "Name": "No_Output",
+       "ObjectPath": "\\Audio Devices\\Default Work Unit\\No_Output",
+       "GUID": "{6B896E97-C9F8-4DA2-BC98-14CA55C18779}",
+       "LibName": "No Output",
+       "LibId": "11862023"
+      },
+      {
+       "Id": "3859886410",
+       "Name": "System",
+       "ObjectPath": "\\Audio Devices\\Default Work Unit\\System",
+       "GUID": "{6B7432B9-C029-45FA-A9AB-3F872EC98FE0}",
+       "LibName": "System",
+       "LibId": "11403271"
+      }
+     ]
+    },
+    "Busses": [
+     {
+      "Id": "393239870",
+      "Name": "SFX",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\SFX",
+      "GUID": "{F425DD9C-4B7D-40B0-B495-D58654E0B77E}"
+     },
+     {
+      "Id": "1117531639",
+      "Name": "AMB",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\AMB",
+      "GUID": "{CDAACF0F-C751-406F-9073-3F6016218135}"
+     },
+     {
+      "Id": "1551306167",
+      "Name": "UI",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\UI",
+      "GUID": "{810B9E20-27DC-44EE-82C9-184684B56A94}"
+     },
+     {
+      "Id": "1685527061",
+      "Name": "MC",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\MC",
+      "GUID": "{85FDBF6E-125A-4553-8D26-BE71B76B2425}"
+     },
+     {
+      "Id": "3803692087",
+      "Name": "Master Audio Bus",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus",
+      "GUID": "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"
+     },
+     {
+      "Id": "3991942870",
+      "Name": "MUSIC",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\MUSIC",
+      "GUID": "{92D4BD93-56C0-4EE8-92B3-800C27F369E2}"
+     }
+    ],
+    "AuxBusses": [
      {
       "Id": "3801984506",
       "Name": "RVB_Exterior",
       "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\RVB_Exterior",
-      "GUID": "{9AA47515-D1F5-4B5E-B74C-B787C0B8B927}"
+      "GUID": "{9AA47515-D1F5-4B5E-B74C-B787C0B8B927}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "48620415"
+        }
+       ]
+      }
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "298772159",
+      "Name": "RTPC_Vegetation",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Environment\\RTPC_Vegetation",
+      "GUID": "{AE9E92CD-9763-4B65-9735-3567D41C582E}"
+     },
+     {
+      "Id": "407356622",
+      "Name": "RTPC_WaterFallBigDistance",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Waterfall\\RTPC_WaterFallBigDistance",
+      "GUID": "{E44C6EE4-B46F-45ED-8B1E-1CE323B3070D}"
+     },
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Volume\\SFXVolume",
+      "GUID": "{632988FD-C1C7-443D-8588-28E93439E595}"
+     },
+     {
+      "Id": "1367533990",
+      "Name": "RTPC_WindSpeed",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Environment\\RTPC_WindSpeed",
+      "GUID": "{AEFD0C2B-4F71-404D-BB40-2112CF08A532}"
+     },
+     {
+      "Id": "2346531308",
+      "Name": "MusicVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Volume\\MusicVolume",
+      "GUID": "{768F620D-53F8-4590-A9FE-D608EFC505F2}"
+     },
+     {
+      "Id": "2653406601",
+      "Name": "RTPC_PlayerSpeed",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Player\\RTPC_PlayerSpeed",
+      "GUID": "{E81B3401-03B0-4FBF-A942-900B5FB3AA30}"
+     },
+     {
+      "Id": "2918011349",
+      "Name": "MasterVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Volume\\MasterVolume",
+      "GUID": "{5B45EAC9-2C25-4E26-BE21-B7E898D85C87}"
+     },
+     {
+      "Id": "3108029302",
+      "Name": "RTPC_DiveSpeed",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Player\\RTPC_DiveSpeed",
+      "GUID": "{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}"
+     },
+     {
+      "Id": "3719595881",
+      "Name": "RTPC_WaterFallSmallDistance",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Waterfall\\RTPC_WaterFallSmallDistance",
+      "GUID": "{3EBDAF7B-F3C9-4BBD-B245-745987FDAE47}"
+     },
+     {
+      "Id": "3826379182",
+      "Name": "RTPC_WaterFallMedDistance",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Waterfall\\RTPC_WaterFallMedDistance",
+      "GUID": "{30BBCABF-1EE6-465D-8559-10DB16449DC6}"
      }
     ],
     "StateGroups": [
+     {
+      "Id": "52661923",
+      "Name": "Transitions",
+      "ObjectPath": "\\States\\Default Work Unit\\Music\\Transitions",
+      "GUID": "{CEC7607A-4B1A-4E7C-B649-A0E682C5A13D}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\Music\\Transitions\\None",
+        "GUID": "{962B5826-9E09-4393-B705-25CD688B521B}"
+       },
+       {
+        "Id": "1031089529",
+        "Name": "Debut",
+        "ObjectPath": "\\States\\Default Work Unit\\Music\\Transitions\\Debut",
+        "GUID": "{BC8ABD77-D9F9-49B4-A7C3-17BBB688B7E0}"
+       },
+       {
+        "Id": "3367198603",
+        "Name": "Loop04",
+        "ObjectPath": "\\States\\Default Work Unit\\Music\\Transitions\\Loop04",
+        "GUID": "{A4F1F93C-E5CE-4527-A92A-7FA76BF53117}"
+       },
+       {
+        "Id": "3367198604",
+        "Name": "Loop03",
+        "ObjectPath": "\\States\\Default Work Unit\\Music\\Transitions\\Loop03",
+        "GUID": "{1D97039E-719E-4BD4-B198-73EEB17FEEEF}"
+       },
+       {
+        "Id": "3367198605",
+        "Name": "Loop02",
+        "ObjectPath": "\\States\\Default Work Unit\\Music\\Transitions\\Loop02",
+        "GUID": "{4CFAE661-A43B-4B06-A656-B2F98677BD2D}"
+       },
+       {
+        "Id": "3367198606",
+        "Name": "Loop01",
+        "ObjectPath": "\\States\\Default Work Unit\\Music\\Transitions\\Loop01",
+        "GUID": "{4C062D99-B7CC-4885-B225-BD15F4B9FE87}"
+       }
+      ]
+     },
      {
       "Id": "1069431850",
       "Name": "Player",
@@ -36,16 +211,16 @@
       "GUID": "{A35C2FA7-3FB8-4308-B646-C70734A65B5B}",
       "States": [
        {
-        "Id": "748895195",
-        "Name": "None",
-        "ObjectPath": "\\States\\Default Work Unit\\Player\\None",
-        "GUID": "{FD3FA075-4F64-4432-A05F-2F23DBBB4B74}"
-       },
-       {
         "Id": "655265632",
         "Name": "Alive",
         "ObjectPath": "\\States\\Default Work Unit\\Player\\Alive",
         "GUID": "{E8CC3D28-0F71-43A1-8071-556C82C64DB2}"
+       },
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\Player\\None",
+        "GUID": "{FD3FA075-4F64-4432-A05F-2F23DBBB4B74}"
        },
        {
         "Id": "2044049779",
@@ -54,9 +229,180 @@
         "GUID": "{CB238342-84ED-4395-815B-912C29F7CDBB}"
        }
       ]
+     },
+     {
+      "Id": "3823289177",
+      "Name": "Level0_state",
+      "ObjectPath": "\\States\\Default Work Unit\\Level0_state",
+      "GUID": "{33379167-B165-42B5-8A74-9C6F3FBA609E}",
+      "States": [
+       {
+        "Id": "198183322",
+        "Name": "Level1_Island",
+        "ObjectPath": "\\States\\Default Work Unit\\Level0_state\\Level1_Island",
+        "GUID": "{0DA3500C-A187-48C8-B1DA-01128AB6F46C}"
+       },
+       {
+        "Id": "529726532",
+        "Name": "End",
+        "ObjectPath": "\\States\\Default Work Unit\\Level0_state\\End",
+        "GUID": "{B3FF19C2-F492-4C90-BA33-3ABAE92F6B58}"
+       },
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\Level0_state\\None",
+        "GUID": "{AAAE2F82-E515-401C-987A-7BD12860754A}"
+       },
+       {
+        "Id": "793378327",
+        "Name": "Level1_Tuto",
+        "ObjectPath": "\\States\\Default Work Unit\\Level0_state\\Level1_Tuto",
+        "GUID": "{6C9B29B5-58DC-4C6A-8508-BA9473018BCD}"
+       },
+       {
+        "Id": "1268370483",
+        "Name": "Level2_Temple",
+        "ObjectPath": "\\States\\Default Work Unit\\Level0_state\\Level2_Temple",
+        "GUID": "{EADA8553-28C8-474C-9B89-43EA00336368}"
+       },
+       {
+        "Id": "3269752065",
+        "Name": "Level3_Tube",
+        "ObjectPath": "\\States\\Default Work Unit\\Level0_state\\Level3_Tube",
+        "GUID": "{F2919E44-FF34-486E-B6FF-609474A6E1CB}"
+       }
+      ]
+     }
+    ],
+    "SwitchGroups": [
+     {
+      "Id": "1493153371",
+      "Name": "PlayerSpeed",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Player\\PlayerSpeed",
+      "GUID": "{C322E38C-C54E-4826-8239-004827EC3649}",
+      "GameParameterRef": {
+       "Id": "2653406601"
+      },
+      "Switches": [
+       {
+        "Id": "712161704",
+        "Name": "Run",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Player\\PlayerSpeed\\Run",
+        "GUID": "{957E5E0D-5BDC-45B0-922E-A83CFC456697}"
+       },
+       {
+        "Id": "2108779966",
+        "Name": "Walk",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Player\\PlayerSpeed\\Walk",
+        "GUID": "{D3358156-8287-45E1-B229-DE4AF5C38541}"
+       }
+      ]
+     },
+     {
+      "Id": "1763041431",
+      "Name": "MusicSpeed",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Music\\MusicSpeed",
+      "GUID": "{CBC0EA66-A1D3-42C5-8E1E-327A83391E49}",
+      "GameParameterRef": {
+       "Id": "2653406601"
+      },
+      "Switches": [
+       {
+        "Id": "1048449613",
+        "Name": "Max",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Music\\MusicSpeed\\Max",
+        "GUID": "{8439DF8E-348A-44ED-A6AA-BECCA5822234}"
+       },
+       {
+        "Id": "2849147824",
+        "Name": "Medium",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Music\\MusicSpeed\\Medium",
+        "GUID": "{705EB459-EB95-4B30-B196-F387EEC2DC65}"
+       },
+       {
+        "Id": "3844515483",
+        "Name": "Minimum",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Music\\MusicSpeed\\Minimum",
+        "GUID": "{60B5C337-3221-40F2-91E4-F4076E8B5AE8}"
+       }
+      ]
+     },
+     {
+      "Id": "2712085565",
+      "Name": "IntroOrIngame",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Music\\IntroOrIngame",
+      "GUID": "{2B7726F7-5DA4-466A-B392-FEE1D84C25FD}",
+      "Switches": [
+       {
+        "Id": "984691642",
+        "Name": "Ingame",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Music\\IntroOrIngame\\Ingame",
+        "GUID": "{C3593569-598B-4A34-A393-857984273E13}"
+       },
+       {
+        "Id": "1125500713",
+        "Name": "Intro",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Music\\IntroOrIngame\\Intro",
+        "GUID": "{FF29A4C7-0EB6-478F-A797-EE858B6655F9}"
+       }
+      ]
+     },
+     {
+      "Id": "3072116243",
+      "Name": "GroundMaterial",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Ground\\GroundMaterial",
+      "GUID": "{83629B62-F799-43ED-89B9-0C66FF055C0D}",
+      "Switches": [
+       {
+        "Id": "1216965916",
+        "Name": "Stone",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Ground\\GroundMaterial\\Stone",
+        "GUID": "{FBA5D6FC-BB79-43BA-80B2-ABEA585C003B}"
+       },
+       {
+        "Id": "2195636714",
+        "Name": "Dirt",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Ground\\GroundMaterial\\Dirt",
+        "GUID": "{C21DBD70-DDF8-408B-94DD-B9AD5A402C7F}"
+       },
+       {
+        "Id": "2654748154",
+        "Name": "Water",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Ground\\GroundMaterial\\Water",
+        "GUID": "{A008443E-3AE0-4101-9B6D-5F65FD589FD6}"
+       },
+       {
+        "Id": "4248645337",
+        "Name": "Grass",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Ground\\GroundMaterial\\Grass",
+        "GUID": "{AF0B5F0B-9DBE-4ADD-BBCA-EF6F1BD0E3B0}"
+       }
+      ]
+     },
+     {
+      "Id": "3713320225",
+      "Name": "WetStep",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Player\\WetStep",
+      "GUID": "{FCBF479E-1C76-439B-AF07-200D06DE2FD8}",
+      "Switches": [
+       {
+        "Id": "1181096339",
+        "Name": "Wet",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Player\\WetStep\\Wet",
+        "GUID": "{2130E39D-D67A-4F0C-98C4-E549921C1B82}"
+       },
+       {
+        "Id": "2206795156",
+        "Name": "NotWet",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Player\\WetStep\\NotWet",
+        "GUID": "{1256BF53-F28D-4EEE-9BA9-C252748C38BD}"
+       }
+      ]
      }
     ]
    }
-  ]
+  ],
+  "FileHash": "{5C46F447-22F9-5E92-C8EE-0A3E4D4F0E0B}"
  }
 }

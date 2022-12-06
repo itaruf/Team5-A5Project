@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{770F098B-B93C-4720-A984-3E030EB04B8D}" SchemaVersion="103" RootDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" ParentDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}">
+<WwiseDocument Type="WorkUnit" ID="{770F098B-B93C-4720-A984-3E030EB04B8D}" SchemaVersion="110" RootDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" ParentDocumentID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}">
 	<AudioObjects>
 		<WorkUnit Name="MC" ID="{770F098B-B93C-4720-A984-3E030EB04B8D}" OwnerID="{601F659D-DA51-497E-BAC8-0A4E2EAC0A29}" PersistMode="Nested">
 			<PropertyList>
@@ -74,7 +74,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="MC_FOL_Run_01" ID="{17A7B416-A514-40CA-84D9-FB74D4B699B7}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -97,7 +96,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="MC_FOL_Run_02" ID="{23DDC71E-E2BE-4CEC-BCCC-07CD68DE9092}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -120,7 +118,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="MC_FOL_Run_03" ID="{48D3605B-CA0A-4384-AD97-F03D02A9B6E0}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -143,7 +140,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="MC_FOL_Run_04" ID="{009C773E-EA1C-4C63-AAC7-6A478B19395D}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -166,7 +162,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="MC_FOL_Run_05" ID="{28BE14B6-5BF7-46AA-A825-D06ADFA7F219}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -189,7 +184,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="MC_FOL_Run_06" ID="{C04DF52D-2499-4FD7-B222-CFBF737E66D3}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -212,7 +206,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="MC_FOL_Run_07" ID="{985CA6A6-619D-43BA-86F1-DA15886694FE}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -235,7 +228,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="MC_FOL_Run_08" ID="{FB9B0C1A-F5CE-40D3-A87F-67F050C8D852}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -258,7 +250,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="MC_FOL_Run_09" ID="{7AAA04AE-8EBE-4BE4-B01B-6EC4625D3E73}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -281,7 +272,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="MC_FOL_Run_10" ID="{9962B131-1D55-40C1-A5C5-A27676A89D93}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -304,13 +294,11 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="MC_FOL_Run_11" ID="{09E9A228-C04D-44D9-B747-282E4EEB6E67}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
-									<ObjectLists/>
 								</RandomSequenceContainer>
 								<RandomSequenceContainer Name="MC_FOL_Jump" ID="{4F953C74-2A3F-4A73-A5CB-EC5E5B6ADD2A}" ShortID="452901153">
 									<PropertyList>
@@ -360,7 +348,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="MC_FOL_Jump_01" ID="{82141521-EB62-42F2-8580-BEA99D6F32AA}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -383,7 +370,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="MC_FOL_Jump_02" ID="{FB203130-9353-4415-AC14-7D26923C6C84}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -406,7 +392,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="MC_FOL_Jump_03" ID="{7C8CCCD9-93EA-406A-9FA4-06B4DE0A9FB1}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -429,7 +414,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="MC_FOL_Jump_04" ID="{7F9105C5-6827-4BA1-AA97-4F12AB915BFB}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -452,75 +436,19 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="MC_FOL_Jump_05" ID="{D15783B5-A1AE-467E-A575-B91DF2FB0BFB}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
-									<ObjectLists/>
 								</RandomSequenceContainer>
 								<Sound Name="MC_FOL_FreeFall_LP" ID="{83440EC0-3E5F-4A4F-BE99-D13BDAECBF93}" ShortID="1027839903">
 									<PropertyList>
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-										<Property Name="Pitch" Type="int32">
-											<RTPCList>
-												<RTPC Name="" ID="{217BB86A-A6A7-4429-B706-CA8EC4527B92}" ShortID="584163158">
-													<ReferenceList>
-														<Reference Name="ControlInput">
-															<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{F8A5D19F-B407-403E-A4C1-2F40F32BFE45}"/>
-														</Reference>
-													</ReferenceList>
-													<Curve Name="" ID="{D4255471-2034-43FD-84E5-9F40683C3DB3}">
-														<PropertyList>
-															<Property Name="Flags" Type="int32" Value="65537"/>
-														</PropertyList>
-														<PointList>
-															<Point>
-																<XPos>0</XPos>
-																<YPos>-373</YPos>
-																<Flags>5</Flags>
-															</Point>
-															<Point>
-																<XPos>3000</XPos>
-																<YPos>327</YPos>
-																<Flags>37</Flags>
-															</Point>
-														</PointList>
-													</Curve>
-												</RTPC>
-											</RTPCList>
-										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
 												<Value>-20</Value>
 											</ValueList>
-											<RTPCList>
-												<RTPC Name="" ID="{3B62DD07-6385-45CF-A095-855D64B67E89}" ShortID="194851047">
-													<ReferenceList>
-														<Reference Name="ControlInput">
-															<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{F8A5D19F-B407-403E-A4C1-2F40F32BFE45}"/>
-														</Reference>
-													</ReferenceList>
-													<Curve Name="" ID="{8796222A-8923-46EA-A46A-745384B4090A}">
-														<PropertyList>
-															<Property Name="Flags" Type="int32" Value="3"/>
-														</PropertyList>
-														<PointList>
-															<Point>
-																<XPos>0</XPos>
-																<YPos>-200</YPos>
-																<Flags>5</Flags>
-															</Point>
-															<Point>
-																<XPos>3000</XPos>
-																<YPos>0</YPos>
-																<Flags>37</Flags>
-															</Point>
-														</PointList>
-													</Curve>
-												</RTPC>
-											</RTPCList>
 										</Property>
 									</PropertyList>
 									<ReferenceList>
@@ -540,7 +468,80 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
-									<ObjectLists/>
+									<ObjectLists>
+										<ObjectList Name="RTPC">
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{217BB86A-A6A7-4429-B706-CA8EC4527B92}" ShortID="584163158">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Pitch"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{F8A5D19F-B407-403E-A4C1-2F40F32BFE45}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{D4255471-2034-43FD-84E5-9F40683C3DB3}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="65537"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>-373</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>3000</XPos>
+																				<YPos>327</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<RTPC Name="" ID="{3B62DD07-6385-45CF-A095-855D64B67E89}" ShortID="194851047">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Volume"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="RTPC_DiveSpeed" ID="{B98CCC5A-4AF4-4F1E-B1E1-E0E932C8530E}" WorkUnitID="{F8A5D19F-B407-403E-A4C1-2F40F32BFE45}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{8796222A-8923-46EA-A46A-745384B4090A}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="3"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>-200</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>3000</XPos>
+																				<YPos>0</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
 									<ActiveSourceList>
 										<ActiveSource Name="MC_Foley_Cape_Turn_Long_Medium_LP" ID="{00EAAA02-A274-4EE2-A813-A02BDAC88AE1}" Platform="Linked"/>
 									</ActiveSourceList>
@@ -605,7 +606,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Jump_01" ID="{56A52ED8-3B93-4AAC-B180-9C89EAA3C7EC}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -628,7 +628,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Jump_02" ID="{57E18E12-1B1F-4E2C-8855-FEF45E53AF30}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -651,7 +650,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Jump_03" ID="{2FCCE807-897A-4AA1-B8DF-F86A66A1753C}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -674,7 +672,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Jump_04" ID="{60714D13-F7A2-4F4F-9F9D-37463EDC0278}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -697,13 +694,11 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Jump_05" ID="{8965313E-1C4C-4BA1-AD2C-1A8ECF2F620F}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
-											<ObjectLists/>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="VO_MC_Land" ID="{A10F4189-125E-4354-8C10-830E833F0EB7}" ShortID="240200337">
 											<PropertyList>
@@ -743,7 +738,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Land_01" ID="{D78B50B1-CB89-4E8E-AF2E-73BDA25DD297}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -766,7 +760,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Land_02" ID="{F29212D0-782A-40F4-B23A-15F6F0BDAA31}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -789,7 +782,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Land_03" ID="{41E321FE-8EA4-42B3-934B-68E33617C64F}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -812,7 +804,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Land_04" ID="{4122B767-57CE-49B4-8858-7A3B5A7CCF80}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -835,13 +826,11 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Land_05" ID="{C975626A-01C7-4BED-94DF-8C685F95E2B4}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
-											<ObjectLists/>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="VO_MC_Glide_Stop_NoEnergy" ID="{81C767E3-3B94-4BA6-9551-0EB0966D646D}" ShortID="170029184">
 											<PropertyList>
@@ -881,7 +870,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Glide_Stop_NoEnergy_01" ID="{23D260AB-65A4-4C98-AFC1-DD5FCAD86769}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -904,7 +892,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Glide_Stop_NoEnergy_02" ID="{97C48072-E7DF-42CE-9B5D-470B9E2F09D7}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -927,7 +914,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Glide_Stop_NoEnergy_03" ID="{6BBCC0B2-F4AA-49F8-A032-79DECCA1CE36}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -950,7 +936,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Glide_Stop_NoEnergy_04" ID="{410C955C-0277-4360-AA7B-F2897AF8F5E3}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -973,13 +958,11 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Glide_Stop_NoEnergy_05" ID="{59DB2471-CA98-40EF-B28E-FFDFC24DFEE5}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
-											<ObjectLists/>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="VO_MC_Glide_Start" ID="{E96402B5-29E4-4AD3-AA68-BED040824D4D}" ShortID="941747996">
 											<PropertyList>
@@ -1019,7 +1002,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Glide_Start_01" ID="{E0B59C62-7463-402F-8147-A5619377118E}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -1042,7 +1024,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Glide_Start_02" ID="{9E12D1DE-4E20-473C-8F18-E1CB1E6838BD}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -1065,7 +1046,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Glide_Start_03" ID="{1DC4A6F5-AB5D-416F-9E43-9ACE2A68662B}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -1088,13 +1068,11 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Glide_Start_04" ID="{49396B90-B992-4DA3-9ED0-0A26A527E01A}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
-											<ObjectLists/>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="VO_MC_Glide_Stop" ID="{8CE145E2-2FF0-42C9-915D-B7B00F4E19F5}" ShortID="566872500">
 											<PropertyList>
@@ -1134,7 +1112,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Glide_Stop_01" ID="{B0D7F91B-D111-467C-9DCC-CD5864025F5B}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -1157,7 +1134,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Glide_Stop_02" ID="{68145B1A-D491-48E7-8954-518F8C385A14}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -1180,13 +1156,11 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Glide_Stop_03" ID="{07DC72A5-672F-41B7-8860-FAC9C6FDA364}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
-											<ObjectLists/>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="VO_MC_Glide_Crash" ID="{D4EADAA9-DD2B-4EAE-B6EA-EA318075AFDB}" ShortID="826700410">
 											<PropertyList>
@@ -1221,7 +1195,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Glide_Crash_01" ID="{D30A58B4-3931-4E29-ABD1-ED64EE8DBA02}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -1244,7 +1217,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Glide_Crash_02" ID="{F94D626A-3676-4959-BC89-ADAE362325F3}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -1267,7 +1239,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Glide_Crash_03" ID="{249249A5-DAA9-424A-904E-D73042B91728}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -1290,13 +1261,11 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Glide_Crash_04" ID="{6984302A-5929-4BE5-B0D8-D7BAE992ABBD}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
-											<ObjectLists/>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="VO_MC_FallingVoid" ID="{199EF73C-301B-466F-B26C-662C87535C3D}" ShortID="15187155">
 											<PropertyList>
@@ -1336,7 +1305,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Glide_FallingVoid_01" ID="{3A1216D5-C340-4E1B-817B-A9B44DED6F04}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -1359,7 +1327,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Glide_FallingVoid_02" ID="{15649D77-4544-42CF-A330-7716EC1F75AE}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -1382,7 +1349,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Glide_FallingVoid_03" ID="{EB980245-F4FD-4753-9EFE-E2283D3B8A67}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -1405,16 +1371,13 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="VO_MC_Glide_FallingVoid_04" ID="{3BC589AC-ED79-45CE-95A0-00B39ED2F888}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
-											<ObjectLists/>
 										</RandomSequenceContainer>
 									</ChildrenList>
-									<ObjectLists/>
 								</ActorMixer>
 							</ChildrenList>
 						</Folder>
@@ -1522,7 +1485,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Walk_01" ID="{A03DEB91-B966-4C2B-A9C8-F73B7BBD08FF}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -1545,7 +1507,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Walk_02" ID="{1368A2AA-0A6A-494E-B7DE-5937F7282210}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -1568,7 +1529,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Walk_03" ID="{19E21132-BB2F-4FA7-9EFE-25C10B1765E7}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -1591,7 +1551,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Walk_04" ID="{1AA6571A-7A19-42ED-85B5-02D337868F4D}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -1614,7 +1573,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Walk_05" ID="{00F4B329-253A-46C2-9362-298655B0BE96}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -1637,7 +1595,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Walk_06" ID="{796A704F-FF87-4D1F-9AF3-A6B957119526}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -1660,7 +1617,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Walk_07" ID="{953423F1-AE24-4B5F-9FEE-7DD32BBD2996}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -1683,7 +1639,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Walk_08" ID="{5BAC41A7-5A4E-4B23-A527-30009F1D14D8}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -1706,7 +1661,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Walk_09" ID="{2FE4D8C0-0493-429C-AB96-0C50E1F506C8}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -1729,13 +1683,11 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Walk_10" ID="{25FC6D08-B9BE-4C9F-8564-D08B624E3564}" Platform="Linked"/>
 																	</ActiveSourceList>
 																</Sound>
 															</ChildrenList>
-															<ObjectLists/>
 														</RandomSequenceContainer>
 														<RandomSequenceContainer Name="MC_FT_Dirt_Walk" ID="{9136E86C-25C8-499B-BA51-0E07D119F3D7}" ShortID="929147260">
 															<PropertyList>
@@ -1797,7 +1749,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Walk_01" ID="{90647E72-88AF-496D-9888-75207B07148C}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -1820,7 +1771,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Walk_02" ID="{577E831A-F27F-4947-B623-4956FB0C2CA2}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -1843,7 +1793,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Walk_03" ID="{7D3A414F-82DE-4AAD-B8A2-E9AA7464ACC7}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -1866,7 +1815,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Walk_04" ID="{F64FF862-4225-46A6-980C-A7A878BA169C}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -1889,7 +1837,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Walk_05" ID="{33B98B37-2B0B-4933-B0FC-C94F7EA78BB7}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -1912,7 +1859,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Walk_06" ID="{71D03CBD-9A3D-4804-98AB-35798800F125}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -1935,7 +1881,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Walk_07" ID="{0832CA60-B4D0-45AB-9B5E-68DA3D534B23}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -1958,7 +1903,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Walk_08" ID="{65B52A14-C5CA-448E-A290-BF5F4564289F}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -1981,7 +1925,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Walk_09" ID="{9F87CD90-0075-45B6-85D7-FBF94B7DA97B}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2004,13 +1947,11 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Walk_10" ID="{2342C083-4C8B-409B-978F-DDA9EE5696A7}" Platform="Linked"/>
 																	</ActiveSourceList>
 																</Sound>
 															</ChildrenList>
-															<ObjectLists/>
 														</RandomSequenceContainer>
 														<RandomSequenceContainer Name="MC_FT_Water_Walk" ID="{A6AF27B8-2B7E-458B-B26B-6731041C505C}" ShortID="909870803">
 															<PropertyList>
@@ -2072,7 +2013,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Walk_01" ID="{7047EBA2-552D-4FDD-86BC-21B8AB2E56E3}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2095,7 +2035,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Walk_02" ID="{DE6ED8DA-665E-4578-9BA9-A8BBF5D7A966}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2118,7 +2057,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Walk_03" ID="{520B1AC7-70F2-472C-8883-DADF3327614A}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2141,7 +2079,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Walk_04" ID="{8BF6D3F4-01FB-4BF1-ABD3-D07989BF0435}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2164,7 +2101,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Walk_05" ID="{4DF96E5E-1521-45C8-8E42-565238B992D3}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2187,7 +2123,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Walk_06" ID="{4E4D666B-4E55-4A27-B4A8-B41C3C6AE39F}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2210,7 +2145,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Walk_07" ID="{EC153DB7-EAC2-4D5D-9F68-D56BF1255C7C}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2233,7 +2167,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Walk_08" ID="{FC708B92-F11E-4FCA-B581-DC07C2B8DB42}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2256,7 +2189,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Walk_09" ID="{F1283B26-047A-4FAD-832D-C43CC6DA9BAA}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2279,13 +2211,11 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Walk_10" ID="{8A73D819-9233-4D66-B47B-071A587C4C8E}" Platform="Linked"/>
 																	</ActiveSourceList>
 																</Sound>
 															</ChildrenList>
-															<ObjectLists/>
 														</RandomSequenceContainer>
 														<RandomSequenceContainer Name="MC_FT_Grass_Walk" ID="{AD541480-5E17-4841-8C08-093886A133DA}" ShortID="91123241">
 															<PropertyList>
@@ -2347,7 +2277,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Walk_01" ID="{74941655-10A3-453D-A6F5-908205B63BC0}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2370,7 +2299,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Walk_02" ID="{B1F7B153-D7B0-4D5B-A657-5175741CB7AB}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2393,7 +2321,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Walk_03" ID="{6D817D37-0D6F-43F4-A640-963FB3B373D4}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2416,7 +2343,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Walk_04" ID="{9FEA0051-43C7-4B2C-B6E1-AF02D789B95A}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2439,7 +2365,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Walk_05" ID="{081B53B2-CCA4-4708-95C1-AB576ACBB054}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2462,7 +2387,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Walk_06" ID="{EA476A5D-0C9C-4A92-B982-50EB2A078458}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2485,7 +2409,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Walk_07" ID="{6041E3C3-B8F1-4594-9007-7F155FAB0056}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2508,7 +2431,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Walk_08" ID="{FB29DBC0-D0AD-4DF8-8B14-F287BA0E6D24}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2531,7 +2453,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Walk_09" ID="{F99B42E6-7057-444B-92A8-52D979C76BD9}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2554,7 +2475,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Walk_10" ID="{725CA939-D077-4414-A5B1-46EEB7AE9661}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2577,7 +2497,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Walk_11" ID="{0E26AB68-A7D6-487E-86BA-ECEF784F172C}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2600,7 +2519,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Walk_12" ID="{15B5C915-3118-4002-84B8-B1F9C380F694}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2623,7 +2541,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Walk_13" ID="{0FCCB302-78C2-4361-AE26-CB0DE7E38182}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2646,16 +2563,13 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Walk_14" ID="{6A1B1511-1895-4989-8EA8-67062B9EE4A7}" Platform="Linked"/>
 																	</ActiveSourceList>
 																</Sound>
 															</ChildrenList>
-															<ObjectLists/>
 														</RandomSequenceContainer>
 													</ChildrenList>
-													<ObjectLists/>
 													<GroupingInfo>
 														<GroupingBehaviorList>
 															<GroupingBehavior>
@@ -2775,7 +2689,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Run_01" ID="{4C045EA9-C602-4E53-982D-3FAB6E87E7D2}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2798,7 +2711,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Run_02" ID="{11377B8B-A8E4-4AD3-A544-2B8FEDD2CF8D}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2821,7 +2733,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Run_03" ID="{B65FADA3-F7CE-4466-AFF6-CC8E0294CA43}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2844,7 +2755,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Run_04" ID="{582C1F05-03C1-49FA-86D9-6647FF7A27B7}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2867,7 +2777,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Run_05" ID="{4AEDB21E-5686-4DA2-9926-C4C761589415}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2890,7 +2799,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Run_06" ID="{353F653B-CC30-4F2C-B37B-D95AA1DFD668}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2913,7 +2821,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Run_07" ID="{32171E8A-3EED-4C98-8FDD-F0F6F62AF780}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2936,7 +2843,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Run_08" ID="{ABA3CEFE-7CC5-4838-A8E0-C9F0356BEA21}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2959,7 +2865,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Run_09" ID="{8124610F-8600-4A63-98C4-67A4153A5FB3}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -2982,7 +2887,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Run_10" ID="{CE2A188A-AAA8-40DD-9CBF-41A46B3F24F8}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3005,7 +2909,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Run_11" ID="{F75F1E06-442D-4092-A12D-7920EC0E680C}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3028,7 +2931,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Run_12" ID="{9A8C04F7-10EF-4DD0-B222-0B6336A2BB95}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3051,7 +2953,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Run_13" ID="{BCDB056E-B038-4F1E-8997-BEE36210F974}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3074,7 +2975,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Run_14" ID="{01229B51-7E39-427F-8AEC-90E868D2D925}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3097,7 +2997,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Run_15" ID="{F900C0CD-CCC6-4C93-AD40-7AE060008DA1}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3120,7 +3019,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Run_16" ID="{9E583DBE-38EE-4EEB-98FB-3AE8E4B92AD5}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3143,7 +3041,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Run_17" ID="{966BE521-C000-4E02-8636-BCC7638D766C}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3166,7 +3063,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Run_18" ID="{2FFFDFFE-180C-4ECE-919C-69F1B9EF2CDE}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3189,7 +3085,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Run_19" ID="{C9252AAF-58AE-486C-81AA-F8EECB18FAC8}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3212,13 +3107,11 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Water_Run_20" ID="{2F43CDC9-C7F5-4863-A431-0A09263FE58E}" Platform="Linked"/>
 																	</ActiveSourceList>
 																</Sound>
 															</ChildrenList>
-															<ObjectLists/>
 														</RandomSequenceContainer>
 														<RandomSequenceContainer Name="MC_FT_Grass_Run" ID="{A65586EE-F34D-43DD-94A9-60A6CFFD17CC}" ShortID="499733921">
 															<PropertyList>
@@ -3280,7 +3173,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Run_10" ID="{7B752F9B-15C9-473F-AB21-58A7EDC62094}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3303,7 +3195,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Run_14" ID="{934E48C1-4D8C-402D-B9E3-FF1C5330B25D}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3326,7 +3217,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Run_01" ID="{30B8F58C-5CAA-466F-A7B2-286C9FAA8270}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3349,7 +3239,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Run_05" ID="{26DF4FC1-AE3B-4B69-BDD4-3B2359B4ABBC}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3372,7 +3261,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Run_04" ID="{1F31A176-2917-422B-BFAE-8D915BBC262D}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3395,7 +3283,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Run_07" ID="{0A005D01-9FE9-492E-9E90-401EC3BA11B1}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3418,7 +3305,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Run_09" ID="{EA43A2FA-61D3-453A-AEC0-97EB9DF3467E}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3441,7 +3327,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Run_12" ID="{FB45DE28-90C5-4171-A255-45758C8C5B28}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3464,7 +3349,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Run_06" ID="{EA8C5979-4432-47C2-AAAC-4A0D5370E991}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3487,7 +3371,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Run_08" ID="{F062A5AE-42F1-485F-94FA-0B49D702DFC3}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3510,7 +3393,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Run_11" ID="{32544923-7987-405D-8C98-1CA88867FD3D}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3533,7 +3415,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Run_02" ID="{45F8A5C5-711B-4A6E-88B8-BD182C732BE8}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3556,7 +3437,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Run_03" ID="{5A766743-93A5-4E6B-B518-C9AFD31DF578}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3579,7 +3459,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Run_15" ID="{8DEBC417-5E27-40BA-AFCE-DC96FF0CE03E}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3602,13 +3481,11 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Grass_Run_13" ID="{F6F34199-DC5C-4A23-B92F-40197DC4F575}" Platform="Linked"/>
 																	</ActiveSourceList>
 																</Sound>
 															</ChildrenList>
-															<ObjectLists/>
 														</RandomSequenceContainer>
 														<RandomSequenceContainer Name="MC_FT_Stone_Run" ID="{4F9C53D8-6A5A-412D-A099-9FDD6C0BBE05}" ShortID="206372045">
 															<PropertyList>
@@ -3667,7 +3544,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Run_01" ID="{0545D780-A14C-4D91-98C1-FEB8A9422C03}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3690,7 +3566,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Run_02" ID="{1C15C708-03E9-4C2E-A358-A40362503B5D}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3713,7 +3588,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Run_03" ID="{1ECF5B96-E7B3-47DA-839C-71F0891A9CB7}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3736,7 +3610,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Run_04" ID="{D8D05DB9-F874-4718-B301-31B40743CC95}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3759,7 +3632,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Run_05" ID="{E73ECA5B-8EA0-4F09-8998-565BE63C858D}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3782,7 +3654,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Run_06" ID="{17515717-780B-486B-AC6A-B328D0C2E2B9}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3805,7 +3676,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Run_07" ID="{2D2814F9-3774-4098-9D2B-2031A25CAC9D}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3828,7 +3698,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Run_08" ID="{69F93786-CDC8-4619-9B9D-8439EA1A8E53}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3851,7 +3720,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Run_09" ID="{028D5C68-F285-4698-B829-E9FADC28555F}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3874,7 +3742,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Run_10" ID="{3B7F5A78-DAB1-40F7-933E-2604B58C6479}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3897,7 +3764,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Run_11" ID="{1F68419C-E9DC-4ABB-84E4-9C63006DCA79}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3920,7 +3786,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Run_12" ID="{755EC877-643A-494D-84D7-A27507B8857E}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3943,7 +3808,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Run_13" ID="{F0569D70-3806-4FAC-9001-9DACD7E5B8CD}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3966,7 +3830,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Run_14" ID="{2B5D0169-413D-412D-BD5F-28057DA126C1}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -3989,7 +3852,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Run_15" ID="{903B1C14-D807-4A1D-ACBC-09F39F24991A}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4012,7 +3874,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Run_16" ID="{87C47B1B-5B2F-43DA-B476-CE7B6D7B270D}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4035,7 +3896,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Run_17" ID="{930AAF0E-1E2D-42D2-8511-4E7CA90D8143}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4058,7 +3918,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Run_18" ID="{8F786C34-B258-4594-85A3-EBF3AC5CA32A}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4081,7 +3940,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Run_19" ID="{DDA38CF2-EFF1-48E6-8244-E73A6B3B11B1}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4104,13 +3962,11 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Stone_Run_20" ID="{B041924E-1349-4479-B286-5B4825EC39BC}" Platform="Linked"/>
 																	</ActiveSourceList>
 																</Sound>
 															</ChildrenList>
-															<ObjectLists/>
 														</RandomSequenceContainer>
 														<RandomSequenceContainer Name="MC_FT_Dirt_Run" ID="{DF3D7232-9509-48E3-A82B-77C14B98FE62}" ShortID="632064560">
 															<PropertyList>
@@ -4172,7 +4028,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Run_01" ID="{6FA74770-7D59-4269-9C0B-5532CF8F57A2}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4195,7 +4050,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Run_02" ID="{99B3B5F3-AF70-46F2-B8E2-C9BA7E22CF08}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4218,7 +4072,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Run_03" ID="{41896D6A-95C8-44BC-AE1A-C29320E91D5D}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4241,7 +4094,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Run_04" ID="{3ABC2D83-54D7-4FDA-9C63-B5470E778584}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4264,7 +4116,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Run_05" ID="{D7F7F7A2-DD63-445B-A785-A08D342DEFFF}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4287,7 +4138,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Run_06" ID="{7A23A5DE-B4CA-47B8-93A4-552709FE5109}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4310,7 +4160,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Run_07" ID="{ABC86990-2506-4EBB-8030-4EDCBD1DE2D8}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4333,7 +4182,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Run_08" ID="{6E3A4128-DBF5-40F3-A592-395197C40118}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4356,7 +4204,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Run_09" ID="{9DCC7EE9-F88C-483B-BF42-500F8EFCF294}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4379,7 +4226,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Run_10" ID="{FCACFC59-0359-4A45-9835-47994DD58484}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4402,7 +4248,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Run_11" ID="{1D08D507-E1D1-4162-82FC-72CF95004EA0}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4425,7 +4270,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Run_12" ID="{B1051E69-D4AC-4921-8CE4-FB3B2330B89F}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4448,7 +4292,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Run_13" ID="{421C02AB-E0A0-459B-9FF8-02D77228B942}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4471,7 +4314,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Run_14" ID="{40263479-B651-41BE-8A57-90F279681860}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4494,7 +4336,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Run_15" ID="{B1C41C73-2385-435C-ACEB-9A1C3C40E4EA}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4517,7 +4358,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Run_16" ID="{C011EBD1-4723-4994-86DE-E0D6314DD931}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4540,7 +4380,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Run_17" ID="{A7715610-AF48-4D98-945E-D4BB6B2CD480}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4563,7 +4402,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Run_18" ID="{D02707C4-E710-43B4-B741-0248179EB509}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4586,7 +4424,6 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Run_19" ID="{06CE78BF-B086-491D-8B85-28F1E68AC452}" Platform="Linked"/>
 																	</ActiveSourceList>
@@ -4609,16 +4446,13 @@
 																			</MediaIDList>
 																		</AudioFileSource>
 																	</ChildrenList>
-																	<ObjectLists/>
 																	<ActiveSourceList>
 																		<ActiveSource Name="MC_FT_Dirt_Run_20" ID="{5EAE80E8-90BC-453F-9082-E70316C84497}" Platform="Linked"/>
 																	</ActiveSourceList>
 																</Sound>
 															</ChildrenList>
-															<ObjectLists/>
 														</RandomSequenceContainer>
 													</ChildrenList>
-													<ObjectLists/>
 													<GroupingInfo>
 														<GroupingBehaviorList>
 															<GroupingBehavior>
@@ -4663,7 +4497,6 @@
 													</GroupingInfo>
 												</SwitchContainer>
 											</ChildrenList>
-											<ObjectLists/>
 											<GroupingInfo>
 												<GroupingBehaviorList>
 													<GroupingBehavior>
@@ -4785,7 +4618,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Water_Jump_01" ID="{725B5AB4-EEF8-442E-BD46-F30884CB599B}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -4808,7 +4640,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Water_Jump_02" ID="{A07054B8-7D84-4265-9530-0E76C5EE3946}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -4831,7 +4662,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Water_Jump_03" ID="{3EFFCF92-4985-4188-B667-0CC2C9D14FE3}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -4854,7 +4684,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Water_Jump_04" ID="{3AA7E673-D43B-437E-B8F3-1548845DDBA6}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -4877,13 +4706,11 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Water_Jump_05" ID="{21DC0FF3-4816-415F-9ED8-391E2839B1BE}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
-													<ObjectLists/>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="MC_FT_Grass_Jump" ID="{A446B056-DE36-44A3-9CF6-64BBE426EAED}" ShortID="506186046">
 													<PropertyList>
@@ -4947,7 +4774,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Grass_Jump_04" ID="{F21E0FC9-AC09-4375-847D-F3072D98A400}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -4970,7 +4796,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Grass_Jump_05" ID="{D884221F-AD5E-4B19-8E20-2DF78BA86DCA}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -4993,7 +4818,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Grass_Jump_03" ID="{3C2A59A2-71BE-449D-865B-F6368FE15B66}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5023,7 +4847,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Grass_Jump_01" ID="{DB2496AA-266C-4EA6-B69A-6D694D3FD7C8}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5046,13 +4869,11 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Grass_Jump_02" ID="{6F02B0D8-FA14-4A3C-9292-96B2EF4FC410}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
-													<ObjectLists/>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="MC_FT_Stone_Jump" ID="{453C2E9C-FDA9-4B70-A28E-5B0A839FE3D7}" ShortID="609615795">
 													<PropertyList>
@@ -5111,7 +4932,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Stone_Jump_01" ID="{5597FB58-BAE0-4E45-9D55-D0916840E9AB}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5134,7 +4954,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Stone_Jump_02" ID="{4AA8959E-B03C-4FC6-A547-DB6B9909C05B}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5157,7 +4976,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Stone_Jump_03" ID="{591A2BA6-EF82-4DA9-B0D3-20CBDD6B71F5}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5180,7 +4998,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Stone_Jump_04" ID="{BA32BDF1-F6D4-4DB0-8CBC-61A058B2358B}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5203,13 +5020,11 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Stone_Jump_05" ID="{04DB237F-76C2-4A16-85DD-551806F5120A}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
-													<ObjectLists/>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="MC_FT_Dirt_Jump" ID="{B587621B-11E4-49D7-9FBF-BD22E893D7E8}" ShortID="1010452841">
 													<PropertyList>
@@ -5268,7 +5083,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Dirt_Jump_01" ID="{119E2C8D-332A-42D0-9DFC-A0F24672F2EE}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5291,7 +5105,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Dirt_Jump_02" ID="{5AB3D6F0-D039-4C49-A0A1-BE9ACD794E0E}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5314,7 +5127,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Dirt_Jump_03" ID="{9668A3DC-D2C9-4C37-8649-F51D07645124}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5337,7 +5149,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Dirt_Jump_04" ID="{1FDCE39B-F7F4-4FB5-9BDC-02345D3C5FAD}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5360,16 +5171,13 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Dirt_Jump_05" ID="{F4E41F53-211A-42CE-9BFA-255EF1EB72CB}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
-													<ObjectLists/>
 												</RandomSequenceContainer>
 											</ChildrenList>
-											<ObjectLists/>
 											<GroupingInfo>
 												<GroupingBehaviorList>
 													<GroupingBehavior>
@@ -5489,7 +5297,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Water_Land_01" ID="{9F94718C-D9BC-4729-9E54-1ACACB1506FB}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5512,7 +5319,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Water_Land_02" ID="{8E4D53EB-743B-45EE-B4A7-BC9C7358A3E3}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5535,7 +5341,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Water_Land_03" ID="{363B17FD-F1A1-4FA8-B120-53A9199C60B4}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5558,7 +5363,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Water_Land_04" ID="{8C98773A-341A-4772-A4B1-281B65366020}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5581,13 +5385,11 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Water_Land_05" ID="{9A3DAE05-9F73-455B-9DB6-4DFCF3E67BB7}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
-													<ObjectLists/>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="MC_FT_Grass_Land" ID="{4E94B60D-FE3A-4923-9C44-F4AA91A40B81}" ShortID="212498787">
 													<PropertyList>
@@ -5649,7 +5451,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Grass_Land_01" ID="{0602EA29-D6D2-4045-84BE-7E1FA4EEAFFB}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5672,7 +5473,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Grass_Land_02" ID="{A382AE96-AF44-4672-92FB-634D84241013}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5695,7 +5495,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Grass_Land_03" ID="{8AD420DE-8C05-4E58-84A3-66B5F69E5D31}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5718,7 +5517,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Grass_Land_05" ID="{414EC521-12CD-493A-AD12-4EAEE6ED20AD}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5741,13 +5539,11 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Grass_Land_04" ID="{DC1356A2-D81E-4935-B899-508AD2A9207B}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
-													<ObjectLists/>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="MC_FT_Stone_Land" ID="{A288BC7A-B510-4D2C-BA42-EA528C8FB697}" ShortID="974509513">
 													<PropertyList>
@@ -5806,7 +5602,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Stone_Land_01" ID="{60CAF1BD-6C67-4C51-9F14-5F1DE406C599}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5829,7 +5624,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Stone_Land_02" ID="{8A3E4E7B-7EDD-43E3-93C7-CE0F5C72DC6B}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5852,7 +5646,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Stone_Land_03" ID="{53BCBF49-CC97-46B2-8C8A-B1CDD9ACEDCD}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5875,7 +5668,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Stone_Land_04" ID="{30702DF7-23E1-44AD-BA22-37AF8C989570}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5898,13 +5690,11 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Stone_Land_05" ID="{61B4FE42-07D1-494D-9242-F6AE3E58F5BF}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
-													<ObjectLists/>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="MC_FT_Dirt_Land" ID="{13B2AC16-82D8-4B19-8FE3-8240B2A3E9D1}" ShortID="816966399">
 													<PropertyList>
@@ -5963,7 +5753,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Dirt_Land_01" ID="{13F0549A-2A98-4191-893F-BD3C04F9E40F}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -5986,7 +5775,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Dirt_Land_02" ID="{97446291-4C05-434E-A6E9-69BD2DCF8C57}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6009,7 +5797,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Dirt_Land_03" ID="{6B981473-AF90-4769-9F8C-A1890A1F5DF9}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6032,7 +5819,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Dirt_Land_04" ID="{86BFA592-3729-4CD5-B753-771DDA6F888A}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6055,16 +5841,13 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Dirt_Land_05" ID="{52701C48-41D5-4C48-BADD-A50E567EEADE}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
-													<ObjectLists/>
 												</RandomSequenceContainer>
 											</ChildrenList>
-											<ObjectLists/>
 											<GroupingInfo>
 												<GroupingBehaviorList>
 													<GroupingBehavior>
@@ -6193,7 +5976,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Dirt_WallRun_01" ID="{8025B7B8-BC85-4756-92D0-98F4B8CB0858}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6216,7 +5998,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Dirt_WallRun_02" ID="{3C0FF6A6-7D25-4AC4-B396-85993C187B52}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6239,7 +6020,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Dirt_WallRun_03" ID="{E1B29727-A008-4AA8-A2CA-D17C1DC0853A}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6262,7 +6042,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Dirt_WallRun_04" ID="{47F80F0B-B050-493C-995F-E431D1033932}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6285,7 +6064,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Dirt_WallRun_05" ID="{F085D59B-F6FF-4577-A8FB-78BA73B354E2}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6308,7 +6086,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Dirt_WallRun_06" ID="{6E4B4077-C04C-46CB-95B5-57F3BE76F626}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6331,7 +6108,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Dirt_WallRun_07" ID="{4B87031D-ED24-49B2-88FF-8B086C718053}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6354,7 +6130,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Dirt_WallRun_08" ID="{488C7B7B-7C48-4E53-BE66-39DB36EE491E}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6377,7 +6152,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Dirt_WallRun_09" ID="{A4A8BFDA-2518-445D-AA2E-F60534A87DC4}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6400,13 +6174,11 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Dirt_WallRun_10" ID="{D61AA394-E560-42DB-9297-E09098B5ED2D}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
-													<ObjectLists/>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="MC_FT_Grass_WallRun" ID="{9071EFD2-79B4-4AEA-B481-CE9EA6C08D00}" ShortID="392132393">
 													<PropertyList>
@@ -6465,7 +6237,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Grass_WallRun_12" ID="{327985D1-D1D8-41D4-860D-EB134B85827F}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6488,7 +6259,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Grass_WallRun_02" ID="{7D3251F6-1301-4E90-A358-07A4C42CA5CF}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6511,7 +6281,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Grass_WallRun_10" ID="{A1FD357C-78D2-4CEB-8D6E-87AAF76ECDFB}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6534,7 +6303,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Grass_WallRun_01" ID="{6DE94E5D-6E61-4255-B32E-6BAD401546DF}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6557,7 +6325,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Grass_WallRun_08" ID="{6C57C334-74E4-4C94-BC59-C3964A5BD1D4}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6580,7 +6347,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Grass_WallRun_09" ID="{57B571DB-D37E-4BC7-8819-321E614AAB25}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6603,7 +6369,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Grass_WallRun_03" ID="{A2F8157A-60A5-4DD4-91A8-0CA5EFC6797B}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6626,7 +6391,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Grass_WallRun_05" ID="{EB201E91-57D6-4D66-B275-32A1C4663B7D}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6649,7 +6413,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Grass_WallRun_07" ID="{B0A178ED-C335-4974-A333-70BD2636BCC3}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6672,7 +6435,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Grass_WallRun_11" ID="{97057E62-3458-4C9E-8FF8-BF454483AF7B}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6695,7 +6457,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Grass_WallRun_06" ID="{1CB6744A-EDE7-44A2-833E-FF9E0DC6ECF5}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6718,13 +6479,11 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Grass_WallRun_04" ID="{AB1A1D1D-4350-4282-9595-3B6F489D57A6}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
-													<ObjectLists/>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="MC_FT_Stone_WallRun" ID="{51336EED-12F0-46DB-9503-40438D72938F}" ShortID="689801016">
 													<PropertyList>
@@ -6783,7 +6542,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Stone_WallRun_01" ID="{C8EC9438-4F15-414F-9D89-A9BAA726BDF6}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6806,7 +6564,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Stone_WallRun_02" ID="{585CA5BA-9756-4935-88CD-8BB4642F7046}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6829,7 +6586,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Stone_WallRun_03" ID="{40B2F2A7-63A0-4827-BEEE-2ED76ED50AC1}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6852,7 +6608,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Stone_WallRun_04" ID="{B37928F4-539A-499E-9CBD-1FE1D4D99495}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6875,7 +6630,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Stone_WallRun_05" ID="{C31BD2CF-271A-4452-8CB3-A21B1177333E}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6898,7 +6652,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Stone_WallRun_06" ID="{3DBB0B3C-F508-47A0-ABF3-154964C89685}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6921,7 +6674,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Stone_WallRun_07" ID="{47555636-CE51-4B19-980F-6750B99052A9}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6944,7 +6696,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Stone_WallRun_08" ID="{50B00936-B982-45E6-96F1-EB57EA6CEF0B}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6967,7 +6718,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Stone_WallRun_09" ID="{37106239-59BC-41DE-82C7-71EC9CCD35F7}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -6990,16 +6740,13 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_Stone_WallRun_10" ID="{D4397109-C219-4F48-8FAB-67907BD9C11F}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
-													<ObjectLists/>
 												</RandomSequenceContainer>
 											</ChildrenList>
-											<ObjectLists/>
 											<GroupingInfo>
 												<GroupingBehaviorList>
 													<GroupingBehavior>
@@ -7099,7 +6846,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_MagicLayer_01" ID="{1FC6D69E-7CF3-415B-B15E-F42CB9C75D91}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -7122,7 +6868,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_MagicLayer_02" ID="{D954DE47-A511-4A2B-8FD5-0E4929CD4B9A}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -7145,7 +6890,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_MagicLayer_03" ID="{4F7B0A91-F56D-48C9-9B80-F3148E858EB1}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -7168,7 +6912,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_MagicLayer_04" ID="{558365CF-7014-46F6-B45F-B9D145425080}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -7191,7 +6934,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_MagicLayer_05" ID="{90A65420-132E-42A2-A5B6-E0A34B73A1DA}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -7214,7 +6956,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_MagicLayer_06" ID="{DDBCB5DE-1AD1-414B-9D49-44F485B68AB5}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -7237,7 +6978,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_MagicLayer_07" ID="{9EE91F4E-C174-4094-A02E-541D786BD4E3}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -7260,13 +7000,11 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_MagicLayer_08" ID="{7F0CF9AA-A8C4-4286-822B-D572EC81758F}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
-											<ObjectLists/>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="MC_FT_Jump_MagicLayer" ID="{4B6F1162-B6C1-4C8F-8C50-F60E7D67F068}" ShortID="560021208">
 											<PropertyList>
@@ -7340,7 +7078,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_Jump_MagicLayer_01" ID="{8912C8FA-BDD3-429E-B412-AB1E4931ABEA}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -7370,7 +7107,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_Jump_MagicLayer_02" ID="{BCDD5B73-4374-4C1F-8850-B1DB45B2D231}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -7393,7 +7129,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_Jump_MagicLayer_03" ID="{DA112AB7-6473-41CC-A941-263F3D7E2B94}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -7416,13 +7151,11 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_Jump_MagicLayer_04" ID="{85C35ACE-9EBE-4AD5-AFAF-6ACA7B6F89BC}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
-											<ObjectLists/>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="MC_FT_Land_MagicLayer" ID="{053A5CA1-D6BB-450F-B38C-2E04BD5EDD6A}" ShortID="312874822">
 											<PropertyList>
@@ -7489,7 +7222,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_Land_MagicLayer_01" ID="{F26B3F3B-9DB4-453E-AE7E-769E4C2AC7F7}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -7512,7 +7244,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_Land_MagicLayer_02" ID="{410E7BF1-C9AE-4613-85DF-E1684BE7D3FA}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -7535,7 +7266,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_Land_MagicLayer_03" ID="{CE124C54-3ACF-47A4-A48C-5B2AECC4137D}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -7558,13 +7288,11 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_Land_MagicLayer_04" ID="{608ABB00-7D4D-456F-B030-C76DAD909ACA}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
-											<ObjectLists/>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="MC_FT_WallJump_MagicLayer" ID="{5F0430D8-4478-41E9-8C16-C7BE4F183CCD}" ShortID="210793967">
 											<PropertyList>
@@ -7631,7 +7359,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_WallJump_MagicLayer_01" ID="{C5E6B2B0-E9A4-40B4-8BAC-55AC83919BCD}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -7654,7 +7381,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_WallJump_MagicLayer_02" ID="{0D6978B8-22AB-453E-821A-DF3B1952BEA6}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -7677,7 +7403,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_WallJump_MagicLayer_03" ID="{A540CA1D-2042-429D-B84F-230DD64340B2}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -7700,13 +7425,11 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_WallJump_MagicLayer_04" ID="{F1A58548-E9C9-4498-B149-B952869D6369}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
-											<ObjectLists/>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="MC_FT_WallZap_MagicLayer" ID="{9AE511FD-4DBB-4D44-86EF-CDBACFEB4975}" ShortID="1035467552">
 											<PropertyList>
@@ -7773,7 +7496,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_WallZap_MagicLayer_01" ID="{A0FDF07F-B641-40A6-850E-5DBB47C97E63}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -7796,7 +7518,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_WallZap_MagicLayer_02" ID="{029C11DE-7A77-47FD-AC76-4C82EA5DE859}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -7819,7 +7540,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_WallZap_MagicLayer_03" ID="{A95B7FA6-699E-4C9B-8C4E-E88CC8D29E03}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -7842,7 +7562,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_WallZap_MagicLayer_04" ID="{0398644E-D4F2-4123-B133-259A2EE93823}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -7865,13 +7584,11 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_WallZap_MagicLayer_05" ID="{7CF31473-134D-4A61-A895-28EBB260B2B8}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
-											<ObjectLists/>
 										</RandomSequenceContainer>
 										<SwitchContainer Name="MC_FT_WetStep_Switch" ID="{DDA592E0-5DD3-4B01-B747-13A26FAB57BB}" ShortID="23140924">
 											<PropertyList>
@@ -7957,7 +7674,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_WetStep_01" ID="{A7F0E372-B331-4DA3-ABA2-8A545B626C5B}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -7980,7 +7696,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_WetStep_02" ID="{8F6E64C8-A160-4A9F-B527-5ED6FFA9DD95}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -8003,7 +7718,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_WetStep_03" ID="{9B8CDB23-32EE-4CAD-B3C4-01770169D2CF}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -8026,7 +7740,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_WetStep_04" ID="{6F3B567E-9FF9-4DBC-8EF9-E6AEFD6482FF}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -8049,7 +7762,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_WetStep_05" ID="{C6137915-EE24-4737-901C-61F79C7E7FA2}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -8072,7 +7784,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_WetStep_06" ID="{492911C6-DC28-4D86-8ED3-488FAD1BC606}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -8095,7 +7806,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_WetStep_07" ID="{A82E14EF-9299-4CED-93E0-85F357E3D597}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -8118,7 +7828,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_WetStep_08" ID="{B29A1A51-4196-45DE-A871-3F632D3650E1}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -8141,7 +7850,6 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_WetStep_09" ID="{20C4DB42-45A0-4DC1-9FA7-265326806008}" Platform="Linked"/>
 															</ActiveSourceList>
@@ -8164,13 +7872,11 @@
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
-															<ObjectLists/>
 															<ActiveSourceList>
 																<ActiveSource Name="MC_FT_WetStep_10" ID="{C6778CE1-ABF9-496E-84B3-6E184C44E1F5}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
-													<ObjectLists/>
 												</RandomSequenceContainer>
 												<Sound Name="Silence" ID="{6B3E2889-1CF6-4036-AFA0-23ED54C58376}" ShortID="611654166">
 													<PropertyList>
@@ -8189,13 +7895,11 @@
 															<Language>SFX</Language>
 														</SourcePlugin>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="Wwise Silence" ID="{2B934E3F-B828-4621-84B9-5B282D2E5F40}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
-											<ObjectLists/>
 											<GroupingInfo>
 												<GroupingBehaviorList>
 													<GroupingBehavior>
@@ -8234,7 +7938,6 @@
 													<ObjectRef Name="MC" ID="{85FDBF6E-125A-4553-8D26-BE71B76B2425}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
 												</Reference>
 											</ReferenceList>
-											<ObjectLists/>
 										</RandomSequenceContainer>
 										<Sound Name="MC_FT_WallRun_Scrape_LP" ID="{227DEF3F-3002-4F3E-83FC-A212F703F653}" ShortID="768039935">
 											<PropertyList>
@@ -8270,7 +7973,6 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
-											<ObjectLists/>
 											<ActiveSourceList>
 												<ActiveSource Name="MC_FT_WallRun_Scrape_LP" ID="{E197DB41-DFB4-4F78-B182-B90AAC220508}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -8309,7 +8011,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_Grass_Slide_01" ID="{6294D0C8-B42A-4284-98C4-E2AE597D4FDD}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -8335,7 +8036,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_Grass_Slide_02" ID="{23962907-470A-42CB-A98A-D3BDC2EA9DD5}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -8361,13 +8061,11 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_Grass_Slide_03" ID="{185CF28E-D321-4B58-8494-01549A936C83}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
-											<ObjectLists/>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="MC_FT_Water_Slide" ID="{E7D544A0-4AF3-4067-8C34-38CA604F6A0F}" ShortID="589266019">
 											<PropertyList>
@@ -8403,7 +8101,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_Water_Slide_01" ID="{E9CEBA7C-7C9C-4F8F-8E6C-B75B2871EBDF}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -8429,7 +8126,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_Water_Slide_02" ID="{BC4F302B-B0FA-4753-AD07-3FEB56F101E3}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -8455,16 +8151,13 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="MC_FT_Water_Slide_03" ID="{B040901C-4A75-469A-9EE8-3B512F4B994A}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
-											<ObjectLists/>
 										</RandomSequenceContainer>
 									</ChildrenList>
-									<ObjectLists/>
 								</ActorMixer>
 							</ChildrenList>
 						</Folder>
@@ -8552,7 +8245,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="SFX_Dash-001" ID="{D7909EC0-AE9E-43D5-852A-10C00A2DCBD2}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -8575,7 +8267,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="SFX_Dash-002" ID="{891F2AF2-F5F6-456B-BF89-396E3388EC27}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -8598,7 +8289,6 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="SFX_Dash-003" ID="{C2C50A01-9563-4543-A464-72C689E6851C}" Platform="Linked"/>
 													</ActiveSourceList>
@@ -8621,16 +8311,13 @@
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
-													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="SFX_Dash-004" ID="{842A4A97-232F-47C4-9DF9-BFFE9F018678}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
-											<ObjectLists/>
 										</RandomSequenceContainer>
 									</ChildrenList>
-									<ObjectLists/>
 								</ActorMixer>
 							</ChildrenList>
 						</Folder>
@@ -8652,13 +8339,11 @@
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
-							<ObjectLists/>
 							<ActiveSourceList>
 								<ActiveSource Name="SFX_MC_Full_Life" ID="{7AC00D13-AA70-4253-86F2-EB0D0A234964}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
-					<ObjectLists/>
 				</ActorMixer>
 			</ChildrenList>
 		</WorkUnit>

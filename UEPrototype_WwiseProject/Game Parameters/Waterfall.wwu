@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}" SchemaVersion="103" RootDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}" ParentDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}">
+<WwiseDocument Type="WorkUnit" ID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}" SchemaVersion="110" RootDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}" ParentDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}">
 	<GameParameters>
 		<WorkUnit Name="Waterfall" ID="{D5EC65A7-0F98-4968-AA91-3EBC3E79FBCF}" OwnerID="{2E3B1270-9C0A-453D-8324-D76519F899C5}" PersistMode="Nested">
 			<ChildrenList>

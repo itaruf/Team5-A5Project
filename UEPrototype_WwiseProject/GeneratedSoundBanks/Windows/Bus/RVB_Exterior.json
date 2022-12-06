@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "145",
+  "SoundBanks": [
+   {
+    "Id": "3801984506",
+    "Type": "Bus",
+    "GUID": "{9AA47515-D1F5-4B5E-B74C-B787C0B8B927}",
+    "Language": "SFX",
+    "Hash": "{E869ABD2-D50A-61E9-15AD-B078ED4DFA40}",
+    "ObjectPath": "RVB_Exterior",
+    "ShortName": "RVB_Exterior",
+    "Path": "Bus/RVB_Exterior.bnk",
+    "Plugins": {
+     "ShareSets": [
+      {
+       "Id": "48620415",
+       "Name": "Have_U_Ever_Been_Outside",
+       "ObjectPath": "\\Effects\\Factory Effects\\Wwise RoomVerb\\Exteriors\\Have_U_Ever_Been_Outside",
+       "GUID": "{FE29AE8D-FD86-4652-A95D-68D32F5760EC}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
+      }
+     ]
+    },
+    "AuxBusses": [
+     {
+      "Id": "3801984506",
+      "Name": "RVB_Exterior",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\RVB_Exterior",
+      "GUID": "{9AA47515-D1F5-4B5E-B74C-B787C0B8B927}",
+      "PluginRefs": {
+       "ShareSets": [
+        {
+         "Id": "48620415"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "FileHash": "{C71BD109-4AEF-2BFB-8AB9-6E46634773A3}"
+ }
+}

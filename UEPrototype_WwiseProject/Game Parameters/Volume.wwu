@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{D612C9AE-D6B6-4E2E-B62B-06B4EF6E8BD9}" SchemaVersion="103" RootDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}" ParentDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}">
+<WwiseDocument Type="WorkUnit" ID="{D612C9AE-D6B6-4E2E-B62B-06B4EF6E8BD9}" SchemaVersion="110" RootDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}" ParentDocumentID="{2E3B1270-9C0A-453D-8324-D76519F899C5}">
 	<GameParameters>
 		<WorkUnit Name="Volume" ID="{D612C9AE-D6B6-4E2E-B62B-06B4EF6E8BD9}" OwnerID="{2E3B1270-9C0A-453D-8324-D76519F899C5}" PersistMode="Nested">
 			<ChildrenList>

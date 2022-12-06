@@ -1,16 +1,18 @@
 /*******************************************************************************
-The content of the files in this repository include portions of the
-AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
-package.
-
-Commercial License Usage
-
-Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
-may use these files in accordance with the end user license agreement provided
-with the software or, alternatively, in accordance with the terms contained in a
-written agreement between you and Audiokinetic Inc.
-
-Copyright (c) 2021 Audiokinetic Inc.
+The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
+Technology released in source code form as part of the game integration package.
+The content of this file may not be used without valid licenses to the
+AUDIOKINETIC Wwise Technology.
+Note that the use of the game engine is subject to the Unreal(R) Engine End User
+License Agreement at https://www.unrealengine.com/en-US/eula/unreal
+ 
+License Usage
+ 
+Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
+this file in accordance with the end user license agreement provided with the
+software or, alternatively, in accordance with the terms contained
+in a written agreement between you and Audiokinetic Inc.
+Copyright (c) 2022 Audiokinetic Inc.
 *******************************************************************************/
 
 /*=============================================================================
@@ -21,6 +23,7 @@ Copyright (c) 2021 Audiokinetic Inc.
 #include "AkAudioDevice.h"
 #include "AkInclude.h"
 #include "AkGameplayTypes.h"
+#include "AkUnrealHelper.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "AkGameplayStatics.generated.h"
 
@@ -28,11 +31,13 @@ Copyright (c) 2021 Audiokinetic Inc.
 // Make sure AkPlayingID is always 32 bits, or else we're gonna have a bad time.
 static_assert(sizeof(AkPlayingID) == sizeof(int32), "AkPlayingID is not 32 bits anymore. Change return value of PostEvent functions and callback info structures members!");
 
-
 UCLASS()
 class AKAUDIO_API UAkGameplayStatics : public UBlueprintFunctionLibrary
 {
-	GENERATED_UCLASS_BODY()
+	GENERATED_BODY()
+
+public:
+	UAkGameplayStatics(const class FObjectInitializer& ObjectInitializer);
 
 	/** Get an AkComponent attached to and following the specified component. 
 	 * @param AttachPointName - Optional named point within the AttachComponent to play the sound at.
@@ -46,100 +51,92 @@ class AKAUDIO_API UAkGameplayStatics : public UBlueprintFunctionLibrary
 	UFUNCTION(BlueprintCallable, Category = "Audiokinetic")
 	static bool IsGame(UObject* WorldContextObject);
 
-
-	/** Posts a Wwise Event attached to and following the specified component.
-	 * @param AkEvent - Wwise Event to post.
-	 * @param Actor - actor on which to post the Wwise Event.
-	 * @param AttachPointName - Optional named point within the AttachComponent to play the sound at (NOT FUNCTIONAL).
-	 * @param bStopWhenAttachedToDestroyed - Specifies whether the sound should stop playing when the owner of the attach to component is destroyed.
-	 */
-	UFUNCTION(BlueprintCallable, BlueprintCosmetic, meta=(DeprecatedFunction), Category="Audiokinetic|Actor", meta = (AdvancedDisplay = "3"))
-	static int32 PostEventAttached(	class UAkAudioEvent* AkEvent, 
-									class AActor* Actor, 
-									FName AttachPointName = NAME_None,
-									bool bStopWhenAttachedToDestroyed = false,
-									FString EventName = FString(""));
-	
 	/** Posts a Wwise Event attached to and following the root component of the specified actor.
-	 * @param AkEvent - ak event to play.
-	 * @param Actor - actor on which to play the event.
+	 *
+	 * @param AkEvent - Event to play.
+	 * @param Actor - Actor on which to play the event. If the Actor is left empty, the Event will be played as an Ambient sound.
 	 * @param bStopWhenAttachedToDestroyed - Specifies whether the sound should stop playing when the owner of the attach to component is destroyed.
+	 * @param EventName - Deprecated: Event name in case the AkEvent is not set.
 	 */
-	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category="Audiokinetic|Actor", meta=(AdvancedDisplay="2", AutoCreateRefTerm = "PostEventCallback,ExternalSources"))
+	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category="Audiokinetic|Actor", meta=(AdvancedDisplay="2", AutoCreateRefTerm = "PostEventCallback"))
 	static int32 PostEvent(	class UAkAudioEvent* AkEvent, 
 							class AActor* Actor, 
-							UPARAM(meta = (Bitmask, BitmaskEnum = EAkCallbackType)) int32 CallbackMask,
-							const FOnAkPostEventCallback& PostEventCallback,
-							const TArray<FAkExternalSourceInfo>& ExternalSources,
-							bool bStopWhenAttachedToDestroyed = false,
-							FString EventName = FString(""));
-
-	AK_DEPRECATED(2019.1.2, "This function is deprecated and will be removed in future releases.")
-	static int32 PostEvent( class UAkAudioEvent* AkEvent,
-							class AActor* Actor,
-							UPARAM(meta = (Bitmask, BitmaskEnum = EAkCallbackType)) int32 CallbackMask,
+							UPARAM(meta = (Bitmask, BitmaskEnum = "/Script/AkAudio.EAkCallbackType")) int32 CallbackMask,
 							const FOnAkPostEventCallback& PostEventCallback,
 							bool bStopWhenAttachedToDestroyed = false,
 							FString EventName = FString(""));
 
-
-
-	/** Posts a Wwise Event attached to and following the root component of the specified actor, and waits for the end of the event to continue execution.
+	/**
+	 * Posts a Wwise Event attached to and following the root component of the specified actor, and waits for the end of the event to continue execution.
 	 * Additional calls made while an event is active are ignored.
-	 * @param AkEvent - ak event to play.
+	 *
+	 * @param AkEvent - Event to play.
 	 * @param Actor - actor on which to play the event.
 	 * @param bStopWhenAttachedToDestroyed - Specifies whether the sound should stop playing when the owner of the attach to component is destroyed.
 	 */
-	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|Actor", meta = (Latent, LatentInfo = "LatentInfo", AdvancedDisplay = "2", bStopWhenAttachedToDestroyed="false", EventName = "", AutoCreateRefTerm="ExternalSources"))
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|Actor", meta = (Latent, LatentInfo = "LatentInfo", AdvancedDisplay = "2"))
 	static int32 PostAndWaitForEndOfEvent(class UAkAudioEvent* AkEvent,
 		class AActor* Actor,
 		bool bStopWhenAttachedToDestroyed,
-		const TArray<FAkExternalSourceInfo>& ExternalSources,
-		FString EventName,
 		FLatentActionInfo LatentInfo);
 
 	/** Posts a Wwise Event attached and following the root component of the specified actor, wait for the media to be loaded and waits for the end of the event to continue execution.
 	 * Additional calls made while an event is active are ignored.
+	 *
+	 * @warning This function is deprecated. Use \ref PostAndWaitForEndOfEvent or \ref UAkAudioEvent::PostOnActorAndWait.
+	 *			Async operations are deprecated.
+	 *
 	 * @param AkEvent - ak event to play.
 	 * @param Actor - actor on which to play the event.
 	 * @param bStopWhenAttachedToDestroyed - Specifies whether the sound should stop playing when the owner of the attach to component is destroyed.
 	 */
-	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|Actor", meta = (Latent, LatentInfo = "LatentInfo", AdvancedDisplay = "3", bStopWhenAttachedToDestroyed = "false", AutoCreateRefTerm = "ExternalSources"))
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|Actor", meta = (Latent, LatentInfo = "LatentInfo", AdvancedDisplay = "3", bStopWhenAttachedToDestroyed = "false", AutoCreateRefTerm = "ExternalSources", DeprecatedFunction, DeprecationMessage = "Use \"UAkAudioEvent::PostOnActorAndWait\"."))
 	static void PostAndWaitForEndOfEventAsync(class UAkAudioEvent* AkEvent,
 			class AActor* Actor,
 			int32& PlayingID,
 			bool bStopWhenAttachedToDestroyed,
-			const TArray<FAkExternalSourceInfo>& ExternalSources,
 			FLatentActionInfo LatentInfo
 			);
 
 	/** Posts a Wwise Event by name attached to and following the root component of the specified actor.
+	 *
+	 * @warning This function is deprecated. You are expected to use an UAkAudioEvent. Please see \ref PostEvent or \ref UAkAudioEvent::PostOnActor.
+	 *
 	 * @param AkEvent - ak event to play.
 	 * @param Actor - actor on which to play the event.
 	 * @param bStopWhenAttachedToDestroyed - Specifies whether the sound should stop playing when the owner of the attach to component is destroyed.
 	 */
-	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category="Audiokinetic|Actor", meta=(DeprecatedFunction, DeprecationMessage = "Please use the \"Event Name\" field of PostEvent"))
+	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category="Audiokinetic|Actor", meta=(DeprecatedFunction, DeprecationMessage = "Use the \"Event Name\" field of PostEvent"))
 	static void PostEventByName(	const FString& EventName, 
 									class AActor* Actor, 
 									bool bStopWhenAttachedToDestroyed = false);
 
 	/** Posts a Wwise Event at the specified location. This is a fire and forget sound, created on a temporary Wwise Game Object. Replication is also not handled at this point.
+	 *
 	 * @param AkEvent - Wwise Event to post.
 	 * @param Location - Location from which to post the Wwise Event.
 	 * @param Orientation - Orientation of the event.
+	 * @param EventName - Deprecated: Event name in case the AkEvent is not set.
 	 */
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category="Audiokinetic", meta=(WorldContext="WorldContextObject", AdvancedDisplay = "3"))
-	static int32 PostEventAtLocation(class UAkAudioEvent* AkEvent, FVector Location, FRotator Orientation, const FString& EventName, UObject* WorldContextObject );
+	static int32 PostEventAtLocation(UAkAudioEvent* AkEvent, FVector Location, FRotator Orientation,
+	                                 const FString& EventName, UObject* WorldContextObject);
 
 	/** Posts a Wwise Event by name at the specified location. This is a fire and forget sound, created on a temporary Wwise Game Object. Replication is also not handled at this point.
+	 *
+	 * @warning This function is deprecated. You are expected to use an UAkAudioEvent. Please see \ref UAkAudioEvent::PostAtLocation.
+	 *
 	 * @param AkEvent - Wwise Event to post.
 	 * @param Location - Location from which to post the Wwise Event.
 	 * @param Orientation - Orientation of the event.
 	 */
-	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category="Audiokinetic", meta=(WorldContext="WorldContextObject", DeprecatedFunction, DeprecationMessage = "Please use the \"Event Name\" field of PostEventAtLocation"))
+	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category="Audiokinetic", meta=(WorldContext="WorldContextObject", DeprecatedFunction, DeprecationMessage = "Use \"UAkAudioEvent::PostAtLocation\"."))
 	static void PostEventAtLocationByName(const FString& EventName, FVector Location, FRotator Orientation, UObject* WorldContextObject );
 
 	/** Execute action on event attached to and following the root component of the specified actor
+	 *
+	 * @warning This function is deprecated. Please see \ref UAkAudioEvent::ExecuteAction.
+	 *
 	 * @param AkEvent - Wwise Event to act upon.
 	 * @param ActionType - Which action to do.
 	 * @param Actor - Which actor to use.
@@ -147,16 +144,19 @@ class AKAUDIO_API UAkGameplayStatics : public UBlueprintFunctionLibrary
 	 * @param FadeCurve - The interpolation curve of the transition.
 	 * @param PlayingID - Use the return value of a Post Event to act only on this specific instance of an event.
 	 */
-	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic|Actor")
+	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic|Actor", meta=(DeprecatedFunction, DeprecationMessage = "Use \"UAkAudioEvent::ExecuteAction\"."))
 	static void ExecuteActionOnEvent(class UAkAudioEvent* AkEvent, AkActionOnEventType ActionType, class AActor* Actor, int32 TransitionDuration = 0, EAkCurveInterpolation FadeCurve = EAkCurveInterpolation::Linear, int32 PlayingID = 0);
 
 	/** Execute action on specific playing ID
+	 *
+	 * @warning This function is deprecated. You are expected to use an UAkAudioEvent. Please see \ref UAkAudioEvent::ExecuteAction.
+	 *
 	 * @param ActionType - Which action to do.
 	 * @param PlayingID - Use the return value of a Post Event to act only on this specific instance of an event.
 	 * @param TransitionDuration - Transition duration in milliseconds.
 	 * @param FadeCurve - The interpolation curve of the transition.
 	 */
-	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic|Actor")
+	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic|Actor", meta=(DeprecatedFunction, DeprecationMessage = "Use \"UAkAudioEvent::ExecuteAction\"."))
 	static void ExecuteActionOnPlayingID(AkActionOnEventType ActionType, int32 PlayingID, int32 TransitionDuration = 0, EAkCurveInterpolation FadeCurve = EAkCurveInterpolation::Linear);
 
 	/** Spawn an AkComponent at a location. Allows, for example, to set a switch on a fire and forget sound.
@@ -364,7 +364,7 @@ class AKAUDIO_API UAkGameplayStatics : public UBlueprintFunctionLibrary
 	
 	/**
 	 * Replaces the main output device previously created during engine initialization with a new output device.
-	 * In addition to simply removing one output device and adding a new one, the new output device will also be used on all of the master buses
+	 * In addition to simply removing one output device and adding a new one, the new output device will also be used on all of the master busses
 	 * that the old output device was associated with, and preserve all listeners that were attached to the old output device.
 	 *
 	 * @param MainOutputSettings	Creation parameters for this output
@@ -381,11 +381,11 @@ class AKAUDIO_API UAkGameplayStatics : public UBlueprintFunctionLibrary
 	 *
 	 * @param SpeakerAngles Returned array of loudspeaker pair angles, in degrees relative to azimuth [0,180].
 	 * @param HeightAngle Elevation of the height layer, in degrees relative to the plane [-90,90].
-	 * @param DeviceShareset Shareset for which to get the angles.
+	 * @param DeviceShareSet ShareSet for which to get the angles.
 	 *
 	 */
 	UFUNCTION(BlueprintCallable, Category = "Audiokinetic")
-	static void GetSpeakerAngles(TArray<float>& SpeakerAngles, float& HeightAngle, const FString& DeviceShareset = "");
+	static void GetSpeakerAngles(TArray<float>& SpeakerAngles, float& HeightAngle, const FString& DeviceShareSet = "");
 
 	/**
 	 * Sets speaker angles of the specified device. Speaker angles are used for 3D positioning of sounds over standard configurations.
@@ -396,10 +396,10 @@ class AKAUDIO_API UAkGameplayStatics : public UBlueprintFunctionLibrary
 	 *
 	 * @param SpeakerAngles Array of loudspeaker pair angles, in degrees relative to azimuth [0,180]
 	 * @param HeightAngle Elevation of the height layer, in degrees relative to the plane [-90,90]
-	 * @param DeviceShareset Shareset for which to set the angles on.
+	 * @param DeviceShareSet ShareSet for which to set the angles on.
 	 */
 	UFUNCTION(BlueprintCallable, Category = "Audiokinetic")
-	static void SetSpeakerAngles(const TArray<float>& SpeakerAngles, float HeightAngle, const FString& DeviceShareset = "");
+	static void SetSpeakerAngles(const TArray<float>& SpeakerAngles, float HeightAngle, const FString& DeviceShareSet = "");
 
 	/**
 	 * Sets the occlusion calculation refresh interval, targetting the root component of a specified actor.
@@ -442,66 +442,39 @@ class AKAUDIO_API UAkGameplayStatics : public UBlueprintFunctionLibrary
 	/**
 	 * Clear all loaded banks
 	 */
-	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic|SoundBanks")
+	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic|SoundBanks", meta = (DeprecatedFunction, DeprecationMessage = "Use the \"ClearSoundBanksAndMedia\" instead."))
 	static void ClearBanks();
 
-	/*
-	 * Loads a bank.
-	 * @param Bank - The bank to load.
-	 *
-	 */
-	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|SoundBanks", meta = (WorldContext = "WorldContextObject", Latent, LatentInfo = "LatentInfo", AdvancedDisplay = "1"))
-	static void LoadBank(class UAkAudioBank* Bank, const FString& BankName, FLatentActionInfo LatentInfo, UObject* WorldContextObject);
-
-	/*
-	* Loads a bank asynchronously from Blueprint.
-	* @param Bank - The bank to load.
-	* @param BankLoadedCallback - Blueprint Delegate to call upon completion.
-	*/
-	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|SoundBanks")
-	static void LoadBankAsync(class UAkAudioBank* Bank, const FOnAkBankCallback& BankLoadedCallback);
-
-	/*
-	 * Loads a bank by its name.
-	 * @param Bank - The bank to load.
-	 */
-	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic|SoundBanks", meta = (DeprecatedFunction, DeprecationMessage = "Please use the \"Bank Name\" field of Load Bank"))
-	static void LoadBankByName(const FString& BankName);
-
-	/*
-	 * Loads an array of bank.
-	 * @param Banks - An array of banks to load
-	 * @param CleanUpBanks - If true, will unload any loaded banks that are not in Banks
+	/**
+	 * Clear all loaded banks
 	 */
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic|SoundBanks")
-	static void LoadBanks(const TArray<UAkAudioBank*>& SoundBanks, bool SynchronizeSoundBanks);
+	static void ClearSoundBanksAndMedia();
 
-	/*
-	 * Loads the init bank.
+	/**
+	 * Loads the Init SoundBank
 	 */
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic|SoundBanks")
 	static void LoadInitBank();
 
 	/**
-	 * Unloads a bank.
-	 * @param Bank - The bank to unload.
+	 * Unloads the Init SoundBank
 	 */
-	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|SoundBanks", meta = (WorldContext = "WorldContextObject", Latent, LatentInfo = "LatentInfo", AdvancedDisplay = "1"))
-	static void UnloadBank(class UAkAudioBank* Bank, const FString& BankName, FLatentActionInfo LatentInfo, UObject* WorldContextObject);
+	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic|SoundBanks")
+	static void UnloadInitBank();
 
-	/*
-	* Unloads a bank asynchronously from Blueprint.
-	* @param Bank - The bank to load.
-	* @param BankUnloadedCallback - Blueprint Delegate to call upon completion.
-	*/
-	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|SoundBanks")
-	static void UnloadBankAsync(class UAkAudioBank* Bank, const FOnAkBankCallback& BankUnloadedCallback);
+	/**
+	 * Loads a bank by its name.
+	 * @param Bank - The bank to load.
+	 */
+	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic|SoundBanks", meta = (DeprecatedFunction, DeprecationMessage = "To manually load and unload the bank and media resources for your Wwise Assets, use the Wwise Asset LoadData and UnloadData Blueprint functions."))
+	static void LoadBankByName(const FString& BankName);
 
 	/**
 	 * Unloads a bank by its name.
 	 * @param Bank - The bank to unload.
 	 */
-	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic|SoundBanks", meta = (DeprecatedFunction, DeprecationMessage = "Please use the \"Bank Name\" field of Unload Bank"))
+	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category = "Audiokinetic|SoundBanks", meta = (DeprecatedFunction, DeprecationMessage = "To manually load and unload the bank and media resources for your Wwise Assets, use the Wwise Asset LoadData and UnloadData Blueprint functions."))
 	static void UnloadBankByName(const FString& BankName);
 
 	/**
@@ -537,18 +510,6 @@ class AKAUDIO_API UAkGameplayStatics : public UBlueprintFunctionLibrary
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic, Category="Audiokinetic|Debug")
 	static void StopProfilerCapture();
 
-	/**
-	* Sets the occlusion scaling factor.
-	*/
-	UFUNCTION(BlueprintCallable, Category = "Audiokinetic")
-	static void SetOcclusionScalingFactor(float ScalingFactor) { OcclusionScalingFactor = ScalingFactor; }
-
-	/**
-	* Gets the occlusion scaling factor.
-	*/
-	UFUNCTION(BlueprintCallable, Category = "Audiokinetic")
-	static float GetOcclusionScalingFactor() { return OcclusionScalingFactor; }
-
 	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|Culture")
 	static FString GetCurrentAudioCulture();
 
@@ -564,13 +525,69 @@ class AKAUDIO_API UAkGameplayStatics : public UBlueprintFunctionLibrary
 	UFUNCTION(BlueprintCallable, Category = "Audiokinetic")
 	static UObject* GetAkAudioTypeUserData(const UAkAudioType* Instance, const UClass* Type);
 
+	/** Sets an effect ShareSet on an output device
+	*
+	*  @param InDeviceID Output ID, as returned from AddOutput or GetOutputID. You can pass 0 for the main (default) output
+	*  @param InEffectIndex Effect slot index (0-3)
+	*  @param InEffectShareSet  Effect ShareSet asset
+	*  @return Always returns True
+	*/
 	UFUNCTION(BlueprintCallable, Category = "Audiokinetic")
-	static UObject* GetAkMediaAssetUserData(const class UAkMediaAsset* Instance, const UClass* Type);
+	static bool SetOutputDeviceEffect(const FAkOutputDeviceID InDeviceID, const int32 InEffectIndex, const UAkEffectShareSet* InEffectShareSet);
+
+	/** Sets an Effect ShareSet at the specified Bus and Effect slot index.	
+	*
+	*  @param InBusName Bus name
+	*  @param InEffectIndex Effect slot index (0-3)
+	*  @param InEffectShareSet  Effect ShareSet asset
+	*  @return True when successfully posted,  False otherwise.
+	*/
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic")
+	static bool SetBusEffectByName(const FString InBusName, const int32 InEffectIndex, const UAkEffectShareSet* InEffectShareSet);
+
+	/** Sets an Effect ShareSet at the specified Bus and Effect slot index.
+	* 
+	*  @param InBusID Bus Short ID.
+	*  @param InEffectIndex Effect slot index (0-3)
+	*  @param InEffectShareSet  Effect ShareSet asset
+	*  @return True when successfully posted, False otherwise.
+	*/
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic")
+	static bool SetBusEffectByID(const FAkUniqueID InBusID, const int32 InEffectIndex, const UAkEffectShareSet* InEffectShareSet);
+
+	/** Sets an Effect ShareSet at the specified Bus and Effect slot index.
+	* 
+	*  @param InAuxBus Aux Bus Asset.
+	*  @param InEffectIndex Effect slot index (0-3)
+	*  @param InEffectShareSet  Effect ShareSet asset
+	*  @return True when successfully posted, False otherwise.
+	*/
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic")
+	static bool SetAuxBusEffect(const UAkAuxBus* InAuxBus, const int32 InEffectIndex, const UAkEffectShareSet* InEffectShareSet);
+
+	/** Sets an Effect ShareSet at the specified audio node and Effect slot index.
+	*
+	* @param InAudioNodeID Can be a member of the Actor-Mixer or Interactive Music Hierarchy (not a bus).
+	* @param InEffectIndex Effect slot index (0-3)
+	* @param InEffectShareSet Effect ShareSet asset
+	* @return Always returns True.
+	*/
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic")
+	static bool SetActorMixerEffect(const FAkUniqueID InAudioNodeID, const int32 InEffectIndex, const UAkEffectShareSet* InEffectShareSet);
+
+	/**
+	 * Use the position of a separate Actor for distance calculations for a specified listener.
+	 * When called, Wwise calculates distance attenuation and filtering
+	 * based on the distance between the AkComponent on the distance probe Actor and the sound source.
+	 * Useful for third-person perspective applications, the distance probe may be set to the player character's position,
+	 * and the listener position to that of the camera. In this scenario, attenuation is based on
+	 * the distance between the character and the sound, whereas panning, spatialization, and spread and focus calculations are base on the camera.
+	 * @param Listener - The listener that is being affected. By default, the listener is attached to the Player Camera Manager.
+	 * @param DistanceProbe - An actor to assign as the distance probe. 
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|Actor")
+	static void SetDistanceProbe(AActor* Listener, AActor* DistanceProbe);
 
 	static bool m_bSoundEngineRecording;
-
-private:
-
-	static float OcclusionScalingFactor;
 
 };

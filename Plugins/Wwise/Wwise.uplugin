@@ -1,34 +1,66 @@
 {
-	"FileVersion" : 1,
-	
-	"FriendlyName" : "Wwise Unreal Engine Integration",
-	"Version" : 202112350,
-	"VersionName" : "2021.1.10.7883.2350",
-	"CreatedBy" : "Audiokinetic, Inc.",
-	"CreatedByURL" : "http://audiokinetic.com",
-	"EngineVersion" : "5.0.0",
-	"Description" : "Wwise integration for Unreal Engine",
-	"Category" : "Audio",
-	"EnabledByDefault" : true,
-	
-	"Modules" :
-	[
+	"FileVersion": 1,
+	"FriendlyName": "Wwise Unreal Engine Integration",
+	"Version": 202212495,
+	"VersionName": "2022.1.0.8070.2495",
+	"CreatedBy": "Audiokinetic, Inc.",
+	"CreatedByURL": "http://audiokinetic.com",
+	"EngineVersion": "5.0.0",
+	"Description": "Wwise integration for Unreal Engine",
+	"Category": "Audio",
+	"EnabledByDefault": true,
+	"Modules": [
 		{
 			"Name": "AkAudioMixer",
-			"Type": "Runtime",
-			"LoadingPhase": "PreDefault"
+			"Type": "ClientOnly",
+			"LoadingPhase": "None"
 		},
 		{
-			"Name" : "AkAudio",
-			"Type" : "Runtime",
-			"LoadingPhase" : "PreDefault"
+			"Name": "AkAudio",
+			"Type": "ClientOnly",
+			"LoadingPhase": "PreLoadingScreen"
 		},
 		{
-			"Name" : "AudiokineticTools",
-			"Type" : "Editor"
+			"Name": "AudiokineticTools",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "WwiseFileHandler",
+			"Type": "ClientOnly",
+			"LoadingPhase": "None"
+		},
+		{
+			"Name": "WwiseProjectDatabase",
+			"Type": "UncookedOnly",
+			"LoadingPhase": "None"
+		},
+		{
+			"Name": "WwiseResourceCooker",
+			"Type": "UncookedOnly",
+			"LoadingPhase": "None"
+		},
+		{
+			"Name": "WwiseResourceLoader",
+			"Type": "ClientOnly",
+			"LoadingPhase": "None"
+		},
+		{
+			"Name": "WwiseSoundEngine",
+			"Type": "ClientOnly",
+			"LoadingPhase": "None"
+		},
+		{
+			"Name": "WwiseSoundEngine_2022_1",
+			"Type": "ClientOnly",
+			"LoadingPhase": "None"
+		},
+		{
+			"Name": "WwiseSimpleExternalSource",
+			"Type": "ClientOnly",
+			"LoadingPhase": "None"
 		}
 	],
-	
 	"Plugins":
 	[
 		{
@@ -36,6 +68,6 @@
 			"Enabled": true
 		}
 	],
-	
+
 	"CanContainContent" : true
 }

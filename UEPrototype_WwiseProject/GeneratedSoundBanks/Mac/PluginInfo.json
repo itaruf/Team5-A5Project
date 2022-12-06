@@ -1,29 +1,33 @@
 {
  "PluginInfo": {
-  "Project": "UEPrototype_WwiseProject",
   "Platform": "Mac",
   "BasePlatform": "Mac",
-  "Plugins": [
+  "PluginLibs": [
    {
-    "Name": "Wwise Silence",
-    "ID": "6619138",
+    "LibName": "Wwise Silence",
+    "LibId": "6619138",
+    "Type": "Source",
     "DLL": "AkSilenceGenerator",
     "StaticLib": "AkSilenceSource"
    },
    {
-    "Name": "Wwise RoomVerb",
-    "ID": "7733251",
+    "LibName": "Wwise RoomVerb",
+    "LibId": "7733251",
+    "Type": "Effect",
     "DLL": "AkRoomVerb",
     "StaticLib": "AkRoomVerbFX"
    },
    {
-    "Name": "System",
-    "ID": "11403271"
+    "LibName": "System",
+    "LibId": "11403271",
+    "Type": "AudioDevice"
    },
    {
-    "Name": "No Output",
-    "ID": "11862023"
+    "LibName": "No Output",
+    "LibId": "11862023",
+    "Type": "AudioDevice"
    }
-  ]
+  ],
+  "FileHash": "{EB67CC8A-1619-3B31-3FBF-EFFB795FF0B9}"
  }
 }

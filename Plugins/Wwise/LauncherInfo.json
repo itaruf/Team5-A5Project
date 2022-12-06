@@ -1,11 +1,11 @@
 {
-    "originalSdkFolder": "D:\\Program Files (x86)\\Wwise 2021.1.10.7883\\SDK",
+    "originalSdkFolder": "C:\\Program Files (x86)\\Audiokinetic\\Wwise 2022.1.0.8070\\SDK",
     "currentVersion": {
-        "build": 2350,
+        "build": 2495,
         "major": 1,
-        "minor": 10,
+        "minor": 0,
         "nickname": "",
-        "year": 2021
+        "year": 2022
     },
     "installedBundleGroups": [
         {
@@ -14,7 +14,15 @@
         },
         {
             "id": "Packages",
+            "valueId": "UnrealSwitch"
+        },
+        {
+            "id": "Packages",
             "valueId": "UnrealStadia"
+        },
+        {
+            "id": "Packages",
+            "valueId": "UnrealPS4"
         },
         {
             "id": "Packages",
@@ -23,6 +31,10 @@
         {
             "id": "Packages",
             "valueId": "UnrealXboxSeriesX"
+        },
+        {
+            "id": "Packages",
+            "valueId": "UnrealXboxOne"
         },
         {
             "id": "Packages",
