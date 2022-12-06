@@ -1,59 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ValidationCache Version="1" SchemaVersion="103">
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Virtual Acoustics\Default Work Unit.wwu" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\UEPrototype_WwiseProject.wproj" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\UEPrototype_WwiseProject.julpa.wsettings" DateLow="1669979114" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Triggers\Default Work Unit.wwu" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Switches\Player.wwu" DateLow="1669979114" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Switches\Jules.wwu" DateLow="1668899058" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Switches\Ground.wwu" DateLow="1669979114" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Switches\Default Work Unit.wwu" DateLow="1669979114" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Switches\Alexis.wwu" DateLow="1668899058" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\States\Jules.wwu" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\States\Default Work Unit.wwu" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\States\Alexis.wwu" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\SoundBanks\Default Work Unit.wwu" DateLow="1669979114" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Queries\Factory Queries.wwu" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Queries\Default Work Unit.wwu" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Presets\Factory Spatial Audio.wwu" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Presets\Default Work Unit.wwu" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Modulators\Default Work Unit.wwu" DateLow="1669979110" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Mixing Sessions\Default Work Unit.wwu" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Metadata\Default Work Unit.wwu" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1669979110" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Game Parameters\Waterfall.wwu" DateLow="1669979110" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Game Parameters\Volume.wwu" DateLow="1669979110" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Game Parameters\Player.wwu" DateLow="1669979110" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Game Parameters\Jules.wwu" DateLow="1668899004" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Game Parameters\Environment.wwu" DateLow="1669979110" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Game Parameters\Default Work Unit.wwu" DateLow="1669979110" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Game Parameters\Alexis.wwu" DateLow="1668899004" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Events\UI.wwu" DateLow="1669979110" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Events\SFX.wwu" DateLow="1669979110" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Events\MUSIC.wwu" DateLow="1669979110" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Events\MC.wwu" DateLow="1669979110" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Events\Jules.wwu" DateLow="1669469580" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Events\Default Work Unit.wwu" DateLow="1669979110" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Events\AMB.wwu" DateLow="1669979110" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Events\Alexis.wwu" DateLow="1669469580" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Effects\Factory Effects.wwu" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Effects\Default Work Unit.wwu" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Dynamic Dialogue\Default Work Unit.wwu" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Conversion Settings\Factory Conversion Settings.wwu" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Conversion Settings\Default Work Unit.wwu" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Control Surface Sessions\Default Work Unit.wwu" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Audio Devices\Default Work Unit.wwu" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Attenuations\Jules.wwu" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Attenuations\Default Work Unit.wwu" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Attenuations\Alexis.wwu" DateLow="1669979090" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Actor-Mixer Hierarchy\UI.wwu" DateLow="1669979110" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Actor-Mixer Hierarchy\SFX.wwu" DateLow="1669979110" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Actor-Mixer Hierarchy\NPC.wwu" DateLow="1669979110" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Actor-Mixer Hierarchy\MC.wwu" DateLow="1669979110" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Actor-Mixer Hierarchy\Jules.wwu" DateLow="1669468596" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1669979110" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Actor-Mixer Hierarchy\AMB.wwu" DateLow="1669979110" DateHigh="0"/>
-	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Actor-Mixer Hierarchy\Alexis.wwu" DateLow="1669468596" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Virtual Acoustics\Default Work Unit.wwu" DateLow="1670157818" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\UEPrototype_WwiseProject.wproj" DateLow="1670157818" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\UEPrototype_WwiseProject.julpa.wsettings" DateLow="1670249846" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Triggers\Default Work Unit.wwu" DateLow="1670157816" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Switches\Player.wwu" DateLow="1670157816" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Switches\Music.wwu" DateLow="1670249628" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Switches\Ground.wwu" DateLow="1670157816" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Switches\Default Work Unit.wwu" DateLow="1670248370" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\States\Music.wwu" DateLow="1670248370" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\States\Jules.wwu" DateLow="1670157816" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\States\Default Work Unit.wwu" DateLow="1670239854" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\States\Alexis.wwu" DateLow="1670157816" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1670157816" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\SoundBanks\Default Work Unit.wwu" DateLow="1670248370" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Queries\Factory Queries.wwu" DateLow="1670157816" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Queries\Default Work Unit.wwu" DateLow="1670157816" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Presets\Factory Spatial Audio.wwu" DateLow="1670157816" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Presets\Default Work Unit.wwu" DateLow="1670157816" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Modulators\Default Work Unit.wwu" DateLow="1670157792" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Mixing Sessions\Default Work Unit.wwu" DateLow="1670157792" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Metadata\Default Work Unit.wwu" DateLow="1670157792" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1670203292" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Interactive Music Hierarchy\RunSong.wwu" DateLow="1670249836" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Interactive Music Hierarchy\Music.wwu" DateLow="1670175184" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1670175184" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Game Parameters\Waterfall.wwu" DateLow="1670157788" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Game Parameters\Volume.wwu" DateLow="1670157788" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Game Parameters\Player.wwu" DateLow="1670157788" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Game Parameters\Environment.wwu" DateLow="1670157788" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Game Parameters\Default Work Unit.wwu" DateLow="1670157788" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Events\UI.wwu" DateLow="1670175550" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Events\SFX.wwu" DateLow="1670245764" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Events\MUSIC.wwu" DateLow="1670249836" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Events\MC.wwu" DateLow="1670248370" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Events\Default Work Unit.wwu" DateLow="1670249836" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Events\AMB.wwu" DateLow="1670245764" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Effects\Factory Effects.wwu" DateLow="1670157788" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Effects\Default Work Unit.wwu" DateLow="1670157788" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Dynamic Dialogue\Default Work Unit.wwu" DateLow="1670157788" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Conversion Settings\Factory Conversion Settings.wwu" DateLow="1670157788" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Conversion Settings\Default Work Unit.wwu" DateLow="1670157788" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Control Surface Sessions\Default Work Unit.wwu" DateLow="1670157786" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Audio Devices\Default Work Unit.wwu" DateLow="1670157786" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Attenuations\Jules.wwu" DateLow="1670157786" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Attenuations\Default Work Unit.wwu" DateLow="1670157786" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Attenuations\Alexis.wwu" DateLow="1670157786" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Actor-Mixer Hierarchy\UI.wwu" DateLow="1670178716" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Actor-Mixer Hierarchy\SFX.wwu" DateLow="1670245764" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Actor-Mixer Hierarchy\NPC.wwu" DateLow="1670157786" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Actor-Mixer Hierarchy\MC.wwu" DateLow="1670245764" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1670174906" DateHigh="0"/>
+	<ValidationCacheItem File="D:\GitHub\Team5-A5Project\UEPrototype_WwiseProject\Actor-Mixer Hierarchy\AMB.wwu" DateLow="1670245764" DateHigh="0"/>
 </ValidationCache>

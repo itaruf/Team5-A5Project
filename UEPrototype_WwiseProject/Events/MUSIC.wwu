@@ -2,75 +2,27 @@
 <WwiseDocument Type="WorkUnit" ID="{C2C381D3-88F5-4DB0-98EC-F7D9E9F098BD}" SchemaVersion="103" RootDocumentID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}" ParentDocumentID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}">
 	<Events>
 		<WorkUnit Name="MUSIC" ID="{C2C381D3-88F5-4DB0-98EC-F7D9E9F098BD}" OwnerID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}" PersistMode="Nested">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="10"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
 			<ChildrenList>
-				<Event Name="MUS_Level0_Start" ID="{23188369-16F1-4F36-9CD7-E7380DB3D94A}">
+				<Event Name="Play_Music" ID="{94D81937-EB06-4E8B-B07D-37ADDF726492}">
 					<ChildrenList>
-						<Action Name="" ID="{45EBDC9B-D95A-45CD-8DB3-CA6671F76DF3}" ShortID="810005052">
+						<Action Name="" ID="{8F2688B7-AC54-4611-BE0B-C515C279E285}" ShortID="527095985">
 							<PropertyList>
-								<Property Name="FadeTime" Type="Real64" Value="0.3"/>
+								<Property Name="ActionType" Type="int16" Value="23"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Level0" ID="{BD4B3FC6-6510-4467-BF8D-B396EFFF9A28}" WorkUnitID="{A1C2F120-70F5-4932-9C1D-3546DE478B0F}"/>
+									<ObjectRef Name="Intro" ID="{FF29A4C7-0EB6-478F-A797-EE858B6655F9}" WorkUnitID="{FB2C2EB9-8C59-4302-A45E-9A6C4C587C2B}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="Level0End" ID="{4BD356DD-9227-468D-B440-C5421B937AD0}">
-					<ChildrenList>
-						<Action Name="" ID="{959162DF-2B64-4E1E-BA7F-CC155234CCF5}" ShortID="873117167">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="22"/>
-								<Property Name="Delay" Type="Real64" Value="0.5"/>
-							</PropertyList>
+						<Action Name="" ID="{ABE1124D-4B98-4DC7-9C50-16DD087E2A84}" ShortID="901712617">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="End" ID="{B3FF19C2-F492-4C90-BA33-3ABAE92F6B58}" WorkUnitID="{C74913D5-01F3-42A1-989E-6FA374259590}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{7275FF8E-6C95-467C-AC38-B11DC098E386}" ShortID="246256349">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="3"/>
-								<Property Name="Delay" Type="Real64" Value="0.5"/>
-								<Property Name="FadeTime" Type="Real64" Value="0.5"/>
-								<Property Name="Scope" Type="int16" Value="1"/>
-							</PropertyList>
-							<ReferenceList/>
-							<ChildrenList>
-								<EventActionException Name="" ID="{6E15EBC7-B032-43DC-85DE-434978FB85CA}">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="MUSIC" ID="{92D4BD93-56C0-4EE8-92B3-800C27F369E2}" WorkUnitID="{1B6F5921-F647-4065-8004-B5EFE7036339}"/>
-										</Reference>
-									</ReferenceList>
-								</EventActionException>
-							</ChildrenList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="MUS_MenuStart_Play" ID="{17338B33-3C8F-4EA8-981E-4395F7F6937E}">
-					<ChildrenList>
-						<Action Name="" ID="{51DCD01B-7F33-4297-A1AD-D156A00C8DA7}" ShortID="1801574">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="MenuStart" ID="{254A522A-0EBD-4DAF-A9BB-BB4AFA0E34A9}" WorkUnitID="{A1C2F120-70F5-4932-9C1D-3546DE478B0F}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="MUS_MenuStart_Stop" ID="{662B1549-5E63-4C2E-9A5F-E7CF088798FE}">
-					<ChildrenList>
-						<Action Name="" ID="{7DA2B5E6-6B57-4BCD-9D15-1AC7DF040AA8}" ShortID="233067480">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="2"/>
-								<Property Name="FadeTime" Type="Real64" Value="0.3"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="MenuStart" ID="{254A522A-0EBD-4DAF-A9BB-BB4AFA0E34A9}" WorkUnitID="{A1C2F120-70F5-4932-9C1D-3546DE478B0F}"/>
+									<ObjectRef Name="IntroorIngame" ID="{B1E78675-C03C-4C17-B653-CD999E5CD9B9}" WorkUnitID="{30E6FFB9-1D4D-4B54-B8CF-BE4D8D9B9DB3}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

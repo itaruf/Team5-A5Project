@@ -2,55 +2,12 @@
 <WwiseDocument Type="WorkUnit" ID="{554E2F4C-2293-405F-963F-CC5D0996C675}" SchemaVersion="103" RootDocumentID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}" ParentDocumentID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}">
 	<Events>
 		<WorkUnit Name="AMB" ID="{554E2F4C-2293-405F-963F-CC5D0996C675}" OwnerID="{86F02D78-61F5-4B61-9758-2E7DD1C23882}" PersistMode="Nested">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="19"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
 			<ChildrenList>
-				<Event Name="Play_AMB_Bed_lvl1_Cave" ID="{F1D8AD49-403F-4499-A9F7-2C1C0870FA6F}">
-					<ChildrenList>
-						<Action Name="" ID="{789B680E-89C1-465D-AB71-F13FC3D0599E}" ShortID="72790596">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="AMB_Bed_lvl1_Cave_LP" ID="{3CE3BDD3-1ECD-4527-9075-7F1A2444ECA4}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="Play_AMB_Bed_lvl2_Temple" ID="{A7547539-2558-4E76-BAF9-97167B960FDA}">
-					<ChildrenList>
-						<Action Name="" ID="{8566A745-9B9C-427A-AEB1-A6462E27D8AA}" ShortID="935848400">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="AMB_Bed_Temple_LP" ID="{B9F6609A-1108-4C28-A4A0-979134A64730}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="Play_AMB_Bed_lvl1" ID="{4451A411-DE72-4F14-8F94-64731FF465B2}">
-					<ChildrenList>
-						<Action Name="" ID="{4E496011-7483-4919-9534-414A68BF4D8B}" ShortID="1035229224">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="AMB_Bed_lvl1_LP" ID="{A411F9C6-A752-46AF-ABA9-C4603C74214C}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="Stop_AMB_Bed_lvl1" ID="{CE3C769B-BB7A-4936-B31C-A291704DCF7C}">
-					<ChildrenList>
-						<Action Name="" ID="{B0508B7B-6B4E-4B27-AC0A-379B36FB2A06}" ShortID="190129801">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="2"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="AMB_Bed_lvl1_LP" ID="{A411F9C6-A752-46AF-ABA9-C4603C74214C}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="SP_WaterFallMed" ID="{44FD23A1-F917-4E26-8EF9-34E98C653B2B}">
+				<Event Name="AMB_River" ID="{44FD23A1-F917-4E26-8EF9-34E98C653B2B}">
 					<ChildrenList>
 						<Action Name="" ID="{6A7D3A19-B5D6-4473-BFF3-EEB7E75C9CED}" ShortID="310402317">
 							<PropertyList>
@@ -82,281 +39,16 @@
 								</Reference>
 							</ReferenceList>
 						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="SP_WaterFallBig" ID="{49FCB4E9-F4D9-4E9C-A9D9-B1B632F3F221}">
-					<ChildrenList>
-						<Action Name="" ID="{224AC3D4-4E42-49B6-B947-5CE374252EC5}" ShortID="296821411">
+						<Action Name="" ID="{84FDFEA5-6243-4257-AB41-9DF6CD46A081}" ShortID="816273858">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="AMB_SP_WaterFallBig_Blend" ID="{98A63FC9-7411-4144-A499-F119109E5059}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{CA459D0E-4747-4518-A3A7-A85F7762FE4E}" ShortID="295760117">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="36"/>
-								<Property Name="SeekPercent" Type="Real64">
-									<ModifierList>
-										<ModifierInfo>
-											<Modifier Name="" ID="{7008E8CE-459C-4FF1-83A8-B738345CE08F}">
-												<PropertyList>
-													<Property Name="Enabled" Type="bool" Value="True"/>
-													<Property Name="Max" Type="Real64" Value="100"/>
-													<Property Name="Min" Type="Real64" Value="-100"/>
-												</PropertyList>
-											</Modifier>
-										</ModifierInfo>
-									</ModifierList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="AMB_SP_WaterFallBig_Blend" ID="{98A63FC9-7411-4144-A499-F119109E5059}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
+									<ObjectRef Name="AMB_SP_WaterFallSmall_Blend" ID="{D753DC15-7C1A-45B5-9BA1-D2DF96400256}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="SP_LavaPurpleSmall" ID="{AB7C09A6-7030-4D26-AC12-774EA7D11706}">
-					<ChildrenList>
-						<Action Name="" ID="{6B1EB70A-4F12-4D18-8943-3ACF598F77CB}" ShortID="617456387">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="36"/>
-								<Property Name="SeekPercent" Type="Real64">
-									<ModifierList>
-										<ModifierInfo>
-											<Modifier Name="" ID="{2978A237-F7F9-4AA7-8D0B-746C339E1F27}">
-												<PropertyList>
-													<Property Name="Enabled" Type="bool" Value="True"/>
-													<Property Name="Max" Type="Real64" Value="100"/>
-													<Property Name="Min" Type="Real64" Value="-100"/>
-												</PropertyList>
-											</Modifier>
-										</ModifierInfo>
-									</ModifierList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="AMB_SP_LavaPurpleSmall_LP" ID="{FEDE433F-37FA-418B-954F-E1B66F0681E6}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{24655466-C612-4F83-8C8A-71513CDC6136}" ShortID="1054285053">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="AMB_SP_LavaPurpleSmall_LP" ID="{FEDE433F-37FA-418B-954F-E1B66F0681E6}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="SP_FireTorch" ID="{96BF6D63-244F-44EA-B495-42CDD81AE58A}">
-					<ChildrenList>
-						<Action Name="" ID="{0A8E1D27-9E5F-41FB-A626-9EC1021B9DFD}" ShortID="271915472">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="36"/>
-								<Property Name="SeekPercent" Type="Real64">
-									<ModifierList>
-										<ModifierInfo>
-											<Modifier Name="" ID="{090F9280-4928-49E1-9665-EC7B20962F6A}">
-												<PropertyList>
-													<Property Name="Enabled" Type="bool" Value="True"/>
-													<Property Name="Max" Type="Real64" Value="100"/>
-													<Property Name="Min" Type="Real64" Value="-100"/>
-												</PropertyList>
-											</Modifier>
-										</ModifierInfo>
-									</ModifierList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="AMB_SP_FireTorch_LP" ID="{113A0DBF-E233-4841-A501-655F3B3C9017}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{03D8AAE3-4459-478D-B97C-56F9E0D95357}" ShortID="371538951">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="AMB_SP_FireTorch_LP" ID="{113A0DBF-E233-4841-A501-655F3B3C9017}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="SP_FireStatue" ID="{9851DC11-D377-44B9-97BD-A93A511A6265}">
-					<ChildrenList>
-						<Action Name="" ID="{FC452ACC-A2E9-48BC-889C-EA9DA1447E84}" ShortID="306279477">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="36"/>
-								<Property Name="SeekPercent" Type="Real64">
-									<ModifierList>
-										<ModifierInfo>
-											<Modifier Name="" ID="{37D18B5C-FD3A-4B6C-9F57-098171CF8F57}">
-												<PropertyList>
-													<Property Name="Enabled" Type="bool" Value="True"/>
-													<Property Name="Max" Type="Real64" Value="100"/>
-													<Property Name="Min" Type="Real64" Value="-100"/>
-												</PropertyList>
-											</Modifier>
-										</ModifierInfo>
-									</ModifierList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="AMB_SP_FireStatue" ID="{DF3FD0E6-E879-4587-A38F-E84115BF00D4}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{245F02AE-A8B1-49C6-9149-D5A12F897E65}" ShortID="2561215">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="AMB_SP_FireStatue" ID="{DF3FD0E6-E879-4587-A38F-E84115BF00D4}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="SP_WaterFlowBig" ID="{AEC0FB0E-50E5-4615-AAEA-876FEEED4153}">
-					<ChildrenList>
-						<Action Name="" ID="{2823C038-BB6A-4A17-8200-D769334E6578}" ShortID="880975542">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="36"/>
-								<Property Name="SeekPercent" Type="Real64">
-									<ModifierList>
-										<ModifierInfo>
-											<Modifier Name="" ID="{95E1B3C4-87DD-4751-A228-75DC092D2B0B}">
-												<PropertyList>
-													<Property Name="Enabled" Type="bool" Value="True"/>
-													<Property Name="Max" Type="Real64" Value="100"/>
-													<Property Name="Min" Type="Real64" Value="-100"/>
-												</PropertyList>
-											</Modifier>
-										</ModifierInfo>
-									</ModifierList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="AMB_SP_WaterFlowBig_ST_LP" ID="{D473CA52-5C53-44F9-8706-B87D4ECCC0A9}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{A999DD39-BD90-4652-83F5-15F90132D989}" ShortID="136650869">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="AMB_SP_WaterFlowBig_ST_LP" ID="{D473CA52-5C53-44F9-8706-B87D4ECCC0A9}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="SP_LavaPurpleBig" ID="{C0698F26-DC77-450F-9E07-E4BB8B8081BD}">
-					<ChildrenList>
-						<Action Name="" ID="{2729140B-DCD7-4674-8D7A-B78CDA939101}" ShortID="256106067">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="36"/>
-								<Property Name="SeekPercent" Type="Real64">
-									<ModifierList>
-										<ModifierInfo>
-											<Modifier Name="" ID="{E6C4B6B2-E408-425D-96F9-14A7EE225C38}">
-												<PropertyList>
-													<Property Name="Enabled" Type="bool" Value="True"/>
-													<Property Name="Max" Type="Real64" Value="100"/>
-													<Property Name="Min" Type="Real64" Value="-100"/>
-												</PropertyList>
-											</Modifier>
-										</ModifierInfo>
-									</ModifierList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="AMB_SP_LavaPurpleBig_ST_LP" ID="{861ED3A4-4304-41D6-B448-0D10B4C3DA80}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{B5E71BFC-64EA-4789-92EB-694F58B3476E}" ShortID="490526656">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="AMB_SP_LavaPurpleBig_ST_LP" ID="{861ED3A4-4304-41D6-B448-0D10B4C3DA80}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="SP_WaterFlowMed" ID="{7FA8E679-430E-4B06-AB0E-F41AEE80B1F4}">
-					<ChildrenList>
-						<Action Name="" ID="{45E19CF4-2368-4C28-9AC4-E3E59D318110}" ShortID="654304291">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="36"/>
-								<Property Name="SeekPercent" Type="Real64">
-									<ModifierList>
-										<ModifierInfo>
-											<Modifier Name="" ID="{F2B75214-E450-4AD2-BA3A-ADCF2E02512B}">
-												<PropertyList>
-													<Property Name="Enabled" Type="bool" Value="True"/>
-													<Property Name="Max" Type="Real64" Value="100"/>
-													<Property Name="Min" Type="Real64" Value="-100"/>
-												</PropertyList>
-											</Modifier>
-										</ModifierInfo>
-									</ModifierList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="AMB_SP_WaterFlowMed_ST_LP" ID="{28C012A5-DD38-4725-A46D-0ABEF823CB47}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{20735924-3E9D-4612-9D97-13CAA5A6A36A}" ShortID="901096498">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="AMB_SP_WaterFlowMed_ST_LP" ID="{28C012A5-DD38-4725-A46D-0ABEF823CB47}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="SP_WaterFlowSmall" ID="{E404123B-9104-4814-8820-9E17B9897E2A}">
-					<ChildrenList>
-						<Action Name="" ID="{A79C073B-9E38-4141-88B9-05E7A45D64D0}" ShortID="974678363">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="36"/>
-								<Property Name="SeekPercent" Type="Real64">
-									<ModifierList>
-										<ModifierInfo>
-											<Modifier Name="" ID="{6795EAA9-2F60-439A-ACD5-ADB19B84B85E}">
-												<PropertyList>
-													<Property Name="Enabled" Type="bool" Value="True"/>
-													<Property Name="Max" Type="Real64" Value="100"/>
-													<Property Name="Min" Type="Real64" Value="-100"/>
-												</PropertyList>
-											</Modifier>
-										</ModifierInfo>
-									</ModifierList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="AMB_SP_WaterFlowSmall_ST_LP" ID="{1F811A0C-98C3-4911-9329-62C7B7068AB7}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-						<Action Name="" ID="{190BA6E7-F41D-47BF-ACB8-F5A2428378F4}" ShortID="912966189">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="AMB_SP_WaterFlowSmall_ST_LP" ID="{1F811A0C-98C3-4911-9329-62C7B7068AB7}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="ST_Vegetation" ID="{0CE58AE0-148A-4C0E-92C7-DD9C20E06E29}">
+				<Event Name="AMB_Vegetation" ID="{0CE58AE0-148A-4C0E-92C7-DD9C20E06E29}">
 					<ChildrenList>
 						<Action Name="" ID="{2E446F95-2FB0-4C9A-A8D5-A1699BBF8F0D}" ShortID="1039486779">
 							<ReferenceList>
@@ -367,23 +59,23 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="RFX_DirtFall" ID="{4422A52E-1B39-482E-9099-8E91601CFD0F}">
+				<Event Name="Amb_Forest" ID="{DAFFAB4D-0E34-4956-92B8-70BBF43CC5C2}">
 					<ChildrenList>
-						<Action Name="" ID="{B1026053-9700-4781-A42D-0AD0C5AA8E07}" ShortID="868215280">
+						<Action Name="" ID="{A88D3358-9383-451D-AA62-8B16D6A8C278}" ShortID="312531646">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="AMB_RFX_DirtFall" ID="{1C3C8262-F5F9-49B1-9D0D-4059C97F6A8A}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
+									<ObjectRef Name="AMB_Forest" ID="{3C9A3BA2-AD64-41DD-BC86-9DC35C43326D}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="SP_WaterFallSmall" ID="{B2A9D75A-C3C7-4C42-8DCA-B7A4D7AF9D33}">
+				<Event Name="AMB_Desert" ID="{01845B08-8C4C-4038-9BB5-A3DFE747222E}">
 					<ChildrenList>
-						<Action Name="" ID="{A3B94BC4-2518-4088-B708-9574495B27E5}" ShortID="507924674">
+						<Action Name="" ID="{F403BF78-F4DA-406E-AF87-889EC3CAE848}" ShortID="426034294">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="AMB_SP_WaterFallSmall_Blend" ID="{D753DC15-7C1A-45B5-9BA1-D2DF96400256}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
+									<ObjectRef Name="AMB_Desert" ID="{D2400BB5-C6FF-41A4-839D-421F45AFE858}" WorkUnitID="{594289DA-4551-496F-B557-01EEEB6BDB98}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
