@@ -1,3 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	2187071870	MC_FT_WallZap			\Default Work Unit\Jules\MC\MC_FT_WallZap	
-
