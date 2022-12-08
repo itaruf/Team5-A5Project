@@ -1,19 +1,18 @@
 /*******************************************************************************
-The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
-Technology released in source code form as part of the game integration package.
-The content of this file may not be used without valid licenses to the
-AUDIOKINETIC Wwise Technology.
-Note that the use of the game engine is subject to the Unreal(R) Engine End User
-License Agreement at https://www.unrealengine.com/en-US/eula/unreal
- 
-License Usage
- 
-Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
-this file in accordance with the end user license agreement provided with the
-software or, alternatively, in accordance with the terms contained
-in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2022 Audiokinetic Inc.
+The content of the files in this repository include portions of the
+AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
+package.
+
+Commercial License Usage
+
+Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
+may use these files in accordance with the end user license agreement provided
+with the software or, alternatively, in accordance with the terms contained in a
+written agreement between you and Audiokinetic Inc.
+
+Copyright (c) 2021 Audiokinetic Inc.
 *******************************************************************************/
+
 
 /*------------------------------------------------------------------------------------
 	WwiseUtils.h
@@ -22,6 +21,8 @@ Copyright (c) 2022 Audiokinetic Inc.
 
 #include "Dom/JsonObject.h"
 #include "AkWaapiClient.h"
+
+DECLARE_LOG_CATEGORY_EXTERN(LogAkWaapiUtils, Log, All);
 
 class AKAUDIO_API WwiseWaapiHelper
 {
@@ -46,7 +47,6 @@ public:
 	static const FString EVENT;
 	static const FString EVENTS;
 	static const FString FILEPATH;
-	static const FString FILTER;
 	static const FString FIND_IN_PROJECT_EXPLORER;
 	static const FString FOLDER;
 	static const FString FROM;
@@ -69,8 +69,6 @@ public:
 	static const FString OBJECTS;
 	static const FString OF_TYPE;
 	static const FString OLD_NAME;
-	static const FString ON_NAME_CONFLICT;
-	static const FString OPERATION;
 	static const FString PARENT;
 	static const FString PATH;
 	static const FString PHYSICAL_FOLDER;
@@ -88,15 +86,13 @@ public:
 	static const FString REBUILD;
 	static const FString REBUILD_INIT_BANK;
 	static const FString REDO;
-	static const FString RENAME;
 	static const FString RESTRICTION;
 	static const FString RETURN;
 	static const FString SEARCH;
 	static const FString SELECT;
 	static const FString SIZE;
 	static const FString SKIP_LANGUAGES;
-	static const FString SOUNDBANK_TYPE;
-	static const FString SOUNDBANK_FIELD;
+	static const FString SOUNDBANK;
 	static const FString SOUNDBANKS;
 	static const FString STATE;
 	static const FString STOP;
@@ -111,7 +107,6 @@ public:
 	static const FString VOLUME;
 	static const FString WHERE;
 	static const FString WORKUNIT_TYPE;
-	static const FString WRITE_TO_DISK;
 };
 
 bool CallWappiGetPropertySate(const FString& ItemID, const FString& ItemProperty, TSharedPtr<FJsonObject>& ItemInfoResult); 

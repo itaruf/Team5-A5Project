@@ -1,19 +1,18 @@
 /*******************************************************************************
-The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
-Technology released in source code form as part of the game integration package.
-The content of this file may not be used without valid licenses to the
-AUDIOKINETIC Wwise Technology.
-Note that the use of the game engine is subject to the Unreal(R) Engine End User
-License Agreement at https://www.unrealengine.com/en-US/eula/unreal
- 
-License Usage
- 
-Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
-this file in accordance with the end user license agreement provided with the
-software or, alternatively, in accordance with the terms contained
-in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2022 Audiokinetic Inc.
+The content of the files in this repository include portions of the
+AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
+package.
+
+Commercial License Usage
+
+Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
+may use these files in accordance with the end user license agreement provided
+with the software or, alternatively, in accordance with the terms contained in a
+written agreement between you and Audiokinetic Inc.
+
+Copyright (c) 2021 Audiokinetic Inc.
 *******************************************************************************/
+
 
 /*=============================================================================
 	AkLateReverbComponent.cpp:
@@ -82,10 +81,6 @@ void UAkLateReverbComponent::PostLoad()
 		AutoAssignAuxBus = false;
 		AuxBusManual = AuxBus;
 	}
-
-#if WITH_EDITOR
-	RegisterReverbInfoEnabledCallback();
-#endif
 }
 
 void UAkLateReverbComponent::Serialize(FArchive& Ar)
@@ -104,7 +99,14 @@ bool UAkLateReverbComponent::HasEffectOnLocation(const FVector& Location) const
 
 uint32 UAkLateReverbComponent::GetAuxBusId() const
 {
-	return FAkAudioDevice::GetShortID(AuxBus, AuxBusName);
+	if (AuxBus)
+	{
+		return AuxBus->ShortID;
+	}
+	else
+	{
+		return FAkAudioDevice::GetIDFromString(AuxBusName);
+	}
 }
 
 void UAkLateReverbComponent::InitializeParent()
@@ -334,11 +336,7 @@ void UAkLateReverbComponent::TickComponent(float DeltaTime, enum ELevelTick Tick
 		SecondsSincePredelayUpdate = 0.0f;
 	}
 #if WITH_EDITOR
-	UWorld* World = GetWorld();
-	if (World == nullptr)
-		return;
-
-	if (GCurrentLevelEditingViewportClient != nullptr && World->WorldType == EWorldType::Editor)
+	if (GCurrentLevelEditingViewportClient != nullptr)
 	{
 		// Keep the text renderers pointing to the camera.
 		if (IsValid(TextVisualizerLabels))
@@ -352,7 +350,7 @@ void UAkLateReverbComponent::TickComponent(float DeltaTime, enum ELevelTick Tick
 			TextVisualizerValues->SetWorldRotation(PointTo.Rotation());
 		}
 	}
-	if (World->WorldType == EWorldType::Editor || World->WorldType == EWorldType::PIE)
+	if (GetWorld() != nullptr && GetWorld()->WorldType == EWorldType::Editor || GetWorld()->WorldType == EWorldType::PIE)
 	{
 		// Only show the text renderer for selected actors.
 		if (GetOwner()->IsSelected() && !WasSelected)
@@ -365,12 +363,6 @@ void UAkLateReverbComponent::TickComponent(float DeltaTime, enum ELevelTick Tick
 			WasSelected = false;
 			UpdateValuesLabels();
 		}
-	}
-
-	if (bTextStatusNeedsUpdate)
-	{
-		UpdateTextVisualizerStatus();
-		bTextStatusNeedsUpdate = false;
 	}
 #endif
 }
@@ -394,38 +386,6 @@ void UAkLateReverbComponent::RecalculatePredelay()
 }
 
 #if WITH_EDITOR
-void UAkLateReverbComponent::RegisterReverbInfoEnabledCallback()
-{
-	UAkSettings* AkSettings = GetMutableDefault<UAkSettings>();
-	if (AkSettings == nullptr || ShowReverbInfoChangedHandle.IsValid())
-		return;
-	ShowReverbInfoChangedHandle = AkSettings->OnShowReverbInfoChanged.AddLambda([this, AkSettings]()
-	{
-		bTextStatusNeedsUpdate = true;
-	});
-}
-
-void UAkLateReverbComponent::OnComponentDestroyed(bool bDestroyingHierarchy)
-{
-	UAkSettings* AkSettings = GetMutableDefault<UAkSettings>();
-	if (!AkSettings)
-		return;
-	AkSettings->OnShowRoomsPortalsChanged.Remove(ShowReverbInfoChangedHandle);
-	ShowReverbInfoChangedHandle.Reset();
-}
-
-void UAkLateReverbComponent::InitializeComponent()
-{
-	Super::InitializeComponent();
-	RegisterReverbInfoEnabledCallback();
-}
-
-void UAkLateReverbComponent::OnComponentCreated()
-{
-	Super::OnComponentCreated();
-	RegisterReverbInfoEnabledCallback();
-}
-
 void UAkLateReverbComponent::HandleObjectsReplaced(const TMap<UObject*, UObject*>& ReplacementMap)
 {
 	if (ReplacementMap.Contains(Parent))
@@ -452,14 +412,13 @@ void UAkLateReverbComponent::HandleObjectsReplaced(const TMap<UObject*, UObject*
 
 void UAkLateReverbComponent::UpdateTextVisualizerStatus()
 {
-	bool bShowReverbInfo = GetDefault<UAkSettings>()->bShowReverbInfo;
 	// The reverb descriptor may or may not require updates depending on which global RTPCs are in use, and whether auto assign aux bus is selected.
 	// We only want to show the text renderers when the reverb parameter estimation is in use.
-	if ((!bShowReverbInfo || !ReverbDescriptor.RequiresUpdates()) && TextVisualizersInitialized())
+	if (!ReverbDescriptor.RequiresUpdates() && TextVisualizersInitialized())
 	{
 		DestroyTextVisualizers();
 	}
-	else if ((bShowReverbInfo && ReverbDescriptor.RequiresUpdates()) && !TextVisualizersInitialized())
+	else if (ReverbDescriptor.RequiresUpdates() && !TextVisualizersInitialized())
 	{
 		InitTextVisualizers();
 		DecayEstimationNeedsUpdate = ReverbDescriptor.ShouldEstimateDecay();
@@ -498,10 +457,10 @@ FText UAkLateReverbComponent::GetValuesLabels() const
 		reflectionTimeString = FString("RTPC not in use");
 		if (ReverbDescriptor.ShouldEstimatePredelay())
 		{
-			reflectionTimeString = FText::AsNumber(TimeToFirstReflection, &NumberFormat).ToString() + " ms";
-			if (TimeToFirstReflection > 100.0f)
+			reflectionTimeString = FText::AsNumber(TimeToFirstReflection, &NumberFormat).ToString() + " seconds";
+			if (TimeToFirstReflection < 0.1f)
 			{
-				reflectionTimeString = FText::AsNumber(TimeToFirstReflection / 1000.0f, &NumberFormat).ToString() + " s";
+				reflectionTimeString = FText::AsNumber(TimeToFirstReflection * 1000.0f, &NumberFormat).ToString() + "ms";
 			}
 		}
 		dampingString = "No associated geometry component.";
@@ -543,11 +502,6 @@ void UAkLateReverbComponent::InitTextVisualizers()
 					if (IsValid(Parent))
 					{
 						TextVisualizerLabels->SetWorldLocation(GetTextVisualizersLocation());
-						UWorld* World = TextVisualizerLabels->GetWorld();
-						if (World != nullptr && World->WorldType == EWorldType::EditorPreview)
-						{
-							TextVisualizerLabels->SetWorldRotation(FVector(100, 0, 0).Rotation());
-						}
 					}
 					TextVisualizerLabels->bIsEditorOnly = true;
 					// Creates a right-aligned block of text showing the property labels.
@@ -570,11 +524,6 @@ void UAkLateReverbComponent::InitTextVisualizers()
 					if (IsValid(Parent))
 					{
 						TextVisualizerValues->SetWorldLocation(GetTextVisualizersLocation());
-						UWorld* World = TextVisualizerValues->GetWorld();
-						if (World != nullptr && World->WorldType == EWorldType::EditorPreview)
-						{
-							TextVisualizerValues->SetWorldRotation(FVector(100, 0, 0).Rotation());
-						}
 					}
 					TextVisualizerValues->bIsEditorOnly = true;
 					TextVisualizerValues->bSelectable = false;
@@ -601,8 +550,6 @@ void UAkLateReverbComponent::DestroyTextVisualizers()
 
 void UAkLateReverbComponent::UpdateValuesLabels()
 {
-	if (!GetDefault<UAkSettings>()->bShowReverbInfo)
-		return;
 	if (!TextVisualizersInitialized())
 		InitTextVisualizers();
 	if (IsValid(TextVisualizerValues))
@@ -775,8 +722,7 @@ void UAkLateReverbComponent::PostEditChangeProperty(FPropertyChangedEvent& Prope
 				RoomCmpt->UpdateSpatialAudioRoom();
 			}
 		}
-		else if (CreationMethod == EComponentCreationMethod::Instance && bEnable
-			&& GetDefault<UAkSettings>()->bShowReverbInfo)
+		else if (CreationMethod == EComponentCreationMethod::Instance && bEnable)
 		{
 			InitTextVisualizers();
 		}
@@ -800,7 +746,7 @@ void UAkLateReverbComponent::PostEditChangeProperty(FPropertyChangedEvent& Prope
 					AkAudioDevice->ReindexLateReverb(this);
 				}
 			}
-			else if (RoomCmpt&& RoomCmpt->RoomIsActive())
+			else if (RoomCmpt && RoomCmpt->RoomIsActive())
 			{
 				// Late reverb is inside an active room. Update the room such that the reverb send level is correctly updated.
 				RoomCmpt->UpdateSpatialAudioRoom();

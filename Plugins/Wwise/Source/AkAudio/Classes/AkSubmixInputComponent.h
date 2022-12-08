@@ -1,19 +1,18 @@
 /*******************************************************************************
-The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
-Technology released in source code form as part of the game integration package.
-The content of this file may not be used without valid licenses to the
-AUDIOKINETIC Wwise Technology.
-Note that the use of the game engine is subject to the Unreal(R) Engine End User
-License Agreement at https://www.unrealengine.com/en-US/eula/unreal
- 
-License Usage
- 
-Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
-this file in accordance with the end user license agreement provided with the
-software or, alternatively, in accordance with the terms contained
-in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2022 Audiokinetic Inc.
+The content of the files in this repository include portions of the
+AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
+package.
+
+Commercial License Usage
+
+Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
+may use these files in accordance with the end user license agreement provided
+with the software or, alternatively, in accordance with the terms contained in a
+written agreement between you and Audiokinetic Inc.
+
+Copyright (c) 2021 Audiokinetic Inc.
 *******************************************************************************/
+
 
 /*=============================================================================
 AkSubmixInputComponent.h:
@@ -35,14 +34,12 @@ class AKAUDIO_API UAkSubmixInputComponent
 	: public UAkAudioInputComponent 
 	, public ISubmixBufferListener
 {
-    GENERATED_BODY()
+    GENERATED_UCLASS_BODY()
 public:
-	UAkSubmixInputComponent(const class FObjectInitializer& ObjectInitializer);
-
 	virtual void OnNewSubmixBuffer(const USoundSubmix* OwningSubmix, float* AudioData, int32 NumSamples, int32 NumChannels, const int32 SampleRate, double AudioClock) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SubmixInput")
-	USoundSubmix* SubmixToRecord = nullptr;
+	USoundSubmix* SubmixToRecord;
 
 	virtual int32 PostAssociatedAudioInputEvent();
 	virtual void Stop();

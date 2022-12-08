@@ -1,28 +1,26 @@
 /*******************************************************************************
-The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
-Technology released in source code form as part of the game integration package.
-The content of this file may not be used without valid licenses to the
-AUDIOKINETIC Wwise Technology.
-Note that the use of the game engine is subject to the Unreal(R) Engine End User
-License Agreement at https://www.unrealengine.com/en-US/eula/unreal
- 
-License Usage
- 
-Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
-this file in accordance with the end user license agreement provided with the
-software or, alternatively, in accordance with the terms contained
-in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2022 Audiokinetic Inc.
+The content of the files in this repository include portions of the
+AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
+package.
+
+Commercial License Usage
+
+Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
+may use these files in accordance with the end user license agreement provided
+with the software or, alternatively, in accordance with the terms contained in a
+written agreement between you and Audiokinetic Inc.
+
+Copyright (c) 2021 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkReverbDescriptor.h"
+#include <AK/SpatialAudio/Common/AkReverbEstimation.h>
 #include "AkAudioDevice.h"
 #include "AkAcousticTextureSetComponent.h"
 #include "AkLateReverbComponent.h"
 #include "AkRoomComponent.h"
 #include "AkComponentHelpers.h"
 #include "AkSettings.h"
-#include "Wwise/API/WwiseSpatialAudioAPI.h"
 
 #include "Components/PrimitiveComponent.h"
 #include "Rendering/PositionVertexBuffer.h"
@@ -34,7 +32,7 @@ Copyright (c) 2022 Audiokinetic Inc.
 #include "PhysicsEngine/BodySetup.h"
 #include "PhysicsEngine/ConvexElem.h"
 
-#if AK_USE_PHYSX
+#if PHYSICS_INTERFACE_PHYSX
 #include "PhysXIncludes.h"
 #endif
 
@@ -79,7 +77,7 @@ bool HasSimpleCollisionGeometry(UBodySetup* bodySetup)
 
 }
 
-#if AK_USE_CHAOS
+#if WITH_CHAOS
 // Copied from BodySetup.cpp
 // References: 
 // http://amp.ece.cmu.edu/Publication/Cha/icip01_Cha.pdf
@@ -94,11 +92,7 @@ void UpdateVolumeAndArea(UBodySetup* bodySetup, const FVector& scale, float& vol
 {
 	surfaceArea = 0.0f;
 	// Initially use the Unreal UBodySetup::GetVolume function to calculate volume...
-#if UE_5_1_OR_LATER
-	volume = bodySetup->GetScaledVolume(scale);
-#else
 	volume = bodySetup->GetVolume(scale);
-#endif
 	FKAggregateGeom& geometry = bodySetup->AggGeom;
 
 	for (const FKBoxElem& box : geometry.BoxElems)
@@ -122,7 +116,7 @@ void UpdateVolumeAndArea(UBodySetup* bodySetup, const FVector& scale, float& vol
 			FVector v2 = ScaleTransform.TransformPosition(convexElem.VertexData[convexElem.IndexData[3 * triIdx + 2]]);
 
 			surfaceArea += FAkReverbDescriptor::TriangleArea(v0, v1, v2);
-#if AK_USE_CHAOS
+#if WITH_CHAOS
 			// FKConvexElem::GetVolume is not implemented with Chaos
 			// TODO: Remove the following when it is implemented in the future
 			volume += SignedVolumeOfTriangle(v0, v1, v2);
@@ -255,15 +249,14 @@ void FAkReverbDescriptor::CalculateT60()
 			PrimitiveVolume = FMath::Abs(PrimitiveVolume) / AkComponentHelpers::UnrealUnitsPerCubicMeter(Primitive);
 			PrimitiveSurfaceArea /= AkComponentHelpers::UnrealUnitsPerSquaredMeter(Primitive);
 
-			auto* SpatialAudio = IWwiseSpatialAudioAPI::Get();
-			if (SpatialAudio && PrimitiveVolume > 0.0f && PrimitiveSurfaceArea > 0.0f)
+			if (PrimitiveVolume > 0.0f && PrimitiveSurfaceArea > 0.0f)
 			{
 				float absorption = 0.5f;
 				UAkSettings* AkSettings = GetMutableDefault<UAkSettings>();
 				if (AkSettings != nullptr)
 					absorption = AkSettings->GlobalDecayAbsorption;
 				//calcuate t60 using the Sabine equation
-				SpatialAudio->ReverbEstimation->EstimateT60Decay(PrimitiveVolume, PrimitiveSurfaceArea, absorption, T60Decay);
+				AK::SpatialAudio::ReverbEstimation::EstimateT60Decay(PrimitiveVolume, PrimitiveSurfaceArea, absorption, T60Decay);
 			}
 		}
 	}
@@ -276,15 +269,14 @@ void FAkReverbDescriptor::CalculateT60()
 
 void FAkReverbDescriptor::CalculateTimeToFirstReflection()
 {
-	auto* SpatialAudio = IWwiseSpatialAudioAPI::Get();
-	if (SpatialAudio && IsValid(Primitive))
+	if (IsValid(Primitive))
 	{
 		FTransform transform = Primitive->GetComponentTransform();
 		transform.SetRotation(FQuat::Identity);
 		transform.SetLocation(FVector::ZeroVector);
 		FBoxSphereBounds bounds = Primitive->CalcBounds(transform);
-		AkVector extentMeters = FAkAudioDevice::FVectorToAKVector(bounds.BoxExtent / AkComponentHelpers::UnrealUnitsPerMeter(Primitive));
-		SpatialAudio->ReverbEstimation->EstimateTimeToFirstReflection(extentMeters, TimeToFirstReflection);
+		AkVector extentMeters = FAkAudioDevice::FVectorToAKVector(bounds.BoxExtent / AkComponentHelpers::UnrealUnitsPerMeter(Primitive)); // Potential loss of precision here. Also, shouldn't it use FVectorToAKExtent?
+		AK::SpatialAudio::ReverbEstimation::EstimateTimeToFirstReflection(extentMeters, TimeToFirstReflection);
 	}
 #if WITH_EDITOR
 	if (IsValid(ReverbComponent))
@@ -296,12 +288,10 @@ void FAkReverbDescriptor::CalculateTimeToFirstReflection()
 void FAkReverbDescriptor::CalculateHFDamping(const UAkAcousticTextureSetComponent* acousticTextureSetComponent)
 {
 	HFDamping = 0.0f;
-
 	if (IsValid(Primitive))
 	{
-		auto* SpatialAudio = IWwiseSpatialAudioAPI::Get();
 		const UAkSettings* AkSettings = GetDefault<UAkSettings>();
-		if (SpatialAudio && AkSettings)
+		if (AkSettings != nullptr)
 		{
 			TArray<FAkAcousticTextureParams> texturesParams;
 			TArray<float> surfaceAreas;
@@ -320,7 +310,7 @@ void FAkReverbDescriptor::CalculateHFDamping(const UAkAcousticTextureSetComponen
 			if (numTextures == 0)
 				HFDamping = 0.0f;
 			else
-				SpatialAudio->ReverbEstimation->EstimateHFDamping(&textures[0], &surfaceAreas[0], textures.Num(), HFDamping);
+				AK::SpatialAudio::ReverbEstimation::EstimateHFDamping(&textures[0], &surfaceAreas[0], textures.Num(), HFDamping);
 		}
 	}
 #if WITH_EDITOR

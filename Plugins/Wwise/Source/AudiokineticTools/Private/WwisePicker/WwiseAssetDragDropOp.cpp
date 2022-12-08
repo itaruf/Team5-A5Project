@@ -1,54 +1,55 @@
 /*******************************************************************************
-The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
-Technology released in source code form as part of the game integration package.
-The content of this file may not be used without valid licenses to the
-AUDIOKINETIC Wwise Technology.
-Note that the use of the game engine is subject to the Unreal(R) Engine End User
-License Agreement at https://www.unrealengine.com/en-US/eula/unreal
- 
-License Usage
- 
-Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
-this file in accordance with the end user license agreement provided with the
-software or, alternatively, in accordance with the terms contained
-in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2022 Audiokinetic Inc.
+The content of the files in this repository include portions of the
+AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
+package.
+
+Commercial License Usage
+
+Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
+may use these files in accordance with the end user license agreement provided
+with the software or, alternatively, in accordance with the terms contained in a
+written agreement between you and Audiokinetic Inc.
+
+Copyright (c) 2021 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "WwisePicker/WwiseAssetDragDropOp.h"
 
 #include "AkAudioType.h"
-#include "AkSettings.h"
 #include "AkUnrealHelper.h"
-#include "AssetTools/Public/AssetToolsModule.h"
 #include "AssetManagement/AkAssetDatabase.h"
 #include "ContentBrowserModule.h"
-#include "FileHelpers.h"
 #include "Misc/Paths.h"
-#include "UnrealEd/Public/ObjectTools.h"
 
 #define LOCTEXT_NAMESPACE "AkAudio"
 
-TSharedRef<FAssetDragDropOp> FWwiseAssetDragDropOp::New(TArray<WwisePickerHelpers::WwisePickerAssetPayload> InAssetData, UActorFactory* ActorFactory)
+TSharedRef<FAssetDragDropOp> FWwiseAssetDragDropOp::New(const FAssetData& InAssetData, UActorFactory* ActorFactory)
+{
+	TArray<FAssetData> AssetDataArray;
+	AssetDataArray.Emplace(InAssetData);
+	return New(MoveTemp(AssetDataArray), TArray<FString>(), ActorFactory);
+}
+
+TSharedRef<FAssetDragDropOp> FWwiseAssetDragDropOp::New(TArray<FAssetData> InAssetData, UActorFactory* ActorFactory)
 {
 	return New(MoveTemp(InAssetData), TArray<FString>(), ActorFactory);
 }
 
-TSharedRef<FAssetDragDropOp> FWwiseAssetDragDropOp::New(TArray<WwisePickerHelpers::WwisePickerAssetPayload> InAssetData, TArray<FString> InAssetPaths, UActorFactory* ActorFactory)
+TSharedRef<FAssetDragDropOp> FWwiseAssetDragDropOp::New(FString InAssetPath)
 {
-	TArray<FAssetData> NewAssets;
-	for (WwisePickerHelpers::WwisePickerAssetPayload AssetResult : InAssetData)
-	{
-		if (AssetResult.ExistingAssets.Num() > 0)
-		{
-			NewAssets.Add(AssetResult.ExistingAssets[0]);
-		}
-		else
-		{
-			NewAssets.Add(AssetResult.CreatedAsset);
-		}
-	}
-	TSharedRef<FAssetDragDropOp> ParentOperation = FAssetDragDropOp::New(NewAssets, InAssetPaths, ActorFactory);
+	TArray<FString> AssetPathsArray;
+	AssetPathsArray.Emplace(MoveTemp(InAssetPath));
+	return New(TArray<FAssetData>(), MoveTemp(AssetPathsArray), nullptr);
+}
+
+TSharedRef<FAssetDragDropOp> FWwiseAssetDragDropOp::New(TArray<FString> InAssetPaths)
+{
+	return New(TArray<FAssetData>(), MoveTemp(InAssetPaths), nullptr);
+}
+
+TSharedRef<FAssetDragDropOp> FWwiseAssetDragDropOp::New(TArray<FAssetData> InAssetData, TArray<FString> InAssetPaths, UActorFactory* ActorFactory)
+{
+	TSharedRef<FAssetDragDropOp> ParentOperation = FAssetDragDropOp::New(InAssetData, InAssetPaths, ActorFactory);
 
 	FWwiseAssetDragDropOp* RawPointer = new FWwiseAssetDragDropOp();
 	TSharedRef<FWwiseAssetDragDropOp> Operation = MakeShareable(RawPointer);
@@ -57,13 +58,12 @@ TSharedRef<FAssetDragDropOp> FWwiseAssetDragDropOp::New(TArray<WwisePickerHelper
 
 	FAssetViewDragAndDropExtender::FOnDropDelegate DropDelegate = FAssetViewDragAndDropExtender::FOnDropDelegate::CreateRaw(RawPointer, &FWwiseAssetDragDropOp::OnAssetViewDrop);
 	FAssetViewDragAndDropExtender::FOnDragOverDelegate DragOverDelegate = FAssetViewDragAndDropExtender::FOnDragOverDelegate::CreateRaw(RawPointer, &FWwiseAssetDragDropOp::OnAssetViewDragOver);
-	Operation->Extender = new FAssetViewDragAndDropExtender(DropDelegate, DragOverDelegate);
+	FAssetViewDragAndDropExtender::FOnDragLeaveDelegate DragLeaveDelegate = FAssetViewDragAndDropExtender::FOnDragLeaveDelegate::CreateRaw(RawPointer, &FWwiseAssetDragDropOp::OnAssetViewDragLeave);
+	Operation->Extender = new FAssetViewDragAndDropExtender(DropDelegate, DragOverDelegate, DragLeaveDelegate);
 
 	FContentBrowserModule& ContentBrowserModule = FModuleManager::GetModuleChecked<FContentBrowserModule>("ContentBrowser");
 	TArray<FAssetViewDragAndDropExtender>& AssetViewDragAndDropExtenders = ContentBrowserModule.GetAssetViewDragAndDropExtenders();
 	AssetViewDragAndDropExtenders.Add(*(Operation->Extender));
-
-	Operation->WwiseAssetsToDrop = InAssetData;
 
 	return Operation;
 }
@@ -85,31 +85,6 @@ FWwiseAssetDragDropOp::~FWwiseAssetDragDropOp()
 
 bool FWwiseAssetDragDropOp::OnAssetViewDrop(const FAssetViewDragAndDropExtender::FPayload& Payload)
 {
-	if (!Payload.DragDropOp->IsOfType<FWwiseAssetDragDropOp>())
-	{
-		SetCanDrop(false);
-		return false;
-	}
-
-	if (CanDrop)
-	{
-		bDroppedOnContentBrowser =true;
-		if (Payload.PackagePaths.Num() <= 0)
-		{
-			return false;
-		}
-
-		const auto AssetDragDrop = static_cast<FWwiseAssetDragDropOp*>(Payload.DragDropOp.Get());
-		auto PackagePath = Payload.PackagePaths[0].ToString();
-
-		// UE5 adds "/All" to all game content folder paths, but CreateAsset doesn't like it
-		PackagePath.RemoveFromStart(TEXT("/All"));
-
-		// UE5 adds "/All/Plugins" to all plugin content folder paths, but CreateAsset doesn't like it
-		PackagePath.RemoveFromStart(TEXT("/Plugins"));
-		AssetViewDropTargetPackagePath = PackagePath;
-	}
-
 	return CanDrop;
 }
 
@@ -120,57 +95,34 @@ bool FWwiseAssetDragDropOp::OnAssetViewDragOver(const FAssetViewDragAndDropExten
 		SetCanDrop(false);
 		return false;
 	}
-	SetCanDrop(true);
-	return true;
-}
+	
+	auto assetDragDrop = static_cast<FWwiseAssetDragDropOp*>(Payload.DragDropOp.Get());
 
+	auto& assets = assetDragDrop->GetAssets();
 
-void FWwiseAssetDragDropOp::SaveAssets()
-{
-	FString DefaultPath = FPaths::ProjectContentDir();
-	auto AkSettings = GetDefault<UAkSettings>();
-	if (LIKELY(AkSettings))
+	for (int32 assetIndex = 0; assetIndex < assets.Num(); ++assetIndex)
 	{
-		DefaultPath = AkSettings->DefaultAssetCreationPath;
-	}
+		auto& assetData = assets[assetIndex];
 
-	FString TargetRootPackagePath = DefaultPath;
-	WwisePickerHelpers::EAssetDuplicationMode DuplicationMode =  WwisePickerHelpers::EAssetDuplicationMode::NoDuplication;
-	if (bDroppedOnContentBrowser)
-	{
-		TargetRootPackagePath = AssetViewDropTargetPackagePath;
-		DuplicationMode = WwisePickerHelpers::EAssetDuplicationMode::DoDuplication;
-	}
-
-	WwisePickerHelpers::SaveSelectedAssets(WwiseAssetsToDrop, TargetRootPackagePath, WwisePickerHelpers::EAssetCreationMode::Transient, DuplicationMode);
-}
-
-void FWwiseAssetDragDropOp::DeleteAssets()
-{
-	TArray<FAssetData> AssetsToDelete;
-	for (WwisePickerHelpers::WwisePickerAssetPayload& AssetResult : WwiseAssetsToDrop)
-	{
-		if (AssetResult.CreatedAsset.IsValid())
+		for (auto& packagePath : Payload.PackagePaths)
 		{
-			AssetsToDelete.Add(AssetResult.CreatedAsset);
+			if (!AkAssetDatabase::Get().CanBeDropped(assetData, packagePath, AkAssetDatabase::CanBeDroppedSource::FromPicker))
+			{
+				SetCanDrop(false);
+				return true;
+			}
 		}
 	}
 
-	if (AssetsToDelete.Num() > 0)
-	{
-		ObjectTools::DeleteAssets(AssetsToDelete, false);
-	}
+	SetCanDrop(true);
+
+	return false;
 }
 
-void FWwiseAssetDragDropOp::OnDrop(bool bDropWasHandled, const FPointerEvent& MouseEvent)
+bool FWwiseAssetDragDropOp::OnAssetViewDragLeave(const FAssetViewDragAndDropExtender::FPayload& Payload)
 {
-	if (!bDropWasHandled)
-	{
-		DeleteAssets();
-		return;
-	}
-
-	SaveAssets();
+	SetCanDrop(false);
+	return false;
 }
 
 void FWwiseAssetDragDropOp::SetCanDrop(const bool InCanDrop)
@@ -181,12 +133,12 @@ void FWwiseAssetDragDropOp::SetCanDrop(const bool InCanDrop)
 	if (InCanDrop)
 	{
 		MouseCursor = EMouseCursor::GrabHandClosed;
-		SetToolTip(GetTooltipText(), FAkAppStyle::Get().GetBrush(TEXT("Graph.ConnectorFeedback.Ok")));
+		SetToolTip(GetTooltipText(), NULL);
 	}
 	else
 	{
 		MouseCursor = EMouseCursor::SlashedCircle;
-		SetToolTip(GetTooltipText(), FAkAppStyle::Get().GetBrush(TEXT("Graph.ConnectorFeedback.Error")));
+		SetToolTip(GetTooltipText(), FEditorStyle::GetBrush(TEXT("Graph.ConnectorFeedback.Error")));
 	}
 }
 

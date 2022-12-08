@@ -1,19 +1,18 @@
 /*******************************************************************************
-The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
-Technology released in source code form as part of the game integration package.
-The content of this file may not be used without valid licenses to the
-AUDIOKINETIC Wwise Technology.
-Note that the use of the game engine is subject to the Unreal(R) Engine End User
-License Agreement at https://www.unrealengine.com/en-US/eula/unreal
- 
-License Usage
- 
-Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
-this file in accordance with the end user license agreement provided with the
-software or, alternatively, in accordance with the terms contained
-in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2022 Audiokinetic Inc.
+The content of the files in this repository include portions of the
+AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
+package.
+
+Commercial License Usage
+
+Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
+may use these files in accordance with the end user license agreement provided
+with the software or, alternatively, in accordance with the terms contained in a
+written agreement between you and Audiokinetic Inc.
+
+Copyright (c) 2021 Audiokinetic Inc.
 *******************************************************************************/
+
 
 /*=============================================================================
 	AkWaapiClient.cpp: Audiokinetic WAAPI interface object.
@@ -30,10 +29,11 @@ Copyright (c) 2022 Audiokinetic Inc.
 #include "AkSettings.h"
 #include "AkSettingsPerUser.h"
 #include "Serialization/JsonSerializer.h"
+#include "HAL/FileManager.h"
+#include "Misc/Paths.h"
 #include "Async/Async.h"
 #include "Misc/ScopeLock.h"
 #include "Misc/CoreDelegates.h"
-#include "Wwise/API/WAAPI.h"
 
 #if AK_SUPPORT_WAAPI
 
@@ -44,8 +44,14 @@ Copyright (c) 2022 Audiokinetic Inc.
 #endif // _MSC_VER >= 1910
 #endif // #if PLATFORM_WINDOWS
 
+#include "AK/WwiseAuthoringAPI/AkAutobahn/Client.h"
+#include "AK/WwiseAuthoringAPI/AkAutobahn/AkJson.h"
+#include "AK/WwiseAuthoringAPI/AkAutobahn/JsonProvider.h"
+
 typedef AK::WwiseAuthoringAPI::JsonProvider JsonProvider;
 #endif
+
+DEFINE_LOG_CATEGORY(LogAkWaapiClient);
 
 /*------------------------------------------------------------------------------------
 Statics and Globals
@@ -69,11 +75,10 @@ FAkWaapiClientConnectionHandler::~FAkWaapiClientConnectionHandler()
 
 void FAkWaapiClientConnectionHandler::RegisterAutoConnectChangedCallback()
 {
-#if WITH_EDITOR
 	FScopeLock Lock(&AkSettingsSection);
 	if (auto AkSettingsPerUser = GetDefault<UAkSettingsPerUser>())
 	{
-		AutoConnectChangedHandle = AkSettingsPerUser->OnAutoConnectToWaapiChanged.AddLambda([this, AkSettingsPerUser]()
+		AutoConnectChangedHandle = AkSettingsPerUser->OnAutoConnectChanged.AddLambda([this, AkSettingsPerUser]()
 		{
 			ResetReconnectionDelay();
 			if (AkSettingsPerUser->bAutoConnectToWAAPI)
@@ -84,7 +89,6 @@ void FAkWaapiClientConnectionHandler::RegisterAutoConnectChangedCallback()
 			}
 		});
 	}
-#endif
 }
 
 void FAkWaapiClientConnectionHandler::Wake()
@@ -119,7 +123,7 @@ uint32 FAkWaapiClientConnectionHandler::Run()
 			if (hadConnection && !m_Client.AppIsExiting())
 			{
 				if (bReconnect)
-					UE_LOG(LogAkAudio, Warning, TEXT("Lost connection to WAAPI client. Attempting reconnection ..."));
+					UE_LOG(LogAkWaapiClient, Warning, TEXT("Lost connection to WAAPI client. Attempting reconnection ..."));
 				hadConnection = false;
 				AsyncTask(ENamedThreads::GameThread, [this]()
 				{
@@ -145,7 +149,7 @@ uint32 FAkWaapiClientConnectionHandler::Run()
 				{
 					if (LogOutputCount.GetValue() < 7)
 					{
-						UE_LOG(LogAkAudio, Warning, TEXT("Failed to connect to WAAPI client on local host. Trying again in %i seconds."), ReconnectDelay.GetValue());
+						UE_LOG(LogAkWaapiClient, Warning, TEXT("Failed to connect to WAAPI client on local host. Trying again in %i seconds."), ReconnectDelay.GetValue());
 						LogOutputCount.Increment();
 					}
 				}
@@ -211,7 +215,7 @@ bool FAkWaapiClientConnectionHandler::AttemptReconnect()
 #if AK_SUPPORT_WAAPI
 	if (m_Client.AttemptConnection())
 	{
-		UE_LOG(LogAkAudio, Log, TEXT("Successfully connected to Wwise Authoring on localhost."));
+		UE_LOG(LogAkWaapiClient, Log, TEXT("Successfully connected to Wwise Authoring on localhost."));
 		return true;
 	}
 #endif
@@ -226,17 +230,6 @@ struct FAkWaapiClientImpl
 	void Init(FAkWaapiClient& in_Client)
 	{
 #if AK_SUPPORT_WAAPI
-		auto* WAAPI = IWAAPI::Get();
-		if (UNLIKELY(!WAAPI))
-		{
-			return;
-		}
-		m_Client = WAAPI->NewClient();
-		if (UNLIKELY(!m_Client))
-		{
-			return;
-		}
-
 		m_pConnectionHandler = MakeShareable(new FAkWaapiClientConnectionHandler(in_Client));
 		FString ThreadName(FString::Printf(TEXT("WAAPIClientConnectionThread%i"), ThreadCounter.Increment()));
 		m_pReconnectionThread = MakeShareable(FRunnableThread::Create(m_pConnectionHandler.Get(),
@@ -260,18 +253,16 @@ struct FAkWaapiClientImpl
 		{
 			if (!m_pReconnectionThread->Kill(true))
 			{
-				UE_LOG(LogAkAudio, Error, TEXT("WAAPI Connection Thread Failed to Exit!"));
+				UE_LOG(LogAkWaapiClient, Error, TEXT("WAAPI Connection Thread Failed to Exit!"));
 			}
 		}
-
-		delete m_Client; m_Client = nullptr;
 #endif
 	}
 
 #if AK_SUPPORT_WAAPI
 	/** Map containing id keys and WampEventCallback values. */
 	TMap<uint64_t, WampEventCallback> m_wampEventCallbackMap;
-	IWAAPI::Client* m_Client = nullptr;
+	AK::WwiseAuthoringAPI::Client m_Client;
 	/** A non-0 value indicates that UE is exiting. */
 	FThreadSafeCounter AppExitingCounter = 0;
 	FThreadSafeCounter ThreadCounter;
@@ -298,7 +289,7 @@ bool FAkWaapiClient::JsonObjectToString(const TSharedRef<FJsonObject>& in_jsonOb
 	auto result = FJsonSerializer::Serialize(in_jsonObject, JsonWriterArgs);
 	if (!result)
 	{
-		UE_LOG(LogAkAudio, Log, TEXT("Unable to get a string representation of the Json Object."));
+		UE_LOG(LogAkWaapiClient, Log, TEXT("Unable to get a string representation of the Json Object."));
 	}
 	JsonWriterArgs->Close();
 	return result;
@@ -314,18 +305,12 @@ void WampEventCallbacks(const uint64_t& in_subscriptionId, const JsonProvider& i
 	if (!wampEventCallbacks)
 		return;
 
-	auto* WAAPI = IWAAPI::Get();
-	if (UNLIKELY(!WAAPI))
-	{
-		return;
-	}
-
 	TSharedPtr<FJsonObject> ueJsonObject;
 
-	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(UTF8_TO_TCHAR(WAAPI->GetJsonString(in_rJson).c_str()));
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(UTF8_TO_TCHAR(in_rJson.GetJsonString().c_str()));
 	if (!FJsonSerializer::Deserialize(Reader, ueJsonObject) || !ueJsonObject.IsValid())
 	{
-		UE_LOG(LogAkAudio, Log, TEXT("Unable to deserialize a JSON object from the string : %s"), UTF8_TO_TCHAR(WAAPI->GetJsonString(in_rJson).c_str()));
+		UE_LOG(LogAkWaapiClient, Log, TEXT("Unable to deserialize a JSON object from the string : %s"), UTF8_TO_TCHAR(in_rJson.GetJsonString().c_str()));
 		return;
 	}
 
@@ -349,10 +334,6 @@ void FAkWaapiClient::Initialize()
 	if (!g_AkWaapiClient)
 	{
 		g_AkWaapiClient = new FAkWaapiClient();
-		if(g_AkWaapiClient)
-		{
-			g_AkWaapiClient->m_Impl->Init(*g_AkWaapiClient);
-		}
 		FCoreDelegates::OnPreExit.AddLambda([]
 		{
 			if (g_AkWaapiClient != nullptr)
@@ -402,10 +383,7 @@ void FAkWaapiClient::DeleteInstance()
 
 	g_AkWaapiClient->OnClientBeginDestroy.Broadcast();
 	g_AkWaapiClient->m_Impl->bIsConnectionClosing = true;
-	if (g_AkWaapiClient->m_Impl->m_Client)
-	{
-		g_AkWaapiClient->m_Impl->m_Client->Disconnect();
-	}
+	g_AkWaapiClient->m_Impl->m_Client.Disconnect();
 	delete g_AkWaapiClient;
 	g_AkWaapiClient = nullptr;
 #endif
@@ -593,11 +571,7 @@ void FAkWaapiClient::BroadcastConnectionLost()
 bool FAkWaapiClient::IsConnected()
 {
 #if AK_SUPPORT_WAAPI
-	if (UNLIKELY(!g_AkWaapiClient->m_Impl->m_Client))
-	{
-		return false;
-	}
-	return m_Impl->m_Client->IsConnected();
+	return m_Impl->m_Client.IsConnected();
 #else
 	return false;
 #endif
@@ -608,17 +582,13 @@ bool FAkWaapiClient::AttemptConnection()
 {
 	bool bConnected = false;
 #if AK_SUPPORT_WAAPI
-	if (UNLIKELY(!g_AkWaapiClient->m_Impl->m_Client))
+	if (const UAkSettingsPerUser* AkSettingsPerUser = GetDefault<UAkSettingsPerUser>())
 	{
-		bConnected = false;
-	}
-	else if (const UAkSettingsPerUser* AkSettingsPerUser = GetDefault<UAkSettingsPerUser>())
-	{
-		bConnected = m_Impl->m_Client->Connect(TCHAR_TO_UTF8(*AkSettingsPerUser->WaapiIPAddress), AkSettingsPerUser->WaapiPort);
+		bConnected = m_Impl->m_Client.Connect(TCHAR_TO_UTF8(*AkSettingsPerUser->WaapiIPAddress), AkSettingsPerUser->WaapiPort);
 	}
 	else
 	{
-		bConnected = m_Impl->m_Client->Connect(WAAPI_LOCAL_HOST_IP_STRING, WAAPI_PORT);
+		bConnected = m_Impl->m_Client.Connect(WAAPI_LOCAL_HOST_IP_STRING, WAAPI_PORT);
 	}
 
 	if (bConnected)
@@ -628,7 +598,7 @@ bool FAkWaapiClient::AttemptConnection()
 		{
 			// We successfully connected, but the wrong project is open (or getting the project timed out). Disconnect.
 			// We will attemps reconnection later.
-			m_Impl->m_Client->Disconnect();
+			m_Impl->m_Client.Disconnect();
 			bConnected = false;
 		}
 		m_Impl->bProjectLoaded = bProjectLoaded;
@@ -648,10 +618,9 @@ bool FAkWaapiClient::Subscribe(const char* in_uri, const FString& in_options, Wa
 		if (!m_Impl->bIsConnectionClosing)
 		{
 			// Call for the AK WAAPI method using string params.
-			if (LIKELY(g_AkWaapiClient->m_Impl->m_Client))
 			{
 				FScopeLock Lock(&m_Impl->ClientSection);
-				eResult = m_Impl->m_Client->Subscribe(in_uri, TCHAR_TO_UTF8(*in_options), &WampEventCallbacks, out_subscriptionId, out_resultString, in_iTimeoutMs);
+				eResult = m_Impl->m_Client.Subscribe(in_uri, TCHAR_TO_UTF8(*in_options), &WampEventCallbacks, out_subscriptionId, out_resultString, in_iTimeoutMs);
 			}
 			if (eResult)
 			{
@@ -659,7 +628,7 @@ bool FAkWaapiClient::Subscribe(const char* in_uri, const FString& in_options, Wa
 			}
 			else
 			{
-				UE_LOG(LogAkAudio, Log, TEXT("Subscription failed: %s"), *FString(UTF8_TO_TCHAR(out_resultString.c_str())));
+				UE_LOG(LogAkWaapiClient, Log, TEXT("Subscription failed: %s"), *FString(UTF8_TO_TCHAR(out_resultString.c_str())));
 			}
 			out_result = FString(UTF8_TO_TCHAR(out_resultString.c_str()));
 		}
@@ -693,7 +662,7 @@ bool FAkWaapiClient::Subscribe(const char* in_uri, const TSharedRef<FJsonObject>
 
 		if ((!FJsonSerializer::Deserialize(Reader, out_result) || !out_result.IsValid()) && IsConnected())
 		{
-			UE_LOG(LogAkAudio, Log, TEXT("Subscribe: Output result -> unable to deserialize the Json object from the string : %s"), *out_resultString);
+			UE_LOG(LogAkWaapiClient, Log, TEXT("Subscribe: Output result -> unable to deserialize the Json object from the string : %s"), *out_resultString);
 		}
 	}
 #endif
@@ -710,10 +679,9 @@ bool FAkWaapiClient::Unsubscribe(const uint64_t& in_subscriptionId, FString& out
 		{
 			std::string out_resultString("");
 			// Call the AK WAAPI method.
-			if (LIKELY(g_AkWaapiClient->m_Impl->m_Client))
 			{
 				FScopeLock Lock(&m_Impl->ClientSection);
-				eResult = m_Impl->m_Client->Unsubscribe(in_subscriptionId, out_resultString, in_iTimeoutMs);
+				eResult = m_Impl->m_Client.Unsubscribe(in_subscriptionId, out_resultString, in_iTimeoutMs);
 			}
 			if (eResult)
 			{
@@ -722,7 +690,7 @@ bool FAkWaapiClient::Unsubscribe(const uint64_t& in_subscriptionId, FString& out
 			}
 			else if (!in_bSilenceLog)
 			{
-				UE_LOG(LogAkAudio, Log, TEXT("Unsubscription failed: %s"), *FString(UTF8_TO_TCHAR(out_resultString.c_str())));
+				UE_LOG(LogAkWaapiClient, Log, TEXT("Unsubscription failed: %s"), *FString(UTF8_TO_TCHAR(out_resultString.c_str())));
 			}
 			out_result = FString(UTF8_TO_TCHAR(out_resultString.c_str()));
 		}
@@ -752,7 +720,7 @@ bool FAkWaapiClient::Unsubscribe(const uint64_t& in_subscriptionId, TSharedPtr<F
 
 			if ((!FJsonSerializer::Deserialize(Reader, out_result) || !out_result.IsValid()) && IsConnected())
 			{
-				UE_LOG(LogAkAudio, Log, TEXT("Unsubscribe: Output result -> unable to deserialize the Json object from the string : %s"), *out_resultString);
+				UE_LOG(LogAkWaapiClient, Log, TEXT("Unsubscribe: Output result -> unable to deserialize the Json object from the string : %s"), *out_resultString);
 			}
 		}
 	}
@@ -787,14 +755,13 @@ bool FAkWaapiClient::Call(const char* in_uri, const FString& in_args, const FStr
 		{
 			std::string out_resultString("");
 			// Call the AK WAAPI method.
-			if (LIKELY(g_AkWaapiClient->m_Impl->m_Client))
 			{
 				FScopeLock Lock(&m_Impl->ClientSection);
-				eResult = m_Impl->m_Client->Call(in_uri, TCHAR_TO_UTF8(*in_args), TCHAR_TO_UTF8(*in_options), out_resultString, in_iTimeoutMs);
+				eResult = m_Impl->m_Client.Call(in_uri, TCHAR_TO_UTF8(*in_args), TCHAR_TO_UTF8(*in_options), out_resultString, in_iTimeoutMs);
 			}
 			if (!eResult && !silenceLog)
 			{
-				UE_LOG(LogAkAudio, Log, TEXT("Call failed: %s"), *FString(UTF8_TO_TCHAR(out_resultString.c_str())));
+				UE_LOG(LogAkWaapiClient, Log, TEXT("Call failed: %s"), *FString(UTF8_TO_TCHAR(out_resultString.c_str())));
 			}
 			out_result = FString(UTF8_TO_TCHAR(out_resultString.c_str()));
 		}
@@ -831,7 +798,7 @@ bool FAkWaapiClient::Call(const char* in_uri, const TSharedRef<FJsonObject>& in_
 	if (!FJsonSerializer::Deserialize(Reader, out_result) || !out_result.IsValid())
 	{
 		if (!silenceLog && IsConnected())
-			UE_LOG(LogAkAudio, Log, TEXT("Output result -> unable to deserialize a JSON object from the string : %s"), *out_resultString);
+			UE_LOG(LogAkWaapiClient, Log, TEXT("Output result -> unable to deserialize a JSON object from the string : %s"), *out_resultString);
 	}
 #endif
 	return eResult;
@@ -840,6 +807,7 @@ bool FAkWaapiClient::Call(const char* in_uri, const TSharedRef<FJsonObject>& in_
 FAkWaapiClient::FAkWaapiClient()
 	: m_Impl(new FAkWaapiClientImpl)
 {
+	m_Impl->Init(*this);
 }
 
 /** Sets in_outParentGUID to the object ID of a parent of object in_objectGUID of type in_strType. */
@@ -1056,7 +1024,7 @@ bool FAkWaapiClient::WAAPIGet(WAAPIGetFromOption inFromField,
 		if (g_AkWaapiClient->Call(ak::wwise::core::object::get, getArgsJson, returnOptionsJson, outJsonResult, 500, in_bSilenceLog))
 			return true;
 		else if (!in_bSilenceLog)
-			UE_LOG(LogAkAudio, Log, TEXT("Call to ak.wwise.core.object.get Failed"));
+			UE_LOG(LogAkWaapiClient, Log, TEXT("Call to ak.wwise.core.object.get Failed"));
 	}
 #endif
 	return false;
@@ -1143,7 +1111,7 @@ const FString FAkWaapiClient::WAAPIStrings::OF_TYPE = TEXT("ofType");
 const FString FAkWaapiClient::WAAPIStrings::PROJECT = TEXT("Project");
 const FString FAkWaapiClient::WAAPIStrings::PROPERTY = TEXT("property");
 const FString FAkWaapiClient::WAAPIStrings::VOLUME = TEXT("Volume");
-const FString FAkWaapiClient::WAAPIStrings::FIND_IN_PROJECT_EXPLORER = TEXT("FindInProjectExplorerSelectionChannel1");
+const FString FAkWaapiClient::WAAPIStrings::FIND_IN_PROJECT_EXPLORER = TEXT("FindInProjectExplorerSyncGroup1");
 const FString FAkWaapiClient::WAAPIStrings::TRIMMED_DURATION = TEXT("trimmedDuration");
 
 const FString FAkWaapiClient::WwiseTypeStrings::SOUND = TEXT("Sound");

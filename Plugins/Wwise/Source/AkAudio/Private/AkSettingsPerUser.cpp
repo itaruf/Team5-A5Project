@@ -1,18 +1,16 @@
 /*******************************************************************************
-The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
-Technology released in source code form as part of the game integration package.
-The content of this file may not be used without valid licenses to the
-AUDIOKINETIC Wwise Technology.
-Note that the use of the game engine is subject to the Unreal(R) Engine End User
-License Agreement at https://www.unrealengine.com/en-US/eula/unreal
- 
-License Usage
- 
-Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
-this file in accordance with the end user license agreement provided with the
-software or, alternatively, in accordance with the terms contained
-in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2022 Audiokinetic Inc.
+The content of the files in this repository include portions of the
+AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
+package.
+
+Commercial License Usage
+
+Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
+may use these files in accordance with the end user license agreement provided
+with the software or, alternatively, in accordance with the terms contained in a
+written agreement between you and Audiokinetic Inc.
+
+Copyright (c) 2021 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkSettingsPerUser.h"
@@ -22,7 +20,7 @@ Copyright (c) 2022 Audiokinetic Inc.
 #include "AkUnrealHelper.h"
 
 #if WITH_EDITOR
-#include "AkUnrealEditorHelper.h"
+#include "Core/Public/Modules/ModuleManager.h"
 #include "SettingsEditor/Public/ISettingsEditorModule.h"
 #endif
 //////////////////////////////////////////////////////////////////////////
@@ -32,16 +30,26 @@ UAkSettingsPerUser::UAkSettingsPerUser(const FObjectInitializer& ObjectInitializ
 	: Super(ObjectInitializer)
 {
 #if WITH_EDITOR
+#if UE_4_21_OR_LATER
 	WwiseWindowsInstallationPath.Path = FPlatformMisc::GetEnvironmentVariable(TEXT("WWISEROOT"));
+#else
+	TCHAR WwiseDir[AK_MAX_PATH];
+	FPlatformMisc::GetEnvironmentVariable(TEXT("WWISEROOT"), WwiseDir, AK_MAX_PATH);
+
+	WwiseWindowsInstallationPath.Path = FString(WwiseDir);
+#endif
 #endif
 }
 
 #if WITH_EDITOR
+#if UE_4_25_OR_LATER
 void UAkSettingsPerUser::PreEditChange(FProperty* PropertyAboutToChange)
+#else
+void UAkSettingsPerUser::PreEditChange(UProperty* PropertyAboutToChange)
+#endif
 {
 	PreviousWwiseWindowsInstallationPath = WwiseWindowsInstallationPath.Path;
 	PreviousWwiseMacInstallationPath = WwiseMacInstallationPath.FilePath;
-	PreviousGeneratedSoundBanksFolder = GeneratedSoundBanksFolderUserOverride.Path;
 }
 
 void UAkSettingsPerUser::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent)
@@ -51,36 +59,22 @@ void UAkSettingsPerUser::PostEditChangeProperty(FPropertyChangedEvent& PropertyC
 
 	if (MemberPropertyName == GET_MEMBER_NAME_CHECKED(UAkSettingsPerUser, WwiseWindowsInstallationPath))
 	{
-		AkUnrealEditorHelper::SanitizePath(WwiseWindowsInstallationPath.Path, PreviousWwiseWindowsInstallationPath, FText::FromString("Please enter a valid Wwise Installation path"));
+		AkUnrealHelper::SanitizePath(WwiseWindowsInstallationPath.Path, PreviousWwiseWindowsInstallationPath, FText::FromString("Please enter a valid Wwise Installation path"));
 	}
 	else if (MemberPropertyName == GET_MEMBER_NAME_CHECKED(UAkSettingsPerUser, WwiseMacInstallationPath))
 	{
-		AkUnrealEditorHelper::SanitizePath(WwiseMacInstallationPath.FilePath, PreviousWwiseMacInstallationPath, FText::FromString("Please enter a valid Wwise Authoring Mac executable path"));
+		AkUnrealHelper::SanitizePath(WwiseMacInstallationPath.FilePath, PreviousWwiseMacInstallationPath, FText::FromString("Please enter a valid Wwise Authoring Mac executable path"));
 	}
 	else if (MemberPropertyName == GET_MEMBER_NAME_CHECKED(UAkSettingsPerUser, bAutoConnectToWAAPI))
 	{
-		OnAutoConnectToWaapiChanged.Broadcast();
+		OnAutoConnectChanged.Broadcast();
 	}
-	else if (MemberPropertyName == GET_MEMBER_NAME_CHECKED(UAkSettingsPerUser, WaapiTranslatorTimeout))
+	else if (MemberPropertyName == GET_MEMBER_NAME_CHECKED(UAkSettingsPerUser, EnableAutomaticAssetSynchronization))
 	{
-		FAkAudioDevice* AkAudioDevice = FAkAudioDevice::Get();
-		if (AkAudioDevice)
-		{
-			AkAudioDevice->SetLocalOutput();
-		}
+		ISettingsEditorModule& SettingsEditorModule = FModuleManager::GetModuleChecked<ISettingsEditorModule>("SettingsEditor");
+		SettingsEditorModule.OnApplicationRestartRequired();
 	}
-	else if (MemberPropertyName == GET_MEMBER_NAME_CHECKED(UAkSettingsPerUser, GeneratedSoundBanksFolderUserOverride))
-	{
-		bool bPathChanged = AkUnrealEditorHelper::SanitizeFolderPathAndMakeRelativeToContentDir(
-			GeneratedSoundBanksFolderUserOverride.Path, PreviousGeneratedSoundBanksFolder, 
-			FText::FromString("Please enter a valid directory path"));
 
-		if (bPathChanged)
-		{
-			OnGeneratedSoundBanksPathChanged.Broadcast();
-		}
-		OnGeneratedSoundBanksPathChanged.Broadcast();
-	}
 
 	Super::PostEditChangeProperty(PropertyChangedEvent);
 }

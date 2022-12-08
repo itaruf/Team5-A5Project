@@ -1,29 +1,25 @@
 /*******************************************************************************
-The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
-Technology released in source code form as part of the game integration package.
-The content of this file may not be used without valid licenses to the
-AUDIOKINETIC Wwise Technology.
-Note that the use of the game engine is subject to the Unreal(R) Engine End User
-License Agreement at https://www.unrealengine.com/en-US/eula/unreal
- 
-License Usage
- 
-Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
-this file in accordance with the end user license agreement provided with the
-software or, alternatively, in accordance with the terms contained
-in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2022 Audiokinetic Inc.
+The content of the files in this repository include portions of the
+AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
+package.
+
+Commercial License Usage
+
+Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
+may use these files in accordance with the end user license agreement provided
+with the software or, alternatively, in accordance with the terms contained in a
+written agreement between you and Audiokinetic Inc.
+
+Copyright (c) 2021 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "AkMixerPlatform.h"
 
-#include "AkAudioModule.h"
 #include "AudioMixerTypes.h"
 #include "CoreGlobals.h"
 #include "UObject/UObjectGlobals.h"
 
 #include "AkSettings.h"
-#include "AudioDevice.h"
 #include "AudioMixerInputComponent.h"
 
 #if WITH_ENGINE
@@ -32,9 +28,6 @@ Copyright (c) 2022 Audiokinetic Inc.
 #include "VorbisAudioInfo.h"
 #include "ADPCMAudioInfo.h"
 #endif // WITH_ENGINE
-
-DECLARE_LOG_CATEGORY_EXTERN(LogAkAudioMixer, Log, All);
-DEFINE_LOG_CATEGORY(LogAkAudioMixer);
 
 FName FAkMixerPlatform::NAME_OGG(TEXT("OGG"));
 FName FAkMixerPlatform::NAME_OPUS(TEXT("OPUS"));
@@ -62,14 +55,6 @@ FAkMixerPlatform::~FAkMixerPlatform()
 	}
 }
 
-void FAkMixerPlatform::OnAkAudioModuleInit()
-{
-	Audio::FAudioMixerOpenStreamParams CurrentStreamParams = OpenStreamParams;
-	CloseAudioStream();
-	OpenAudioStream(CurrentStreamParams);
-	StartAudioStream();
-}
-
 bool FAkMixerPlatform::OnNextBuffer(uint32 NumChannels, uint32 NumSamples, float** OutBufferToFill)
 {
 	if (!bIsDeviceInitialized
@@ -90,27 +75,30 @@ bool FAkMixerPlatform::OnNextBuffer(uint32 NumChannels, uint32 NumSamples, float
 
 bool FAkMixerPlatform::InitializeHardware()
 {
-	if (!FAkAudioDevice::IsInitialized())
+	if (!bIsInitialized)
 	{
-		AkAudioModuleInitHandle = FAkAudioModule::OnModuleInitialized.AddRaw(this, &FAkMixerPlatform::OnAkAudioModuleInit);
+		AkAudioMixerInputComponent = new FAudioMixerInputComponent();
+
+		AkAudioMixerInputComponent->OnNextBuffer = FAkGlobalAudioInputDelegate::CreateRaw(this, &FAkMixerPlatform::OnNextBuffer);
+
+		UAkSettings* AkSettings = GetMutableDefault<UAkSettings>();
+		if (AkSettings != nullptr)
+		{
+			AkSettings->GetAudioInputEvent(InputEvent);
+		}
+
+		if (!InputEvent)
+		{
+			UE_LOG(LogAkAudio, Error, TEXT("Unable to correctly initialize AkMixerPlatform. Ak Audio Event is not set."));
+		}
+
+		bIsInitialized = true;
 	}
 
-#if ENGINE_MAJOR_VERSION >= 5
-	if(Audio::IAudioMixer::ShouldRecycleThreads())
-	{
-		// Pre-create the null render device thread, so we can simple wake it up when we need it.
-		// Give it nothing to do, with a slow tick as the default, but ask it to wait for a signal to wake up.
-		// Ensuring this exists prevents a crash in FMixerNullCallback::Run if the callback does not already exist.
-		CreateNullDeviceThread([] {}, 1.0f, true);
-	}
-#endif
-
-	bIsInitialized = true;
-
-	// Must always return true at Editor startup at least, since a failed
+	// Must always return true Editor startup at least, since a failed
 	// initialization results in a failed initialized AudioDevice, which later
 	// results in a crash.
-	return true;
+	return bIsInitialized;
 }
 
 bool FAkMixerPlatform::TeardownHardware()
@@ -129,8 +117,6 @@ bool FAkMixerPlatform::TeardownHardware()
 		delete AkAudioMixerInputComponent;
 		AkAudioMixerInputComponent = nullptr;
 	}
-
-	AkAudioModuleInitHandle.Reset();
 
 	bIsInitialized = false;
 	return true;
@@ -154,8 +140,7 @@ bool FAkMixerPlatform::GetOutputDeviceInfo(const uint32 InDeviceIndex, Audio::FA
 	AkAudioMixerInputComponent->GetChannelConfig(AudioFormat);
 
 	OutInfo.Format = Audio::EAudioMixerStreamDataFormat::Float;
-	OutInfo.Name = GetDefaultDeviceName();
-	OutInfo.DeviceId = TEXT("WwiseDevice");
+	OutInfo.Name = "Wwise Default Audio Input Device";
 	OutInfo.NumChannels = AudioFormat.GetNumChannels();
 	OutInfo.SampleRate = AudioFormat.uSampleRate;
 
@@ -197,50 +182,29 @@ bool FAkMixerPlatform::OpenAudioStream(const Audio::FAudioMixerOpenStreamParams&
 
 	OutputBufferByteLength = OpenStreamParams.NumFrames * AudioStreamInfo.DeviceInfo.NumChannels * GetAudioStreamChannelSize();
 
-	UE_LOG(LogAkAudioMixer, Verbose, TEXT("Opening Audio stream for device: %s"), *GetDeviceId())
-
 	AudioStreamInfo.StreamState = Audio::EAudioOutputStreamState::Open;
 
+	bool bOpenStreamError = false;
 
-	if (FAkAudioDevice::IsInitialized())
+	if (!InputEvent)
 	{
-		bool bOpenStreamError = false;
+		UE_LOG(LogAkAudio, Error, TEXT("Unable to open audio stream. Ak Audio Event is not set."));
+		bOpenStreamError = true;
+	}
+	else
+	{
+		AkPlayingID PlayingID = AkAudioMixerInputComponent->PostAssociatedAudioInputEvent(InputEvent);
 
-		AkAudioMixerInputComponent = new FAudioMixerInputComponent();
-		AkAudioMixerInputComponent->OnNextBuffer = FAkGlobalAudioInputDelegate::CreateRaw(this, &FAkMixerPlatform::OnNextBuffer);
-
-		UAkSettings* AkSettings = GetMutableDefault<UAkSettings>();
-		if (AkSettings != nullptr)
+		if (PlayingID == AK_INVALID_PLAYING_ID)
 		{
-			AkSettings->GetAudioInputEvent(InputEvent);
-		}
-
-		if (!InputEvent)
-		{
-			UE_LOG(LogAkAudioMixer, Error, TEXT("Unable to open audio stream. Ak Audio Event is not set."));
+			UE_LOG(LogAkAudio, Error, TEXT("Unable to open audio stream. Could not post Ak Audio Event."));
 			bOpenStreamError = true;
-		}
-		else
-		{
-			AkPlayingID PlayingID = AkAudioMixerInputComponent->PostAssociatedAudioInputEvent(InputEvent);
-
-			if (PlayingID == AK_INVALID_PLAYING_ID)
-			{
-				UE_LOG(LogAkAudioMixer, Error, TEXT("Unable to open audio stream. Could not post Ak Audio Event."));
-				bOpenStreamError = true;
-			}
-		}
-
-		if (!bOpenStreamError)
-		{
-			UE_LOG(LogAkAudioMixer, Verbose, TEXT("Opened Audio stream for device: %s"), *GetDeviceId())
-			bIsDeviceOpen = true;
 		}
 	}
 
-	else
+	if (!bOpenStreamError)
 	{
-		UE_LOG(LogAkAudioMixer, Verbose, TEXT("Audio stream deferred for device %s, AkAudioDevice is not yet initialized"), *GetDeviceId())
+		bIsDeviceOpen = true;
 	}
 
 	// Must always return true Editor startup at least, since a failed
@@ -256,40 +220,31 @@ bool FAkMixerPlatform::CloseAudioStream()
 		return false;
 	}
 
-	UE_LOG(LogAkAudioMixer, Verbose, TEXT("Closing Audio stream for device: %s"), *GetDeviceId())
-
 	if (!StopAudioStream())
 	{
 		return false;
 	}
+
+	{
+		FScopeLock ScopedLock(&OutputBufferMutex);
+
+		if (this->AkAudioMixerInputComponent)
+		{
+			AkAudioMixerInputComponent->PostUnregisterGameObject();
+		}
+
+		OutputBuffer = nullptr;
+		OutputBufferByteLength = 0;
+	}
+
+	bIsDeviceOpen = false;
 
 	if (bIsUsingNullDevice)
 	{
 		StopRunningNullDevice();
 	}
 
-	{
-		FScopeLock ScopedLock(&OutputBufferMutex);
-		OutputBuffer = nullptr;
-		OutputBufferByteLength = 0;
-	}
-
-	if (FAkAudioDevice::IsInitialized())
-	{
-		if (AkAudioMixerInputComponent)
-		{
-			AkAudioMixerInputComponent->PostUnregisterGameObject();
-			delete AkAudioMixerInputComponent;
-			AkAudioMixerInputComponent = nullptr;
-		}
-
-		InputEvent = nullptr;
-	}
-
-	bIsDeviceOpen = false;
-
 	AudioStreamInfo.StreamState = Audio::EAudioOutputStreamState::Closed;
-
 	return true;
 }
 
@@ -301,20 +256,16 @@ bool FAkMixerPlatform::StartAudioStream()
 		return false;
 	}
 
-	UE_LOG(LogAkAudioMixer, Verbose, TEXT("Starting Audio stream for device: %s"), *GetDeviceId())
-
 	BeginGeneratingAudio();
 
 	if (!bIsDeviceOpen)
 	{
-		check(!bIsUsingNullDevice);
 		StartRunningNullDevice();
 	}
 
-	check(AudioStreamInfo.StreamState == Audio::EAudioOutputStreamState::Running);
+	AudioStreamInfo.StreamState = Audio::EAudioOutputStreamState::Running;
 
 	return true;
-
 }
 
 bool FAkMixerPlatform::StopAudioStream()
@@ -323,14 +274,10 @@ bool FAkMixerPlatform::StopAudioStream()
 		&& AudioStreamInfo.StreamState != Audio::EAudioOutputStreamState::Closed)
 	{
 
-		UE_LOG(LogAkAudioMixer, Verbose, TEXT("Stopping Audio stream for device: %s"), *GetDeviceId())
-
 		if (AudioStreamInfo.StreamState == Audio::EAudioOutputStreamState::Running)
 		{
 			StopGeneratingAudio();
 		}
-
-		check(AudioStreamInfo.StreamState == Audio::EAudioOutputStreamState::Stopped);
 	}
 
 	return true;
@@ -438,11 +385,6 @@ ICompressedAudioInfo* FAkMixerPlatform::CreateCompressedAudioInfo(USoundWave* In
 FString FAkMixerPlatform::GetDefaultDeviceName() {
 	static FString DefaultName(TEXT("Wwise Audio Mixer Device."));
 	return DefaultName;
-}
-
-FString FAkMixerPlatform::GetDeviceId() const
-{
-	return AudioStreamInfo.DeviceInfo.DeviceId;
 }
 
 FAudioPlatformSettings FAkMixerPlatform::GetPlatformSettings() const

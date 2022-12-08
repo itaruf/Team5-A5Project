@@ -1,18 +1,16 @@
 /*******************************************************************************
-The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
-Technology released in source code form as part of the game integration package.
-The content of this file may not be used without valid licenses to the
-AUDIOKINETIC Wwise Technology.
-Note that the use of the game engine is subject to the Unreal(R) Engine End User
-License Agreement at https://www.unrealengine.com/en-US/eula/unreal
- 
-License Usage
- 
-Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
-this file in accordance with the end user license agreement provided with the
-software or, alternatively, in accordance with the terms contained
-in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2022 Audiokinetic Inc.
+The content of the files in this repository include portions of the
+AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
+package.
+
+Commercial License Usage
+
+Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
+may use these files in accordance with the end user license agreement provided
+with the software or, alternatively, in accordance with the terms contained in a
+written agreement between you and Audiokinetic Inc.
+
+Copyright (c) 2021 Audiokinetic Inc.
 *******************************************************************************/
 
 /*=============================================================================
@@ -56,10 +54,7 @@ enum class EAkFitToGeometryMode : uint32
 UCLASS(ClassGroup = Audiokinetic, BlueprintType, hidecategories = (Advanced, Attachment, Volume))
 class AKAUDIO_API AAkSpatialAudioVolume : public AVolume
 {
-	GENERATED_BODY()
-
-public:
-	AAkSpatialAudioVolume(const class FObjectInitializer& ObjectInitializer);
+	GENERATED_UCLASS_BODY()
 
 #if WITH_EDITOR
 	void FitRaycast();
@@ -88,16 +83,18 @@ public:
 	TArray<FAkSurfacePoly> PreviewPolys;
 #endif
 
+public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "SurfaceReflectorSet", meta = (ShowOnlyInnerProperties))
-	UAkSurfaceReflectorSetComponent* SurfaceReflectorSet = nullptr;
+	UAkSurfaceReflectorSetComponent* SurfaceReflectorSet;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LateReverb", meta = (ShowOnlyInnerProperties))
-	UAkLateReverbComponent* LateReverb = nullptr;
+	UAkLateReverbComponent* LateReverb;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Room", meta = (ShowOnlyInnerProperties))
-	UAkRoomComponent* Room = nullptr;
+	UAkRoomComponent* Room;
 
 #if WITH_EDITORONLY_DATA
+
 	/**
 	Automatically fit the Ak Spatial Audio Volume to the surrounding geometry. The fitting operation is performed after enabling this property, or after moving the actor to a new location.
 	The fitting operation is performed by casting rays emanating spherically outwards from the origin of the actor. 
@@ -107,18 +104,10 @@ public:
 	bool FitToGeometry = false;
 
 	/**
-	Sets the collision channel for the ray traces performed to fit the spatial audio volume to the surrounding geometry. When set to 'Use Integration Settings Default', the value will be taken from the DefaultFitToGeometryCollisionChannel in the Wwise Integration Settings.
+	Set the collision channel for the ray traces performed to fit the portal to the surrounding geometry. The default value for the collision channel is specified in the Wwise integration settings.
 	*/
 	UPROPERTY(EditAnywhere, Category = "Fit to Geometry")
-	TEnumAsByte<EAkCollisionChannel> CollisionChannel;
-
-#if WITH_EDITOR
-	/**
-	Converts between EAkCollisionChannel and ECollisionChannel. Returns Wwise Integration Settings default if CollisionChannel == UseIntegrationSettingsDefault. Otherwise, casts CollisionChannel to ECollisionChannel.
-	*/
-	UFUNCTION(BlueprintCallable, Category = "Fit to Geometry")
-	ECollisionChannel GetCollisionChannel();
-#endif
+	TEnumAsByte<ECollisionChannel> CollisionChannel;
 
 	/** 
 	Choose the shape with which to fit to the surrounding geometry. 

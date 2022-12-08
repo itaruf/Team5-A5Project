@@ -1,19 +1,18 @@
 /*******************************************************************************
-The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
-Technology released in source code form as part of the game integration package.
-The content of this file may not be used without valid licenses to the
-AUDIOKINETIC Wwise Technology.
-Note that the use of the game engine is subject to the Unreal(R) Engine End User
-License Agreement at https://www.unrealengine.com/en-US/eula/unreal
- 
-License Usage
- 
-Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
-this file in accordance with the end user license agreement provided with the
-software or, alternatively, in accordance with the terms contained
-in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2022 Audiokinetic Inc.
+The content of the files in this repository include portions of the
+AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
+package.
+
+Commercial License Usage
+
+Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
+may use these files in accordance with the end user license agreement provided
+with the software or, alternatively, in accordance with the terms contained in a
+written agreement between you and Audiokinetic Inc.
+
+Copyright (c) 2021 Audiokinetic Inc.
 *******************************************************************************/
+
 
 /*=============================================================================
 	AkGameObject.cpp:
@@ -21,10 +20,11 @@ Copyright (c) 2022 Audiokinetic Inc.
 
 #include "AkGameObject.h"
 #include "AkAudioEvent.h"
+#include "AkMediaAsset.h"
 #include "AkComponentCallbackManager.h"
 #include "AkRtpc.h"
-#include "Wwise/WwiseExternalSourceManager.h"
-#include "Wwise/API/WwiseSoundEngineAPI.h"
+#include "AkMediaAsset.h"
+
 
 class FPostAssociatedEventAction : public FAkPendingLatentAction
 {
@@ -34,14 +34,16 @@ public:
 	FWeakObjectPtr CallbackTarget;
 	int32* PlayingID = nullptr;
 	TFuture<AkPlayingID> FuturePlayingID;
+	TArray<FAkExternalSourceInfo> ExternalSources;
 	UAkAudioEvent* AkEvent = nullptr;
 	bool* bGameObjectStarted= nullptr;
 
-	FPostAssociatedEventAction(const FLatentActionInfo& LatentInfo, int32* PlayingID, UAkAudioEvent* Event, bool* bStarted)
+	FPostAssociatedEventAction(const FLatentActionInfo& LatentInfo, int32* PlayingID, const TArray<FAkExternalSourceInfo>& ExtSrc, UAkAudioEvent* Event, bool* bStarted)
 		: ExecutionFunction(LatentInfo.ExecutionFunction)
 		, OutputLink(LatentInfo.Linkage)
 		, CallbackTarget(LatentInfo.CallbackTarget)
 		, PlayingID(PlayingID)
+		, ExternalSources(ExtSrc)
 		, AkEvent(Event)
 		, bGameObjectStarted(bStarted)
 	{
@@ -53,9 +55,23 @@ public:
 		if (futureIsReady)
 		{
 			*PlayingID = FuturePlayingID.Get();
-			if (bGameObjectStarted!=nullptr)
+			if (bGameObjectStarted != nullptr)
 			{
 				*bGameObjectStarted = true;
+			}
+		}
+		else if (AkEvent)
+		{
+			for (auto ExtSrc : ExternalSources)
+			{
+				if (ExtSrc.ExternalSourceAsset)
+				{
+					ExtSrc.ExternalSourceAsset->AddPlayingID(AkEvent->ShortID, *PlayingID);
+					if (bGameObjectStarted != nullptr)
+					{
+						*bGameObjectStarted = true;
+					}
+				}
 			}
 		}
 
@@ -76,76 +92,72 @@ Super(ObjectInitializer)
 	bStarted = false;
 }
 
+int32 UAkGameObject::PostAssociatedAkEvent(int32 CallbackMask, const FOnAkPostEventCallback& PostEventCallback, const TArray<FAkExternalSourceInfo>& ExternalSources)
+{
+	return PostAkEvent(AkAudioEvent, CallbackMask, PostEventCallback, ExternalSources, EventName);
+}
+
 int32 UAkGameObject::PostAssociatedAkEvent(int32 CallbackMask, const FOnAkPostEventCallback& PostEventCallback)
 {
-	return PostAkEvent(AkAudioEvent, CallbackMask, PostEventCallback, EventName);
+	return PostAkEvent(AkAudioEvent, CallbackMask, PostEventCallback, TArray<FAkExternalSourceInfo>(), EventName);
 }
 
-int32 UAkGameObject::PostAkEvent(UAkAudioEvent* AkEvent, int32 CallbackMask,
-	const FOnAkPostEventCallback& PostEventCallback,
-	const FString& InEventName
-)
+int32 UAkGameObject::PostAkEvent(class UAkAudioEvent * AkEvent, int32 CallbackMask, const FOnAkPostEventCallback& PostEventCallback, const TArray<FAkExternalSourceInfo>& ExternalSources, const FString& in_EventName)
 {
-	if (LIKELY(IsValid(AkEvent)))
+	AkPlayingID playingID = PostAkEventByNameWithDelegate(GET_AK_EVENT_NAME(AkEvent, in_EventName), CallbackMask, PostEventCallback, ExternalSources);
+	if (AkEvent && playingID != AK_INVALID_PLAYING_ID)
 	{
-		return AkEvent->PostOnGameObject(this, PostEventCallback, CallbackMask);
+		AkEvent->PinInGarbageCollector(playingID);
 	}
+	return playingID;
+}
 
+int32 UAkGameObject::PostAkEvent(class UAkAudioEvent * AkEvent, int32 CallbackMask, const FOnAkPostEventCallback& PostEventCallback, const FString& in_EventName)
+{
+	AkPlayingID playingID = PostAkEventByNameWithDelegate(GET_AK_EVENT_NAME(AkEvent, in_EventName), CallbackMask, PostEventCallback, TArray<FAkExternalSourceInfo>());
+	if (AkEvent && playingID != AK_INVALID_PLAYING_ID)
+	{
+		AkEvent->PinInGarbageCollector(playingID);
+	}
+	return playingID;
+}
+
+AkPlayingID UAkGameObject::PostAkEventByNameWithDelegate(const FString& in_EventName, int32 CallbackMask, const FOnAkPostEventCallback& PostEventCallback, const TArray<FAkExternalSourceInfo>& ExternalSources)
+{
 	AkPlayingID playingID = AK_INVALID_PLAYING_ID;
 
 	auto AudioDevice = FAkAudioDevice::Get();
 	if (AudioDevice)
 	{
-		playingID = AudioDevice->PostEventOnAkGameObject(AudioDevice->GetShortID(AkEvent, InEventName), this, PostEventCallback, CallbackMask, {});
+		if (ExternalSources.Num() > 0)
+		{
+			FAkSDKExternalSourceArray SDKExternalSrcInfo(ExternalSources);
+			playingID = AudioDevice->PostEvent(in_EventName, this, PostEventCallback, CallbackMask, SDKExternalSrcInfo.ExternalSourceArray);
+			if (playingID != AK_INVALID_PLAYING_ID)
+			{
+				for (auto ExtSrc : ExternalSources)
+				{
+					if (ExtSrc.ExternalSourceAsset)
+					{
+						ExtSrc.ExternalSourceAsset->AddPlayingID(FAkAudioDevice::GetIDFromString(in_EventName), playingID);
+					}
+				}
+			}
+		}
+		else
+		{
+			playingID = AudioDevice->PostEvent(in_EventName, this, PostEventCallback, CallbackMask);
+		}
 		if (playingID != AK_INVALID_PLAYING_ID)
 			bStarted = true;
 	}
-	
+
 	return playingID;
 }
 
-AkPlayingID UAkGameObject::PostAkEvent(UAkAudioEvent* AkEvent, AkUInt32 Flags, AkCallbackFunc UserCallback,
-	void* UserCookie)
+void UAkGameObject::PostAssociatedAkEventAsync(const UObject* WorldContextObject, int32 CallbackMask, const FOnAkPostEventCallback& PostEventCallback, const TArray<FAkExternalSourceInfo>& ExternalSources, FLatentActionInfo LatentInfo, int32& PlayingID)
 {
-	if (UNLIKELY(!IsValid(AkEvent)))
-	{
-		UE_LOG(LogAkAudio, Error, TEXT("Failed to post invalid AkAudioEvent on game object '%s'."), *GetName());
-		return AK_INVALID_PLAYING_ID;
-	}
-	return AkEvent->PostOnGameObject(this, nullptr, UserCallback, UserCookie, static_cast<AkCallbackType>(Flags), nullptr);
-}
-
-AkPlayingID UAkGameObject::PostAkEventByNameWithDelegate(class UAkAudioEvent * AkEvent, const FString& InEventName, int32 CallbackMask, const FOnAkPostEventCallback& PostEventCallback)
-{
-	if (AkEvent)
-	{
-		return AkEvent->PostOnGameObject(this, &PostEventCallback, nullptr, nullptr, (AkCallbackType)CallbackMask, nullptr);
-	}
-
-	AkPlayingID playingID = AK_INVALID_PLAYING_ID;
-
-	auto AudioDevice = FAkAudioDevice::Get();
-	if (AudioDevice)
-	{
-		playingID = AudioDevice->PostEventOnAkGameObject(AudioDevice->GetShortID(AkEvent, InEventName), this, PostEventCallback, CallbackMask, {});
-		if (playingID != AK_INVALID_PLAYING_ID)
-			bStarted = true;
-	}
-	
-	return playingID;
-}
-
-void UAkGameObject::PostAssociatedAkEventAsync(const UObject* WorldContextObject, int32 CallbackMask, const FOnAkPostEventCallback& PostEventCallback, FLatentActionInfo LatentInfo, int32& PlayingID)
-{
-	AkDeviceAndWorld DeviceAndWorld(WorldContextObject);
-	FLatentActionManager& LatentActionManager = DeviceAndWorld.CurrentWorld->GetLatentActionManager();
-	FPostAssociatedEventAction* NewAction = LatentActionManager.FindExistingAction<FPostAssociatedEventAction>(LatentInfo.CallbackTarget, LatentInfo.UUID);
-	if (!NewAction)
-	{
-		NewAction = new FPostAssociatedEventAction(LatentInfo, &PlayingID, AkAudioEvent, &bStarted);
-		NewAction->FuturePlayingID = DeviceAndWorld.AkAudioDevice->PostAkAudioEventOnAkGameObjectAsync(AkAudioEvent, this, PostEventCallback, CallbackMask);
-		LatentActionManager.AddNewAction(LatentInfo.CallbackTarget, LatentInfo.UUID, NewAction);
-	}
+	PostAkEventAsyncByEvent(WorldContextObject, AkAudioEvent, CallbackMask, PostEventCallback, ExternalSources, LatentInfo, PlayingID);
 }
 
 void UAkGameObject::PostAkEventAsync(const UObject* WorldContextObject,
@@ -153,24 +165,18 @@ void UAkGameObject::PostAkEventAsync(const UObject* WorldContextObject,
 	int32& PlayingID,
 	int32 CallbackMask,
 	const FOnAkPostEventCallback& PostEventCallback,
+	const TArray<FAkExternalSourceInfo>& ExternalSources,
 	FLatentActionInfo LatentInfo
 )
 {
-	AkDeviceAndWorld DeviceAndWorld(WorldContextObject);
-	FLatentActionManager& LatentActionManager = DeviceAndWorld.CurrentWorld->GetLatentActionManager();
-	FPostAssociatedEventAction* NewAction = LatentActionManager.FindExistingAction<FPostAssociatedEventAction>(LatentInfo.CallbackTarget, LatentInfo.UUID);
-	if (!NewAction)
-	{
-		NewAction = new FPostAssociatedEventAction(LatentInfo, &PlayingID, AkEvent, &bStarted);
-		NewAction->FuturePlayingID = DeviceAndWorld.AkAudioDevice->PostAkAudioEventOnAkGameObjectAsync(AkEvent, this, PostEventCallback, CallbackMask);
-		LatentActionManager.AddNewAction(LatentInfo.CallbackTarget, LatentInfo.UUID, NewAction);
-	}
+	PostAkEventAsyncByEvent(WorldContextObject, AkEvent, CallbackMask, PostEventCallback, ExternalSources, LatentInfo, PlayingID);
 }
 
 void UAkGameObject::PostAkEventAsyncByEvent(const UObject* WorldContextObject,
 	class UAkAudioEvent* AkEvent,
 	int32 CallbackMask,
 	const FOnAkPostEventCallback& PostEventCallback,
+	const TArray<FAkExternalSourceInfo>& ExternalSources,
 	FLatentActionInfo LatentInfo,
 	int32& PlayingID
 )
@@ -180,8 +186,17 @@ void UAkGameObject::PostAkEventAsyncByEvent(const UObject* WorldContextObject,
 	FPostAssociatedEventAction* NewAction = LatentActionManager.FindExistingAction<FPostAssociatedEventAction>(LatentInfo.CallbackTarget, LatentInfo.UUID);
 	if (!NewAction)
 	{
-		NewAction = new FPostAssociatedEventAction(LatentInfo, &PlayingID, AkEvent, &bStarted);
-		NewAction->FuturePlayingID = DeviceAndWorld.AkAudioDevice->PostAkAudioEventOnAkGameObjectAsync(AkEvent, this, PostEventCallback, CallbackMask);
+		NewAction = new FPostAssociatedEventAction(LatentInfo, &PlayingID, ExternalSources, AkEvent, &bStarted);
+		if (ExternalSources.Num() > 0)
+		{
+			TSharedPtr<FAkSDKExternalSourceArray, ESPMode::ThreadSafe> SDKExternalSrcInfo = MakeShared<FAkSDKExternalSourceArray, ESPMode::ThreadSafe>(ExternalSources);
+			NewAction->FuturePlayingID = DeviceAndWorld.AkAudioDevice->PostEventAsync(AkEvent, this, PostEventCallback, CallbackMask, SDKExternalSrcInfo);
+		}
+		else
+		{
+			NewAction->FuturePlayingID = DeviceAndWorld.AkAudioDevice->PostEventAsync(AkEvent, this, PostEventCallback, CallbackMask);
+		}
+
 		LatentActionManager.AddNewAction(LatentInfo.CallbackTarget, LatentInfo.UUID, NewAction);
 	}
 }
@@ -190,16 +205,13 @@ void UAkGameObject::SetRTPCValue(const UAkRtpc* RTPCValue, float Value, int32 In
 {
 	if (FAkAudioDevice::Get())
 	{
-		auto* SoundEngine = IWwiseSoundEngineAPI::Get();
-		if (UNLIKELY(!SoundEngine)) return;
-
 		if (RTPCValue)
 		{
-			SoundEngine->SetRTPCValue(RTPCValue->GetShortID(), Value, GetAkGameObjectID(), InterpolationTimeMs);
+			AK::SoundEngine::SetRTPCValue(RTPCValue->ShortID, Value, GetAkGameObjectID(), InterpolationTimeMs);
 		}
 		else
 		{
-			SoundEngine->SetRTPCValue(TCHAR_TO_AK(*RTPC), Value, GetAkGameObjectID(), InterpolationTimeMs);
+			AK::SoundEngine::SetRTPCValue(TCHAR_TO_AK(*RTPC), Value, GetAkGameObjectID(), InterpolationTimeMs);
 		}
 	}
 }
@@ -208,18 +220,15 @@ void UAkGameObject::GetRTPCValue(const UAkRtpc* RTPCValue, ERTPCValueType InputV
 {
 	if (FAkAudioDevice::Get())
 	{
-		auto* SoundEngine = IWwiseSoundEngineAPI::Get();
-		if (UNLIKELY(!SoundEngine)) return;
-
 		AK::SoundEngine::Query::RTPCValue_type RTPCType = (AK::SoundEngine::Query::RTPCValue_type)InputValueType;
 
 		if (RTPCValue)
 		{
-			SoundEngine->Query->GetRTPCValue(RTPCValue->GetShortID(), GetAkGameObjectID(), PlayingID, Value, RTPCType);
+			AK::SoundEngine::Query::GetRTPCValue(RTPCValue->ShortID, GetAkGameObjectID(), PlayingID, Value, RTPCType);
 		}
 		else
 		{
-			SoundEngine->Query->GetRTPCValue(TCHAR_TO_AK(*RTPC), GetAkGameObjectID(), PlayingID, Value, RTPCType);
+			AK::SoundEngine::Query::GetRTPCValue(TCHAR_TO_AK(*RTPC), GetAkGameObjectID(), PlayingID, Value, RTPCType);
 		}
 
 		OutputValueType = (ERTPCValueType)RTPCType;
@@ -231,9 +240,9 @@ void UAkGameObject::GetRTPCValue(FString RTPC, int32 PlayingID, ERTPCValueType I
 	GetRTPCValue(nullptr, InputValueType, Value, OutputValueType, RTPC, PlayingID);
 }
 
-bool UAkGameObject::VerifyEventName(const FString& InEventName) const
+bool UAkGameObject::VerifyEventName(const FString& in_EventName) const
 {
-	const bool IsEventNameEmpty = InEventName.IsEmpty();
+	const bool IsEventNameEmpty = in_EventName.IsEmpty();
 	if (IsEventNameEmpty)
 	{
 		FString OwnerName = FString(TEXT(""));
@@ -264,11 +273,8 @@ void UAkGameObject::Stop()
 {
 	if (HasActiveEvents() && FAkAudioDevice::Get() && IsRegisteredWithWwise)
 	{
-		auto* SoundEngine = IWwiseSoundEngineAPI::Get();
-		if (UNLIKELY(!SoundEngine)) return;
-
-		SoundEngine->StopAll(GetAkGameObjectID());
-		SoundEngine->RenderAudio();
+		AK::SoundEngine::StopAll(GetAkGameObjectID());
+		AK::SoundEngine::RenderAudio();
 	}
 }
 

@@ -1,19 +1,18 @@
 /*******************************************************************************
-The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
-Technology released in source code form as part of the game integration package.
-The content of this file may not be used without valid licenses to the
-AUDIOKINETIC Wwise Technology.
-Note that the use of the game engine is subject to the Unreal(R) Engine End User
-License Agreement at https://www.unrealengine.com/en-US/eula/unreal
- 
-License Usage
- 
-Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
-this file in accordance with the end user license agreement provided with the
-software or, alternatively, in accordance with the terms contained
-in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2022 Audiokinetic Inc.
+The content of the files in this repository include portions of the
+AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
+package.
+
+Commercial License Usage
+
+Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
+may use these files in accordance with the end user license agreement provided
+with the software or, alternatively, in accordance with the terms contained in a
+written agreement between you and Audiokinetic Inc.
+
+Copyright (c) 2021 Audiokinetic Inc.
 *******************************************************************************/
+
 
 /*=============================================================================
 	AkSpatialAudioVolume.cpp:
@@ -35,14 +34,13 @@ Copyright (c) 2022 Audiokinetic Inc.
 // Geometric Tools
 #if WITH_EDITOR
 #include "AkAudioStyle.h"
-#include "Mathematics/Math.h"
-#include "Mathematics/UIntegerAP32.h"
-#include "Mathematics/BSRational.h"
-#include "Mathematics/MinimumVolumeBox3.h"
-#if UE_5_1_OR_LATER
-#include "Misc/TransactionObjectEvent.h"
+#include <Mathematics/Math.h>
+#include <Mathematics/UIntegerAP32.h>
+#include <Mathematics/BSRational.h>
+#include <Mathematics/MinimumVolumeBox3.h>
 #endif
-#endif
+
+#include <algorithm>
 
 static const float kScaleEpsilon = 0.001;
 static const float kConvexHullEpsilon = 0.001;
@@ -108,7 +106,15 @@ AAkSpatialAudioVolume::AAkSpatialAudioVolume(const class FObjectInitializer& Obj
 	BrushColor = FColor(109, 187, 255, 255);
 
 #if WITH_EDITOR
-	CollisionChannel = EAkCollisionChannel::EAKCC_UseIntegrationSettingsDefault;
+	const UAkSettings* AkSettings = GetDefault<UAkSettings>();
+	if (AkSettings)
+	{
+		CollisionChannel = AkSettings->DefaultFitToGeometryCollisionChannel;
+	}
+	else
+	{
+		CollisionChannel = ECollisionChannel::ECC_WorldStatic;
+	}
 
 	PrimaryActorTick.bCanEverTick = true;
 	PrimaryActorTick.bStartWithTickEnabled = true;
@@ -117,11 +123,6 @@ AAkSpatialAudioVolume::AAkSpatialAudioVolume(const class FObjectInitializer& Obj
 }
 
 #if WITH_EDITOR
-ECollisionChannel AAkSpatialAudioVolume::GetCollisionChannel()
-{
-	return UAkSettings::ConvertFitToGeomCollisionChannel(CollisionChannel.GetValue());
-}
-
 void AAkSpatialAudioVolume::FitRaycast()
 {
 	UWorld* World = GEngine->GetWorldFromContextObjectChecked(this);
@@ -155,7 +156,7 @@ void AAkSpatialAudioVolume::FitRaycast()
 
 		TArray< FHitResult > OutHits;
 		OutHits.Empty();
-		World->LineTraceMultiByObjectType(OutHits, RaycastOrigin, to, (int)GetCollisionChannel(), CollisionParams);
+		World->LineTraceMultiByObjectType(OutHits, RaycastOrigin, to, (int)CollisionChannel, CollisionParams);
 
 		for (auto& res : OutHits)
 		{
@@ -849,6 +850,14 @@ void AAkSpatialAudioVolume::PostEditChangeProperty(FPropertyChangedEvent& Proper
 			}
 
 			FitBox();
+		}
+
+		if (PropertyChangedEvent.MemberProperty->GetFName() == FName(FString("RelativeLocation"))
+			|| PropertyChangedEvent.MemberProperty->GetFName() == FName(FString("RelativeRotation"))
+			|| PropertyChangedEvent.MemberProperty->GetFName() == FName(FString("RelativeScale3D")))
+		{
+			if (SurfaceReflectorSet != nullptr)
+				SurfaceReflectorSet->SkipNextTexturesUpdate();
 		}
 	}
 }

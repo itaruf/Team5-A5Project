@@ -1,18 +1,16 @@
 /*******************************************************************************
-The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
-Technology released in source code form as part of the game integration package.
-The content of this file may not be used without valid licenses to the
-AUDIOKINETIC Wwise Technology.
-Note that the use of the game engine is subject to the Unreal(R) Engine End User
-License Agreement at https://www.unrealengine.com/en-US/eula/unreal
- 
-License Usage
- 
-Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
-this file in accordance with the end user license agreement provided with the
-software or, alternatively, in accordance with the terms contained
-in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2022 Audiokinetic Inc.
+The content of the files in this repository include portions of the
+AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
+package.
+
+Commercial License Usage
+
+Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
+may use these files in accordance with the end user license agreement provided
+with the software or, alternatively, in accordance with the terms contained in a
+written agreement between you and Audiokinetic Inc.
+
+Copyright (c) 2021 Audiokinetic Inc.
 *******************************************************************************/
 
 /*=============================================================================
@@ -26,18 +24,7 @@ Copyright (c) 2022 Audiokinetic Inc.
 #include "Engine/LatentActionManager.h"
 #include "HAL/ThreadSafeBool.h"
 #include "LatentActions.h"
-#include "AkDeprecated.h"
 #include "AkGameplayTypes.generated.h"
-
-
-UENUM(BlueprintType)
-enum class EAkAudioContext : uint8
-{
-	Foreign, // Sounds unrelated to gameplay or editor
-	GameplayAudio, // Sounds playing during gameplay, simulation, PIE, etc.
-	EditorAudio, // Editor sounds (e.g. UI)
-	AlwaysActive, // Sounds which should last for the entire runtime, and not be stopped 
-};
 
 UENUM(BlueprintType)
 enum class PanningRule : uint8
@@ -183,64 +170,64 @@ UENUM(BlueprintType)
 enum class EAkResult : uint8
 {
 	// Need to set hard-coded 0, or else UHT complains.
-	NotImplemented				= 0				 UMETA(DisplayName = "This feature is not implemented."),
-	Success = AK_Success						 UMETA(DisplayName = "The operation was successful."),
-	Fail = AK_Fail						 UMETA(DisplayName = "The operation failed."),
-	PartialSuccess = AK_PartialSuccess				 UMETA(DisplayName = "The operation succeeded partially."),
-	NotCompatible = AK_NotCompatible				 UMETA(DisplayName = "Incompatible formats"),
-	AlreadyConnected = AK_AlreadyConnected			 UMETA(DisplayName = "The stream is already connected to another node."),
-	InvalidFile = AK_InvalidFile					 UMETA(DisplayName = "An unexpected value causes the file to be invalid."),
-	AudioFileHeaderTooLarge = AK_AudioFileHeaderTooLarge		 UMETA(DisplayName = "The file header is too large."),
-	MaxReached = AK_MaxReached					 UMETA(DisplayName = "The maximum was reached."),
-	InvalidID = AK_InvalidID					 UMETA(DisplayName = "The ID is invalid."),
-	IDNotFound = AK_IDNotFound					 UMETA(DisplayName = "The ID was not found."),
-	InvalidInstanceID = AK_InvalidInstanceID			 UMETA(DisplayName = "The InstanceID is invalid."),
-	NoMoreData = AK_NoMoreData					 UMETA(DisplayName = "No more data is available from the source."),
-	InvalidStateGroup = AK_InvalidStateGroup			 UMETA(DisplayName = "The StateGroup is not a valid channel."),
-	ChildAlreadyHasAParent = AK_ChildAlreadyHasAParent		 UMETA(DisplayName = "The child already has a parent."),
-	InvalidLanguage = AK_InvalidLanguage				 UMETA(DisplayName = "The language is invalid (applies to the Low-Level I/O)."),
-	CannotAddItseflAsAChild = AK_CannotAddItseflAsAChild		 UMETA(DisplayName = "It is not possible to add itself as its own child."),
-	InvalidParameter = AK_InvalidParameter			 UMETA(DisplayName = "Something is not within bounds."),
-	ElementAlreadyInList = AK_ElementAlreadyInList		 UMETA(DisplayName = "The item could not be added because it was already in the list."),
-	PathNotFound = AK_PathNotFound				 UMETA(DisplayName = "This path is not known."),
-	PathNoVertices = AK_PathNoVertices				 UMETA(DisplayName = "Stuff in vertices before trying to start it"),
-	PathNotRunning = AK_PathNotRunning				 UMETA(DisplayName = "Only a running path can be paused."),
-	PathNotPaused = AK_PathNotPaused				 UMETA(DisplayName = "Only a paused path can be resumed."),
-	PathNodeAlreadyInList = AK_PathNodeAlreadyInList		 UMETA(DisplayName = "This path is already there."),
-	PathNodeNotInList = AK_PathNodeNotInList			 UMETA(DisplayName = "This path is not there."),
-	DataNeeded = AK_DataNeeded					 UMETA(DisplayName = "The consumer needs more."),
-	NoDataNeeded = AK_NoDataNeeded				 UMETA(DisplayName = "The consumer does not need more."),
-	DataReady = AK_DataReady					 UMETA(DisplayName = "The provider has available data."),
-	NoDataReady = AK_NoDataReady					 UMETA(DisplayName = "The provider does not have available data."),
-	InsufficientMemory = AK_InsufficientMemory			 UMETA(DisplayName = "Memory error."),
-	Cancelled = AK_Cancelled					 UMETA(DisplayName = "The requested action was cancelled (not an error)."),
-	UnknownBankID = AK_UnknownBankID				 UMETA(DisplayName = "Trying to load a bank using an ID which is not defined."),
-	BankReadError = AK_BankReadError				 UMETA(DisplayName = "Error while reading a bank."),
-	InvalidSwitchType = AK_InvalidSwitchType			 UMETA(DisplayName = "Invalid switch type (used with the switch container)"),
-	FormatNotReady = AK_FormatNotReady				 UMETA(DisplayName = "Source format not known yet."),
-	WrongBankVersion = AK_WrongBankVersion			 UMETA(DisplayName = "The bank version is not compatible with the current bank reader."),
-	FileNotFound = AK_FileNotFound				 UMETA(DisplayName = "File not found."),
-	DeviceNotReady = AK_DeviceNotReady				 UMETA(DisplayName = "IO device not ready (may be because the tray is open)"),
-	BankAlreadyLoaded = AK_BankAlreadyLoaded			 UMETA(DisplayName = "The bank load failed because the bank is already loaded."),
-	RenderedFX = AK_RenderedFX					 UMETA(DisplayName = "The effect on the node is rendered."),
-	ProcessNeeded = AK_ProcessNeeded				 UMETA(DisplayName = "A routine needs to be executed on some CPU."),
-	ProcessDone = AK_ProcessDone					 UMETA(DisplayName = "The executed routine has finished its execution."),
-	MemManagerNotInitialized = AK_MemManagerNotInitialized	 UMETA(DisplayName = "The memory manager should have been initialized at this point."),
-	StreamMgrNotInitialized = AK_StreamMgrNotInitialized		 UMETA(DisplayName = "The stream manager should have been initialized at this point."),
-	SSEInstructionsNotSupported = AK_SSEInstructionsNotSupported	 UMETA(DisplayName = "The machine does not support SSE instructions (required on PC)."),
-	Busy = AK_Busy						 UMETA(DisplayName = "The system is busy and could not process the request."),
-	UnsupportedChannelConfig = AK_UnsupportedChannelConfig	 UMETA(DisplayName = "Channel configuration is not supported in the current execution context."),
-	PluginMediaNotAvailable = AK_PluginMediaNotAvailable		 UMETA(DisplayName = "Plugin media is not available for effect."),
-	MustBeVirtualized = AK_MustBeVirtualized			 UMETA(DisplayName = "Sound was Not Allowed to play."),
-	CommandTooLarge = AK_CommandTooLarge				 UMETA(DisplayName = "SDK command is too large to fit in the command queue."),
-	RejectedByFilter = AK_RejectedByFilter			 UMETA(DisplayName = "A play request was rejected due to the MIDI filter parameters."),
-	InvalidCustomPlatformName = AK_InvalidCustomPlatformName	 UMETA(DisplayName = "Detecting incompatibility between Custom platform of banks and custom platform of connected application"),
-	DLLCannotLoad = AK_DLLCannotLoad				 UMETA(DisplayName = "Plugin DLL could not be loaded, either because it is not found or one dependency is missing."),
-	DLLPathNotFound = AK_DLLPathNotFound				 UMETA(DisplayName = "Plugin DLL search path could not be found."),
-	NoJavaVM = AK_NoJavaVM					 UMETA(DisplayName = "No Java VM provided in AkInitSettings."),
-	OpenSLError = AK_OpenSLError					 UMETA(DisplayName = "OpenSL returned an error.  Check error log for more details."),
-	PluginNotRegistered = AK_PluginNotRegistered			 UMETA(DisplayName = "Plugin is not registered.  Make sure to implement a AK::PluginRegistration class for it and use AK_STATIC_LINK_PLUGIN in the game binary."),
-	DataAlignmentError = AK_DataAlignmentError			 UMETA(DisplayName = "A pointer to audio data was not aligned to the platform's required alignment (check AkTypes.h in the platform-specific folder)"),
+	NotImplemented				= 0				 UMETA("This feature is not implemented."),
+	Success = AK_Success						 UMETA("The operation was successful."),
+	Fail = AK_Fail						 UMETA("The operation failed."),
+	PartialSuccess = AK_PartialSuccess				 UMETA("The operation succeeded partially."),
+	NotCompatible = AK_NotCompatible				 UMETA("Incompatible formats"),
+	AlreadyConnected = AK_AlreadyConnected			 UMETA("The stream is already connected to another node."),
+	InvalidFile = AK_InvalidFile					 UMETA("An unexpected value causes the file to be invalid."),
+	AudioFileHeaderTooLarge = AK_AudioFileHeaderTooLarge		 UMETA("The file header is too large."),
+	MaxReached = AK_MaxReached					 UMETA("The maximum was reached."),
+	InvalidID = AK_InvalidID					 UMETA("The ID is invalid."),
+	IDNotFound = AK_IDNotFound					 UMETA("The ID was not found."),
+	InvalidInstanceID = AK_InvalidInstanceID			 UMETA("The InstanceID is invalid."),
+	NoMoreData = AK_NoMoreData					 UMETA("No more data is available from the source."),
+	InvalidStateGroup = AK_InvalidStateGroup			 UMETA("The StateGroup is not a valid channel."),
+	ChildAlreadyHasAParent = AK_ChildAlreadyHasAParent		 UMETA("The child already has a parent."),
+	InvalidLanguage = AK_InvalidLanguage				 UMETA("The language is invalid (applies to the Low-Level I/O)."),
+	CannotAddItseflAsAChild = AK_CannotAddItseflAsAChild		 UMETA("It is not possible to add itself as its own child."),
+	InvalidParameter = AK_InvalidParameter			 UMETA("Something is not within bounds."),
+	ElementAlreadyInList = AK_ElementAlreadyInList		 UMETA("The item could not be added because it was already in the list."),
+	PathNotFound = AK_PathNotFound				 UMETA("This path is not known."),
+	PathNoVertices = AK_PathNoVertices				 UMETA("Stuff in vertices before trying to start it"),
+	PathNotRunning = AK_PathNotRunning				 UMETA("Only a running path can be paused."),
+	PathNotPaused = AK_PathNotPaused				 UMETA("Only a paused path can be resumed."),
+	PathNodeAlreadyInList = AK_PathNodeAlreadyInList		 UMETA("This path is already there."),
+	PathNodeNotInList = AK_PathNodeNotInList			 UMETA("This path is not there."),
+	DataNeeded = AK_DataNeeded					 UMETA("The consumer needs more."),
+	NoDataNeeded = AK_NoDataNeeded				 UMETA("The consumer does not need more."),
+	DataReady = AK_DataReady					 UMETA("The provider has available data."),
+	NoDataReady = AK_NoDataReady					 UMETA("The provider does not have available data."),
+	InsufficientMemory = AK_InsufficientMemory			 UMETA("Memory error."),
+	Cancelled = AK_Cancelled					 UMETA("The requested action was cancelled (not an error)."),
+	UnknownBankID = AK_UnknownBankID				 UMETA("Trying to load a bank using an ID which is not defined."),
+	BankReadError = AK_BankReadError				 UMETA("Error while reading a bank."),
+	InvalidSwitchType = AK_InvalidSwitchType			 UMETA("Invalid switch type (used with the switch container)"),
+	FormatNotReady = AK_FormatNotReady				 UMETA("Source format not known yet."),
+	WrongBankVersion = AK_WrongBankVersion			 UMETA("The bank version is not compatible with the current bank reader."),
+	FileNotFound = AK_FileNotFound				 UMETA("File not found."),
+	DeviceNotReady = AK_DeviceNotReady				 UMETA("IO device not ready (may be because the tray is open)"),
+	BankAlreadyLoaded = AK_BankAlreadyLoaded			 UMETA("The bank load failed because the bank is already loaded."),
+	RenderedFX = AK_RenderedFX					 UMETA("The effect on the node is rendered."),
+	ProcessNeeded = AK_ProcessNeeded				 UMETA("A routine needs to be executed on some CPU."),
+	ProcessDone = AK_ProcessDone					 UMETA("The executed routine has finished its execution."),
+	MemManagerNotInitialized = AK_MemManagerNotInitialized	 UMETA("The memory manager should have been initialized at this point."),
+	StreamMgrNotInitialized = AK_StreamMgrNotInitialized		 UMETA("The stream manager should have been initialized at this point."),
+	SSEInstructionsNotSupported = AK_SSEInstructionsNotSupported	 UMETA("The machine does not support SSE instructions (required on PC)."),
+	Busy = AK_Busy						 UMETA("The system is busy and could not process the request."),
+	UnsupportedChannelConfig = AK_UnsupportedChannelConfig	 UMETA("Channel configuration is not supported in the current execution context."),
+	PluginMediaNotAvailable = AK_PluginMediaNotAvailable		 UMETA("Plugin media is not available for effect."),
+	MustBeVirtualized = AK_MustBeVirtualized			 UMETA("Sound was Not Allowed to play."),
+	CommandTooLarge = AK_CommandTooLarge				 UMETA("SDK command is too large to fit in the command queue."),
+	RejectedByFilter = AK_RejectedByFilter			 UMETA("A play request was rejected due to the MIDI filter parameters."),
+	InvalidCustomPlatformName = AK_InvalidCustomPlatformName	 UMETA("Detecting incompatibility between Custom platform of banks and custom platform of connected application"),
+	DLLCannotLoad = AK_DLLCannotLoad				 UMETA("Plugin DLL could not be loaded, either because it is not found or one dependency is missing."),
+	DLLPathNotFound = AK_DLLPathNotFound				 UMETA("Plugin DLL search path could not be found."),
+	NoJavaVM = AK_NoJavaVM					 UMETA("No Java VM provided in AkInitSettings."),
+	OpenSLError = AK_OpenSLError					 UMETA("OpenSL returned an error.  Check error log for more details."),
+	PluginNotRegistered = AK_PluginNotRegistered			 UMETA("Plugin is not registered.  Make sure to implement a AK::PluginRegistration class for it and use AK_STATIC_LINK_PLUGIN in the game binary."),
+	DataAlignmentError = AK_DataAlignmentError			 UMETA("A pointer to audio data was not aligned to the platform's required alignment (check AkTypes.h in the platform-specific folder)"),
 };
 
 #define CHECK_AKRESULT_VALUE(ValueName) static_assert(AK_##ValueName == (uint32)EAkResult::ValueName, #ValueName " value has changed in AKRESULT, please update the EAkResult::" #ValueName " value");
@@ -317,23 +304,23 @@ Begin - Ak Callback Blueprint classes and structures. Known limitations:
 UENUM(BlueprintType, meta = (Bitmask))
 enum class EAkCallbackType : uint8
 {
-	EndOfEvent = 0			UMETA(DisplayName = "Callback triggered when reaching the end of an event. AkCallbackInfo can be cast to AkEventCallbackInfo."),
-	Marker = 2				UMETA(DisplayName = "Callback triggered when encountering a marker during playback. AkCallbackInfo can be cast to AkMarkerCallbackInfo."),
-	Duration = 3			UMETA(DisplayName = "Callback triggered when the duration of the sound is known by the sound engine. AkCallbackInfo can be cast to AkDurationCallbackInfo."),
+	EndOfEvent = 0			UMETA(ToolTip = "Callback triggered when reaching the end of an event. AkCallbackInfo can be cast to AkEventCallbackInfo."),
+	Marker = 2				UMETA(ToolTip = "Callback triggered when encountering a marker during playback. AkCallbackInfo can be cast to AkMarkerCallbackInfo."),
+	Duration = 3			UMETA(ToolTip = "Callback triggered when the duration of the sound is known by the sound engine. AkCallbackInfo can be cast to AkDurationCallbackInfo."),
 
-	Starvation = 5			UMETA(DisplayName = "Callback triggered when playback skips a frame due to stream starvation. AkCallbackInfo can be cast to AkEventCallbackInfo."),
+	Starvation = 5			UMETA(ToolTip = "Callback triggered when playback skips a frame due to stream starvation. AkCallbackInfo can be cast to AkEventCallbackInfo."),
 	
-	MusicPlayStarted = 7	UMETA(DisplayName = "Callback triggered when a Play or Seek command has been executed (Seek commands are issued from AK::SoundEngine::SeekOnEvent()). Applies to objects of the Interactive-Music Hierarchy only. AkCallbackInfo can be cast to AkEventCallbackInfo."),
+	MusicPlayStarted = 7	UMETA(ToolTip = "Callback triggered when a Play or Seek command has been executed (Seek commands are issued from AK::SoundEngine::SeekOnEvent()). Applies to objects of the Interactive-Music Hierarchy only. AkCallbackInfo can be cast to AkEventCallbackInfo."),
 
-	MusicSyncBeat = 8		UMETA(DisplayName = "Enable notifications on Music Beat. AkCallbackInfo can be cast to AkMusicSyncCallbackInfo."),
-	MusicSyncBar = 9		UMETA(DisplayName = "Enable notifications on Music Bar. AkCallbackInfo can be cast to AkMusicSyncCallbackInfo."),
-	MusicSyncEntry = 10		UMETA(DisplayName = "Enable notifications on Music Entry Cue. AkCallbackInfo can be cast to AkMusicSyncCallbackInfo."),
-	MusicSyncExit = 11		UMETA(DisplayName = "Enable notifications on Music Exit Cue. AkCallbackInfo can be cast to AkMusicSyncCallbackInfo."),
-	MusicSyncGrid = 12		UMETA(DisplayName = "Enable notifications on Music Grid. AkCallbackInfo can be cast to AkMusicSyncCallbackInfo."),
-	MusicSyncUserCue = 13	UMETA(DisplayName = "Enable notifications on Music Custom Cue. AkCallbackInfo can be cast to AkMusicSyncCallbackInfo."),
-	MusicSyncPoint = 14		UMETA(DisplayName = "Enable notifications on Music switch transition synchronization point. AkCallbackInfo can be cast to AkMusicSyncCallbackInfo."),
+	MusicSyncBeat = 8		UMETA(ToolTip = "Enable notifications on Music Beat. AkCallbackInfo can be cast to AkMusicSyncCallbackInfo."),
+	MusicSyncBar = 9		UMETA(ToolTip = "Enable notifications on Music Bar. AkCallbackInfo can be cast to AkMusicSyncCallbackInfo."),
+	MusicSyncEntry = 10		UMETA(ToolTip = "Enable notifications on Music Entry Cue. AkCallbackInfo can be cast to AkMusicSyncCallbackInfo."),
+	MusicSyncExit = 11		UMETA(ToolTip = "Enable notifications on Music Exit Cue. AkCallbackInfo can be cast to AkMusicSyncCallbackInfo."),
+	MusicSyncGrid = 12		UMETA(ToolTip = "Enable notifications on Music Grid. AkCallbackInfo can be cast to AkMusicSyncCallbackInfo."),
+	MusicSyncUserCue = 13	UMETA(ToolTip = "Enable notifications on Music Custom Cue. AkCallbackInfo can be cast to AkMusicSyncCallbackInfo."),
+	MusicSyncPoint = 14		UMETA(ToolTip = "Enable notifications on Music switch transition synchronization point. AkCallbackInfo can be cast to AkMusicSyncCallbackInfo."),
 
-	MIDIEvent = 16			UMETA(DisplayName = "Enable notifications for MIDI events. AkCallbackInfo can be cast to AkMIDIEventCallbackInfo."),
+	MIDIEvent = 16			UMETA(ToolTip = "Enable notifications for MIDI events. AkCallbackInfo can be cast to AkMIDIEventCallbackInfo."),
 };
 
 #define CHECK_CALLBACK_TYPE_VALUE(ValueName) static_assert(AK_##ValueName == (1 << (uint32)EAkCallbackType::ValueName), #ValueName " value has changed in AkCallbackType, please update the EAkCallbackType::" #ValueName " value");
@@ -379,10 +366,8 @@ public:
 UCLASS(BlueprintType)
 class AKAUDIO_API UAkCallbackInfo : public UObject
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 public:
-	UAkCallbackInfo( class FObjectInitializer const & ObjectInitializer);
-
 	static UAkCallbackInfo* Create(AkGameObjectID GameObjectID);
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Audiokinetic|AkCallbackInfo")
@@ -394,28 +379,28 @@ public:
 USTRUCT(BlueprintType)
 struct FAkChannelMask
 {
-	GENERATED_BODY()
+	GENERATED_USTRUCT_BODY()
 public:
-	UPROPERTY(EditAnywhere, Category="Channel Mask", BlueprintReadWrite, meta = (Bitmask, BitmaskEnum = "/Script/AkAudio.AkSpeakerConfiguration"))
-	int32 ChannelMask = 0;
+	UPROPERTY(EditAnywhere, Category="Channel Mask", BlueprintReadWrite, meta = (Bitmask, BitmaskEnum = AkSpeakerConfiguration))
+	int32 ChannelMask;
 };
 
 USTRUCT(BlueprintType)
 struct FAkOutputSettings
 {
-	GENERATED_BODY()
+	GENERATED_USTRUCT_BODY()
 public:
 	UPROPERTY(EditAnywhere, Category = "Output Settings", BlueprintReadWrite)
-	FString AudioDeviceShareSetName;
+	FString AudioDeviceSharesetName;
 
 	UPROPERTY(EditAnywhere, Category = "Output Settings", BlueprintReadWrite)
-	int32 IdDevice = 0;
+	int32 IdDevice;
 
 	UPROPERTY(EditAnywhere, Category = "Output Settings", BlueprintReadWrite, meta=(DisplayName="PanningRule"))
-	PanningRule PanRule = PanningRule::PanningRule_Speakers;
+	PanningRule PanRule;
 
 	UPROPERTY(EditAnywhere, Category = "Output Settings", BlueprintReadWrite)
-	AkChannelConfiguration ChannelConfig = AkChannelConfiguration::Ak_Parent;
+	AkChannelConfiguration ChannelConfig;
 };
 
 /// Callback information structure corresponding to \ref AK_EndOfEvent, \ref AK_MusicPlayStarted and \ref AK_Starvation.
@@ -425,10 +410,8 @@ public:
 UCLASS(BlueprintType)
 class AKAUDIO_API UAkEventCallbackInfo : public UAkCallbackInfo
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 public:
-	UAkEventCallbackInfo(class FObjectInitializer const & ObjectInitializer);
-
 	static UAkEventCallbackInfo* Create(AkEventCallbackInfo* AkEventCallbackInfo);
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Audiokinetic|AkCallbackInfo|AkEvent")
@@ -437,6 +420,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Audiokinetic|AkCallbackInfo|AkEvent")
 	int32 EventID = 0;		///< Unique ID of Event, passed to PostEvent()
 };
+
 
 
 // List of MIDI event types
@@ -582,7 +566,7 @@ struct FAkMidiEventBase
 	{}
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Audiokinetic|AkCallbackInfo|MIDI")
-	EAkMidiEventType	Type = EAkMidiEventType::AkMidiEventTypeInvalid;
+	EAkMidiEventType	Type = EAkMidiEventType();
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Audiokinetic|AkCallbackInfo|MIDI")
 	uint8	Chan = 0;
@@ -592,7 +576,7 @@ struct FAkMidiEventBase
 USTRUCT(BlueprintType)
 struct FAkMidiGeneric : public FAkMidiEventBase
 {
-	GENERATED_BODY()
+	GENERATED_USTRUCT_BODY()
 	
 	FAkMidiGeneric() {}
 	FAkMidiGeneric(AkMIDIEvent MIDIEvent)
@@ -640,7 +624,7 @@ struct FAkMidiCc : public FAkMidiEventBase
 	{}
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Audiokinetic|AkCallbackInfo|MIDI|CC")
-	EAkMidiCcValues Cc = EAkMidiCcValues::AkMidiCcBankSelectCoarse;
+	EAkMidiCcValues Cc = EAkMidiCcValues();
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Audiokinetic|AkCallbackInfo|MIDI|CC")
 	uint8 Value = 0;
@@ -725,10 +709,9 @@ struct FAkMidiProgramChange : public FAkMidiEventBase
 UCLASS(BlueprintType)
 class UAkMIDIEventCallbackInfo : public UAkEventCallbackInfo
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 	
 public:
-	UAkMIDIEventCallbackInfo(class FObjectInitializer const & ObjectInitializer);
 	static UAkMIDIEventCallbackInfo* Create(AkMIDIEventCallbackInfo* akCallbackInfo);
 
 	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|AkCallbackInfo|MIDI")
@@ -773,9 +756,8 @@ private:
 UCLASS(BlueprintType)
 class UAkMarkerCallbackInfo : public UAkEventCallbackInfo
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 public:
-	UAkMarkerCallbackInfo(class FObjectInitializer const & ObjectInitializer);
 	static UAkMarkerCallbackInfo* Create(AkMarkerCallbackInfo* akCallbackInfo);
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Audiokinetic|AkCallbackInfo|Marker")
@@ -795,9 +777,8 @@ public:
 UCLASS(BlueprintType)
 class UAkDurationCallbackInfo : public UAkEventCallbackInfo
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 public:
-	UAkDurationCallbackInfo(class FObjectInitializer const & ObjectInitializer);
 	static UAkDurationCallbackInfo* Create(AkDurationCallbackInfo* akCallbackInfo);
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Audiokinetic|AkCallbackInfo|Duration")
@@ -866,10 +847,9 @@ struct FAkSegmentInfo
 UCLASS(BlueprintType)
 class UAkMusicSyncCallbackInfo : public UAkCallbackInfo
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 
 public:
-	UAkMusicSyncCallbackInfo(class FObjectInitializer const & ObjectInitializer);
 	static UAkMusicSyncCallbackInfo* Create(AkMusicSyncCallbackInfo* akCallbackInfo);
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Audiokinetic|AkCallbackInfo|Music")
@@ -879,7 +859,7 @@ public:
 	FAkSegmentInfo SegmentInfo;		///< Segment information corresponding to the segment triggering this callback.
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Audiokinetic|AkCallbackInfo|Music")
-	EAkCallbackType MusicSyncType = EAkCallbackType::EndOfEvent;	///< Would be either \ref AK_MusicSyncEntry, \ref AK_MusicSyncBeat, \ref AK_MusicSyncBar, \ref AK_MusicSyncExit, \ref AK_MusicSyncGrid, \ref AK_MusicSyncPoint or \ref AK_MusicSyncUserCue.
+	EAkCallbackType MusicSyncType = EAkCallbackType();	///< Would be either \ref AK_MusicSyncEntry, \ref AK_MusicSyncBeat, \ref AK_MusicSyncBar, \ref AK_MusicSyncExit, \ref AK_MusicSyncGrid, \ref AK_MusicSyncPoint or \ref AK_MusicSyncUserCue.
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Audiokinetic|AkCallbackInfo|Music")
 	FString UserCueName;	///< Cue name (UTF-8 string). Set for notifications AK_MusicSyncUserCue. NULL if cue has no name.
@@ -1031,6 +1011,9 @@ enum class AkCodecId : uint8
 	///< Vorbis encoding
 	Vorbis = AKCODECID_VORBIS,
 
+	///< AAC encoding (only available on Apple devices) -- see AkAACFactory.h
+	AAC = AKCODECID_AAC,
+
 	///< ATRAC-9 encoding
 	ATRAC9 = AKCODECID_ATRAC9,
 	
@@ -1055,7 +1038,7 @@ struct FAkExternalSourceInfo
 	
 	/// Codec ID for the file. 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Audiokinetic|AkExternalSourceInfo")
-	AkCodecId CodecID = AkCodecId::None;
+	AkCodecId CodecID;
 	
 	/// File path for the source. (Relative to ExternalSources folder in your sound bank folder)
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Audiokinetic|AkExternalSourceInfo")
@@ -1063,7 +1046,7 @@ struct FAkExternalSourceInfo
 
 	/// Hard link to the media asset to use, it can be either streamed or not using IsStreamed
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Audiokinetic|AkExternalSourceInfo")
-	UAkExternalMediaAsset* ExternalSourceAsset = nullptr;
+	class UAkExternalMediaAsset* ExternalSourceAsset;
 
 	/// Is the ExternalSourceAsset streamed or not
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Audiokinetic|AkExternalSourceInfo")
@@ -1085,6 +1068,7 @@ class FWaitEndOfEventAsyncAction : public FWaitEndOfEventAction
 public:
 	int32* PlayingID = nullptr;
 	TFuture<AkPlayingID> FuturePlayingID;
+	TArray<FAkExternalSourceInfo> ExternalSources;
 	UAkAudioEvent* AkEvent = nullptr;
 	bool bStopWhenAttachedToDestroyed = true;
 
@@ -1094,9 +1078,10 @@ public:
 	{
 	}
 
-	FWaitEndOfEventAsyncAction(const FLatentActionInfo& LatentInfo, int32* PlayingID, UAkAudioEvent* Event, bool StopWhenAttachedToDestroyed)
+	FWaitEndOfEventAsyncAction(const FLatentActionInfo& LatentInfo, int32* PlayingID, const TArray<FAkExternalSourceInfo>& ExtSrc, UAkAudioEvent* Event, bool StopWhenAttachedToDestroyed)
 		: FWaitEndOfEventAction(LatentInfo)
 		, PlayingID(PlayingID)
+		, ExternalSources(ExtSrc)
 		, AkEvent(Event)
 		, bStopWhenAttachedToDestroyed(StopWhenAttachedToDestroyed)
 	{

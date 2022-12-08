@@ -1,18 +1,16 @@
 /*******************************************************************************
-The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
-Technology released in source code form as part of the game integration package.
-The content of this file may not be used without valid licenses to the
-AUDIOKINETIC Wwise Technology.
-Note that the use of the game engine is subject to the Unreal(R) Engine End User
-License Agreement at https://www.unrealengine.com/en-US/eula/unreal
- 
-License Usage
- 
-Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
-this file in accordance with the end user license agreement provided with the
-software or, alternatively, in accordance with the terms contained
-in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2022 Audiokinetic Inc.
+The content of the files in this repository include portions of the
+AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
+package.
+
+Commercial License Usage
+
+Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
+may use these files in accordance with the end user license agreement provided
+with the software or, alternatively, in accordance with the terms contained in a
+written agreement between you and Audiokinetic Inc.
+
+Copyright (c) 2021 Audiokinetic Inc.
 *******************************************************************************/
 
 #include "SAcousticSurfacesController.h"
@@ -24,6 +22,7 @@ Copyright (c) 2022 Audiokinetic Inc.
 #include "EditorModes.h"
 #include "Engine/Selection.h"
 #include "Editor/TransBuffer.h"
+#include "EditorStyleSet.h"
 #include "EditorSupportDelegates.h"
 #include "PropertyCustomizationHelpers.h"
 #include "SlateCore/Public/Widgets/SBoxPanel.h"
@@ -231,18 +230,14 @@ void SAcousticSurfacesController::Construct(const FArguments& InArgs, TArray<TWe
 
 	InitReflectorSetsFacesToEdit();
 	UpdateCurrentValues();
-#if AK_SUPPORT_WAAPI
 	RegisterTextureDeletedCallback();
-#endif
 
 	BuildSlate();
 }
 
 SAcousticSurfacesController::~SAcousticSurfacesController()
 {
-#if AK_SUPPORT_WAAPI
 	RemoveTextureDeletedCallback();
-#endif
 	FCoreUObjectDelegates::OnObjectPropertyChanged.Remove(OnPropertyChangedHandle);
 	GLevelEditorModeTools().OnEditorModeIDChanged().RemoveAll(this);
 }
@@ -675,7 +670,7 @@ void SAcousticSurfacesController::RegisterTextureDeletedCallback()
 				const FString itemIdString = itemObj->GetStringField(WwiseWaapiHelper::ID);
 				FGuid itemID = FGuid::NewGuid();
 				FGuid::ParseExact(itemIdString, EGuidFormats::DigitsWithHyphensInBraces, itemID);
-				if (CurrentTexture != nullptr && itemID == CurrentTexture->AcousticTextureInfo.WwiseGuid)
+				if (CurrentTexture != nullptr && itemID == CurrentTexture->ID)
 				{
 					AsyncTask(ENamedThreads::GameThread, [this, itemID]
 					{
@@ -708,7 +703,7 @@ void SAcousticSurfacesController::RemoveTextureDeletedCallback()
 
 void SAcousticSurfacesController::BuildSlate()
 {
-	FSlateFontInfo selectionInfoFont = LayoutBuilder != nullptr ? LayoutBuilder->GetDetailFontItalic() : FAkAppStyle::Get().GetFontStyle("TinyText");
+	FSlateFontInfo selectionInfoFont = LayoutBuilder != nullptr ? LayoutBuilder->GetDetailFontItalic() : FEditorStyle::GetFontStyle("TinyText");
 
 	ChildSlot
 	[

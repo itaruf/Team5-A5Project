@@ -1,18 +1,16 @@
 /*******************************************************************************
-The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
-Technology released in source code form as part of the game integration package.
-The content of this file may not be used without valid licenses to the
-AUDIOKINETIC Wwise Technology.
-Note that the use of the game engine is subject to the Unreal(R) Engine End User
-License Agreement at https://www.unrealengine.com/en-US/eula/unreal
- 
-License Usage
- 
-Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
-this file in accordance with the end user license agreement provided with the
-software or, alternatively, in accordance with the terms contained
-in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2022 Audiokinetic Inc.
+The content of the files in this repository include portions of the
+AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
+package.
+
+Commercial License Usage
+
+Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
+may use these files in accordance with the end user license agreement provided
+with the software or, alternatively, in accordance with the terms contained in a
+written agreement between you and Audiokinetic Inc.
+
+Copyright (c) 2021 Audiokinetic Inc.
 *******************************************************************************/
 
 /*=============================================================================
@@ -30,10 +28,7 @@ Copyright (c) 2022 Audiokinetic Inc.
 UCLASS(hidecategories=(Advanced, Attachment, Volume), BlueprintType)
 class AKAUDIO_API AAkReverbVolume : public AVolume
 {
-	GENERATED_BODY()
-
-public:
-	AAkReverbVolume(const class FObjectInitializer& ObjectInitializer);
+	GENERATED_UCLASS_BODY()
 
 #if WITH_EDITOR
 	virtual FName GetCustomIconName() const override
@@ -45,10 +40,10 @@ public:
 
 	/** Whether this volume is currently enabled and able to affect sounds */
 	UPROPERTY()
-	bool bEnabled_DEPRECATED = false;
+	uint32 bEnabled_DEPRECATED:1;
 
 	UPROPERTY()
-	class UAkAuxBus * AuxBus_DEPRECATED = nullptr;
+	class UAkAuxBus * AuxBus_DEPRECATED;
 
 	/** Wwise Auxiliary Bus associated to this AkReverbVolume */
 	UPROPERTY()
@@ -56,11 +51,11 @@ public:
 
 	/** Maximum send level to the Wwise Auxiliary Bus associated to this AkReverbVolume */
 	UPROPERTY()
-	float SendLevel_DEPRECATED = .0f;
+	float SendLevel_DEPRECATED;
 
 	/** Rate at which to fade in/out the SendLevel of the current Reverb Volume when entering/exiting it, in percentage per second (0.2 will make the fade time 5 seconds) */
 	UPROPERTY()
-	float FadeRate_DEPRECATED = .0f;
+	float FadeRate_DEPRECATED;
 
 	/**
 	 * The precedence in which the AkReverbVolumes will be applied. In the case of overlapping volumes, only the ones 
@@ -69,10 +64,10 @@ public:
 	 * priority, the chosen AkReverbVolume is unpredictable.
 	 */
 	UPROPERTY()
-	float Priority_DEPRECATED = .0f;
+	float Priority_DEPRECATED;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "LateReverb", meta = (ShowOnlyInnerProperties))
-	UAkLateReverbComponent* LateReverbComponent = nullptr;
+	UAkLateReverbComponent* LateReverbComponent;
 
 	virtual void PostLoad() override;
 	virtual void Serialize(FArchive& Ar) override;

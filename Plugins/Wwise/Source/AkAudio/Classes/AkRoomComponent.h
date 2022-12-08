@@ -1,21 +1,20 @@
 /*******************************************************************************
-The content of this file includes portions of the proprietary AUDIOKINETIC Wwise
-Technology released in source code form as part of the game integration package.
-The content of this file may not be used without valid licenses to the
-AUDIOKINETIC Wwise Technology.
-Note that the use of the game engine is subject to the Unreal(R) Engine End User
-License Agreement at https://www.unrealengine.com/en-US/eula/unreal
- 
-License Usage
- 
-Licensees holding valid licenses to the AUDIOKINETIC Wwise Technology may use
-this file in accordance with the end user license agreement provided with the
-software or, alternatively, in accordance with the terms contained
-in a written agreement between you and Audiokinetic Inc.
-Copyright (c) 2022 Audiokinetic Inc.
+The content of the files in this repository include portions of the
+AUDIOKINETIC Wwise Technology released in source code form as part of the SDK
+package.
+
+Commercial License Usage
+
+Licensees holding valid commercial licenses to the AUDIOKINETIC Wwise Technology
+may use these files in accordance with the end user license agreement provided
+with the software or, alternatively, in accordance with the terms contained in a
+written agreement between you and Audiokinetic Inc.
+
+Copyright (c) 2021 Audiokinetic Inc.
 *******************************************************************************/
 
 #pragma once
+#include "AkAudioDevice.h"
 #include "AkReverbDescriptor.h"
 #include "GameFramework/Volume.h"
 #include "AkGameObject.h"
@@ -26,10 +25,7 @@ class UAkLateReverbComponent;
 UCLASS(ClassGroup = Audiokinetic, BlueprintType, hidecategories = (Transform, Rendering, Mobility, LOD, Component, Activation, Tags), meta = (BlueprintSpawnableComponent))
 class AKAUDIO_API UAkRoomComponent : public UAkGameObject
 {
-	GENERATED_BODY()
-
-public:
-	UAkRoomComponent(const class FObjectInitializer& ObjectInitializer);
+	GENERATED_UCLASS_BODY()
 
 	/** 
 	* Enable room transmission feature. Additional properties are available in the Room category. 
@@ -37,7 +33,7 @@ public:
 	* if Room Is Dynamic = true.
 	*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Toggle, meta = (DisplayName = "Enable Room"))
-	bool bEnable = false;
+	uint32 bEnable:1;
 
 	/** 
 	* If true, the portal connections for this room can change during runtime when this room moves.
@@ -55,7 +51,7 @@ public:
 	* priority, the chosen room is unpredictable.
 	*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Room")
-	float Priority = .0f;
+	float Priority;
 
 	/**
 	* Used to set the transmission loss value in wwise, on emitters in the room, when no audio paths to the 
@@ -64,22 +60,23 @@ public:
 	* and is mapped to the occlusion curve as defined in the Wwise project.
 	*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, DisplayName = "Transmission Loss", Category = "Room", meta = (ClampMin=0.0f, ClampMax=1.0f, UIMin=0.0f, UIMax=1.0f))
-	float WallOcclusion = .0f;
+	float WallOcclusion;
 
 	/**
 	* Send level for sounds that are posted on the room. Valid range: (0.f-1.f). A value of 0 disables the aux send.
 	*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AkEvent", meta = (ClampMin = "0.0", ClampMax = "1.0"))
-	float AuxSendLevel = .0f;
+	float AuxSendLevel;
 
 	/** Automatically post the associated AkAudioEvent on BeginPlay */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AkEvent", SimpleDisplay)
-	bool AutoPost = false;
+	bool AutoPost;
 
 	/** Posts this game object's AkAudioEvent to Wwise, using this as the game object source */
 	virtual int32 PostAssociatedAkEvent(
-		UPARAM(meta = (Bitmask, BitmaskEnum = "/Script/AkAudio.EAkCallbackType")) int32 CallbackMask,
-		const FOnAkPostEventCallback& PostEventCallback
+		UPARAM(meta = (Bitmask, BitmaskEnum = EAkCallbackType)) int32 CallbackMask,
+		const FOnAkPostEventCallback& PostEventCallback,
+		const TArray<FAkExternalSourceInfo>& ExternalSources
 	);
 
 	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|AkRoomComponent")
@@ -122,9 +119,10 @@ public:
 	FName GetName() const;
 
 	virtual AkPlayingID PostAkEventByNameWithDelegate(
-		UAkAudioEvent* AkEvent,
 		const FString& in_EventName,
-		int32 CallbackMask, const FOnAkPostEventCallback& PostEventCallback);
+		int32 CallbackMask,
+		const FOnAkPostEventCallback& PostEventCallback,
+		const TArray<FAkExternalSourceInfo>& ExternalSources = TArray<FAkExternalSourceInfo>());
 
 	// Begin USceneComponent Interface
 	virtual void BeginPlay() override;
@@ -140,13 +138,11 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Audiokinetic|AkRoomComponent")
 	void SetGeometryComponent(UAkAcousticTextureSetComponent* textureSetComponent);
 
-	FString GetRoomName();
-
 private:
 	class UPrimitiveComponent* Parent;
 
 	UPROPERTY(Transient)
-	class UAkAcousticTextureSetComponent* GeometryComponent = nullptr;
+	class UAkAcousticTextureSetComponent* GeometryComponent;
 
 	void InitializeParent();
 	void GetRoomParams(AkRoomParams& outParams);
