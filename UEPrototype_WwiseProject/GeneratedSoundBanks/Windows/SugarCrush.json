@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{0F11AE9C-15CE-431B-8EEA-D25B7331DD0C}",
     "Language": "SFX",
-    "Hash": "{687B3605-0D7B-946D-AC88-818BFE832D38}",
+    "Hash": "{0B3EC7CC-9EB6-7794-F23D-BFDB0D8274C7}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\SugarCrush",
     "ShortName": "SugarCrush",
     "Path": "SugarCrush.bnk",
@@ -3835,6 +3835,6 @@
     ]
    }
   ],
-  "FileHash": "{2220FA7A-F119-241B-4CC2-8DB3184762AC}"
+  "FileHash": "{63B8EBDD-3BD6-728D-76D6-3B5DEED397AA}"
  }
 }
